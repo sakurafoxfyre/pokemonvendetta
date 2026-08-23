@@ -3,7 +3,6 @@
   "name": "VictoryRoad_B2F",
   "layout": "LAYOUT_VICTORY_ROAD_B2F",
   "music": "MUS_VICTORY_ROAD",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_VICTORY_ROAD",
   "requires_flash": true,
   "weather": "WEATHER_NONE",
@@ -15,19 +14,6 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": null,
   "object_events": [
-    {
-      "graphics_id": "OBJ_EVENT_GFX_MAN_3",
-      "x": 15,
-      "y": 6,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "2",
-      "script": "VictoryRoad_B2F_EventScript_Vito",
-      "flag": "0"
-    },
     {
       "graphics_id": "OBJ_EVENT_GFX_MAN_3",
       "x": 43,
@@ -69,8 +55,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 13,
-      "y": 8,
+      "x": -2,
+      "y": 12,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 1,
@@ -105,6 +91,19 @@
       "trainer_sight_or_berry_tree_id": "2",
       "script": "VictoryRoad_B2F_EventScript_Felix",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAN_3",
+      "x": 15,
+      "y": 6,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "2",
+      "script": "VictoryRoad_B2F_EventScript_Vito",
+      "flag": "0"
     }
   ],
   "warp_events": [
@@ -138,22 +137,5 @@
     }
   ],
   "coord_events": [],
-  "bg_events": [
-    {
-      "type": "hidden_item",
-      "x": 28,
-      "y": 5,
-      "elevation": 3,
-      "item": "ITEM_ELIXIR",
-      "flag": "FLAG_HIDDEN_ITEM_VICTORY_ROAD_B2F_ELIXIR"
-    },
-    {
-      "type": "hidden_item",
-      "x": 37,
-      "y": 1,
-      "elevation": 3,
-      "item": "ITEM_MAX_REPEL",
-      "flag": "FLAG_HIDDEN_ITEM_VICTORY_ROAD_B2F_MAX_REPEL"
-    }
-  ]
+  "bg_events": []
 }

@@ -13,30 +13,21 @@ LilycoveCity_ContestLobby_OnTransition:
 LilycoveCity_ContestLobby_EventScript_TryShowBlendMaster::
 	getpokenewsactive POKENEWS_BLENDMASTER
 	goto_if_eq VAR_RESULT, TRUE, LilycoveCity_ContestLobby_EventScript_ShowBlendMaster
-	clearflag FLAG_HIDE_LILYCOVE_CONTEST_HALL_BLEND_MASTER_REPLACEMENT
-	setflag FLAG_HIDE_LILYCOVE_CONTEST_HALL_BLEND_MASTER
 	return
 
 LilycoveCity_ContestLobby_EventScript_ShowBlendMaster::
-	setflag FLAG_HIDE_LILYCOVE_CONTEST_HALL_BLEND_MASTER_REPLACEMENT
-	clearflag FLAG_HIDE_LILYCOVE_CONTEST_HALL_BLEND_MASTER
 	return
 
 LilycoveCity_ContestLobby_OnFrame:
 	map_script_2 VAR_LILYCOVE_CONTEST_LOBBY_STATE, 1, LilycoveCity_ContestLobby_EventScript_TryDoContestArtist
-	map_script_2 VAR_LILYCOVE_CONTEST_LOBBY_STATE, 2, LilycoveCity_ContestLobby_EventScript_TryDoLinkContestArtist
 	.2byte 0
 
 LilycoveCity_ContestLobby_EventScript_TryDoContestArtist::
-	goto_if_set FLAG_HIDE_LILYCOVE_MUSEUM_CURATOR, LilycoveCity_ContestLobby_EventScript_ContestArtist
 	setvar VAR_LILYCOVE_CONTEST_LOBBY_STATE, 0
 	end
 
 LilycoveCity_ContestLobby_EventScript_ContestArtist::
 	lockall
-	addobject LOCALID_CONTEST_LOBBY_ARTIST
-	applymovement LOCALID_CONTEST_LOBBY_ARTIST, LilycoveCity_ContestLobby_Movement_ArtistApproachPlayer
-	waitmovement LOCALID_CONTEST_LOBBY_ARTIST
 	applymovement LOCALID_PLAYER, LilycoveCity_ContestLobby_Movement_PlayerFaceArtist
 	waitmovement 0
 	msgbox LilycoveCity_ContestLobby_Text_YourPokemonSpurredMeToPaint, MSGBOX_DEFAULT
@@ -57,11 +48,7 @@ LilycoveCity_ContestLobby_EventScript_TakePaintingToMuseum::
 	setvar VAR_LILYCOVE_CONTEST_LOBBY_STATE, 0
 	specialvar VAR_RESULT, GiveMonArtistRibbon
 	call_if_eq VAR_RESULT, TRUE, LilycoveCity_ContestLobby_EventScript_ReceivedArtistRibbon
-	applymovement LOCALID_CONTEST_LOBBY_ARTIST, LilycoveCity_ContestLobby_Movement_ArtistExit
-	waitmovement 0
-	removeobject LOCALID_CONTEST_LOBBY_ARTIST
 	call LilycoveCity_ContestLobby_EventScript_UpdateMuseumPatrons
-	call LilycoveCity_ContestLobby_EventScript_SetPaintingFlag
 	releaseall
 	end
 
@@ -70,22 +57,17 @@ LilycoveCity_ContestLobby_EventScript_ConfirmDontTakePainting::
 	goto_if_eq VAR_RESULT, YES, LilycoveCity_ContestLobby_EventScript_TakePaintingToMuseum
 	msgbox LilycoveCity_ContestLobby_Text_FineThatsTheWayItIs, MSGBOX_DEFAULT
 	closemessage
-	applymovement LOCALID_CONTEST_LOBBY_ARTIST, LilycoveCity_ContestLobby_Movement_ArtistExit
 	waitmovement 0
 	setvar VAR_LILYCOVE_CONTEST_LOBBY_STATE, 0
-	removeobject LOCALID_CONTEST_LOBBY_ARTIST
 	releaseall
 	end
 
 LilycoveCity_ContestLobby_EventScript_ReceivedArtistRibbon::
 	incrementgamestat GAME_STAT_RECEIVED_RIBBONS
 	special BufferContestWinnerMonName
-	applymovement LOCALID_CONTEST_LOBBY_ARTIST, LilycoveCity_ContestLobby_Movement_ArtistBeginToExit
 	waitmovement 0
 	playse SE_PIN
-	applymovement LOCALID_CONTEST_LOBBY_ARTIST, Common_Movement_ExclamationMark
 	waitmovement 0
-	applymovement LOCALID_CONTEST_LOBBY_ARTIST, LilycoveCity_ContestLobby_Movement_ArtistReturnToPlayer
 	waitmovement 0
 	msgbox LilycoveCity_ContestLobby_Text_TakeMementoOfPainting, MSGBOX_DEFAULT
 	playfanfare MUS_OBTAIN_ITEM
@@ -107,52 +89,18 @@ LilycoveCity_ContestLobby_EventScript_UpdateMuseumPatrons::
 	return
 
 LilycoveCity_ContestLobby_EventScript_ShowPatron1::
-	clearflag FLAG_HIDE_LILYCOVE_MUSEUM_PATRON_1
 	return
 
 LilycoveCity_ContestLobby_EventScript_ShowPatron2::
-	clearflag FLAG_HIDE_LILYCOVE_MUSEUM_PATRON_2
 	return
 
 LilycoveCity_ContestLobby_EventScript_ShowPatron3::
-	clearflag FLAG_HIDE_LILYCOVE_MUSEUM_PATRON_3
 	return
 
 LilycoveCity_ContestLobby_EventScript_ShowPatron4::
-	clearflag FLAG_HIDE_LILYCOVE_MUSEUM_PATRON_4
 	return
 
 LilycoveCity_ContestLobby_EventScript_ShowTourists::
-	clearflag FLAG_HIDE_LILYCOVE_MUSEUM_TOURISTS
-	return
-
-LilycoveCity_ContestLobby_EventScript_SetPaintingFlag::
-	switch VAR_CONTEST_CATEGORY
-	case CONTEST_CATEGORY_COOL, LilycoveCity_ContestLobby_EventScript_MadeCoolPainting
-	case CONTEST_CATEGORY_BEAUTY, LilycoveCity_ContestLobby_EventScript_MadeBeautyPainting
-	case CONTEST_CATEGORY_CUTE, LilycoveCity_ContestLobby_EventScript_MadeCutePainting
-	case CONTEST_CATEGORY_SMART, LilycoveCity_ContestLobby_EventScript_MadeSmartPainting
-	case CONTEST_CATEGORY_TOUGH, LilycoveCity_ContestLobby_EventScript_MadeToughPainting
-	return
-
-LilycoveCity_ContestLobby_EventScript_MadeCoolPainting::
-	setflag FLAG_COOL_PAINTING_MADE
-	return
-
-LilycoveCity_ContestLobby_EventScript_MadeBeautyPainting::
-	setflag FLAG_BEAUTY_PAINTING_MADE
-	return
-
-LilycoveCity_ContestLobby_EventScript_MadeCutePainting::
-	setflag FLAG_CUTE_PAINTING_MADE
-	return
-
-LilycoveCity_ContestLobby_EventScript_MadeSmartPainting::
-	setflag FLAG_SMART_PAINTING_MADE
-	return
-
-LilycoveCity_ContestLobby_EventScript_MadeToughPainting::
-	setflag FLAG_TOUGH_PAINTING_MADE
 	return
 
 LilycoveCity_ContestLobby_Movement_ArtistApproachPlayer:
@@ -197,122 +145,10 @@ LilycoveCity_ContestLobby_Movement_ArtistReturnToPlayer:
 	walk_in_place_faster_right
 	step_end
 
-LilycoveCity_ContestLobby_EventScript_TryDoLinkContestArtist::
-	goto_if_set FLAG_HIDE_LILYCOVE_MUSEUM_CURATOR, LilycoveCity_ContestLobby_EventScript_LinkContestArtist
-	setvar VAR_LILYCOVE_CONTEST_LOBBY_STATE, 0
-	end
-
-LilycoveCity_ContestLobby_EventScript_LinkContestArtist::
-	lockall
-	addobject LOCALID_CONTEST_LOBBY_LINK_ARTIST
-	applymovement LOCALID_CONTEST_LOBBY_LINK_ARTIST, LilycoveCity_ContestLobby_Movement_LinkArtistApproachPlayer
-	waitmovement LOCALID_CONTEST_LOBBY_LINK_ARTIST
-	applymovement LOCALID_PLAYER, LilycoveCity_ContestLobby_Movement_PlayerFaceLinkArtist
-	waitmovement 0
-	msgbox LilycoveCity_ContestLobby_Text_YourPokemonSpurredMeToPaint, MSGBOX_DEFAULT
-	lockall
-	fadescreen FADE_TO_BLACK
-	showcontestpainting CONTEST_WINNER_ARTIST
-	msgbox LilycoveCity_ContestLobby_Text_ShouldITakePaintingToMuseum, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, YES, LilycoveCity_ContestLobby_EventScript_TakePaintingToMuseumLink
-	goto_if_eq VAR_RESULT, NO, LilycoveCity_ContestLobby_EventScript_ConfirmDontTakePaintingLink
-	end
-
-LilycoveCity_ContestLobby_EventScript_TakePaintingToMuseumLink::
-	msgbox LilycoveCity_ContestLobby_Text_IllTakePaintingToMuseum, MSGBOX_DEFAULT
-	closemessage
-	special SaveMuseumContestPainting
-	setvar VAR_LILYCOVE_CONTEST_LOBBY_STATE, 0
-	specialvar VAR_RESULT, GiveMonArtistRibbon
-	call_if_eq VAR_RESULT, TRUE, LilycoveCity_ContestLobby_EventScript_ReceivedLinkArtistRibbon
-	applymovement LOCALID_CONTEST_LOBBY_LINK_ARTIST, LilycoveCity_ContestLobby_Movement_LinkArtistExit
-	waitmovement 0
-	removeobject LOCALID_CONTEST_LOBBY_LINK_ARTIST
-	call LilycoveCity_ContestLobby_EventScript_UpdateMuseumPatrons
-	call LilycoveCity_ContestLobby_EventScript_SetPaintingFlag
-	releaseall
-	end
-
-LilycoveCity_ContestLobby_EventScript_ConfirmDontTakePaintingLink::
-	msgbox LilycoveCity_ContestLobby_Text_TakeHomeButIdLikeToTakeToMuseum, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, YES, LilycoveCity_ContestLobby_EventScript_TakePaintingToMuseumLink
-	msgbox LilycoveCity_ContestLobby_Text_FineThatsTheWayItIs, MSGBOX_DEFAULT
-	closemessage
-	applymovement LOCALID_CONTEST_LOBBY_LINK_ARTIST, LilycoveCity_ContestLobby_Movement_LinkArtistExit
-	waitmovement 0
-	setvar VAR_LILYCOVE_CONTEST_LOBBY_STATE, 0
-	removeobject LOCALID_CONTEST_LOBBY_LINK_ARTIST
-	releaseall
-	end
-
-LilycoveCity_ContestLobby_EventScript_ReceivedLinkArtistRibbon::
-	incrementgamestat GAME_STAT_RECEIVED_RIBBONS
-	setflag FLAG_SYS_RIBBON_GET
-	special BufferContestWinnerMonName
-	applymovement LOCALID_CONTEST_LOBBY_LINK_ARTIST, LilycoveCity_ContestLobby_Movement_LinkArtistBeginExit
-	waitmovement 0
-	playse SE_PIN
-	applymovement LOCALID_CONTEST_LOBBY_LINK_ARTIST, Common_Movement_ExclamationMark
-	waitmovement 0
-	applymovement LOCALID_CONTEST_LOBBY_LINK_ARTIST, LilycoveCity_ContestLobby_Movement_LinkArtistReturnToPlayer
-	waitmovement 0
-	msgbox LilycoveCity_ContestLobby_Text_TakeMementoOfPainting, MSGBOX_DEFAULT
-	playfanfare MUS_OBTAIN_ITEM
-	msgbox LilycoveCity_ContestLobby_Text_ReceivedARibbon, MSGBOX_DEFAULT
-	waitfanfare
-	msgbox LilycoveCity_ContestLobby_Text_PutTheRibbonOnMon, MSGBOX_DEFAULT
-	msgbox LilycoveCity_ContestLobby_Text_OkaySeeYou, MSGBOX_DEFAULT
-	closemessage
-	return
-
-LilycoveCity_ContestLobby_Movement_LinkArtistApproachPlayer:
-	walk_down
-	walk_down
-	walk_down
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	step_end
-
-LilycoveCity_ContestLobby_Movement_LinkArtistExit:
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	step_end
-
-LilycoveCity_ContestLobby_Movement_PlayerFaceLinkArtist:
-	walk_in_place_faster_right
-	step_end
-
-LilycoveCity_ContestLobby_Movement_LinkArtistBeginExit:
-	walk_down
-	walk_down
-	walk_down
-	step_end
-
-LilycoveCity_ContestLobby_Movement_LinkArtistReturnToPlayer:
-	delay_16
-	delay_16
-	delay_16
-	delay_16
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	walk_in_place_faster_left
-	step_end
-
 @ EventScript_SpeakToContestReceptionist either ends or returns after a contest entry is submitted
 LilycoveCity_ContestLobby_EventScript_ContestReceptionist::
 	special ClearLinkContestFlags
 	specialvar VAR_RESULT, IsContestDebugActive  @ Always FALSE
-	goto_if_eq VAR_RESULT, TRUE, LilycoveCity_ContestLobby_EventScript_SetDebug
 	call LilycoveCity_ContestLobby_EventScript_SpeakToContestReceptionist
 	call LilycoveCity_ContestLobby_EventScript_LeadToContestHall
 	special SetContestTrainerGfxIds
@@ -346,21 +182,6 @@ LilycoveCity_ContestLobby_EventScript_SetMasterContestType::
 	setvar VAR_CONTEST_TYPE, CONTEST_TYPE_NPC_MASTER
 	return
 
-@ Functionally unused
-LilycoveCity_ContestLobby_EventScript_SetDebug::
-	setflag FLAG_HIDE_LILYCOVE_MUSEUM_CURATOR
-#ifdef UBFIX
-	setvar VAR_LILYCOVE_MUSEUM_2F_STATE, 1
-#else
-	copyvar VAR_LILYCOVE_MUSEUM_2F_STATE, 1, warn=FALSE
-#endif
-	additem ITEM_CONTEST_PASS
-	setvar VAR_0x800B, 8
-	setvar VAR_CONTEST_RANK, CONTEST_RANK_MASTER
-	setvar VAR_LILYCOVE_CONTEST_LOBBY_STATE, 1
-	setflag FLAG_SYS_RIBBON_GET
-	end
-
 LilycoveCity_ContestLobby_EventScript_WarpToContestHall::
 	setflag FLAG_ENTERED_CONTEST
 	switch VAR_CONTEST_CATEGORY
@@ -374,26 +195,31 @@ LilycoveCity_ContestLobby_EventScript_WarpToContestHall::
 LilycoveCity_ContestLobby_EventScript_WarpToCoolContestHall::
 	setwarp MAP_CONTEST_HALL_COOL, 7, 5
 	special DoContestHallWarp
+	waitstate
 	return
 
 LilycoveCity_ContestLobby_EventScript_WarpToBeautyContestHall::
 	setwarp MAP_CONTEST_HALL_BEAUTY, 7, 5
 	special DoContestHallWarp
+	waitstate
 	return
 
 LilycoveCity_ContestLobby_EventScript_WarpToCuteContestHall::
 	setwarp MAP_CONTEST_HALL_CUTE, 7, 5
 	special DoContestHallWarp
+	waitstate
 	return
 
 LilycoveCity_ContestLobby_EventScript_WarpToSmartContestHall::
 	setwarp MAP_CONTEST_HALL_SMART, 7, 5
 	special DoContestHallWarp
+	waitstate
 	return
 
 LilycoveCity_ContestLobby_EventScript_WarpToToughContestHall::
 	setwarp MAP_CONTEST_HALL_TOUGH, 7, 5
 	special DoContestHallWarp
+	waitstate
 	return
 
 LilycoveCity_ContestLobby_EventScript_LeadToContestHall::
@@ -543,7 +369,7 @@ LilycoveCity_ContestLobby_EventScript_Blender3Girl::
 
 LilycoveCity_ContestLobby_EventScript_BerryBlenderSpeedRecords::
 	lockall
-	special ShowBerryBlenderRecordWindow
+	@special ShowBerryBlenderRecordWindow
 	waitbuttonpress
 	special RemoveRecordsWindow
 	releaseall
@@ -610,309 +436,6 @@ LilycoveCity_ContestLobby_EventScript_FaceOriginalDirection::
 	release
 	end
 
-LilycoveCity_ContestLobby_EventScript_LinkContestReceptionist::
-	special ClearLinkContestFlags
-	lock
-	faceplayer
-	msgbox LilycoveCity_ContestLobby_Text_LinkContestReception, MSGBOX_DEFAULT
-	goto LilycoveCity_ContestLobby_EventScript_AskEnterLinkContest
-	end
-
-LilycoveCity_ContestLobby_EventScript_AskEnterLinkContest::
-	message LilycoveCity_ContestLobby_Text_EnterContest3
-	waitmessage
-	multichoice 0, 0, MULTI_ENTERINFO, FALSE
-	switch VAR_RESULT
-	case 0, LilycoveCity_ContestLobby_EventScript_TryEnterLinkContest
-	case 1, LilycoveCity_ContestLobby_EventScript_LinkContestInfo
-	case 2, LilycoveCity_ContestLobby_EventScript_CancelLinkContest
-	case MULTI_B_PRESSED, LilycoveCity_ContestLobby_EventScript_CancelLinkContest
-	end
-
-LilycoveCity_ContestLobby_EventScript_TryEnterLinkContest::
-	msgbox LilycoveCity_ContestLobby_Text_ProgressWillBeSaved, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, LilycoveCity_ContestLobby_EventScript_CancelLinkContest
-	call Common_EventScript_SaveGame
-	goto_if_eq VAR_RESULT, FALSE, LilycoveCity_ContestLobby_EventScript_CancelLinkContest
-	message LilycoveCity_ContestLobby_Text_WhichContestMode
-	waitmessage
-	specialvar VAR_TEMP_D, IsWirelessAdapterConnected
-	multichoice 0, 0, MULTI_LINK_CONTEST_MODE, FALSE
-	switch VAR_RESULT
-	case 0, LilycoveCity_ContestLobby_EventScript_EmeraldMode  @ Shortened to E-Mode
-	case 1, LilycoveCity_ContestLobby_EventScript_GlobalMode   @ Shortened to G-Mode
-	case 2, LilycoveCity_ContestLobby_EventScript_CancelLinkContest
-	case MULTI_B_PRESSED, LilycoveCity_ContestLobby_EventScript_CancelLinkContest
-	end
-
-LilycoveCity_ContestLobby_EventScript_EmeraldMode::
-	setvar VAR_TEMP_C, 0
-	goto LilycoveCity_ContestLobby_EventScript_ChooseLinkContestType
-	end
-
-LilycoveCity_ContestLobby_EventScript_GlobalMode::
-	setvar VAR_TEMP_C, 1
-	goto_if_eq VAR_TEMP_D, 1, LilycoveCity_ContestLobby_EventScript_CancelLinkNoWirelessGMode
-	goto LilycoveCity_ContestLobby_EventScript_ChooseLinkContestType
-	end
-
-LilycoveCity_ContestLobby_EventScript_ChooseLinkContestType::
-	message LilycoveCity_ContestLobby_Text_EnterWhichContest3
-	waitmessage
-	multichoice 0, 0, MULTI_CONTEST_TYPE, FALSE
-	switch VAR_RESULT
-	case CONTEST_CATEGORIES_COUNT, LilycoveCity_ContestLobby_EventScript_CancelLinkContest
-	case MULTI_B_PRESSED, LilycoveCity_ContestLobby_EventScript_CancelLinkContest
-	copyvar VAR_CONTEST_CATEGORY, VAR_RESULT
-	goto LilycoveCity_ContestLobby_EventScript_ChooseLinkContestMon
-	end
-
-LilycoveCity_ContestLobby_EventScript_LinkContestInfo::
-	message LilycoveCity_ContestLobby_Text_WhichTopic2
-	waitmessage
-	multichoice 0, 0, MULTI_LINK_CONTEST_INFO, FALSE
-	switch VAR_RESULT
-	case 0, LilycoveCity_ContestLobby_EventScript_ExplainLinkContest
-	case 1, LilycoveCity_ContestLobby_EventScript_ExplainEMode
-	case 2, LilycoveCity_ContestLobby_EventScript_ExplainGMode
-	case 3, LilycoveCity_ContestLobby_EventScript_AskEnterLinkContest
-	case MULTI_B_PRESSED, LilycoveCity_ContestLobby_EventScript_AskEnterLinkContest
-	end
-
-LilycoveCity_ContestLobby_EventScript_ExplainLinkContest::
-	msgbox LilycoveCity_ContestLobby_Text_ExplainLinkContest, MSGBOX_DEFAULT
-	goto LilycoveCity_ContestLobby_EventScript_LinkContestInfo
-	end
-
-LilycoveCity_ContestLobby_EventScript_ExplainEMode::
-	msgbox LilycoveCity_ContestLobby_Text_ExplainEMode, MSGBOX_DEFAULT
-	goto LilycoveCity_ContestLobby_EventScript_LinkContestInfo
-	end
-
-LilycoveCity_ContestLobby_EventScript_ExplainGMode::
-	msgbox LilycoveCity_ContestLobby_Text_ExplainGMode, MSGBOX_DEFAULT
-	goto LilycoveCity_ContestLobby_EventScript_LinkContestInfo
-	end
-
-LilycoveCity_ContestLobby_EventScript_CancelLinkContest::
-	special CloseLink
-	msgbox LilycoveCity_ContestLobby_Text_ParticipateAnotherTime, MSGBOX_DEFAULT
-	release
-	end
-
-LilycoveCity_ContestLobby_EventScript_ChooseLinkContestMon::
-	msgbox LilycoveCity_ContestLobby_Text_EnterWhichPokemon3, MSGBOX_DEFAULT
-	setvar VAR_CONTEST_RANK, 0
-	choosecontestmon
-	goto_if_eq VAR_0x8004, PARTY_NOTHING_CHOSEN, LilycoveCity_ContestLobby_EventScript_CancelLinkContest
-	special TryEnterContestMon
-	goto_if_eq VAR_RESULT, CANT_ENTER_CONTEST, LilycoveCity_ContestLobby_EventScript_LinkCantEnterLowRank
-	goto_if_eq VAR_RESULT, CAN_ENTER_CONTEST_EQUAL_RANK, LilycoveCity_ContestLobby_EventScript_EnterMonForLinkContest
-	goto_if_eq VAR_RESULT, CAN_ENTER_CONTEST_HIGH_RANK, LilycoveCity_ContestLobby_EventScript_EnterMonForLinkContest
-	goto_if_eq VAR_RESULT, CANT_ENTER_CONTEST_EGG, LilycoveCity_ContestLobby_EventScript_LinkCantEnterEgg
-	goto_if_eq VAR_RESULT, CANT_ENTER_CONTEST_FAINTED, LilycoveCity_ContestLobby_EventScript_LinkCantEnterFainted
-	end
-
-LilycoveCity_ContestLobby_EventScript_LinkCantEnterLowRank::
-	msgbox LilycoveCity_ContestLobby_Text_MonNotQualifiedForRank, MSGBOX_DEFAULT
-	goto LilycoveCity_ContestLobby_EventScript_ChooseLinkContestMon
-	end
-
-LilycoveCity_ContestLobby_EventScript_LinkCantEnterEgg::
-	msgbox LilycoveCity_ContestLobby_Text_EggCannotTakePart2, MSGBOX_DEFAULT
-	goto LilycoveCity_ContestLobby_EventScript_ChooseLinkContestMon
-	end
-
-LilycoveCity_ContestLobby_EventScript_LinkCantEnterFainted::
-	msgbox LilycoveCity_ContestLobby_Text_MonInNoCondition2, MSGBOX_DEFAULT
-	goto LilycoveCity_ContestLobby_EventScript_ChooseLinkContestMon
-	end
-
-LilycoveCity_ContestLobby_EventScript_EnterMonForLinkContest::
-	copyvar VAR_0x8008, VAR_0x8004
-	goto LilycoveCity_ContestLobby_EventScript_TrySetUpLinkContest
-	end
-
-LilycoveCity_ContestLobby_EventScript_TrySetUpLinkContest::
-	goto_if_eq VAR_TEMP_D, 1, LilycoveCity_ContestLobby_EventScript_SetLinkGroupType
-	goto_if_ge VAR_TEMP_D, 2, LilycoveCity_ContestLobby_EventScript_CancelLinkContest
-	message LilycoveCity_ContestLobby_Text_PleaseWaitBButtonCancel
-	waitmessage
-	copyvar VAR_0x8004, VAR_RESULT
-	call_if_eq VAR_TEMP_C, 0, LilycoveCity_ContestLobby_EventScript_TryLinkEMode
-	call_if_eq VAR_TEMP_C, 1, LilycoveCity_ContestLobby_EventScript_TryLinkGMode
-	goto_if_ge VAR_TEMP_C, 2, LilycoveCity_ContestLobby_EventScript_CancelLinkContest
-	goto_if_eq VAR_RESULT, LINKUP_WRONG_NUM_PLAYERS, LilycoveCity_ContestLobby_EventScript_CancelLinkDifferentChoices
-	goto_if_eq VAR_RESULT, LINKUP_DIFF_SELECTIONS, LilycoveCity_ContestLobby_EventScript_CancelLinkDifferentChoices
-	goto_if_eq VAR_RESULT, LINKUP_FAILED, LilycoveCity_ContestLobby_EventScript_CancelLinkContest
-	goto_if_eq VAR_RESULT, LINKUP_CONNECTION_ERROR, LilycoveCity_ContestLobby_EventScript_CancelLinkError
-	goto_if_eq VAR_RESULT, LINKUP_FAILED_CONTEST_GMODE, LilycoveCity_ContestLobby_EventScript_CancelLinkModeDifference
-	messageinstant LilycoveCity_ContestLobby_Text_Transmitting
-	contestlinktransfer
-	switch VAR_0x8004
-	case 0, LilycoveCity_ContestLobby_EventScript_StartLinkContest
-	case 1, LilycoveCity_ContestLobby_EventScript_CancelLinkDifferentContest
-	case 2, LilycoveCity_ContestLobby_EventScript_CancelLinkTransmissionError
-	end
-
-LilycoveCity_ContestLobby_EventScript_TryLinkEMode::
-	special TryContestEModeLinkup
-	return
-
-LilycoveCity_ContestLobby_EventScript_TryLinkGMode::
-	special TryContestGModeLinkup
-	return
-
-LilycoveCity_ContestLobby_EventScript_CancelLinkDifferentContest::
-	msgbox LilycoveCity_ContestLobby_Text_PlayersChoseDifferentContest, MSGBOX_DEFAULT
-	goto LilycoveCity_ContestLobby_EventScript_CancelLinkContest
-	end
-
-LilycoveCity_ContestLobby_EventScript_CancelLinkDifferentChoices::
-	msgbox LilycoveCity_ContestLobby_Text_PlayersMadeDifferentChoice, MSGBOX_DEFAULT
-	goto LilycoveCity_ContestLobby_EventScript_CancelLinkContest
-	end
-
-LilycoveCity_ContestLobby_EventScript_CancelLinkModeDifference::
-	msgbox LilycoveCity_ContestLobby_Text_PlayerAt4PCounterUseGMode, MSGBOX_DEFAULT
-	goto LilycoveCity_ContestLobby_EventScript_CancelLinkContest
-	end
-
-LilycoveCity_ContestLobby_EventScript_CancelLinkError::
-	special CloseLink
-	msgbox Text_LinkErrorPleaseReset, MSGBOX_DEFAULT
-	release
-	end
-
-LilycoveCity_ContestLobby_EventScript_CancelLinkNoWirelessGMode::
-	special CloseLink
-	msgbox LilycoveCity_ContestLobby_Text_NoWirelessAdapterInGMode, MSGBOX_DEFAULT
-	release
-	end
-
-LilycoveCity_ContestLobby_EventScript_CancelLinkTransmissionError::
-	msgbox LilycoveCity_ContestLobby_Text_TransmissionError, MSGBOX_DEFAULT
-	goto LilycoveCity_ContestLobby_EventScript_CancelLinkContest
-	end
-
-LilycoveCity_ContestLobby_EventScript_StartLinkContest::
-	special GetContestPlayerId
-	addvar VAR_0x8004, 1
-	buffernumberstring STR_VAR_2, VAR_0x8004
-	messageautoscroll LilycoveCity_ContestLobby_Text_YourMonIsEntryNumX
-	waitmessage
-	subvar VAR_0x8004, 1
-	call LilycoveCity_ContestLobby_EventScript_LeadToLinkContestHall
-	setvar VAR_CONTEST_HALL_STATE, 1
-	special SetLinkContestPlayerGfx
-	setvar VAR_CONTEST_TYPE, CONTEST_TYPE_LINK
-	setvar VAR_CONTEST_RANK, CONTEST_RANK_MASTER
-	call LilycoveCity_ContestLobby_EventScript_WarpToContestHall
-	end
-
-LilycoveCity_ContestLobby_EventScript_SetLinkGroupType::
-	call_if_eq VAR_CONTEST_CATEGORY, CONTEST_CATEGORY_COOL, LilycoveCity_ContestLobby_EventScript_SetLinkGroupCoolContest
-	call_if_eq VAR_CONTEST_CATEGORY, CONTEST_CATEGORY_BEAUTY, LilycoveCity_ContestLobby_EventScript_SetLinkGroupBeautyContest
-	call_if_eq VAR_CONTEST_CATEGORY, CONTEST_CATEGORY_CUTE, LilycoveCity_ContestLobby_EventScript_SetLinkGroupCuteContest
-	call_if_eq VAR_CONTEST_CATEGORY, CONTEST_CATEGORY_SMART, LilycoveCity_ContestLobby_EventScript_SetLinkGroupSmartContest
-	call_if_eq VAR_CONTEST_CATEGORY, CONTEST_CATEGORY_TOUGH, LilycoveCity_ContestLobby_EventScript_SetLinkGroupToughContest
-	goto LilycoveCity_ContestLobby_EventScript_DecideLinkLeader
-	end
-
-LilycoveCity_ContestLobby_EventScript_SetLinkGroupCoolContest::
-	setvar VAR_0x8004, LINK_GROUP_COOL_CONTEST
-	return
-
-LilycoveCity_ContestLobby_EventScript_SetLinkGroupBeautyContest::
-	setvar VAR_0x8004, LINK_GROUP_BEAUTY_CONTEST
-	return
-
-LilycoveCity_ContestLobby_EventScript_SetLinkGroupCuteContest::
-	setvar VAR_0x8004, LINK_GROUP_CUTE_CONTEST
-	return
-
-LilycoveCity_ContestLobby_EventScript_SetLinkGroupSmartContest::
-	setvar VAR_0x8004, LINK_GROUP_SMART_CONTEST
-	return
-
-LilycoveCity_ContestLobby_EventScript_SetLinkGroupToughContest::
-	setvar VAR_0x8004, LINK_GROUP_TOUGH_CONTEST
-	return
-
-LilycoveCity_ContestLobby_EventScript_DecideLinkLeader::
-	message LilycoveCity_ContestLobby_Text_PleaseDecideLinkLeader
-	waitmessage
-	multichoice 16, 6, MULTI_LINK_LEADER, FALSE
-	switch VAR_RESULT
-	case 0, LilycoveCity_ContestLobby_EventScript_TryJoinGroup
-	case 1, LilycoveCity_ContestLobby_EventScript_TryLeadGroup
-	case 2, LilycoveCity_ContestLobby_EventScript_CancelLinkContest
-	case MULTI_B_PRESSED, LilycoveCity_ContestLobby_EventScript_CancelLinkContest
-	end
-
-LilycoveCity_ContestLobby_EventScript_TryLeadGroup::
-	call LilycoveCity_ContestLobby_EventScript_TryBecomeLinkLeader
-	goto_if_eq VAR_RESULT, LINKUP_SUCCESS, LilycoveCity_ContestLobby_EventScript_LinkLeaderDecided
-	goto_if_eq VAR_RESULT, LINKUP_FAILED, LilycoveCity_ContestLobby_EventScript_DecideLinkLeader
-	goto_if_eq VAR_RESULT, LINKUP_RETRY_ROLE_ASSIGN, LilycoveCity_ContestLobby_EventScript_TryLeadGroup
-	release
-	end
-
-LilycoveCity_ContestLobby_EventScript_TryJoinGroup::
-	call LilycoveCity_ContestLobby_EventScript_TryJoinLinkGroup
-	goto_if_eq VAR_RESULT, LINKUP_SUCCESS, LilycoveCity_ContestLobby_EventScript_LinkLeaderDecided
-	goto_if_eq VAR_RESULT, LINKUP_FAILED, LilycoveCity_ContestLobby_EventScript_DecideLinkLeader
-	goto_if_eq VAR_RESULT, LINKUP_RETRY_ROLE_ASSIGN, LilycoveCity_ContestLobby_EventScript_TryJoinGroup
-	release
-	end
-
-LilycoveCity_ContestLobby_EventScript_TryBecomeLinkLeader::
-	special TryBecomeLinkLeader
-	return
-
-LilycoveCity_ContestLobby_EventScript_TryJoinLinkGroup::
-	special TryJoinLinkGroup
-	return
-
-LilycoveCity_ContestLobby_EventScript_LinkLeaderDecided::
-	messageinstant LilycoveCity_ContestLobby_Text_Transmitting
-	contestlinktransfer
-	goto LilycoveCity_ContestLobby_EventScript_StartLinkContest
-	end
-
-LilycoveCity_ContestLobby_EventScript_LeadToLinkContestHall::
-	messageautoscroll LilycoveCity_ContestLobby_Text_ContestBeginShortly
-	waitmessage
-	delay 20
-	closemessage
-	applymovement LOCALID_CONTEST_LOBBY_LINK_RECEPTIONIST, LilycoveCity_ContestLobby_Movement_LinkReceptionistApproachCounter
-	waitmovement 0
-	playse SE_BRIDGE_WALK
-	setmetatile 17, 2, METATILE_Contest_WallShadow, TRUE
-	setmetatile 17, 3, METATILE_Contest_FloorShadow, TRUE
-	special DrawWholeMapView
-	applymovement LOCALID_CONTEST_LOBBY_LINK_RECEPTIONIST, LilycoveCity_ContestLobby_Movement_LinkReceptionistExitCounter
-	waitmovement 0
-	playse SE_BRIDGE_WALK
-	setmetatile 17, 2, METATILE_Contest_CounterFlap_Top, TRUE
-	setmetatile 17, 3, METATILE_Contest_CounterFlap_Bottom, TRUE
-	special DrawWholeMapView
-	delay 20
-	applymovement LOCALID_CONTEST_LOBBY_LINK_RECEPTIONIST, LilycoveCity_ContestLobby_Movement_LinkReceptionistFacePlayer
-	waitmovement 0
-	applymovement LOCALID_PLAYER, LilycoveCity_ContestLobby_Movement_PlayerApproachLinkReceptionist
-	waitmovement 0
-	messageautoscroll LilycoveCity_ContestLobby_Text_ComeThroughHere
-	waitmessage
-	delay 20
-	closemessage
-	call LilycoveCity_ContestLobby_EventScript_DelayIfContestWithRSPlayer
-	applymovement LOCALID_CONTEST_LOBBY_LINK_RECEPTIONIST, LilycoveCity_ContestLobby_Movement_LinkReceptionistWalkToContestHall
-	applymovement LOCALID_PLAYER, LilycoveCity_ContestLobby_Movement_PlayerWalkToLinkContestHall
-	waitmovement 0
-	release
-	return
-
 LilycoveCity_ContestLobby_Movement_PlayerWalkToLinkContestHall:
 	walk_right
 	walk_right
@@ -924,38 +447,6 @@ LilycoveCity_ContestLobby_Movement_PlayerWalkToLinkContestHall:
 	walk_up
 	delay_8
 	set_invisible
-	step_end
-
-LilycoveCity_ContestLobby_Movement_PlayerApproachLinkReceptionist:
-	walk_right
-	step_end
-
-LilycoveCity_ContestLobby_Movement_LinkReceptionistApproachCounter:
-	walk_right
-	walk_right
-	walk_in_place_faster_down
-	step_end
-
-LilycoveCity_ContestLobby_Movement_LinkReceptionistExitCounter:
-	walk_down
-	walk_down
-	walk_in_place_faster_up
-	step_end
-
-LilycoveCity_ContestLobby_Movement_LinkReceptionistWalkToContestHall:
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_up
-	walk_up
-	walk_up
-	delay_8
-	set_invisible
-	step_end
-
-LilycoveCity_ContestLobby_Movement_LinkReceptionistFacePlayer:
-	walk_in_place_faster_left
 	step_end
 
 LilycoveCity_ContestLobby_EventScript_LittleGirl::

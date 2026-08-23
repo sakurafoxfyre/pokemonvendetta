@@ -3,7 +3,6 @@
   "name": "DewfordTown_House1",
   "layout": "LAYOUT_HOUSE3",
   "music": "MUS_DEWFORD",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_DEWFORD_TOWN",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -55,22 +54,7 @@
       "flag": "0"
     }
   ],
-  "warp_events": [
-    {
-      "x": 3,
-      "y": 7,
-      "elevation": 0,
-      "dest_map": "MAP_DEWFORD_TOWN",
-      "dest_warp_id": "3"
-    },
-    {
-      "x": 4,
-      "y": 7,
-      "elevation": 0,
-      "dest_map": "MAP_DEWFORD_TOWN",
-      "dest_warp_id": "3"
-    }
-  ],
+  "warp_events": [],
   "coord_events": [],
   "bg_events": []
 }

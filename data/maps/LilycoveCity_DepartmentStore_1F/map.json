@@ -3,7 +3,6 @@
   "name": "LilycoveCity_DepartmentStore_1F",
   "layout": "LAYOUT_LILYCOVE_CITY_DEPARTMENT_STORE_1F",
   "music": "MUS_LILYCOVE",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_LILYCOVE_CITY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -39,7 +38,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "LilycoveCity_DepartmentStore_1F_EventScript_LotteryClerk",
+      "script": "LilycoveCity_DepartmentStore_1F_EventScript_Greeter",
       "flag": "0"
     },
     {

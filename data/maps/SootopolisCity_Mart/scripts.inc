@@ -27,13 +27,6 @@ SootopolisCity_Mart_Pokemart:
 SootopolisCity_Mart_EventScript_FatMan::
 	lock
 	faceplayer
-	goto_if_ge VAR_SKY_PILLAR_STATE, 2, SootopolisCity_Mart_EventScript_FatManNoLegendaries
-	goto_if_unset FLAG_KYOGRE_ESCAPED_SEAFLOOR_CAVERN, SootopolisCity_Mart_EventScript_FatManNoLegendaries
-	msgbox SootopolisCity_Mart_Text_TooScaryOutside, MSGBOX_DEFAULT
-	release
-	end
-
-SootopolisCity_Mart_EventScript_FatManNoLegendaries::
 	msgbox SootopolisCity_Mart_Text_PPUpIsGreat, MSGBOX_DEFAULT
 	release
 	end
@@ -41,13 +34,6 @@ SootopolisCity_Mart_EventScript_FatManNoLegendaries::
 SootopolisCity_Mart_EventScript_Gentleman::
 	lock
 	faceplayer
-	goto_if_ge VAR_SKY_PILLAR_STATE, 2, SootopolisCity_Mart_EventScript_GentlemanNoLegendaries
-	goto_if_unset FLAG_KYOGRE_ESCAPED_SEAFLOOR_CAVERN, SootopolisCity_Mart_EventScript_GentlemanNoLegendaries
-	msgbox SootopolisCity_Mart_Text_DidSomethingAwaken, MSGBOX_DEFAULT
-	release
-	end
-
-SootopolisCity_Mart_EventScript_GentlemanNoLegendaries::
 	msgbox SootopolisCity_Mart_Text_FullRestoreItemOfDreams, MSGBOX_DEFAULT
 	release
 	end
@@ -57,19 +43,8 @@ SootopolisCity_Mart_Text_PPUpIsGreat:
 	.string "It raises the POWER POINTS, the PP,\n"
 	.string "of a POKéMON move.$"
 
-SootopolisCity_Mart_Text_TooScaryOutside:
-	.string "What…\n"
-	.string "What is happening?\p"
-	.string "I really want to know, but it's too\n"
-	.string "scary to go outside.$"
-
 SootopolisCity_Mart_Text_FullRestoreItemOfDreams:
 	.string "Do you know FULL RESTORE?\p"
 	.string "Full restoration of HP!\n"
 	.string "Eradication of all status problems!\p"
 	.string "It's truly an item of your dreams!$"
-
-SootopolisCity_Mart_Text_DidSomethingAwaken:
-	.string "This weather…\n"
-	.string "Did something awaken?$"
-

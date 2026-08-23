@@ -64,17 +64,23 @@ struct TrainerPicInfo
 // See CreateNPCTrainerPartyFromTrainer and CreateFacilityMon
 struct TrainerMon
 {
+    u16 species;
     const u8 *nickname;
-    const u8 *ev;
-    u32 iv;
-    enum Move moves[MAX_MON_MOVES];
-    enum Species species;
-    enum Item heldItem;
     enum Ability ability;
-    u8 lvl;
-    enum PokeBall ball:8;
-    u8 friendship;
     u8 nature:5;
+    u32 natureList[10];
+    u16 lvlUpperBound;
+    u16 lvlLowerBound;
+    u16 lvl;
+    u32 iv;
+    u32 ivUpperBound;
+    u32 ivLowerBound;
+    u16 moves[4];
+    u32 moveList[10];
+    u16 heldItem;
+    u32 heldItemList[10];
+    u8 ball;
+    u8 friendship;
     bool8 gender:2;
     bool8 isShiny:1;
     enum Type teraType:5;
@@ -124,6 +130,37 @@ struct StartingStatuses
     // u32 swampOpponent:1;
 };
 
+enum TrainerUnlockedAt
+{
+    FALLARBOR_RUSTBORO,
+    FALLARBOR_LAVARIDGE,
+    RUSTBORO_MAUVILLE,
+    LAVARIDGE_MAUVILLE,
+    RUSTBORO_PETALBURG,
+    PETALBURG_DEWFORD,
+    DEWFORD_SLATEPORT,
+    PETALBURG_SLATEPORT,
+    SLATEPORT_MAUVILLE,
+    LAVARIDGE_FORTREE,
+    MAUVILLE_MTPYRE,
+    FORTREE_MTPYRE,
+    MTPYRE_LILYCOVE,
+    LILYCOVE_MOSSDEEP,
+    SLATEPORT_MOSSDEEP,
+    FALLARBOR,
+    RUSTBORO,
+    PETALBURG,
+    DEWFORD,
+    SLATEPORT,
+    MAUVILLE,
+    LAVARIDGE,
+    FORTREE,
+    MTPYRE,
+    LILYCOVE,
+    MOSSDEEP,
+    SOOTOPOLIS,
+};
+
 struct Trainer
 {
     u64 aiFlags;
@@ -145,11 +182,27 @@ struct Trainer
     u8 poolPickIndex;
     u8 poolPruneIndex;
     u16 overrideTrainer;
+    u8 partySizeWorldZero;
+    u8 partySizeWorldOne;
+    u8 partySizeWorldTwo;
+    u8 partySizeWorldThree;
+    u8 partySizeWorldFour;
+    u8 partySizeWorldFive;
+    u8 partySizeWorldSix;
+    u8 partySizeWorldSeven;
+    u8 partySizeWorldEight;
+    u8 partySizeWorldNine;
+    u8 partySizeWorldTen;
+    u8 partySizeWorldEleven;
+    u8 trainerUnlockedAt;
+    u16 trainerMoneyMultiplier;
+    bool8 isAnchorBoss;
+    bool8 isSpecialTrainer;
 };
 
 struct TrainerClass
 {
-    u8 name[13];
+    u8 name[20];
     u8 money;
     u16 ball;
 };

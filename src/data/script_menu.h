@@ -605,14 +605,12 @@ static const struct MenuAction MultichoiceList_UnusedSSTidal1[] =
 static const struct MenuAction MultichoiceList_UnusedSSTidal2[] =
 {
     {gText_SouthernIsland},
-    {gText_FarawayIsland},
     {gText_Exit},
 };
 
 static const struct MenuAction MultichoiceList_UnusedSSTidal3[] =
 {
     {gText_BirthIsland},
-    {gText_FarawayIsland},
     {gText_Exit},
 };
 
@@ -620,7 +618,6 @@ static const struct MenuAction MultichoiceList_UnusedSSTidal4[] =
 {
     {gText_SouthernIsland},
     {gText_BirthIsland},
-    {gText_FarawayIsland},
     {gText_Exit},
 };
 
@@ -1127,6 +1124,22 @@ static const struct MenuAction MultichoiceList_Exit[] =
     {gText_Exit},
 };
 
+static const struct MenuAction MultichoiceList_WorldLevel[] =
+{
+    {gText_WorldLevel0},
+    {gText_WorldLevel1},
+    {gText_WorldLevel2},
+    {gText_WorldLevel3},
+    {gText_WorldLevel4},
+    {gText_WorldLevel5},
+    {gText_WorldLevel6},
+    {gText_WorldLevel7},
+    {gText_WorldLevel8},
+    {gText_WorldLevel9},
+    {gText_WorldLevel10},
+    {gText_WorldLevel11},
+};
+
 struct MultichoiceListStruct
 {
     const struct MenuAction *list;
@@ -1144,7 +1157,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_BASE_PC_WITH_REGISTRY]      = MULTICHOICE(MultichoiceList_BasePCWithRegistry),
     [MULTI_REGISTER_MENU]              = MULTICHOICE(MultichoiceList_RegisterMenu),
     [MULTI_SSTIDAL_LILYCOVE]           = MULTICHOICE(MultichoiceList_Exit),
-    [MULTI_UNUSED_9]                   = MULTICHOICE(MultichoiceList_Exit),
+    [MULTI_WORLD_LEVEL]                = MULTICHOICE(MultichoiceList_WorldLevel),
     [MULTI_UNUSED_10]                  = MULTICHOICE(MultichoiceList_Exit),
     [MULTI_FRONTIER_PASS_INFO]         = MULTICHOICE(MultichoiceList_FrontierPassInfo),
     [MULTI_BIKE]                       = MULTICHOICE(MultichoiceList_Bike),
@@ -1364,7 +1377,6 @@ static const u8 *const sLilycoveSSTidalDestinations[SSTIDAL_SELECTION_COUNT] =
     [SSTIDAL_SELECTION_SOUTHERN_ISLAND] = gText_SouthernIsland,
     [SSTIDAL_SELECTION_NAVEL_ROCK]      = gText_NavelRock,
     [SSTIDAL_SELECTION_BIRTH_ISLAND]    = gText_BirthIsland,
-    [SSTIDAL_SELECTION_FARAWAY_ISLAND]  = gText_FarawayIsland,
     [SSTIDAL_SELECTION_EXIT]            = gText_Exit,
 };
 

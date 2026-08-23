@@ -495,7 +495,6 @@ const u8 gText_MenuOptionOption[] = _("OPTION");
 const u8 gText_MenuOptionExit[] = _("EXIT");
 const u8 gText_SouthernIsland[] = _("SOUTHERN ISLAND");
 const u8 gText_BirthIsland[] = _("BIRTH ISLAND");
-const u8 gText_FarawayIsland[] = _("FARAWAY ISLAND");
 const u8 gText_NavelRock[] = _("NAVEL ROCK");
 const u8 gText_NormalTagMatch[] = _("NORMAL TAG MATCH");
 const u8 gText_VarietyTagMatch[] = _("VARIETY TAG MATCH");
@@ -1178,3 +1177,17 @@ const u8 gText_Volcanobadge[] = _("VOLCANOBADGE");
 const u8 gText_Earthbadge[] = _("EARTHBADGE");
 const u8 gText_OakImportantToGetToKnowPokemonThroughly[] = _("OAK: It's important to get to know\nyour POKéMON thoroughly.\p");
 const u8 gText_OakThisIsListOfPokemon[] = _("This is a list of your POKéMON,\n{PLAYER}.\pOpen this to check the skills\nand moves of your POKéMON.\pYou also choose POKéMON here if\nyou want to use an item on one.{PAUSE_UNTIL_PRESS}");
+
+// text for world level multiselect box, probably only for dev/testing
+const u8 gText_WorldLevel0[] = _("LEVEL 0");
+const u8 gText_WorldLevel1[] = _("LEVEL 1");
+const u8 gText_WorldLevel2[] = _("LEVEL 2");
+const u8 gText_WorldLevel3[] = _("LEVEL 3");
+const u8 gText_WorldLevel4[] = _("LEVEL 4");
+const u8 gText_WorldLevel5[] = _("LEVEL 5");
+const u8 gText_WorldLevel6[] = _("LEVEL 6");
+const u8 gText_WorldLevel7[] = _("LEVEL 7");
+const u8 gText_WorldLevel8[] = _("LEVEL 8");
+const u8 gText_WorldLevel9[] = _("LEVEL 9");
+const u8 gText_WorldLevel10[] = _("LEVEL 10");
+const u8 gText_WorldLevel11[] = _("LEVEL 11");

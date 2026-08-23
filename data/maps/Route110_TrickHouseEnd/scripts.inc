@@ -12,7 +12,7 @@ Route110_TrickHouseEnd_OnResume:
 Route110_TrickHouseEnd_OnTransition:
 	setvar VAR_TEMP_1, 0
 	setvar VAR_TEMP_2, 0
-	special SetTrickHouseNuggetFlag
+	@special SetTrickHouseNuggetFlag
 	end
 
 Route110_TrickHouseEnd_OnWarp:
@@ -158,7 +158,7 @@ Route110_TrickHouseEnd_EventScript_CompletedPuzzle8::
 	call_if_eq VAR_RESULT, FALSE, Route110_TrickHouseEnd_EventScript_NoRoomForTent
 	msgbox Route110_TrickHouseEnd_Text_LeavingOnJourney, MSGBOX_DEFAULT
 	call Route110_TrickHouseEnd_EventScript_TrickMasterExit
-	special ResetTrickHouseNuggetFlag
+	@special ResetTrickHouseNuggetFlag
 	release
 	end
 

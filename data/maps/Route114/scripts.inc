@@ -1,23 +1,32 @@
 Route114_MapScripts::
-	map_script MAP_SCRIPT_ON_TRANSITION, Route114_OnTransition
-	map_script MAP_SCRIPT_ON_LOAD, Route114_OnLoad
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route114_OnFrame
 	.byte 0
 
-Route114_OnTransition:
-	call_if_eq VAR_SHOULD_END_ABNORMAL_WEATHER, 1, AbnormalWeather_EventScript_HideMapNamePopup
-	call_if_eq VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_114_NORTH, AbnormalWeather_StartGroudonWeather
-	call_if_eq VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_114_SOUTH, AbnormalWeather_StartGroudonWeather
+Route114_EventScript_MuscleFeather::
+	goto_if_eq VAR_WORLD_DIFFICULTY, 0, Route114_ThreeMuscleFeathers
+	goto_if_eq VAR_WORLD_DIFFICULTY, 1, Route114_ThreeMuscleFeathers
+	goto_if_eq VAR_WORLD_DIFFICULTY, 2, Route114_ThreeMuscleFeathers
+	goto_if_eq VAR_WORLD_DIFFICULTY, 3, Route114_ThreeMuscleFeathers
+	goto_if_eq VAR_WORLD_DIFFICULTY, 4, Route114_FourMuscleFeathers
+	goto_if_eq VAR_WORLD_DIFFICULTY, 5, Route114_FourMuscleFeathers
+	goto_if_eq VAR_WORLD_DIFFICULTY, 6, Route114_FourMuscleFeathers
+	goto_if_eq VAR_WORLD_DIFFICULTY, 7, Route114_FourMuscleFeathers
+	goto_if_eq VAR_WORLD_DIFFICULTY, 8, Route114_FiveMuscleFeathers
+	goto_if_eq VAR_WORLD_DIFFICULTY, 9, Route114_FiveMuscleFeathers
+	goto_if_eq VAR_WORLD_DIFFICULTY, 10, Route114_FiveMuscleFeathers
+	goto_if_eq VAR_WORLD_DIFFICULTY, 11, Route114_FiveMuscleFeathers
 	end
 
-Route114_OnLoad:
-	call_if_eq VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_114_NORTH, AbnormalWeather_EventScript_PlaceTilesRoute114North
-	call_if_eq VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_114_SOUTH, AbnormalWeather_EventScript_PlaceTilesRoute114South
+Route114_ThreeMuscleFeathers::
+	finditem ITEM_MUSCLE_FEATHER, amount=3
 	end
 
-Route114_OnFrame:
-	map_script_2 VAR_SHOULD_END_ABNORMAL_WEATHER, 1, AbnormalWeather_EventScript_EndEventAndCleanup_1
-	.2byte 0
+Route114_FourMuscleFeathers::
+	finditem ITEM_MUSCLE_FEATHER, amount=4
+	end
+
+Route114_FiveMuscleFeathers::
+	finditem ITEM_MUSCLE_FEATHER, amount=5
+	end
 
 Route114_EventScript_Man::
 	lock
@@ -25,7 +34,10 @@ Route114_EventScript_Man::
 	dotimebasedevents
 	goto_if_set FLAG_DAILY_ROUTE_114_RECEIVED_BERRY, Route114_EventScript_ReceivedBerry
 	msgbox Route114_Text_LoveUsingBerryCrushShareBerry, MSGBOX_DEFAULT
-	giverandomberry BERRY_ID_RAZZ, BERRY_ID_PINAP
+	random NUM_ROUTE_114_MAN_BERRIES
+	addvar VAR_RESULT, NUM_ROUTE_114_MAN_BERRIES_SKIPPED
+	addvar VAR_RESULT, FIRST_BERRY_INDEX
+	giveitem VAR_RESULT
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	setflag FLAG_DAILY_ROUTE_114_RECEIVED_BERRY
 	msgbox Route114_Text_TryBerryCrushWithFriends, MSGBOX_DEFAULT
@@ -37,14 +49,12 @@ Route114_EventScript_ReceivedBerry::
 	release
 	end
 
-Route114_EventScript_RoarGentleman::
+Route114_EventScript_OldRodFisherman::
 	lock
 	faceplayer
-	goto_if_set FLAG_RECEIVED_TM_ROAR, Route114_EventScript_ReceivedRoar
 	msgbox Route114_Text_AllMyMonDoesIsRoarTakeThis, MSGBOX_DEFAULT
-	giveitem ITEM_TM_ROAR
+	giveitem ITEM_OLD_ROD
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
-	setflag FLAG_RECEIVED_TM_ROAR
 	msgbox Route114_Text_ExplainRoar, MSGBOX_DEFAULT
 	release
 	end
@@ -82,7 +92,7 @@ Route114_EventScript_Lenny::
 	end
 
 Route114_EventScript_Lucas::
-	trainerbattle_single TRAINER_LUCAS_1, Route114_Text_LucasIntro, Route114_Text_LucasDefeat
+	trainerbattle_single TRAINER_LUCAS, Route114_Text_LucasIntro, Route114_Text_LucasDefeat
 	msgbox Route114_Text_LucasPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -97,45 +107,15 @@ Route114_EventScript_Nancy::
 	end
 
 Route114_EventScript_Steve::
-	trainerbattle_single TRAINER_STEVE_1, Route114_Text_SteveIntro, Route114_Text_SteveDefeat, Route114_EventScript_RegisterSteve
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	goto_if_eq VAR_RESULT, TRUE, Route114_EventScript_RematchSteve
+	trainerbattle_single TRAINER_STEVE, Route114_Text_SteveIntro, Route114_Text_SteveDefeat
 	msgbox Route114_Text_StevePostBattle, MSGBOX_DEFAULT
 	release
 	end
 
-Route114_EventScript_RegisterSteve::
-	special PlayerFaceTrainerAfterBattle
-	waitmovement 0
-	msgbox Route114_Text_SteveRegister, MSGBOX_DEFAULT
-	register_matchcall TRAINER_STEVE_1
-	release
-	end
-
-Route114_EventScript_RematchSteve::
-	trainerbattle_rematch TRAINER_STEVE_1, Route114_Text_SteveRematchIntro, Route114_Text_SteveRematchDefeat
-	msgbox Route114_Text_StevePostRematch, MSGBOX_AUTOCLOSE
-	end
-
 Route114_EventScript_Bernie::
-	trainerbattle_single TRAINER_BERNIE_1, Route114_Text_BernieIntro, Route114_Text_BernieDefeat, Route114_EventScript_RegisterBernie
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	goto_if_eq VAR_RESULT, TRUE, Route114_EventScript_RematchBernie
+	trainerbattle_single TRAINER_BERNIE, Route114_Text_BernieIntro, Route114_Text_BernieDefeat
 	msgbox Route114_Text_BerniePostBattle, MSGBOX_DEFAULT
 	release
-	end
-
-Route114_EventScript_RegisterBernie::
-	special PlayerFaceTrainerAfterBattle
-	waitmovement 0
-	msgbox Route114_Text_BernieRegister, MSGBOX_DEFAULT
-	register_matchcall TRAINER_BERNIE_1
-	release
-	end
-
-Route114_EventScript_RematchBernie::
-	trainerbattle_rematch TRAINER_BERNIE_1, Route114_Text_BernieRematchIntro, Route114_Text_BernieRematchDefeat
-	msgbox Route114_Text_BerniePostRematch, MSGBOX_AUTOCLOSE
 	end
 
 Route114_EventScript_Claude::
@@ -174,14 +154,14 @@ Route114_EventScript_Kai::
 	end
 
 Route114_Text_AllMyMonDoesIsRoarTakeThis:
-	.string "All my POKéMON does is ROAR…\n"
-	.string "No one dares to come near me…\p"
-	.string "Sigh… If you would, please take\n"
-	.string "this TM away…$"
+	.string "All this rod fishes up is Magikarp!\n"
+	.string "Every time!\p"
+	.string "Forget it... I quit fishing. Take it.\n"
+	.string "I don't want it anymore.$"
 
 Route114_Text_ExplainRoar:
-	.string "TM05 contains ROAR.\n"
-	.string "A ROAR sends POKéMON scurrying.$"
+	.string "That Rod only fishes Magikarp. So.\n"
+	.string "Have fun with that.$"
 
 Route114_Text_Poochyena:
 	.string "Bow! Bowwow!$"

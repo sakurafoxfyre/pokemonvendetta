@@ -432,7 +432,6 @@ extern const u8 gText_BattleFrontier[];
 extern const u8 gText_SouthernIsland[];
 extern const u8 gText_NavelRock[];
 extern const u8 gText_BirthIsland[];
-extern const u8 gText_FarawayIsland[];
 
 extern const u8 gText_BattleTrainers[];
 extern const u8 gText_BattleBasics[];
@@ -2155,5 +2154,18 @@ extern const u8 gText_OakThisIsListOfPokemon[];
 extern const u8 gText_Boy[];
 extern const u8 gText_Girl[];
 
+// World Level Selectors
+extern const u8 gText_WorldLevel0[];
+extern const u8 gText_WorldLevel1[];
+extern const u8 gText_WorldLevel2[];
+extern const u8 gText_WorldLevel3[];
+extern const u8 gText_WorldLevel4[];
+extern const u8 gText_WorldLevel5[];
+extern const u8 gText_WorldLevel6[];
+extern const u8 gText_WorldLevel7[];
+extern const u8 gText_WorldLevel8[];
+extern const u8 gText_WorldLevel9[];
+extern const u8 gText_WorldLevel10[];
+extern const u8 gText_WorldLevel11[];
 
 #endif // GUARD_STRINGS_H

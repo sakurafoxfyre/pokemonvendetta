@@ -2577,8 +2577,6 @@
 #define FLAG_SYS_PYRAMID_GOLD                       0
 #define FLAG_SYS_FRONTIER_PASS                      0
 #define FLAG_MAP_SCRIPT_CHECKED_DEOXYS              0
-#define FLAG_ENABLE_SHIP_FARAWAY_ISLAND             0
-#define FLAG_ARRIVED_ON_FARAWAY_ISLAND              0
 #define FLAG_ARRIVED_AT_MARINE_CAVE_EMERGE_SPOT     0
 #define FLAG_ARRIVED_AT_TERRA_CAVE_ENTRANCE         0
 #define FLAG_ENTERED_MIRAGE_TOWER                   0

@@ -26,7 +26,6 @@ BattleFrontier_BattleTowerMultiCorridor_EventScript_SetPlayerGfxFemale::
 	return
 
 BattleFrontier_BattleTowerMultiCorridor_EventScript_SetLinkPlayerGfx::
-	special SetBattleTowerLinkPlayerGfx
 	return
 
 BattleFrontier_BattleTowerMultiCorridor_OnWarp:

@@ -1025,46 +1025,6 @@ u8 GabbyAndTyGetLastBattleTrivia(void)
     return 0;
 }
 
-// See gabby_and_ty.inc for details
-void GetGabbyAndTyLocalIds(void)
-{
-    switch (GabbyAndTyGetBattleNum())
-    {
-    case 1:
-        gSpecialVar_0x8004 = LOCALID_ROUTE111_GABBY_1;
-        gSpecialVar_0x8005 = LOCALID_ROUTE111_TY_1;
-        break;
-    case 2:
-        gSpecialVar_0x8004 = LOCALID_ROUTE118_GABBY_1;
-        gSpecialVar_0x8005 = LOCALID_ROUTE118_TY_1;
-        break;
-    case 3:
-        gSpecialVar_0x8004 = LOCALID_ROUTE120_GABBY_1;
-        gSpecialVar_0x8005 = LOCALID_ROUTE120_TY_1;
-        break;
-    case 4:
-        gSpecialVar_0x8004 = LOCALID_ROUTE111_GABBY_2;
-        gSpecialVar_0x8005 = LOCALID_ROUTE111_TY_2;
-        break;
-    case 5:
-        gSpecialVar_0x8004 = LOCALID_ROUTE118_GABBY_2;
-        gSpecialVar_0x8005 = LOCALID_ROUTE118_TY_2;
-        break;
-    case 6:
-        gSpecialVar_0x8004 = LOCALID_ROUTE120_GABBY_2;
-        gSpecialVar_0x8005 = LOCALID_ROUTE120_TY_2;
-        break;
-    case 7:
-        gSpecialVar_0x8004 = LOCALID_ROUTE111_GABBY_3;
-        gSpecialVar_0x8005 = LOCALID_ROUTE111_TY_3;
-        break;
-    case 8:
-        gSpecialVar_0x8004 = LOCALID_ROUTE118_GABBY_3;
-        gSpecialVar_0x8005 = LOCALID_ROUTE118_TY_3;
-        break;
-    }
-}
-
 void InterviewAfter(void)
 {
     switch (gSpecialVar_0x8005)
@@ -2646,7 +2606,8 @@ static bool8 ShouldApplyPokeNewsEffect(u8 newsKind)
     case POKENEWS_SLATEPORT:
         if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_SLATEPORT_CITY)
          && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_SLATEPORT_CITY)
-         && gSpecialVar_LastTalked == LOCALID_SLATEPORT_ENERGY_GURU)
+         //&& gSpecialVar_LastTalked == LOCALID_SLATEPORT_ENERGY_GURU
+         )
             return TRUE;
         return FALSE;
     case POKENEWS_LILYCOVE:
@@ -3389,13 +3350,6 @@ void GetMomOrDadStringForTVMessage(void)
             VarSet(VAR_TEMP_3, 2);
         }
     }
-}
-
-void HideBattleTowerReporter(void)
-{
-    VarSet(VAR_BRAVO_TRAINER_BATTLE_TOWER_ON, 0);
-    RemoveObjectEventByLocalIdAndMap(LOCALID_TOWER_LOBBY_REPORTER, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
-    FlagSet(FLAG_HIDE_BATTLE_TOWER_REPORTER);
 }
 
 void ReceiveTvShowsData(void *src, u32 size, u8 playersLinkId)

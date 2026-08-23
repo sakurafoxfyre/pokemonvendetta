@@ -4,7 +4,6 @@ BattleFrontier_OutsideWest_MapScripts::
 
 BattleFrontier_OutsideWest_OnTransition:
 	setvar VAR_BRAVO_TRAINER_BATTLE_TOWER_ON, 0
-	setflag FLAG_HIDE_BATTLE_TOWER_REPORTER
 	end
 
 BattleFrontier_OutsideWest_EventScript_FerryAttendant::

@@ -5,7 +5,6 @@
 #include "daycare.h"
 #include "debug.h"
 #include "dexnav.h"
-#include "faraway_island.h"
 #include "follower_npc.h"
 #include "event_data.h"
 #include "event_object_movement.h"
@@ -753,7 +752,6 @@ static bool8 TryStartStepCountScript(u16 metatileBehavior)
 
     IncrementRematchStepCounter();
     UpdateFriendshipStepCounter();
-    UpdateFarawayIslandStepCounter();
     UpdateFollowerStepCounter();
 
     if (!(gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_FORCED_MOVE) && !MetatileBehavior_IsForcedMovementTile(metatileBehavior))

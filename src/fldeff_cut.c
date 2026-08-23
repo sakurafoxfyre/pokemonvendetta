@@ -2,7 +2,6 @@
 #include "event_object_lock.h"
 #include "event_object_movement.h"
 #include "event_scripts.h"
-#include "faraway_island.h"
 #include "field_camera.h"
 #include "field_effect.h"
 #include "field_player_avatar.h"
@@ -25,8 +24,6 @@
 #include "constants/metatile_labels.h"
 
 extern struct MapPosition gPlayerFacingPosition;
-
-extern const u8 FarawayIsland_Interior_EventScript_HideMewWhenGrassCut[];
 
 extern const u8 gFieldEffectPic_CutGrass[];
 extern const u16 gFieldEffectPal_CutGrass[];
@@ -595,8 +592,6 @@ static void CutGrassSpriteCallbackEnd(struct Sprite *sprite)
     ScriptUnfreezeObjectEvents();
     UnlockPlayerFieldControls();
 
-    if (IsMewPlayingHideAndSeek() == TRUE)
-        ScriptContext_SetupScript(FarawayIsland_Interior_EventScript_HideMewWhenGrassCut);
 }
 
 void FixLongGrassMetatilesWindowTop(s16 x, s16 y)

@@ -19,7 +19,7 @@ enum
     MULTI_BASE_PC_WITH_REGISTRY,
     MULTI_REGISTER_MENU,
     MULTI_SSTIDAL_LILYCOVE,             // Exit only, populated by CreateLilycoveSSTidalMultichoice
-    MULTI_UNUSED_9,
+    MULTI_WORLD_LEVEL,                  // multichoice list for changing the world level, probably only for dev/testing
     MULTI_UNUSED_10,
     MULTI_FRONTIER_PASS_INFO,
     MULTI_BIKE,
@@ -179,7 +179,6 @@ enum
 #define SSTIDAL_SELECTION_SOUTHERN_ISLAND  2
 #define SSTIDAL_SELECTION_NAVEL_ROCK       3
 #define SSTIDAL_SELECTION_BIRTH_ISLAND     4
-#define SSTIDAL_SELECTION_FARAWAY_ISLAND   5
 #define SSTIDAL_SELECTION_EXIT             6
 #define SSTIDAL_SELECTION_COUNT            7
 

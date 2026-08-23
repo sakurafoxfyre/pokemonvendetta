@@ -128,7 +128,6 @@ static void UNUSED PlayerWalkSlow(enum Direction direction);
 static void PlayerRunSlow(enum Direction direction);
 static void PlayerRun(enum Direction);
 static void PlayerNotOnBikeCollide(enum Direction);
-static void PlayerNotOnBikeCollideWithFarawayIslandMew(enum Direction);
 
 static void PlayCollisionSoundIfNotFacingWarp(enum Direction);
 static void PlayerGoSpin(enum Direction direction);
@@ -854,11 +853,6 @@ static void PlayerNotOnBikeMoving(enum Direction direction, u16 heldKeys)
             PlayerJumpLedge(direction);
             return;
         }
-        else if (collision == COLLISION_OBJECT_EVENT && IsPlayerCollidingWithFarawayIslandMew(direction))
-        {
-            PlayerNotOnBikeCollideWithFarawayIslandMew(direction);
-            return;
-        }
         else if (collision == COLLISION_STAIR_WARP)
         {
             PlayerFaceDirection(direction);
@@ -1058,40 +1052,6 @@ static void CheckAcroBikeCollision(s16 x, s16 y, u8 metatileBehavior, enum Colli
             return;
         }
     }
-}
-
-bool8 IsPlayerCollidingWithFarawayIslandMew(enum Direction direction)
-{
-    u8 mewObjectId;
-    struct ObjectEvent *object;
-    s16 playerX;
-    s16 playerY;
-    s16 mewPrevX;
-
-    object = &gObjectEvents[gPlayerAvatar.objectEventId];
-    playerX = object->currentCoords.x;
-    playerY = object->currentCoords.y;
-
-    MoveCoords(direction, &playerX, &playerY);
-    mewObjectId = GetObjectEventIdByLocalIdAndMap(LOCALID_FARAWAY_ISLAND_MEW, MAP_NUM(MAP_FARAWAY_ISLAND_INTERIOR), MAP_GROUP(MAP_FARAWAY_ISLAND_INTERIOR));
-    if (mewObjectId == OBJECT_EVENTS_COUNT)
-        return FALSE;
-
-    object = &gObjectEvents[mewObjectId];
-    mewPrevX = object->previousCoords.x;
-
-    if (mewPrevX == playerX)
-    {
-        if (object->previousCoords.y != playerY
-            || object->currentCoords.x != mewPrevX
-            || object->currentCoords.y != object->previousCoords.y)
-        {
-            if (object->previousCoords.x == playerX &&
-                object->previousCoords.y == playerY)
-                return TRUE;
-        }
-    }
-    return FALSE;
 }
 
 void SetPlayerAvatarTransitionFlags(u16 transitionFlags)
@@ -1318,20 +1278,10 @@ void PlayerOnBikeCollide(enum Direction direction)
     }
 }
 
-void PlayerOnBikeCollideWithFarawayIslandMew(enum Direction direction)
-{
-    PlayerSetAnimId(GetWalkInPlaceNormalMovementAction(direction), COPY_MOVE_WALK_COLLIDE);
-}
-
 static void PlayerNotOnBikeCollide(enum Direction direction)
 {
     PlayCollisionSoundIfNotFacingWarp(direction);
     PlayerSetAnimId(GetWalkInPlaceSlowMovementAction(direction), COPY_MOVE_WALK_COLLIDE_SLOW);
-}
-
-static void PlayerNotOnBikeCollideWithFarawayIslandMew(enum Direction direction)
-{
-    PlayerSetAnimId(GetWalkInPlaceSlowMovementAction(direction), COPY_MOVE_WALK_COLLIDE);
 }
 
 void PlayerFaceDirection(enum Direction direction)

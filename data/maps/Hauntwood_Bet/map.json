@@ -1,0 +1,74 @@
+{
+  "id": "MAP_HAUNTWOOD_BET",
+  "name": "Hauntwood_Bet",
+  "layout": "LAYOUT_HAUNTWOOD_BET",
+  "music": "MUS_ROUTE122",
+  "region_map_section": "MAPSEC_ROUTE_123",
+  "requires_flash": false,
+  "weather": "WEATHER_SUNNY",
+  "map_type": "MAP_TYPE_ROUTE",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "map": "MAP_HAUNTWOOD_ALEPH",
+      "offset": 0,
+      "direction": "up"
+    },
+    {
+      "map": "MAP_HAUNTWOOD_DELTA",
+      "offset": -14,
+      "direction": "left"
+    }
+  ],
+  "object_events": [],
+  "warp_events": [
+    {
+      "x": 22,
+      "y": 9,
+      "elevation": 0,
+      "dest_map": "MAP_HAUNTWOOD_CHARLIE",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 23,
+      "y": 9,
+      "elevation": 0,
+      "dest_map": "MAP_HAUNTWOOD_CHARLIE",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 16,
+      "y": 7,
+      "elevation": 0,
+      "dest_map": "MAP_HAUNTWOOD",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 16,
+      "y": 8,
+      "elevation": 0,
+      "dest_map": "MAP_HAUNTWOOD",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 12,
+      "y": 4,
+      "elevation": 0,
+      "dest_map": "MAP_HAUNTWOOD_CHARLIE",
+      "dest_warp_id": "2"
+    },
+    {
+      "x": 13,
+      "y": 4,
+      "elevation": 0,
+      "dest_map": "MAP_HAUNTWOOD_CHARLIE",
+      "dest_warp_id": "3"
+    }
+  ],
+  "coord_events": [],
+  "bg_events": []
+}

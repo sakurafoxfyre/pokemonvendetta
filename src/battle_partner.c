@@ -78,15 +78,14 @@ void FillPartnerParty(u16 trainerId)
             CustomTrainerPartyAssignMoves(&gParties[B_TRAINER_PARTNER][i], &partyData[i]);
 
             SetMonData(&gParties[B_TRAINER_PARTNER][i], MON_DATA_IVS, &(partyData[i].iv));
-            if (partyData[i].ev != NULL)
-            {
-                SetMonData(&gParties[B_TRAINER_PARTNER][i], MON_DATA_HP_EV, &(partyData[i].ev[0]));
-                SetMonData(&gParties[B_TRAINER_PARTNER][i], MON_DATA_ATK_EV, &(partyData[i].ev[1]));
-                SetMonData(&gParties[B_TRAINER_PARTNER][i], MON_DATA_DEF_EV, &(partyData[i].ev[2]));
-                SetMonData(&gParties[B_TRAINER_PARTNER][i], MON_DATA_SPATK_EV, &(partyData[i].ev[3]));
-                SetMonData(&gParties[B_TRAINER_PARTNER][i], MON_DATA_SPDEF_EV, &(partyData[i].ev[4]));
-                SetMonData(&gParties[B_TRAINER_PARTNER][i], MON_DATA_SPEED_EV, &(partyData[i].ev[5]));
-            }
+            
+            SetMonData(&gParties[B_TRAINER_PARTNER][i], MON_DATA_HP_EV, 0);
+            SetMonData(&gParties[B_TRAINER_PARTNER][i], MON_DATA_ATK_EV, 0);
+            SetMonData(&gParties[B_TRAINER_PARTNER][i], MON_DATA_DEF_EV, 0);
+            SetMonData(&gParties[B_TRAINER_PARTNER][i], MON_DATA_SPATK_EV, 0);
+            SetMonData(&gParties[B_TRAINER_PARTNER][i], MON_DATA_SPDEF_EV, 0);
+            SetMonData(&gParties[B_TRAINER_PARTNER][i], MON_DATA_SPEED_EV, 0);
+            
             if (partyData[i].ability != ABILITY_NONE)
             {
                 const struct SpeciesInfo *speciesInfo = &gSpeciesInfo[partyData[i].species];

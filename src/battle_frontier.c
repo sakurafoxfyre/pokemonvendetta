@@ -355,15 +355,13 @@ void CreateFacilityMon(const struct TrainerMon *fmon, u16 level, u8 fixedIV, u32
         SetMonData(dst, MON_DATA_ABILITY_NUM, &ability);
     }
 
-    if (fmon->ev != NULL)
-    {
-        SetMonData(dst, MON_DATA_HP_EV, &(fmon->ev[0]));
-        SetMonData(dst, MON_DATA_ATK_EV, &(fmon->ev[1]));
-        SetMonData(dst, MON_DATA_DEF_EV, &(fmon->ev[2]));
-        SetMonData(dst, MON_DATA_SPATK_EV, &(fmon->ev[3]));
-        SetMonData(dst, MON_DATA_SPDEF_EV, &(fmon->ev[4]));
-        SetMonData(dst, MON_DATA_SPEED_EV, &(fmon->ev[5]));
-    }
+    SetMonData(dst, MON_DATA_HP_EV, 0);
+    SetMonData(dst, MON_DATA_ATK_EV, 0);
+    SetMonData(dst, MON_DATA_DEF_EV, 0);
+    SetMonData(dst, MON_DATA_SPATK_EV, 0);
+    SetMonData(dst, MON_DATA_SPDEF_EV, 0);
+    SetMonData(dst, MON_DATA_SPEED_EV, 0);
+    
 
     if (fmon->iv)
         SetMonData(dst, MON_DATA_IVS, &(fmon->iv));

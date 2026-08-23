@@ -342,20 +342,7 @@ void StartPlayerDescendMirageTower(void)
 // is created at the top of the tower and moved down to show the player falling
 static void PlayerDescendMirageTower(u8 taskId)
 {
-    u8 objectEventId;
-    struct ObjectEvent *fallingPlayer;
-    struct ObjectEvent *player;
-
-    TryGetObjectEventIdByLocalIdAndMap(LOCALID_ROUTE111_PLAYER_FALLING, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, &objectEventId);
-    fallingPlayer = &gObjectEvents[objectEventId];
-    gSprites[fallingPlayer->spriteId].y2 += 4;
-    player = &gObjectEvents[gPlayerAvatar.objectEventId];
-    if ((gSprites[fallingPlayer->spriteId].y + gSprites[fallingPlayer->spriteId].y2) >=
-        (gSprites[player->spriteId].y + gSprites[player->spriteId].y2))
-    {
-        DestroyTask(taskId);
-        ScriptContext_Enable();
-    }
+    
 }
 
 #define tXShakeOffset data[0]

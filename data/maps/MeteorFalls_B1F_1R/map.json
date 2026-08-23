@@ -3,7 +3,6 @@
   "name": "MeteorFalls_B1F_1R",
   "layout": "LAYOUT_METEOR_FALLS_B1F_1R",
   "music": "MUS_CAVE_OF_ORIGIN",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_METEOR_FALLS",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -14,28 +13,35 @@
   "show_map_name": true,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": null,
-  "object_events": [],
-  "warp_events": [
+  "object_events": [
     {
-      "x": 5,
-      "y": 6,
-      "elevation": 4,
-      "dest_map": "MAP_METEOR_FALLS_1F_2R",
-      "dest_warp_id": "1"
-    },
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 8,
+      "y": 17,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "MeteorB1F1R_Gems",
+      "flag": "FLAG_ITEM_METEOR_FALLS_B1F_1R_GEMS"
+    }
+  ],
+  "warp_events": [
     {
       "x": 7,
       "y": 11,
       "elevation": 5,
       "dest_map": "MAP_METEOR_FALLS_1F_2R",
-      "dest_warp_id": "2"
+      "dest_warp_id": "0"
     },
     {
       "x": 18,
       "y": 15,
       "elevation": 4,
       "dest_map": "MAP_METEOR_FALLS_1F_2R",
-      "dest_warp_id": "3"
+      "dest_warp_id": "1"
     },
     {
       "x": 17,
@@ -57,6 +63,13 @@
       "elevation": 3,
       "dest_map": "MAP_METEOR_FALLS_1F_1R",
       "dest_warp_id": "4"
+    },
+    {
+      "x": 6,
+      "y": 7,
+      "elevation": 0,
+      "dest_map": "MAP_METEOR_FALLS_DEEP",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [],

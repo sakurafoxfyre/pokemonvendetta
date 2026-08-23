@@ -1,23 +1,25 @@
 SlateportCity_House_MapScripts::
 	.byte 0
 
-SlateportCity_House_EventScript_PokefanM::
-	msgbox SlateportCity_House_Text_NatureToDoWithStatGains, MSGBOX_NPC
+SlateportDreamHouse::
+	lock
+	goto_if_le VAR_KARMA 50, BadDreams
+	goto_if_gt VAR_KARMA, 50, GoodDreams
+	release
 	end
 
-SlateportCity_House_EventScript_Girl::
-	msgbox SlateportCity_House_Text_MustBeGoingToBattleTent, MSGBOX_NPC
+BadDreams::
+	msgbox Text_BadDreams
+	closemessage
 	end
 
-SlateportCity_House_Text_NatureToDoWithStatGains:
-	.string "My POKéMON has a HASTY nature.\p"
-	.string "It has higher SPEED compared to\n"
-	.string "my other POKéMON.\p"
-	.string "Maybe their nature has something to\n"
-	.string "do with the stat gains of POKéMON.$"
+GoodDreams::
+	msgbox Text_GoodDreams
+	closemessage
+	end
 
-SlateportCity_House_Text_MustBeGoingToBattleTent:
-	.string "You're a TRAINER, aren't you?\p"
-	.string "Since you came to SLATEPORT CITY,\n"
-	.string "you must be going to the BATTLE TENT.$"
+Text_BadDreams:
+	.string "You have bad dreams.$"
 
+Text_GoodDreams:
+	.string "You have good dreams.$"

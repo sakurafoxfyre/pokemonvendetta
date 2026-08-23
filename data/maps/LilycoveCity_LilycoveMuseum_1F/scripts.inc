@@ -7,7 +7,6 @@ LilycoveCity_LilycoveMuseum_1F_EventScript_Greeter::
 
 LilycoveCity_LilycoveMuseum_1F_EventScript_Curator::
 	lockall
-	applymovement LOCALID_MUSEUM_1F_CURATOR, Common_Movement_FacePlayer
 	message LilycoveCity_LilycoveMuseum_1F_Text_ImCuratorHaveYouViewedOurPaintings
 	waitmessage
 	multichoice 20, 8, MULTI_VIEWED_PAINTINGS, TRUE
@@ -32,9 +31,7 @@ LilycoveCity_LilycoveMuseum_1F_EventScript_NotInterested::
 
 LilycoveCity_LilycoveMuseum_1F_EventScript_InterestedInPaintings::
 	msgbox LilycoveCity_LilycoveMuseum_1F_Text_ExcellentCanYouComeWithMe, MSGBOX_SIGN
-	applymovement LOCALID_MUSEUM_1F_CURATOR, LilycoveCity_LilycoveMuseum_1F_Movement_CuratorEnterStairs
 	waitmovement 0
-	removeobject LOCALID_MUSEUM_1F_CURATOR
 	switch VAR_FACING
 	case DIR_NORTH, LilycoveCity_LilycoveMuseum_1F_EventScript_FollowCuratorNorth
 	case DIR_WEST, LilycoveCity_LilycoveMuseum_1F_EventScript_FollowCuratorWest

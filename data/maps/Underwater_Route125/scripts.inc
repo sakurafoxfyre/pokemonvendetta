@@ -3,6 +3,4 @@ Underwater_Route125_MapScripts::
 	.byte 0
 
 Underwater_Route125_OnResume:
-	call AbnormalWeather_Underwater_SetupEscapeWarp
 	end
-

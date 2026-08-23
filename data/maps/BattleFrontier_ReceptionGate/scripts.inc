@@ -52,13 +52,10 @@ BattleFrontier_ReceptionGate_EventScript_ScottScene::
 	applymovement LOCALID_FRONTIER_RECEPTION_GREETER, BattleFrontier_ReceptionGate_Movement_GreeterFaceScott
 	applymovement LOCALID_FRONTIER_RECEPTION_GUIDE, BattleFrontier_ReceptionGate_Movement_FacilityGuideFaceScott
 	applymovement LOCALID_PLAYER, BattleFrontier_ReceptionGate_Movement_PlayerFaceScott
-	applymovement LOCALID_FRONTIER_RECEPTION_SCOTT, BattleFrontier_ReceptionGate_Movement_ScottEnter
 	waitmovement 0
 	msgbox BattleFrontier_ReceptionGate_Text_ScottGreatToSeeYouHere, MSGBOX_DEFAULT
 	closemessage
-	applymovement LOCALID_FRONTIER_RECEPTION_SCOTT, BattleFrontier_ReceptionGate_Movement_ScottExit
 	waitmovement 0
-	removeobject LOCALID_FRONTIER_RECEPTION_SCOTT
 	releaseall
 	end
 
@@ -139,6 +136,7 @@ BattleFrontier_ReceptionGate_EventScript_ChooseFacilityToLearnAbout::
 	waitmessage
 	setvar VAR_0x8004, SCROLL_MULTI_BF_RECEPTIONIST
 	special ShowScrollableMultichoice
+	waitstate
 	switch VAR_RESULT
 	case 0, BattleFrontier_ReceptionGate_EventScript_BattleTower
 	case 1, BattleFrontier_ReceptionGate_EventScript_BattleDome

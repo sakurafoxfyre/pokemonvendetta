@@ -3,12 +3,38 @@ Route113_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Route113_OnTransition
 	.byte 0
 
+Route113_EventScript_CleverFeather::
+	goto_if_eq VAR_WORLD_DIFFICULTY, 0, Route113_ThreeCleverFeathers
+	goto_if_eq VAR_WORLD_DIFFICULTY, 1, Route113_ThreeCleverFeathers
+	goto_if_eq VAR_WORLD_DIFFICULTY, 2, Route113_ThreeCleverFeathers
+	goto_if_eq VAR_WORLD_DIFFICULTY, 3, Route113_ThreeCleverFeathers
+	goto_if_eq VAR_WORLD_DIFFICULTY, 4, Route113_FourCleverFeathers
+	goto_if_eq VAR_WORLD_DIFFICULTY, 5, Route113_FourCleverFeathers
+	goto_if_eq VAR_WORLD_DIFFICULTY, 6, Route113_FourCleverFeathers
+	goto_if_eq VAR_WORLD_DIFFICULTY, 7, Route113_FourCleverFeathers
+	goto_if_eq VAR_WORLD_DIFFICULTY, 8, Route113_FiveCleverFeathers
+	goto_if_eq VAR_WORLD_DIFFICULTY, 9, Route113_FiveCleverFeathers
+	goto_if_eq VAR_WORLD_DIFFICULTY, 10, Route113_FiveCleverFeathers
+	goto_if_eq VAR_WORLD_DIFFICULTY, 11, Route113_FiveCleverFeathers
+	end
+
+Route113_ThreeCleverFeathers::
+	finditem ITEM_CLEVER_FEATHER, amount=3
+	end
+
+Route113_FourCleverFeathers::
+	finditem ITEM_CLEVER_FEATHER, amount=4
+	end
+
+Route113_FiveCleverFeathers::
+	finditem ITEM_CLEVER_FEATHER, amount=5
+	end
+
 Route113_OnResume:
 	setstepcallback STEP_CB_ASH
 	end
 
 Route113_OnTransition:
-	clearflag FLAG_FORCE_MIRAGE_TOWER_VISIBLE
 	call Route113_EventScript_CheckSetAshWeather
 	end
 
@@ -57,45 +83,15 @@ Route113_EventScript_Dillon::
 	end
 
 Route113_EventScript_Madeline::
-	trainerbattle_single TRAINER_MADELINE_1, Route113_Text_MadelineIntro, Route113_Text_MadelineDefeat, Route113_EventScript_RegisterMadeline
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	goto_if_eq VAR_RESULT, TRUE, Route113_EventScript_RematchMadeline
+	trainerbattle_single TRAINER_MADELINE, Route113_Text_MadelineIntro, Route113_Text_MadelineDefeat
 	msgbox Route113_Text_MadelinePostBattle, MSGBOX_DEFAULT
 	release
 	end
 
-Route113_EventScript_RegisterMadeline::
-	special PlayerFaceTrainerAfterBattle
-	waitmovement 0
-	msgbox Route113_Text_MadelineRegister, MSGBOX_DEFAULT
-	register_matchcall TRAINER_MADELINE_1
-	release
-	end
-
-Route113_EventScript_RematchMadeline::
-	trainerbattle_rematch TRAINER_MADELINE_1, Route113_Text_MadelineRematchIntro, Route113_Text_MadelineRematchDefeat
-	msgbox Route113_Text_MadelinePostRematch, MSGBOX_AUTOCLOSE
-	end
-
 Route113_EventScript_Lao::
-	trainerbattle_single TRAINER_LAO_1, Route113_Text_LaoIntro, Route113_Text_LaoDefeat, Route113_EventScript_RegisterLao
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	goto_if_eq VAR_RESULT, TRUE, Route113_EventScript_RematchLao
+	trainerbattle_single TRAINER_LAO, Route113_Text_LaoIntro, Route113_Text_LaoDefeat
 	msgbox Route113_Text_LaoPostBattle, MSGBOX_DEFAULT
 	release
-	end
-
-Route113_EventScript_RegisterLao::
-	special PlayerFaceTrainerAfterBattle
-	waitmovement 0
-	msgbox Route113_Text_LaoRegister, MSGBOX_DEFAULT
-	register_matchcall TRAINER_LAO_1
-	release
-	end
-
-Route113_EventScript_RematchLao::
-	trainerbattle_rematch TRAINER_LAO_1, Route113_Text_LaoRematchIntro, Route113_Text_LaoRematchDefeat
-	msgbox Route113_Text_LaoPostRematch, MSGBOX_AUTOCLOSE
 	end
 
 Route113_EventScript_Lung::

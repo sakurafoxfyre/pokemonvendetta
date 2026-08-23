@@ -3,7 +3,6 @@
   "name": "BattleColosseum_4P",
   "layout": "LAYOUT_BATTLE_COLOSSEUM_4P",
   "music": "MUS_EVER_GRANDE",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_DYNAMIC",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -45,43 +44,6 @@
       "dest_warp_id": "WARP_ID_DYNAMIC"
     }
   ],
-  "coord_events": [
-    {
-      "type": "trigger",
-      "x": 3,
-      "y": 4,
-      "elevation": 3,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "EventScript_BattleColosseum_4P_PlayerSpot0"
-    },
-    {
-      "type": "trigger",
-      "x": 3,
-      "y": 6,
-      "elevation": 3,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "EventScript_BattleColosseum_4P_PlayerSpot2"
-    },
-    {
-      "type": "trigger",
-      "x": 10,
-      "y": 4,
-      "elevation": 3,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "EventScript_BattleColosseum_4P_PlayerSpot1"
-    },
-    {
-      "type": "trigger",
-      "x": 10,
-      "y": 6,
-      "elevation": 3,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "EventScript_BattleColosseum_4P_PlayerSpot3"
-    }
-  ],
+  "coord_events": [],
   "bg_events": []
 }

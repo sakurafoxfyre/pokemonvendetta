@@ -7,7 +7,6 @@ ContestHall_MapScripts::
 	.byte 0
 
 ContestHall_OnReturn:
-	special LoadLinkContestPlayerPalettes
 	end
 
 ContestHall_OnTransition:
@@ -18,7 +17,6 @@ ContestHall_OnTransition:
 
 ContestHall_EventScript_ReadyContestMusic::
 	call ContestHall_EventScript_TryWaitForLink
-	special GetContestMultiplayerId
 	call_if_eq VAR_RESULT, 0, ContestHall_EventScript_SaveContestMusicPlayer1
 	call_if_eq VAR_RESULT, 1, ContestHall_EventScript_SaveContestMusicPlayer2
 	call_if_eq VAR_RESULT, 2, ContestHall_EventScript_SaveContestMusicPlayer3
@@ -68,7 +66,6 @@ ContestHall_EventScript_Contest::
 	end
 
 ContestHall_EventScript_SetContestObjects::
-	special LoadLinkContestPlayerPalettes
 	hideobjectat LOCALID_PLAYER, MAP_LITTLEROOT_TOWN
 	call ContestHall_EventScript_CreateAudience
 	end

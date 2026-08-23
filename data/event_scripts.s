@@ -544,8 +544,6 @@ gStdScripts_End::
 	.include "data/maps/BattleFrontier_PokemonCenter_1F/scripts.inc"
 	.include "data/maps/BattleFrontier_PokemonCenter_2F/scripts.inc"
 	.include "data/maps/BattleFrontier_Mart/scripts.inc"
-	.include "data/maps/FarawayIsland_Entrance/scripts.inc"
-	.include "data/maps/FarawayIsland_Interior/scripts.inc"
 	.include "data/maps/BirthIsland_Exterior/scripts.inc"
 	.include "data/maps/BirthIsland_Harbor/scripts.inc"
 	.include "data/maps/TrainerHill_Entrance/scripts.inc"
@@ -599,6 +597,14 @@ gStdScripts_End::
 	.include "data/maps/Route119_WeatherInstitute_2F/scripts.inc"
 	.include "data/maps/Route119_House/scripts.inc"
 	.include "data/maps/Route124_DivingTreasureHuntersHouse/scripts.inc"
+	.include "data/maps/MeteorFalls_Deep/scripts.inc"
+	.include "data/maps/MeteorFalls_Peak/scripts.inc"
+	.include "data/maps/PetalburgHauntedHouse/scripts.inc"
+	.include "data/maps/Hauntwood/scripts.inc"
+	.include "data/maps/AshfallPath/scripts.inc"
+	.include "data/maps/RustboroPier/scripts.inc"
+	.include "data/maps/AmaraDesert/scripts.inc"
+	.include "data/maps/Whitegrave/scripts.inc"
 
 .if IS_FRLG
 

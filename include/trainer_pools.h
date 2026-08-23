@@ -68,11 +68,11 @@ struct PoolRules
 
 struct PickFunctions
 {
-    u32 (*LeadFunction)(const struct Trainer *, u8 *, u32, u32, u32, struct PoolRules *);
-    u32 (*AceFunction)(const struct Trainer *, u8 *, u32, u32, u32, struct PoolRules *);
-    u32 (*OtherFunction)(const struct Trainer *, u8 *, u32, u32, u32, struct PoolRules *);
+    u32 (*LeadFunction)(const struct Trainer *, u8 *, u32, u32, u32, struct PoolRules *, const struct TrainerMon *);
+    u32 (*AceFunction)(const struct Trainer *, u8 *, u32, u32, u32, struct PoolRules *, const struct TrainerMon *);
+    u32 (*OtherFunction)(const struct Trainer *, u8 *, u32, u32, u32, struct PoolRules *, const struct TrainerMon *);
 };
 
-void DoTrainerPartyPool(const struct Trainer *trainer, u32 *monIndices, u8 monsCount, u32 battleTypeFlags);
+void DoTrainerPartyPool(const struct Trainer *trainer, u32 *monIndices, u8 monsCount, u32 battleTypeFlags, const struct TrainerMon *trainerPool);
 
 #endif

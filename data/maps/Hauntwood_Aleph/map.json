@@ -1,0 +1,45 @@
+{
+  "id": "MAP_HAUNTWOOD_ALEPH",
+  "name": "Hauntwood_Aleph",
+  "layout": "LAYOUT_HAUNTWOOD_ALEPH",
+  "music": "MUS_ROUTE122",
+  "region_map_section": "MAPSEC_ROUTE_123",
+  "requires_flash": false,
+  "weather": "WEATHER_SUNNY",
+  "map_type": "MAP_TYPE_ROUTE",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "map": "MAP_HAUNTWOOD_BET",
+      "offset": 0,
+      "direction": "down"
+    },
+    {
+      "map": "MAP_HAUNTWOOD_CHARLIE",
+      "offset": 3,
+      "direction": "right"
+    },
+    {
+      "map": "MAP_HAUNTWOOD_DELTA",
+      "offset": 9,
+      "direction": "left"
+    }
+  ],
+  "object_events": [],
+  "warp_events": [],
+  "coord_events": [],
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 7,
+      "y": 6,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "MadamMarigoldDoorClosed"
+    }
+  ]
+}

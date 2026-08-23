@@ -3,7 +3,6 @@
   "name": "Route105",
   "layout": "LAYOUT_ROUTE105",
   "music": "MUS_ROUTE104",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_ROUTE_105",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",
@@ -20,23 +19,28 @@
       "direction": "up"
     },
     {
-      "map": "MAP_ROUTE106",
-      "offset": 0,
-      "direction": "down"
-    },
-    {
       "map": "MAP_UNDERWATER_ROUTE105",
       "offset": 0,
       "direction": "dive"
+    },
+    {
+      "map": "MAP_PETALBURG_CITY",
+      "offset": 40,
+      "direction": "up"
+    },
+    {
+      "map": "MAP_DEWFORD_TOWN",
+      "offset": 50,
+      "direction": "down"
     }
   ],
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_SWIMMER_M",
-      "x": 19,
-      "y": 60,
+      "x": 41,
+      "y": 48,
       "elevation": 1,
-      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NORMAL",
@@ -46,10 +50,10 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SWIMMER_M",
-      "x": 27,
-      "y": 36,
+      "x": 56,
+      "y": 58,
       "elevation": 1,
-      "movement_type": "MOVEMENT_TYPE_WALK_LEFT_AND_RIGHT",
+      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
       "movement_range_x": 7,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NORMAL",
@@ -59,10 +63,10 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SWIMMER_F",
-      "x": 8,
-      "y": 45,
+      "x": 52,
+      "y": 41,
       "elevation": 1,
-      "movement_type": "MOVEMENT_TYPE_WALK_UP_AND_DOWN",
+      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
       "movement_range_x": 0,
       "movement_range_y": 7,
       "trainer_type": "TRAINER_TYPE_NORMAL",
@@ -85,21 +89,21 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 8,
-      "y": 73,
+      "x": 22,
+      "y": 82,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "ITEM_IRON",
+      "trainer_sight_or_berry_tree_id": "ITEM_BLACK_BELT",
       "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_ROUTE_105_IRON"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_HIKER",
-      "x": 17,
-      "y": 48,
+      "x": 28,
+      "y": 80,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_WALK_DOWN_AND_UP",
       "movement_range_x": 0,
@@ -111,8 +115,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MAN_5",
-      "x": 4,
-      "y": 54,
+      "x": 55,
+      "y": 10,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
@@ -124,8 +128,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_HIKER",
-      "x": 4,
-      "y": 58,
+      "x": 42,
+      "y": 88,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
       "movement_range_x": 0,
@@ -138,30 +142,41 @@
   ],
   "warp_events": [
     {
-      "x": 9,
-      "y": 20,
+      "x": 38,
+      "y": 86,
       "elevation": 0,
-      "dest_map": "MAP_ISLAND_CAVE",
+      "dest_map": "MAP_GRANITE_CAVE_1F",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 28,
+      "y": 61,
+      "elevation": 0,
+      "dest_map": "MAP_GRANITE_CAVE_ENTRANCE_CHAMBER_1",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 50,
+      "y": 53,
+      "elevation": 0,
+      "dest_map": "MAP_GRANITE_CAVE_ENTRANCE_CHAMBER_2",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 43,
+      "y": 30,
+      "elevation": 0,
+      "dest_map": "MAP_GRANITE_CAVE_ENTRANCE_CHAMBER_3",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 56,
+      "y": 33,
+      "elevation": 0,
+      "dest_map": "MAP_GRANITE_CAVE_ENTRANCE_CHAMBER_4",
       "dest_warp_id": "0"
     }
   ],
   "coord_events": [],
-  "bg_events": [
-    {
-      "type": "hidden_item",
-      "x": 15,
-      "y": 68,
-      "elevation": 3,
-      "item": "ITEM_HEART_SCALE",
-      "flag": "FLAG_HIDDEN_ITEM_ROUTE_105_HEART_SCALE"
-    },
-    {
-      "type": "hidden_item",
-      "x": 5,
-      "y": 56,
-      "elevation": 3,
-      "item": "ITEM_BIG_PEARL",
-      "flag": "FLAG_HIDDEN_ITEM_ROUTE_105_BIG_PEARL"
-    }
-  ]
+  "bg_events": []
 }

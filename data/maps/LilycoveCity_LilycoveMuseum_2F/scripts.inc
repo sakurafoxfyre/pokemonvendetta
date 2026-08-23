@@ -1,6 +1,5 @@
 LilycoveCity_LilycoveMuseum_2F_MapScripts::
 	map_script MAP_SCRIPT_ON_LOAD, LilycoveCity_LilycoveMuseum_2F_OnLoad
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, LilycoveCity_LilycoveMuseum_2F_OnFrame
 	.byte 0
 
 LilycoveCity_LilycoveMuseum_2F_OnLoad:
@@ -56,34 +55,6 @@ LilycoveCity_LilycoveMuseum_2F_EventScript_SetToughPainting::
 	setmetatile 3, 6, METATILE_LilycoveMuseum_Painting4_Right, TRUE
 	end
 
-LilycoveCity_LilycoveMuseum_2F_OnFrame:
-	map_script_2 VAR_LILYCOVE_MUSEUM_2F_STATE, 0, LilycoveCity_LilycoveMuseum_2F_EventScript_ShowExhibitHall
-	.2byte 0
-
-LilycoveCity_LilycoveMuseum_2F_EventScript_ShowExhibitHall::
-	lockall
-	applymovement LOCALID_MUSEUM_2F_CURATOR, Common_Movement_FacePlayer
-	applymovement LOCALID_PLAYER, LilycoveCity_LilycoveMuseum_2F_Movement_PlayerWalkInPlaceLeft
-	waitmovement 0
-	msgbox LilycoveCity_LilycoveMuseum_2F_Text_ThisIsExhibitHall, MSGBOX_SIGN
-	applymovement LOCALID_MUSEUM_2F_CURATOR, LilycoveCity_LilycoveMuseum_2F_Movement_FaceExhibitHall
-	waitmovement 0
-	applymovement LOCALID_PLAYER, LilycoveCity_LilycoveMuseum_2F_Movement_FaceExhibitHall
-	waitmovement 0
-	msgbox LilycoveCity_LilycoveMuseum_2F_Text_ExplainExhibitHall, MSGBOX_SIGN
-	applymovement LOCALID_MUSEUM_2F_CURATOR, Common_Movement_FacePlayer
-	waitmovement 0
-	applymovement LOCALID_PLAYER, LilycoveCity_LilycoveMuseum_2F_Movement_PlayerWalkInPlaceLeft
-	waitmovement 0
-	msgbox LilycoveCity_LilycoveMuseum_2F_Text_PleaseObtainPaintingsForExhibit, MSGBOX_SIGN
-#ifdef UBFIX
-	setvar VAR_LILYCOVE_MUSEUM_2F_STATE, 1
-#else
-	copyvar VAR_LILYCOVE_MUSEUM_2F_STATE, 1, warn=FALSE
-#endif
-	releaseall
-	end
-
 LilycoveCity_LilycoveMuseum_2F_Movement_PlayerWalkInPlaceLeft:
 	walk_in_place_faster_left
 	step_end
@@ -95,7 +66,6 @@ LilycoveCity_LilycoveMuseum_2F_Movement_FaceExhibitHall:
 
 LilycoveCity_LilycoveMuseum_2F_EventScript_Curator::
 	lockall
-	goto_if_set FLAG_RECEIVED_GLASS_ORNAMENT, LilycoveCity_LilycoveMuseum_2F_EventScript_ReceivedGlassOrnament
 	specialvar VAR_0x8004, CountPlayerMuseumPaintings
 	switch VAR_0x8004
 	case 1, LilycoveCity_LilycoveMuseum_2F_EventScript_AddedPainting
@@ -124,7 +94,6 @@ LilycoveCity_LilycoveMuseum_2F_EventScript_GiveGlassOrnament::
 	msgbox LilycoveCity_LilycoveMuseum_2F_Text_TokenOfGratitude, MSGBOX_DEFAULT
 	givedecoration DECOR_GLASS_ORNAMENT
 	goto_if_eq VAR_RESULT, FALSE, LilycoveCity_LilycoveMuseum_2F_EventScript_NoRoomForGlassOrnament
-	setflag FLAG_RECEIVED_GLASS_ORNAMENT
 	closemessage
 	releaseall
 	end

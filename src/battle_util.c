@@ -1003,6 +1003,18 @@ void HandleAction_ActionFinished(void)
     }
 }
 
+u16 HasLevelEvolution(u16 species, u8 level)
+{
+	if(gSpeciesInfo[species].evolutions[0].param && gSpeciesInfo[species].evolutions[0].param <= level)
+	{
+		if(HasLevelEvolution(gSpeciesInfo[species].evolutions[0].targetSpecies, level))
+			return HasLevelEvolution(gSpeciesInfo[species].evolutions[0].targetSpecies, level);
+		else
+			return gSpeciesInfo[species].evolutions[0].targetSpecies;
+	}
+	return 0;
+}
+
 // code
 
 ARM_FUNC NOINLINE static uq4_12_t PercentToUQ4_12(u32 percent)
@@ -6757,24 +6769,6 @@ static bool32 IsRuinStatusActive(u32 fieldEffect)
     return FALSE;
 }
 
-static inline uq4_12_t ApplyOffensiveBadgeBoost(uq4_12_t modifier, enum BattlerId battler, enum Move move)
-{
-    if (ShouldGetStatBadgeBoost(B_FLAG_BADGE_BOOST_ATTACK, battler) && IsBattleMovePhysical(move))
-        modifier = uq4_12_multiply_half_down(modifier, GetBadgeBoostModifier());
-    if (ShouldGetStatBadgeBoost(B_FLAG_BADGE_BOOST_SPATK, battler) && IsBattleMoveSpecial(move))
-        modifier = uq4_12_multiply_half_down(modifier, GetBadgeBoostModifier());
-    return modifier;
-}
-
-static inline uq4_12_t ApplyDefensiveBadgeBoost(uq4_12_t modifier, enum BattlerId battler, enum Move move)
-{
-    if (ShouldGetStatBadgeBoost(B_FLAG_BADGE_BOOST_DEFENSE, battler) && IsBattleMovePhysical(move))
-        modifier = uq4_12_multiply_half_down(modifier, GetBadgeBoostModifier());
-    if (ShouldGetStatBadgeBoost(B_FLAG_BADGE_BOOST_SPDEF, battler) && IsBattleMoveSpecial(move))
-        modifier = uq4_12_multiply_half_down(modifier, GetBadgeBoostModifier());
-    return modifier;
-}
-
 static inline u32 CalcAttackStat(struct DamageContext *ctx)
 {
     u8 atkStage;
@@ -6845,9 +6839,6 @@ static inline u32 CalcAttackStat(struct DamageContext *ctx)
 
     // apply attack stat modifiers
     modifier = UQ_4_12(1.0);
-
-    if (ctx->isSelfInflicted)
-        return uq4_12_multiply_by_int_half_down(ApplyOffensiveBadgeBoost(modifier, battlerAtk, move), atkStat);
 
     // attacker's abilities
     switch (ctx->abilities[battlerAtk])
@@ -7053,8 +7044,6 @@ static inline u32 CalcAttackStat(struct DamageContext *ctx)
         break;
     }
 
-    modifier = ApplyOffensiveBadgeBoost(modifier, battlerAtk, move);
-
     return uq4_12_multiply_by_int_half_down(modifier, atkStat);
 }
 
@@ -7135,9 +7124,6 @@ static inline u32 CalcDefenseStat(struct DamageContext *ctx)
 
     // apply defense stat modifiers
     modifier = UQ_4_12(1.0);
-
-    if (ctx->isSelfInflicted)
-        return uq4_12_multiply_by_int_half_down(ApplyDefensiveBadgeBoost(modifier, battlerDef, move), defStat);
 
     // target's abilities
     switch (ctx->abilities[ctx->battlerDef])
@@ -7260,8 +7246,6 @@ static inline u32 CalcDefenseStat(struct DamageContext *ctx)
 	 && GetAttackerWeather(ctx->holdEffects[ctx->battlerAtk], ctx->abilities[ctx->battlerAtk], ctx->weather) & B_WEATHER_SNOW
 	 && usesDefStat)
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.5));
-
-    modifier = ApplyDefensiveBadgeBoost(modifier, battlerDef, move);
 
     return uq4_12_multiply_by_int_half_down(modifier, defStat);
 }
@@ -8969,30 +8953,6 @@ enum ImmunityHealStatusOutcome TryImmunityAbilityHealStatus(enum BattlerId battl
         MarkBattlerForControllerExec(battler);
     }
     return outcome;
-}
-
-uq4_12_t GetBadgeBoostModifier(void)
-{
-    if (GetConfig(B_BADGE_BOOST) < GEN_3)
-        return UQ_4_12(1.125);
-    else
-        return UQ_4_12(1.1);
-}
-
-bool32 ShouldGetStatBadgeBoost(u16 badgeFlag, enum BattlerId battler)
-{
-    if (GetConfig(B_BADGE_BOOST) <= GEN_3 && badgeFlag != 0)
-    {
-        if (gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_EREADER_TRAINER | BATTLE_TYPE_RECORDED_LINK | BATTLE_TYPE_FRONTIER))
-            return FALSE;
-        else if (!IsOnPlayerSide(battler))
-            return FALSE;
-        else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER && TRAINER_BATTLE_PARAM.opponentA == TRAINER_SECRET_BASE)
-            return FALSE;
-        else if (FlagGet(badgeFlag))
-            return TRUE;
-    }
-    return FALSE;
 }
 
 static enum DamageCategory SwapMoveDamageCategory(enum Move move)

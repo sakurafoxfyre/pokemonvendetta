@@ -1,54 +1,32 @@
 Route107_MapScripts::
-	.byte 0
+	.byte 
 
-Route107_EventScript_Darrin::
-	trainerbattle_single TRAINER_DARRIN, Route107_Text_DarrinIntro, Route107_Text_DarrinDefeated
-	msgbox Route107_Text_DarrinPostBattle, MSGBOX_AUTOCLOSE
+Route107_EventScript_Edmond::
+	trainerbattle_single TRAINER_EDMOND, Route107_Text_EdmondIntro, Route107_Text_EdmondDefeated
+	msgbox Route107_Text_EdmondPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route107_EventScript_Tony::
-	trainerbattle_single TRAINER_TONY_1, Route107_Text_TonyIntro, Route107_Text_TonyDefeated, Route107_EventScript_TonyRegisterMatchCallAfterBattle
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	goto_if_eq VAR_RESULT, TRUE, Route107_EventScript_TonyRematch
-	msgbox Route107_Text_TonyPostBattle, MSGBOX_DEFAULT
-	release
+Route107_EventScript_Pete::
+	trainerbattle_single TRAINER_PETE, Route103_Text_PeteIntro, Route103_Text_PeteDefeated
+	msgbox Route103_Text_PetePostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route107_EventScript_TonyRegisterMatchCallAfterBattle::
-	special PlayerFaceTrainerAfterBattle
-	waitmovement 0
-	msgbox Route107_Text_TonyRegister, MSGBOX_DEFAULT
-	register_matchcall TRAINER_TONY_1
-	release
+Route107_EventScript_Isabelle::
+	trainerbattle_single TRAINER_ISABELLE, Route103_Text_IsabelleIntro, Route103_Text_IsabelleDefeated
+	msgbox Route103_Text_IsabellePostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route107_EventScript_TonyRematch::
-	trainerbattle_rematch TRAINER_TONY_1, Route107_Text_TonyRematchIntro, Route107_Text_TonyRematchDefeated
-	msgbox Route107_Text_TonyRematchPostBattle, MSGBOX_AUTOCLOSE
+Route107_EventScript_Huey::
+	trainerbattle_single TRAINER_HUEY, Route109_Text_HueyIntro, Route109_Text_HueyDefeated
+	msgbox Route109_Text_HueyPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route107_EventScript_Denise::
-	trainerbattle_single TRAINER_DENISE, Route107_Text_DeniseIntro, Route107_Text_DeniseDefeated
-	msgbox Route107_Text_DenisePostBattle, MSGBOX_AUTOCLOSE
+Route107_EventScript_Elijah::
+	trainerbattle_single TRAINER_ELIJAH, Route109_Text_ElijahIntro, Route109_Text_ElijahDefeated
+	msgbox Route109_Text_ElijahPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route107_EventScript_Beth::
-	trainerbattle_single TRAINER_BETH, Route107_Text_BethIntro, Route107_Text_BethDefeated
-	msgbox Route107_Text_BethPostBattle, MSGBOX_AUTOCLOSE
+Route107_EventScript_Carter::
+	trainerbattle_single TRAINER_CARTER, Route109_Text_CarterIntro, Route109_Text_CarterDefeated
+	msgbox Route109_Text_CarterPostBattle, MSGBOX_AUTOCLOSE
 	end
-
-Route107_EventScript_Lisa::
-	trainerbattle_double TRAINER_LISA_AND_RAY, Route107_Text_LisaIntro, Route107_Text_LisaDefeated, Route107_Text_LisaNotEnoughPokemon
-	msgbox Route107_Text_LisaPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-Route107_EventScript_Ray::
-	trainerbattle_double TRAINER_LISA_AND_RAY, Route107_Text_RayIntro, Route107_Text_RayDefeated, Route107_Text_RayNotEnoughPokemon
-	msgbox Route107_Text_RayPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-Route107_EventScript_Camron::
-	trainerbattle_single TRAINER_CAMRON, Route107_Text_CamronIntro, Route107_Text_CamronDefeated
-	msgbox Route107_Text_CamronPostBattle, MSGBOX_AUTOCLOSE
-	end
-

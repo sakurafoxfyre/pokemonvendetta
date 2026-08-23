@@ -79,6 +79,9 @@
 #include "constants/trainers.h"
 #include "constants/weather.h"
 #include "cable_club.h"
+#include "new_game.h"
+#include "script_ven_trainer_pool_construction.h"
+#include "script_ven_specialty_trainer_pool.h"
 
 extern const struct BgTemplate gBattleBgTemplates[];
 extern const struct WindowTemplate *const gBattleWindowTemplates[];
@@ -1864,7 +1867,51 @@ void CustomTrainerPartyAssignMoves(struct Pokemon *mon, const struct TrainerMon 
 u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer *trainer, bool32 halfTeam, u32 battleTypeFlags)
 {
     u32 personalityValue;
+    s32 i;
     u8 monsCount;
+    u8 currentPartyCount;
+
+    switch (*GetVarPointer(VAR_WORLD_DIFFICULTY)) {
+        case 0:
+            currentPartyCount = trainer->partySizeWorldZero;
+            break;
+        case 1:
+            currentPartyCount = trainer->partySizeWorldOne;
+            break;
+        case 2:
+            currentPartyCount = trainer->partySizeWorldTwo;
+            break;
+        case 3:
+            currentPartyCount = trainer->partySizeWorldThree;
+            break;
+        case 4:
+            currentPartyCount = trainer->partySizeWorldFour;
+            break;
+        case 5:
+            currentPartyCount = trainer->partySizeWorldFive;
+            break;
+        case 6:
+            currentPartyCount = trainer->partySizeWorldSix;
+            break;
+        case 7:
+            currentPartyCount = trainer->partySizeWorldSeven;
+            break;
+        case 8:
+            currentPartyCount = trainer->partySizeWorldEight;
+            break;
+        case 9:
+            currentPartyCount = trainer->partySizeWorldNine;
+            break;
+        case 10:
+            currentPartyCount = trainer->partySizeWorldTen;
+            break;
+        case 11:
+            currentPartyCount = trainer->partySizeWorldEleven;
+            break;
+        default:
+            currentPartyCount = trainer->partySizeWorldEleven;
+    }
+
     if (battleTypeFlags & BATTLE_TYPE_TRAINER && !(battleTypeFlags & (BATTLE_TYPE_FRONTIER
                                                                         | BATTLE_TYPE_EREADER_TRAINER
                                                                         | BATTLE_TYPE_TRAINER_HILL)))
@@ -1876,22 +1923,31 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
             if (trainer->partySize > PARTY_SIZE / 2)
                 monsCount = PARTY_SIZE / 2;
             else
-                monsCount = trainer->partySize;
+                monsCount = currentPartyCount;
         }
         else
         {
-            monsCount = trainer->partySize;
+            monsCount = currentPartyCount;
         }
 
         u32 monIndices[monsCount];
-        DoTrainerPartyPool(trainer, monIndices, monsCount, battleTypeFlags);
+
+        const struct TrainerMon *trainerPool;
+
+        if (trainer->isSpecialTrainer) { //non-standard trainer
+            trainerPool = SpecialtyPool(trainer);
+        } else { //standard trainer
+            trainerPool = CombinePool(trainer);
+        }
+
+        DoTrainerPartyPool(trainer, monIndices, monsCount, battleTypeFlags, trainerPool);
 
         for (s32 i = 0; i < monsCount; i++)
         {
             u32 monIndex = monIndices[i];
             s32 ball = -1;
             u32 personalityHash = GeneratePartyHash(trainer, i);
-            const struct TrainerMon *partyData = trainer->party;
+            const struct TrainerMon *partyData = trainerPool;
             struct OriginalTrainerId otId = OTID_STRUCT_RANDOM_NO_SHINY;
             u32 abilityNum = 0;
 
@@ -1909,26 +1965,119 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
                 personalityValue = (personalityValue & 0xFFFFFF00) | GeneratePersonalityForGender(MON_FEMALE, partyData[monIndex].species);
             else if (partyData[monIndex].gender == TRAINER_MON_RANDOM_GENDER)
                 personalityValue = (personalityValue & 0xFFFFFF00) | GeneratePersonalityForGender(Random() & 1 ? MON_MALE : MON_FEMALE, partyData[monIndex].species);
+
+            // -- NATURE --/
+            u8 currentNature;
+            if (partyData[monIndex].nature) { //checks if a nature has been defined or not
+                currentNature = partyData[monIndex].nature;
+            } else { 
+                int actualSize = 0;
+                for (int k = 0; k < 10; k++) {
+                    if (partyData[monIndex].natureList[k]) {
+                        actualSize++;
+                    } else {
+                        break;
+                    }
+                }
+
+                int randNature = Random() % actualSize;
+                currentNature = partyData[monIndex].natureList[randNature];
+            }
+
             ModifyPersonalityForNature(&personalityValue, partyData[monIndex].nature);
+
             if (partyData[monIndex].isShiny)
             {
                 otId.method = OT_ID_PRESET;
                 otId.value = HIHALF(personalityValue) ^ LOHALF(personalityValue);
             }
-            CreateMon(&party[i], partyData[monIndex].species, partyData[monIndex].lvl, personalityValue, otId);
-            SetMonData(&party[i], MON_DATA_HELD_ITEM, &partyData[monIndex].heldItem);
 
-            CustomTrainerPartyAssignMoves(&party[i], &partyData[monIndex]);
-            SetMonData(&party[i], MON_DATA_IVS, &(partyData[monIndex].iv));
-            if (partyData[monIndex].ev != NULL)
-            {
-                SetMonData(&party[i], MON_DATA_HP_EV, &(partyData[monIndex].ev[0]));
-                SetMonData(&party[i], MON_DATA_ATK_EV, &(partyData[monIndex].ev[1]));
-                SetMonData(&party[i], MON_DATA_DEF_EV, &(partyData[monIndex].ev[2]));
-                SetMonData(&party[i], MON_DATA_SPATK_EV, &(partyData[monIndex].ev[3]));
-                SetMonData(&party[i], MON_DATA_SPDEF_EV, &(partyData[monIndex].ev[4]));
-                SetMonData(&party[i], MON_DATA_SPEED_EV, &(partyData[monIndex].ev[5]));
+            // -- LEVEL AND EVO -- //
+
+            if (partyData[monIndex].lvl) { // if a set level has been defined
+                if (HasLevelEvolution(partyData[i].species, partyData[monIndex].lvl + (6* *GetVarPointer(VAR_WORLD_DIFFICULTY)))) {
+                    CreateMon(&party[i], HasLevelEvolution(partyData[i].species, partyData[monIndex].lvl + (6 * *GetVarPointer(VAR_WORLD_DIFFICULTY))), partyData[monIndex].lvl + (6 * *GetVarPointer(VAR_WORLD_DIFFICULTY)), personalityValue, otId);
+                } else {
+                    CreateMon(&party[i], partyData[monIndex].species, partyData[monIndex].lvl + (6 * *GetVarPointer(VAR_WORLD_DIFFICULTY)), personalityValue, otId);
+                }
+            } else {
+                int levelRange = partyData[monIndex].lvlUpperBound - partyData[monIndex].lvlLowerBound; // ie 19 - 10 = 9
+                int levelBoost = Random() & (levelRange + 1); // ie randomizes between 0 and 9 (ten values)
+                int currentLevel = partyData[monIndex].lvlLowerBound + levelBoost; // ie 10 + some random number between 0 and 9
+
+                if (HasLevelEvolution(partyData[i].species, currentLevel + (6 * *GetVarPointer(VAR_WORLD_DIFFICULTY)))) {
+                CreateMon(&party[i], HasLevelEvolution(partyData[i].species, currentLevel + (6 * *GetVarPointer(VAR_WORLD_DIFFICULTY))), currentLevel + (6 * *GetVarPointer(VAR_WORLD_DIFFICULTY)), personalityValue, otId);
+                } else {
+                CreateMon(&party[i], partyData[monIndex].species, currentLevel + (6 * *GetVarPointer(VAR_WORLD_DIFFICULTY)), personalityValue, otId);
+                }
             }
+
+            // -- HELD ITEM -- //
+            if (partyData[monIndex].heldItemList[0]) //if there is a held item list
+            {
+                int actualsize = 0;
+                for (int k = 0; k < 10; k++)
+                {
+                    if (partyData[monIndex].heldItemList[k])
+                        actualsize++;
+                    else
+                        break;
+                }
+
+                int randItem = Random() % actualsize;
+                const u32 *currentItem = &partyData[monIndex].heldItemList[randItem];
+                SetMonData(&party[i], MON_DATA_HELD_ITEM, currentItem);
+            }
+            else {
+                SetMonData(&party[i], MON_DATA_HELD_ITEM, &partyData[monIndex].heldItem);
+            }
+
+            // -- MOVES -- //
+            if (partyData[monIndex].moveList[0]) // if there is a move set list
+            {
+                int actualsize = 0;
+                for (int k = 0; k < 10; k++)
+                {
+                    if (partyData[monIndex].moveList[k])
+                        actualsize++;
+                    else
+                        break;
+                }
+
+                int randMoveSet = Random() % actualsize;
+                CustomTrainerPartyAssignMoveSet(&party[i], &partyData[monIndex].moveList[randMoveSet]);
+            } else {
+                CustomTrainerPartyAssignMoves(&party[i], &partyData[monIndex]);
+            }
+
+            // -- IVS -- //
+            if (partyData[monIndex].ivUpperBound || partyData[monIndex].ivLowerBound)
+            {
+                int ivRange = partyData[monIndex].ivUpperBound - partyData[monIndex].ivLowerBound;
+                int hpBoost = Random() % (ivRange + 1);
+                int atkBoost = Random() % (ivRange + 1);
+                int defBoost = Random() % (ivRange + 1);
+                int spdBoost = Random() % (ivRange + 1);
+                int spAtkBoost = Random() % (ivRange + 1);
+                int spDefBoost = Random() % (ivRange + 1);
+                u16 currentIvs = TRAINER_PARTY_IVS((partyData[monIndex].ivLowerBound + hpBoost),
+                 (partyData[monIndex].ivLowerBound + atkBoost),
+                 (partyData[monIndex].ivLowerBound + defBoost),
+                 (partyData[monIndex].ivLowerBound + spdBoost),
+                 (partyData[monIndex].ivLowerBound + spAtkBoost),
+                 (partyData[monIndex].ivLowerBound + spDefBoost));
+                SetMonData(&party[i], MON_DATA_IVS, &currentIvs);
+            } else {
+                SetMonData(&party[i], MON_DATA_IVS, &(partyData[monIndex].iv)); 
+            }
+
+            SetMonData(&party[i], MON_DATA_HP_EV, 0);
+            SetMonData(&party[i], MON_DATA_ATK_EV, 0);
+            SetMonData(&party[i], MON_DATA_DEF_EV, 0);
+            SetMonData(&party[i], MON_DATA_SPATK_EV, 0);
+            SetMonData(&party[i], MON_DATA_SPDEF_EV, 0);
+            SetMonData(&party[i], MON_DATA_SPEED_EV, 0);
+
             if (partyData[monIndex].ability != ABILITY_NONE)
             {
                 const struct SpeciesInfo *speciesInfo = &gSpeciesInfo[partyData[monIndex].species];
@@ -1950,6 +2099,8 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
                 }
             }
             SetMonData(&party[i], MON_DATA_ABILITY_NUM, &abilityNum);
+
+            // -- MISC -- //
             SetMonData(&party[i], MON_DATA_FRIENDSHIP, &(partyData[monIndex].friendship));
             if (partyData[monIndex].ball < POKEBALL_COUNT)
             {

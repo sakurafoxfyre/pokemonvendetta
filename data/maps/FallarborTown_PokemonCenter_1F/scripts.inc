@@ -1,6 +1,5 @@
 FallarborTown_PokemonCenter_1F_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, FallarborTown_PokemonCenter_1F_OnTransition
-	map_script MAP_SCRIPT_ON_RESUME, CableClub_OnResume
 	.byte 0
 
 FallarborTown_PokemonCenter_1F_OnTransition:
@@ -35,21 +34,17 @@ FallarborTown_PokemonCenter_1F_EventScript_Lanette::
 	end
 
 FallarborTown_PokemonCenter_1F_EventScript_LanetteExitNorth::
-	applymovement LOCALID_FALLARBOR_LANETTE, FallarborTown_PokemonCenter_1F_Movement_LanetteExitNorth
 	waitmovement 0
 	goto FallarborTown_PokemonCenter_1F_EventScript_LanetteExited
 	end
 
 FallarborTown_PokemonCenter_1F_EventScript_LanetteExitWest::
-	applymovement LOCALID_FALLARBOR_LANETTE, FallarborTown_PokemonCenter_1F_Movement_LanetteExitWest
 	waitmovement 0
 	goto FallarborTown_PokemonCenter_1F_EventScript_LanetteExited
 	end
 
 FallarborTown_PokemonCenter_1F_EventScript_LanetteExited::
 	playse SE_SLIDING_DOOR
-	removeobject LOCALID_FALLARBOR_LANETTE
-	clearflag FLAG_HIDE_LANETTES_HOUSE_LANETTE
 	release
 	end
 

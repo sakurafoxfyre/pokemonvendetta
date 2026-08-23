@@ -1,6 +1,114 @@
 Route121_MapScripts::
 	.byte 0
 
+Route121_EventScript_GeniusFeather::
+	goto_if_eq VAR_WORLD_DIFFICULTY, 0, Route121_ThreeGeniusFeathers
+	goto_if_eq VAR_WORLD_DIFFICULTY, 1, Route121_ThreeGeniusFeathers
+	goto_if_eq VAR_WORLD_DIFFICULTY, 2, Route121_ThreeGeniusFeathers
+	goto_if_eq VAR_WORLD_DIFFICULTY, 3, Route121_ThreeGeniusFeathers
+	goto_if_eq VAR_WORLD_DIFFICULTY, 4, Route121_FourGeniusFeathers
+	goto_if_eq VAR_WORLD_DIFFICULTY, 5, Route121_FourGeniusFeathers
+	goto_if_eq VAR_WORLD_DIFFICULTY, 6, Route121_FourGeniusFeathers
+	goto_if_eq VAR_WORLD_DIFFICULTY, 7, Route121_FourGeniusFeathers
+	goto_if_eq VAR_WORLD_DIFFICULTY, 8, Route121_FiveGeniusFeathers
+	goto_if_eq VAR_WORLD_DIFFICULTY, 9, Route121_FiveGeniusFeathers
+	goto_if_eq VAR_WORLD_DIFFICULTY, 10, Route121_FiveGeniusFeathers
+	goto_if_eq VAR_WORLD_DIFFICULTY, 11, Route121_FiveGeniusFeathers
+	end
+
+Route121_ThreeGeniusFeathers::
+	finditem ITEM_GENIUS_FEATHER, amount=3
+	end
+
+Route121_FourGeniusFeathers::
+	finditem ITEM_GENIUS_FEATHER, amount=4
+	end
+
+Route121_FiveGeniusFeathers::
+	finditem ITEM_GENIUS_FEATHER, amount=5
+	end
+
+Route121_NetBalls::
+	goto_if_eq VAR_WORLD_DIFFICULTY, 0, Route121_FiveNetBalls
+	goto_if_eq VAR_WORLD_DIFFICULTY, 1, Route121_FiveNetBalls
+	goto_if_eq VAR_WORLD_DIFFICULTY, 2, Route121_FiveNetBalls
+	goto_if_eq VAR_WORLD_DIFFICULTY, 3, Route121_FiveNetBalls
+	goto_if_eq VAR_WORLD_DIFFICULTY, 4, Route121_SevenNetBalls
+	goto_if_eq VAR_WORLD_DIFFICULTY, 5, Route121_SevenNetBalls
+	goto_if_eq VAR_WORLD_DIFFICULTY, 6, Route121_SevenNetBalls
+	goto_if_eq VAR_WORLD_DIFFICULTY, 7, Route121_SevenNetBalls
+	goto_if_eq VAR_WORLD_DIFFICULTY, 8, Route121_TenNetBalls
+	goto_if_eq VAR_WORLD_DIFFICULTY, 9, Route121_TenNetBalls
+	goto_if_eq VAR_WORLD_DIFFICULTY, 10, Route121_TenNetBalls
+	goto_if_eq VAR_WORLD_DIFFICULTY, 11, Route121_TenNetBalls
+	end
+
+Route121_FiveNetBalls::
+	finditem ITEM_NET_BALL, amount=5
+	end
+
+Route121_SevenNetBalls::
+	finditem ITEM_NET_BALL, amount=7
+	end
+
+Route121_TenNetBalls::
+	finditem ITEM_NET_BALL, amount=10
+	end
+
+Route121_QuickBalls::
+	goto_if_eq VAR_WORLD_DIFFICULTY, 0, Route121_FiveQuickBalls
+	goto_if_eq VAR_WORLD_DIFFICULTY, 1, Route121_FiveQuickBalls
+	goto_if_eq VAR_WORLD_DIFFICULTY, 2, Route121_FiveQuickBalls
+	goto_if_eq VAR_WORLD_DIFFICULTY, 3, Route121_FiveQuickBalls
+	goto_if_eq VAR_WORLD_DIFFICULTY, 4, Route121_SevenQuickBalls
+	goto_if_eq VAR_WORLD_DIFFICULTY, 5, Route121_SevenQuickBalls
+	goto_if_eq VAR_WORLD_DIFFICULTY, 6, Route121_SevenQuickBalls
+	goto_if_eq VAR_WORLD_DIFFICULTY, 7, Route121_SevenQuickBalls
+	goto_if_eq VAR_WORLD_DIFFICULTY, 8, Route121_TenQuickBalls
+	goto_if_eq VAR_WORLD_DIFFICULTY, 9, Route121_TenQuickBalls
+	goto_if_eq VAR_WORLD_DIFFICULTY, 10, Route121_TenQuickBalls
+	goto_if_eq VAR_WORLD_DIFFICULTY, 11, Route121_TenQuickBalls
+	end
+
+Route121_FiveQuickBalls::
+	finditem ITEM_QUICK_BALL, amount=5
+	end
+
+Route121_SevenQuickBalls::
+	finditem ITEM_QUICK_BALL, amount=7
+	end
+
+Route121_TenQuickBalls::
+	finditem ITEM_QUICK_BALL, amount=10
+	end
+
+Route121_TimerBalls::
+	goto_if_eq VAR_WORLD_DIFFICULTY, 0, Route121_FiveTimerBalls
+	goto_if_eq VAR_WORLD_DIFFICULTY, 1, Route121_FiveTimerBalls
+	goto_if_eq VAR_WORLD_DIFFICULTY, 2, Route121_FiveTimerBalls
+	goto_if_eq VAR_WORLD_DIFFICULTY, 3, Route121_FiveTimerBalls
+	goto_if_eq VAR_WORLD_DIFFICULTY, 4, Route121_SevenTimerBalls
+	goto_if_eq VAR_WORLD_DIFFICULTY, 5, Route121_SevenTimerBalls
+	goto_if_eq VAR_WORLD_DIFFICULTY, 6, Route121_SevenTimerBalls
+	goto_if_eq VAR_WORLD_DIFFICULTY, 7, Route121_SevenTimerBalls
+	goto_if_eq VAR_WORLD_DIFFICULTY, 8, Route121_TenTimerBalls
+	goto_if_eq VAR_WORLD_DIFFICULTY, 9, Route121_TenTimerBalls
+	goto_if_eq VAR_WORLD_DIFFICULTY, 10, Route121_TenTimerBalls
+	goto_if_eq VAR_WORLD_DIFFICULTY, 11, Route121_TenTimerBalls
+	end
+
+Route121_FiveTimerBalls::
+	finditem ITEM_TIMER_BALL, amount=5
+	end
+
+Route121_SevenTimerBalls::
+	finditem ITEM_TIMER_BALL, amount=7
+	end
+
+Route121_TenTimerBalls::
+	finditem ITEM_TIMER_BALL, amount=10
+	end
+
 Route121_EventScript_Woman::
 	msgbox Route121_Text_AheadLoomsMtPyre, MSGBOX_NPC
 	end
@@ -13,82 +121,15 @@ Route121_EventScript_SafariZoneSign::
 	msgbox Route121_Text_SafariZoneSign, MSGBOX_SIGN
 	end
 
-Route121_EventScript_AquaGruntsMoveOut::
-	lockall
-	playbgm MUS_ENCOUNTER_AQUA, FALSE
-	applymovement LOCALID_ROUTE121_GRUNT_2, Common_Movement_WalkInPlaceRight
-	waitmovement 0
-	msgbox Route121_Text_OkayMoveOutToMtPyre, MSGBOX_DEFAULT
-	closemessage
-	applymovement LOCALID_ROUTE121_GRUNT_1, Route121_Movement_Grunt1Exit
-	applymovement LOCALID_ROUTE121_GRUNT_2, Route121_Movement_Grunt2Exit
-	applymovement LOCALID_ROUTE121_GRUNT_3, Route121_Movement_Grunt3Exit
-	waitmovement 0
-	fadedefaultbgm
-	removeobject LOCALID_ROUTE121_GRUNT_1
-	removeobject LOCALID_ROUTE121_GRUNT_2
-	removeobject LOCALID_ROUTE121_GRUNT_3
-	setvar VAR_ROUTE121_STATE, 1
-	releaseall
-	end
-
-Route121_Movement_Grunt1Exit:
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	step_end
-
-Route121_Movement_Grunt2Exit:
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	step_end
-
-Route121_Movement_Grunt3Exit:
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	step_end
-
 Route121_EventScript_Vanessa::
 	trainerbattle_single TRAINER_VANESSA, Route121_Text_VanessaIntro, Route121_Text_VanessaDefeat
 	msgbox Route121_Text_VanessaPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route121_EventScript_Walter::
-	trainerbattle_single TRAINER_WALTER_1, Route121_Text_WalterIntro, Route121_Text_WalterDefeat, Route121_EventScript_RegisterWalter
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	goto_if_eq VAR_RESULT, TRUE, Route121_EventScript_RematchWalter
+	trainerbattle_single TRAINER_WALTER, Route121_Text_WalterIntro, Route121_Text_WalterDefeat
 	msgbox Route121_Text_WalterPostBattle, MSGBOX_DEFAULT
 	release
-	end
-
-Route121_EventScript_RegisterWalter::
-	special PlayerFaceTrainerAfterBattle
-	waitmovement 0
-	msgbox Route121_Text_WalterRegister, MSGBOX_DEFAULT
-	register_matchcall TRAINER_WALTER_1
-	release
-	end
-
-Route121_EventScript_RematchWalter::
-	trainerbattle_rematch TRAINER_WALTER_1, Route121_Text_WalterRematchIntro, Route121_Text_WalterRematchDefeat
-	msgbox Route121_Text_WalterPostRematch, MSGBOX_AUTOCLOSE
 	end
 
 Route121_EventScript_Tammy::
@@ -107,24 +148,9 @@ Route121_EventScript_Joy::
 	end
 
 Route121_EventScript_Jessica::
-	trainerbattle_single TRAINER_JESSICA_1, Route121_Text_JessicaIntro, Route121_Text_JessicaDefeat, Route121_EventScript_RegisterJessica
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	goto_if_eq VAR_RESULT, TRUE, Route121_EventScript_RematchJessica
+	trainerbattle_single TRAINER_JESSICA, Route121_Text_JessicaIntro, Route121_Text_JessicaDefeat
 	msgbox Route121_Text_JessicaPostBattle, MSGBOX_DEFAULT
 	release
-	end
-
-Route121_EventScript_RegisterJessica::
-	special PlayerFaceTrainerAfterBattle
-	waitmovement 0
-	msgbox Route121_Text_JessicaRegister, MSGBOX_DEFAULT
-	register_matchcall TRAINER_JESSICA_1
-	release
-	end
-
-Route121_EventScript_RematchJessica::
-	trainerbattle_rematch TRAINER_JESSICA_1, Route121_Text_JessicaRematchIntro, Route121_Text_JessicaRematchDefeat
-	msgbox Route121_Text_JessicaPostRematch, MSGBOX_AUTOCLOSE
 	end
 
 Route121_EventScript_Cale::
@@ -148,29 +174,10 @@ Route121_EventScript_Marcel::
 	end
 
 Route121_EventScript_Cristin::
-	trainerbattle_single TRAINER_CRISTIN_1, Route121_Text_CristinIntro, Route121_Text_CristinDefeat, Route121_EventScript_RegisterCristin
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	goto_if_eq VAR_RESULT, TRUE, Route121_EventScript_RematchCristin
+	trainerbattle_single TRAINER_CRISTIN, Route121_Text_CristinIntro, Route121_Text_CristinDefeat
 	msgbox Route121_Text_CristinPostBattle, MSGBOX_DEFAULT
 	release
 	end
-
-Route121_EventScript_RegisterCristin::
-	special PlayerFaceTrainerAfterBattle
-	waitmovement 0
-	msgbox Route121_Text_CristinRegister, MSGBOX_DEFAULT
-	register_matchcall TRAINER_CRISTIN_1
-	release
-	end
-
-Route121_EventScript_RematchCristin::
-	trainerbattle_rematch TRAINER_CRISTIN_1, Route121_Text_CristinRematchIntro, Route121_Text_CristinRematchDefeat
-	msgbox Route121_Text_CristinPostRematch, MSGBOX_AUTOCLOSE
-	end
-
-Route121_Text_OkayMoveOutToMtPyre:
-	.string "Okay!\n"
-	.string "We're to move out to MT. PYRE!$"
 
 Route121_Text_AheadLoomsMtPyre:
 	.string "Ahead looms MT. PYRE…\p"

@@ -1940,7 +1940,7 @@ static void InitDomeTrainers(void)
         for (j = 0; j < MAX_MON_MOVES; j++)
             gSaveBlock2Ptr->frontier.domePlayerPartyData[i].moves[j] = GetMonData(&gParties[B_TRAINER_PLAYER][gSaveBlock2Ptr->frontier.selectedPartyMons[i] - 1], MON_DATA_MOVE1 + j);
         for (j = 0; j < NUM_STATS; j++)
-            gSaveBlock2Ptr->frontier.domePlayerPartyData[i].evs[j] = GetMonData(&gParties[B_TRAINER_PLAYER][gSaveBlock2Ptr->frontier.selectedPartyMons[i] - 1], MON_DATA_HP_EV + j);
+            gSaveBlock2Ptr->frontier.domePlayerPartyData[i].evs[j] = 0; //no EVs in Vendetta
 
         gSaveBlock2Ptr->frontier.domePlayerPartyData[i].nature = GetNature(&gParties[B_TRAINER_PLAYER][gSaveBlock2Ptr->frontier.selectedPartyMons[i] - 1]);
     }
@@ -2117,22 +2117,12 @@ static void InitDomeTrainers(void)
 #define CALC_STAT(base, statIndex)                                                          \
 {                                                                                           \
     u8 baseStat = gSpeciesInfo[fmon->species].base;                                                 \
-    stats[statIndex] = (((2 * baseStat + ivs + evs[statIndex] / 4) * level) / 100) + 5;     \
+    stats[statIndex] = (((2 * baseStat + ivs / 4) * level) / 100) + 5;     \
     stats[statIndex] = (u8) ModifyStatByNature(fmon->nature, stats[statIndex], statIndex);        \
 }
 
 static void CalcDomeMonStats(const struct TrainerMon *fmon, int level, u8 ivs, int *stats)
 {
-    int evs[NUM_STATS];
-
-    for (enum Stat i = 0; i < NUM_STATS; i++)
-    {
-        if (fmon->ev != NULL)
-            evs[i] = fmon->ev[i];
-        else
-            evs[i] = 0;
-    }
-
     if (HasShedinjaHPHandling(fmon->species))
     {
         stats[STAT_HP] = 1;
@@ -2140,7 +2130,7 @@ static void CalcDomeMonStats(const struct TrainerMon *fmon, int level, u8 ivs, i
     else
     {
         int n = 2 * GetSpeciesBaseHP(fmon->species);
-        stats[STAT_HP] = (((n + ivs + evs[STAT_HP] / 4) * level) / 100) + level + 10;
+        stats[STAT_HP] = (((n + ivs / 4) * level) / 100) + level + 10;
     }
 
     CALC_STAT(baseAttack, STAT_ATK);
@@ -4376,13 +4366,10 @@ static void DisplayTrainerInfoOnCard(u8 flags, u8 trainerTourneyId)
     {
         for (i = 0; i < FRONTIER_PARTY_SIZE; i++)
         {
-            // Add the EVs for this mon
+            // no EVs in Vendetta
             for (j = 0; j < NUM_STATS; j++)
             {
-                if (trainerId == TRAINER_FRONTIER_BRAIN)
-                    allocatedArray[j] = GetFrontierBrainMonEvs(i, j);
-                else
-                    allocatedArray[j] = gSaveBlock2Ptr->frontier.domePlayerPartyData[i].evs[j];
+                allocatedArray[j] = 0;
             }
 
             // HP doesnt have a nature modifier, so just add it here
@@ -4427,10 +4414,7 @@ static void DisplayTrainerInfoOnCard(u8 flags, u8 trainerTourneyId)
         {
             for (j = 0; j < NUM_STATS; j++)
             {
-                if (gFacilityTrainerMons[DOME_MONS[trainerTourneyId][i]].ev != NULL)
-                    allocatedArray[j] = gFacilityTrainerMons[DOME_MONS[trainerTourneyId][i]].ev[j];
-                else
-                    allocatedArray[j] = 0;
+                allocatedArray[j] = 0; //no EVs in Vendetta
             }
 
             allocatedArray[NUM_STATS] += allocatedArray[STAT_HP];

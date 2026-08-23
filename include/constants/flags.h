@@ -51,9 +51,9 @@
 
 #else
 
-#define FLAG_UNUSED_0x020    0x20 // Unused Flag
-#define FLAG_UNUSED_0x021    0x21 // Unused Flag
-#define FLAG_UNUSED_0x022    0x22 // Unused Flag
+#define FLAG_FALLARBOR_TESTING_ITEMBALL   0x20 // Flag we are using for testing item ball variation
+#define FLAG_STOLE_COZMOS_BAG    0x21 // sets if the player has stolen cozmos' bag
+#define FLAG_GRABBED_STARTER    0x22 // sets if the player has grabbed their starter
 #define FLAG_UNUSED_0x023    0x23 // Unused Flag
 #define FLAG_UNUSED_0x024    0x24 // Unused Flag
 #define FLAG_UNUSED_0x025    0x25 // Unused Flag
@@ -133,7 +133,7 @@
 #define FLAG_OCEANIC_MUSEUM_MET_REPORTER     0x69
 #define FLAG_RECEIVED_HM_STRENGTH            0x6A
 #define FLAG_RECEIVED_HM_ROCK_SMASH          0x6B
-#define FLAG_WHITEOUT_TO_LAVARIDGE           0x6C // Set after defeating Flannery, so the player can't white out from poison before receiving Go Goggles
+#define FLAG_WHITEOUT_TO_LAVARIDGE           0x6C // Set after defeating Flannery, so the player cant white out from poison before receiving Go Goggles
 #define FLAG_RECEIVED_HM_FLASH               0x6D
 #define FLAG_RECEIVED_HM_FLY                 0x6E
 #define FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT  0x6F
@@ -162,7 +162,7 @@
 #define FLAG_RECEIVED_POTION_OLDALE          0x84
 #define FLAG_RECEIVED_AMULET_COIN            0x85
 #define FLAG_PENDING_DAYCARE_EGG             0x86
-#define FLAG_THANKED_FOR_PLAYING_WITH_WALLY  0x87
+#define FLAG_THANKED_FOR_PLAYING_WITH_WALLY  0x87 //unused with story beat removal
 #define FLAG_ENABLE_FIRST_WALLY_POKENAV_CALL 0x88 // Set after defeating Wally outside Mauville Gym. Will activate a call later to register Wally.
 #define FLAG_RECEIVED_HM_CUT                 0x89
 #define FLAG_SCOTT_CALL_FORTREE_GYM          0x8A // Triggers call from Scott after defeating Winona
@@ -176,7 +176,7 @@
 #define FLAG_CAUGHT_HO_OH                    0x92
 #define FLAG_MR_BRINEY_SAILING_INTRO         0x93
 #define FLAG_DOCK_REJECTED_DEVON_GOODS       0x94
-#define FLAG_DELIVERED_DEVON_GOODS           0x95
+#define FLAG_DELIVERED_DEVON_GOODS           0x95 // Unused now since we are removing vanilla story beats
 #define FLAG_RECEIVED_CONTEST_PASS           0x96 // Unused, leftover from R/S
 #define FLAG_RECEIVED_CASTFORM               0x97
 #define FLAG_RECEIVED_SUPER_ROD              0x98
@@ -664,32 +664,37 @@
 #define FLAG_HIDDEN_ITEM_ROUTE_123_RARE_CANDY                (FLAG_HIDDEN_ITEMS_START + 0x6E)
 #define FLAG_HIDDEN_ITEM_ROUTE_105_BIG_PEARL                 (FLAG_HIDDEN_ITEMS_START + 0x6F)
 
-#define FLAG_UNUSED_0x264  0x264 // Unused Flag
-#define FLAG_UNUSED_0x265  0x265 // Unused Flag
-#define FLAG_UNUSED_0x266  0x266 // Unused Flag
-#define FLAG_UNUSED_0x267  0x267 // Unused Flag
-#define FLAG_UNUSED_0x268  0x268 // Unused Flag
-#define FLAG_UNUSED_0x269  0x269 // Unused Flag
-#define FLAG_UNUSED_0x26A  0x26A // Unused Flag
-#define FLAG_UNUSED_0x26B  0x26B // Unused Flag
-#define FLAG_UNUSED_0x26C  0x26C // Unused Flag
-#define FLAG_UNUSED_0x26D  0x26D // Unused Flag
-#define FLAG_UNUSED_0x26E  0x26E // Unused Flag
-#define FLAG_UNUSED_0x26F  0x26F // Unused Flag
-#define FLAG_UNUSED_0x270  0x270 // Unused Flag
-#define FLAG_UNUSED_0x271  0x271 // Unused Flag
-#define FLAG_UNUSED_0x272  0x272 // Unused Flag
-#define FLAG_UNUSED_0x273  0x273 // Unused Flag
-#define FLAG_UNUSED_0x274  0x274 // Unused Flag
-#define FLAG_UNUSED_0x275  0x275 // Unused Flag
-#define FLAG_UNUSED_0x276  0x276 // Unused Flag
-#define FLAG_UNUSED_0x277  0x277 // Unused Flag
-#define FLAG_UNUSED_0x278  0x278 // Unused Flag
-#define FLAG_UNUSED_0x279  0x279 // Unused Flag
-#define FLAG_UNUSED_0x27A  0x27A // Unused Flag
-#define FLAG_UNUSED_0x27B  0x27B // Unused Flag
-#define FLAG_UNUSED_0x27C  0x27C // Unused Flag
-#define FLAG_UNUSED_0x27D  0x27D // Unused Flag
+//WORLD ROUTE FLAGS - general note - stretches between two unlocked anchors aren't unlocked until that anchor point is "cleared" and the next selection opens
+// when you defeat a anchor boss, you get a "key" that can be used to unlock any stretch, not just the ones connected to that anchor
+#define FLAG_FALLARBOR_RUSTBORO_STRETCH  0x264 // Fallarbor <--> Rustboro on route 114
+#define FLAG_FALLARBOR_LAVARIDGE_STRETCH 0x265 // Fallarbor <--> Lavaridge 
+#define FLAG_RUSTBORO_MAUVILLE_STRETCH   0x266 // Rustboro <--> Mauville
+#define FLAG_LAVARIDGE_MAUVILLE_STRETCH  0x267 // Lavaridge <--> Mauville
+#define FLAG_RUSTBORO_PETALBURG_STRETCH  0x268 // Rustboro <--> Petalburg
+#define FLAG_PETALBURG_DEWFORD_STRETCH   0x269 // Petalburg <--> Dewford
+#define FLAG_DEWFORD_SLATEPORT_STRETCH   0x26A // Dewford <--> Slateport
+#define FLAG_PETALBURG_SLATEPORT_STRETCH 0x26B // Petalburg <--> Slateport
+#define FLAG_SLATEPORT_MAUVILLE_STRETCH  0x26C // Slateport <--> Mauville
+#define FLAG_LAVARIDGE_FORTREE_STRETCH   0x26D // Lavaridge <--> Fortree
+#define FLAG_MAUVILLE_MTPYRE_STRETCH     0x26E // Mauville <--> Mt Pyre
+#define FLAG_FORTREE_MTPYRE_STRETCH      0x26F // Fortree <--> Mt Pyre
+#define FLAG_MTPYRE_LILYCOVE_STRETCH     0x270 // Mt Pyre <--> Lilycove
+#define FLAG_LILYCOVE_MOSSDEEP_STRETCH   0x271 // Lilycove <--> Mossdeep
+#define FLAG_SLATEPORT_MOSSDEEP_STRETCH  0x272 // Slateport <--> Mossdeep
+
+//ANCHOR BOSS FLAGS
+#define FLAG_RUSTBORO_BOSS   0x273 // 
+#define FLAG_PETALBURG_BOSS  0x274 //
+#define FLAG_DEWFORD_BOSS    0x275 //
+#define FLAG_SLATEPORT_BOSS  0x276 //
+#define FLAG_MAUVILLE_BOSS   0x277 //
+#define FLAG_LAVARIDGE_BOSS  0x278 //
+#define FLAG_FORTREE_BOSS    0x279 //
+#define FLAG_MTPYRE_BOSS     0x27A //
+#define FLAG_LILYCOVE_BOSS   0x27B //
+#define FLAG_MOSSDEEP_BOSS   0x27C //
+#define FLAG_FALLARBOR_BOSS  0x27D //
+
 #define FLAG_UNUSED_0x27E  0x27E // Unused Flag
 #define FLAG_UNUSED_0x27F  0x27F // Unused Flag
 #define FLAG_UNUSED_0x280  0x280 // Unused Flag
@@ -757,6 +762,14 @@
 #define FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG                      0x2BC
 #define FLAG_HIDE_APPRENTICE                                        0x2BD
 #define FLAG_HIDE_POKEMON_CENTER_2F_MYSTERY_GIFT_MAN                0x2BE
+#define FLAG_HIDE_UNION_ROOM_PLAYER_1                               0x2BF
+#define FLAG_HIDE_UNION_ROOM_PLAYER_2                               0x2C0
+#define FLAG_HIDE_UNION_ROOM_PLAYER_3                               0x2C1
+#define FLAG_HIDE_UNION_ROOM_PLAYER_4                               0x2C2
+#define FLAG_HIDE_UNION_ROOM_PLAYER_5                               0x2C3
+#define FLAG_HIDE_UNION_ROOM_PLAYER_6                               0x2C4
+#define FLAG_HIDE_UNION_ROOM_PLAYER_7                               0x2C5
+#define FLAG_HIDE_UNION_ROOM_PLAYER_8                               0x2C6
 #define FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_1               0x2C7
 #define FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_2               0x2C8
 #define FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_3               0x2C9
@@ -772,9 +785,9 @@
 #define FLAG_HIDE_ROUTE_103_RIVAL                                   0x2D3
 #define FLAG_HIDE_PETALBURG_WOODS_DEVON_EMPLOYEE                    0x2D4
 #define FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT                        0x2D5
-#define FLAG_HIDE_PETALBURG_CITY_WALLY                              0x2D6
+#define FLAG_HIDE_PETALBURG_CITY_WALLY                              0x2D6 //unused with story beat removal
 #define FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_INVISIBLE_NINJA_BOY   0x2D7
-#define FLAG_HIDE_PETALBURG_CITY_WALLYS_MOM                         0x2D8
+#define FLAG_HIDE_PETALBURG_CITY_WALLYS_MOM                         0x2D8 //unused with story beat removal
 
 #define FLAG_UNUSED_0x2D9                                           0x2D9 // Unused Flag
 
@@ -872,13 +885,13 @@
 #define FLAG_HIDE_AQUA_HIDEOUT_1F_GRUNT_1_BLOCKING_ENTRANCE         0x335
 #define FLAG_HIDE_AQUA_HIDEOUT_1F_GRUNT_2_BLOCKING_ENTRANCE         0x336
 #define FLAG_HIDE_MOSSDEEP_CITY_TEAM_MAGMA                          0x337
-#define FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD                          0x338
+#define FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD                          0x338 // unused with story beat removal
 #define FLAG_HIDE_LEGEND_MON_CAVE_OF_ORIGIN                         0x339 // Unused, leftover from R/S
 #define FLAG_HIDE_SOOTOPOLIS_CITY_ARCHIE                            0x33A
 #define FLAG_HIDE_SOOTOPOLIS_CITY_MAXIE                             0x33B
 #define FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_ARCHIE                     0x33C
 #define FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_MAXIE                      0x33D
-#define FLAG_HIDE_PETALBURG_CITY_WALLYS_DAD                         0x33E
+#define FLAG_HIDE_PETALBURG_CITY_WALLYS_DAD                         0x33E //unused with story beat removal
 #define FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_MAGMA_GRUNTS               0x33F
 #define FLAG_HIDE_LILYCOVE_CONTEST_HALL_BLEND_MASTER                0x340
 #define FLAG_HIDE_GRANITE_CAVE_STEVEN                               0x341
@@ -914,7 +927,7 @@
 #define FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_STEVEN              0x35F
 #define FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_ALT_1           0x360
 #define FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_ALT_2           0x361
-#define FLAG_HIDE_PETALBURG_GYM_WALLY                               0x362
+#define FLAG_HIDE_PETALBURG_GYM_WALLY                               0x362 // unused with story beat removal
 #define FLAG_UNKNOWN_0x363                                          0x363 // Set, however has no purpose.
 #define FLAG_HIDE_LITTLEROOT_TOWN_FAT_MAN                           0x364
 #define FLAG_HIDE_SLATEPORT_CITY_STERNS_SHIPYARD_MR_BRINEY          0x365
@@ -1009,7 +1022,7 @@
 #define FLAG_RECEIVED_SHOAL_SHELL_3                                 0x3BE
 #define FLAG_RECEIVED_SHOAL_SHELL_4                                 0x3BF
 #define FLAG_HIDE_ROUTE_111_SECRET_POWER_MAN                        0x3C0
-#define FLAG_HIDE_SLATEPORT_MUSEUM_POPULATION                       0x3C1
+#define FLAG_HIDE_SLATEPORT_MUSEUM_POPULATION                       0x3C1 //technically unused but it's being referenced in the scripts still, will clean up later
 #define FLAG_HIDE_LILYCOVE_DEPARTMENT_STORE_ROOFTOP_SALE_WOMAN      0x3C2
 #define FLAG_HIDE_MIRAGE_TOWER_ROOT_FOSSIL                          0x3C3
 #define FLAG_HIDE_MIRAGE_TOWER_CLAW_FOSSIL                          0x3C4
@@ -1356,15 +1369,15 @@
 #define FLAG_UNLOCKED_TRENDY_SAYINGS                 (SYSTEM_FLAGS + 0x6)
 
 // Badges
-#define FLAG_BADGE01_GET                      (SYSTEM_FLAGS + 0x7)
-#define FLAG_BADGE02_GET                      (SYSTEM_FLAGS + 0x8)
-#define FLAG_BADGE03_GET                      (SYSTEM_FLAGS + 0x9)
-#define FLAG_BADGE04_GET                      (SYSTEM_FLAGS + 0xA)
-#define FLAG_BADGE05_GET                      (SYSTEM_FLAGS + 0xB)
-#define FLAG_BADGE06_GET                      (SYSTEM_FLAGS + 0xC)
-#define FLAG_BADGE07_GET                      (SYSTEM_FLAGS + 0xD)
-#define FLAG_BADGE08_GET                      (SYSTEM_FLAGS + 0xE)
-#define NUM_BADGES                            (1 + FLAG_BADGE08_GET - FLAG_BADGE01_GET)
+#define FLAG_BADGE01_GET                             (SYSTEM_FLAGS + 0x7)
+#define FLAG_BADGE02_GET                             (SYSTEM_FLAGS + 0x8)
+#define FLAG_BADGE03_GET                             (SYSTEM_FLAGS + 0x9)
+#define FLAG_BADGE04_GET                             (SYSTEM_FLAGS + 0xA)
+#define FLAG_BADGE05_GET                             (SYSTEM_FLAGS + 0xB)
+#define FLAG_BADGE06_GET                             (SYSTEM_FLAGS + 0xC)
+#define FLAG_BADGE07_GET                             (SYSTEM_FLAGS + 0xD)
+#define FLAG_BADGE08_GET                             (SYSTEM_FLAGS + 0xE)
+#define NUM_BADGES                                   (1 + FLAG_BADGE08_GET - FLAG_BADGE01_GET)
 
 // Towns and Cities
 #define FLAG_VISITED_LITTLEROOT_TOWN                (SYSTEM_FLAGS + 0xF)
@@ -1485,11 +1498,9 @@
 #define FLAG_MAP_SCRIPT_CHECKED_DEOXYS              (SYSTEM_FLAGS + 0x73)
 #define FLAG_DEOXYS_ROCK_COMPLETE                   (SYSTEM_FLAGS + 0x74)
 #define FLAG_ENABLE_SHIP_BIRTH_ISLAND               (SYSTEM_FLAGS + 0x75)
-#define FLAG_ENABLE_SHIP_FARAWAY_ISLAND             (SYSTEM_FLAGS + 0x76)
 
 #define FLAG_SHOWN_BOX_WAS_FULL_MESSAGE             (SYSTEM_FLAGS + 0x77)
 
-#define FLAG_ARRIVED_ON_FARAWAY_ISLAND              (SYSTEM_FLAGS + 0x78)
 #define FLAG_ARRIVED_AT_MARINE_CAVE_EMERGE_SPOT     (SYSTEM_FLAGS + 0x79)
 #define FLAG_ARRIVED_AT_TERRA_CAVE_ENTRANCE         (SYSTEM_FLAGS + 0x7A)
 
@@ -1722,14 +1733,6 @@
 #define FLAG_HIDE_DOJO_HITMONLEE_BALL                      0
 #define FLAG_HIDE_DOJO_HITMONCHAN_BALL                     0
 #define FLAG_HIDE_CINNABAR_BILL                            0
-#define FLAG_HIDE_UNION_ROOM_PLAYER_1                      0
-#define FLAG_HIDE_UNION_ROOM_PLAYER_2                      0
-#define FLAG_HIDE_UNION_ROOM_PLAYER_3                      0
-#define FLAG_HIDE_UNION_ROOM_PLAYER_4                      0
-#define FLAG_HIDE_UNION_ROOM_PLAYER_5                      0
-#define FLAG_HIDE_UNION_ROOM_PLAYER_6                      0
-#define FLAG_HIDE_UNION_ROOM_PLAYER_7                      0
-#define FLAG_HIDE_UNION_ROOM_PLAYER_8                      0
 #define FLAG_HIDE_CINNABAR_SEAGALLOP                       0
 #define FLAG_HIDE_SAFFRON_FAN_CLUB_BLACKBELT               0
 #define FLAG_HIDE_SAFFRON_FAN_CLUB_ROCKER                  0

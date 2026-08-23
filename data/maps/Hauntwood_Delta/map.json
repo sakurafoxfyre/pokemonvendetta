@@ -1,0 +1,102 @@
+{
+  "id": "MAP_HAUNTWOOD_DELTA",
+  "name": "Hauntwood_Delta",
+  "layout": "LAYOUT_HAUNTWOOD_DELTA",
+  "music": "MUS_ROUTE122",
+  "region_map_section": "MAPSEC_ROUTE_123",
+  "requires_flash": false,
+  "weather": "WEATHER_SUNNY",
+  "map_type": "MAP_TYPE_ROUTE",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "map": "MAP_HAUNTWOOD_ALEPH",
+      "offset": -9,
+      "direction": "right"
+    },
+    {
+      "map": "MAP_HAUNTWOOD_BET",
+      "offset": 14,
+      "direction": "right"
+    }
+  ],
+  "object_events": [],
+  "warp_events": [
+    {
+      "x": 2,
+      "y": 23,
+      "elevation": 0,
+      "dest_map": "MAP_HAUNTWOOD_BET",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 3,
+      "y": 23,
+      "elevation": 0,
+      "dest_map": "MAP_HAUNTWOOD_BET",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 10,
+      "y": 8,
+      "elevation": 0,
+      "dest_map": "MAP_HAUNTWOOD_DELTA",
+      "dest_warp_id": "4"
+    },
+    {
+      "x": 11,
+      "y": 8,
+      "elevation": 0,
+      "dest_map": "MAP_HAUNTWOOD_DELTA",
+      "dest_warp_id": "5"
+    },
+    {
+      "x": 18,
+      "y": 2,
+      "elevation": 0,
+      "dest_map": "MAP_HAUNTWOOD_CHARLIE",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 19,
+      "y": 2,
+      "elevation": 0,
+      "dest_map": "MAP_HAUNTWOOD_CHARLIE",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 12,
+      "y": 0,
+      "elevation": 0,
+      "dest_map": "MAP_HAUNTWOOD_BET",
+      "dest_warp_id": "4"
+    },
+    {
+      "x": 13,
+      "y": 0,
+      "elevation": 0,
+      "dest_map": "MAP_HAUNTWOOD_BET",
+      "dest_warp_id": "5"
+    },
+    {
+      "x": 2,
+      "y": 0,
+      "elevation": 0,
+      "dest_map": "MAP_HAUNTWOOD_EPSILON",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 3,
+      "y": 0,
+      "elevation": 0,
+      "dest_map": "MAP_HAUNTWOOD_EPSILON",
+      "dest_warp_id": "1"
+    }
+  ],
+  "coord_events": [],
+  "bg_events": []
+}

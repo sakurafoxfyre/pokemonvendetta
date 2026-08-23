@@ -105,7 +105,7 @@ BattlePyramid_WarpToTop::
 
 @ TRAINER_PHILLIP is used as a placeholder
 BattlePyramid_TrainerBattle::
-	facilitytrainerbattle FACILITY_BATTLE_PYRAMID
+	trainerbattle TRAINER_BATTLE_PYRAMID, LOCALID_NONE, TRAINER_PHILLIP, BattleFacility_TrainerBattle_PlaceholderText, BattleFacility_TrainerBattle_PlaceholderText, NULL, LOCALID_NONE, TRAINER_NONE, NULL, NULL, NULL, NULL, NULL, FALSE, FALSE, FALSE, FALSE
 	pyramid_showhint
 	waitmessage
 	waitbuttonpress
@@ -124,7 +124,6 @@ BattlePyramid_FindItemBallEnd::
 BattlePyramid_Retire::
 	goto BattleFrontier_BattlePyramid_EventScript_WarpToLobbyLost
 
-@ Also used by Trainer Hill
 BattleFacility_TrainerBattle_PlaceholderText:
 	.string "This is a sample message.$"
 
