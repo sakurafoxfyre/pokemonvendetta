@@ -55,6 +55,13 @@
 // vendetta vars
 #define VAR_WORLD_DIFFICULTY                             0x4100
 #define VAR_NUMBER_OF_KEYS                               0x4101
+#define VAR_TATE_LIZA_STATE                              0x4102
+
+// vendetta - stretch levels
+
+// vendetta - anchor levels
+
+// vendetta - anchor boss aces
 
 // double check/unsure
 #define VAR_ICE_STEP_COUNT                               0x4200

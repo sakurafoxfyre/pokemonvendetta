@@ -38,7 +38,7 @@
     .iv = TRAINER_PARTY_IVS(7, 7, 7, 7, 7, 7),
     .lvl = 10,
     .nature = NATURE_HARDY,
-    /.ability = ABILITY_LIFE_VEST,
+    /*.ability = ABILITY_LIFE_VEST,*/
     .dynamaxLevel = MAX_DYNAMAX_LEVEL,
 },
 

@@ -30,3 +30,4 @@ Route107_EventScript_Carter::
 	trainerbattle_single TRAINER_CARTER, Route109_Text_CarterIntro, Route109_Text_CarterDefeated
 	msgbox Route109_Text_CarterPostBattle, MSGBOX_AUTOCLOSE
 	end
+	
