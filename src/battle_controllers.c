@@ -2736,8 +2736,6 @@ void BtlController_HandleStatusIconUpdate(enum BattlerId battler)
             UpdateHealthboxAttribute(gHealthboxSpriteIds[battler], mon, HEALTHBOX_STATUS_ICON);
             gBattleSpritesDataPtr->healthBoxesData[battler].statusAnimActive = 0;
             gBattlerControllerFuncs[battler] = Controller_WaitForStatusAnimation;
-            if (gTestRunnerEnabled && BattlerIsRecorded(battler))
-                TestRunner_Battle_RecordStatus1(battler, GetMonData(GetBattlerMon(battler), MON_DATA_STATUS));
         }
     }
 }

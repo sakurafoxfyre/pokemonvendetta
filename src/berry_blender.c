@@ -29,7 +29,6 @@
 #include "trig.h"
 #include "tv.h"
 #include "item_menu.h"
-#include "battle_records.h"
 #include "graphics.h"
 #include "new_game.h"
 #include "save.h"
@@ -3744,13 +3743,13 @@ void ShowBerryBlenderRecordWindow(void)
     u8 text[32];
 
     winTemplate = sBlenderRecordWindowTemplate;
-    gRecordsWindowId = AddWindow(&winTemplate);
-    DrawStdWindowFrame(gRecordsWindowId, FALSE);
-    FillWindowPixelBuffer(gRecordsWindowId, PIXEL_FILL(1));
+    //gRecordsWindowId = AddWindow(&winTemplate);
+    //DrawStdWindowFrame(gRecordsWindowId, FALSE);
+    //FillWindowPixelBuffer(gRecordsWindowId, PIXEL_FILL(1));
 
     xPos = GetStringCenterAlignXOffset(FONT_NORMAL, sText_BlenderMaxSpeedRecord, 144);
-    AddTextPrinterParameterized(gRecordsWindowId, FONT_NORMAL, sText_BlenderMaxSpeedRecord, xPos, 1, 0, NULL);
-    AddTextPrinterParameterized(gRecordsWindowId, FONT_NORMAL, sText_234Players, 4, 41, 0, NULL);
+    //AddTextPrinterParameterized(gRecordsWindowId, FONT_NORMAL, sText_BlenderMaxSpeedRecord, xPos, 1, 0, NULL);
+    //AddTextPrinterParameterized(gRecordsWindowId, FONT_NORMAL, sText_234Players, 4, 41, 0, NULL);
 
     for (i = 0, yPos = 41; i < NUM_SCORE_TYPES; i++)
     {
@@ -3765,11 +3764,11 @@ void ShowBerryBlenderRecordWindow(void)
         txtPtr = StringAppend(txtPtr, sText_RPM);
 
         xPos = GetStringRightAlignXOffset(FONT_NORMAL, text, 140);
-        AddTextPrinterParameterized(gRecordsWindowId, FONT_NORMAL, text, xPos, yPos + (i * 16), 0, NULL);
+        //AddTextPrinterParameterized(gRecordsWindowId, FONT_NORMAL, text, xPos, yPos + (i * 16), 0, NULL);
     }
 
-    PutWindowTilemap(gRecordsWindowId);
-    CopyWindowToVram(gRecordsWindowId, COPYWIN_FULL);
+    //PutWindowTilemap(gRecordsWindowId);
+    //CopyWindowToVram(gRecordsWindowId, COPYWIN_FULL);
 }
 
 static void Task_PlayPokeblockFanfare(u8 taskId)

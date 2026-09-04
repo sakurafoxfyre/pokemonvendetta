@@ -25,7 +25,6 @@
 #include "text.h"
 #include "overworld.h"
 #include "mail.h"
-#include "battle_records.h"
 #include "item.h"
 #include "pokedex.h"
 #include "apprentice.h"
@@ -44,7 +43,6 @@
 #include "player_pc.h"
 #include "field_specials.h"
 #include "berry_powder.h"
-#include "mystery_gift.h"
 #include "union_room_chat.h"
 #include "constants/map_groups.h"
 #include "constants/items.h"
@@ -63,6 +61,7 @@ static void WarpToTruck(void);
 static void ResetMiniGamesRecords(void);
 static void ResetItemFlags(void);
 static void ResetDexNav(void);
+static void SpecialtyTrainerSetup(void);
 
 EWRAM_DATA bool8 gDifferentSaveFile = FALSE;
 EWRAM_DATA bool8 gEnableContestDebugging = FALSE;
@@ -193,7 +192,6 @@ void NewGameInitData(void)
     ResetLinkContestBoolean();
     ResetGameStats();
     ClearAllContestWinnerPics();
-    ClearPlayerLinkBattleRecords();
     InitSeedotSizeRecord();
     InitLotadSizeRecord();
     gPartiesCount[B_TRAINER_PLAYER] = 0;
@@ -224,7 +222,6 @@ void NewGameInitData(void)
     InitLilycoveLady();
     ResetAllApprenticeData();
     ClearRankingHallRecords();
-    ClearMysteryGift();
     WipeTrainerNameRecords();
     ResetTrainerHillResults();
     ResetTrainerTowerResults();
@@ -265,15 +262,15 @@ static void ResetDexNav(void)
     gSaveBlock3Ptr->dexNavChain = 0;
 }
 
-void SpecialtyTrainerSetup(void) {
+static void SpecialtyTrainerSetup(void) {
     //rolls tate/liza gym/e4
     int tatelizaroll = Random() % 2;
     if (tatelizaroll == 0)
         VarSet(VAR_TATE_LIZA_STATE, 0);
     else
         VarSet(VAR_TATE_LIZA_STATE, 1);
-        gTrainerClasses[TRAINER_CLASS_LIZA] = { _("ELITE FOUR"), 1};
-        gTrainerClasses[TRAINER_CLASS_TATE] = { _("GYM LEADER"), 1};
+        gTrainerClasses[TRAINER_CLASS_LIZA] = (struct TrainerClass){ _("ELITE FOUR"), 1};
+        gTrainerClasses[TRAINER_CLASS_TATE] = (struct TrainerClass){ _("GYM LEADER"), 1};
 
     //rolls boss and e4 aces
     VarSet(VAR_ROXANNE_ACE, Random() % 3);

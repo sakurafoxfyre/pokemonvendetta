@@ -2443,12 +2443,6 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
         .description = COMPOUND_STRING("Unimplemented."),
     },
 
-    [ABILITY_314] =
-    {
-        .name = _("-------"),
-        .description = COMPOUND_STRING("No special ability."),
-    },
-
     [ABILITY_MEGA_SOL] =
     {
         .name = _("Mega Sol"),
@@ -2459,12 +2453,6 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     {
         .name = _("Fire Mane"),
         .description = COMPOUND_STRING("Unimplemented."),
-    },
-
-    [ABILITY_317] =
-    {
-        .name = _("-------"),
-        .description = COMPOUND_STRING("No special ability."),
     },
 
     [ABILITY_SPICY_SPRAY] =

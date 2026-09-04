@@ -30,7 +30,6 @@
 #include "main.h"
 #include "menu.h"
 #include "metatile_behavior.h"
-#include "mystery_gift.h"
 #include "overworld.h"
 #include "party_menu.h"
 #include "pokeblock.h"
@@ -156,11 +155,6 @@ static void SetInitialFansOfPlayer(void);
 static u16 PlayerGainRandomTrainerFan(void);
 static void CB2_ReturnToFieldWhileLearningMove(void);
 static void Task_ReturnToFieldWhileLearningMove(u8);
-#if FREE_LINK_BATTLE_RECORDS == FALSE
-static void BufferFanClubTrainerName_(struct LinkBattleRecords *, u8, u8);
-#else
-static void BufferFanClubTrainerName_(u8 whichLinkTrainer, u8 whichNPCTrainer);
-#endif //FREE_LINK_BATTLE_RECORDS
 static void Task_ElevatorShake(u8 taskId);
 static void AnimateElevatorWindowView(u16 nfloors, bool8 direction);
 static void Task_AnimateElevatorWindowView(u8 taskId);
@@ -1721,21 +1715,7 @@ void BufferLottoTicketNumber(void)
 
 u16 GetMysteryGiftCardStat(void)
 {
-    switch (gSpecialVar_Result)
-    {
-    case GET_NUM_STAMPS:
-        return MysteryGift_GetCardStat(CARD_STAT_NUM_STAMPS);
-    case GET_MAX_STAMPS:
-        return MysteryGift_GetCardStat(CARD_STAT_MAX_STAMPS);
-    case GET_CARD_BATTLES_WON:
-        return MysteryGift_GetCardStat(CARD_STAT_BATTLES_WON);
-    case GET_CARD_BATTLES_LOST: // Never occurs
-        return MysteryGift_GetCardStat(CARD_STAT_BATTLES_LOST);
-    case GET_CARD_NUM_TRADES: // Never occurs
-        return MysteryGift_GetCardStat(CARD_STAT_NUM_TRADES);
-    default:
-        return 0;
-    }
+    return 0;
 }
 
 bool8 BufferTMHMMoveName(void)
@@ -4227,111 +4207,8 @@ static void SetInitialFansOfPlayer(void)
 
 void BufferFanClubTrainerName(void)
 {
-    u8 whichLinkTrainer = 0;
-    u8 whichNPCTrainer = 0;
-    switch (gSpecialVar_0x8004)
-    {
-    case FANCLUB_MEMBER1:
-        break;
-    case FANCLUB_MEMBER2:
-        break;
-    case FANCLUB_MEMBER3:
-        whichLinkTrainer = 0;
-        whichNPCTrainer = 3;
-        break;
-    case FANCLUB_MEMBER4:
-        whichLinkTrainer = 0;
-        whichNPCTrainer = 1;
-        break;
-    case FANCLUB_MEMBER5:
-        whichLinkTrainer = 1;
-        whichNPCTrainer = 0;
-        break;
-    case FANCLUB_MEMBER6:
-        whichLinkTrainer = 0;
-        whichNPCTrainer = 4;
-        break;
-    case FANCLUB_MEMBER7:
-        whichLinkTrainer = 1;
-        whichNPCTrainer = 5;
-        break;
-    case FANCLUB_MEMBER8:
-        break;
-    }
-#if FREE_LINK_BATTLE_RECORDS == FALSE
-    BufferFanClubTrainerName_(&gSaveBlock1Ptr->linkBattleRecords, whichLinkTrainer, whichNPCTrainer);
-#else
-    BufferFanClubTrainerName_(whichLinkTrainer, whichNPCTrainer);
-#endif //FREE_LINK_BATTLE_RECORDS
+    
 }
-
-#if FREE_LINK_BATTLE_RECORDS == FALSE
-static void BufferFanClubTrainerName_(struct LinkBattleRecords *linkRecords, u8 whichLinkTrainer, u8 whichNPCTrainer)
-{
-    struct LinkBattleRecord *record = &linkRecords->entries[whichLinkTrainer];
-    if (record->name[0] == EOS)
-    {
-        switch (whichNPCTrainer)
-        {
-        case 0:
-            StringCopy(gStringVar1, sText_Wallace);
-            break;
-        case 1:
-            StringCopy(gStringVar1, sText_Steven);
-            break;
-        case 2:
-            StringCopy(gStringVar1, sText_Brawly);
-            break;
-        case 3:
-            StringCopy(gStringVar1, sText_Winona);
-            break;
-        case 4:
-            StringCopy(gStringVar1, sText_Phoebe);
-            break;
-        case 5:
-            StringCopy(gStringVar1, sText_Glacia);
-            break;
-        default:
-            StringCopy(gStringVar1, sText_Wallace);
-            break;
-        }
-    }
-    else
-    {
-        StringCopyN(gStringVar1, record->name, PLAYER_NAME_LENGTH);
-        gStringVar1[PLAYER_NAME_LENGTH] = EOS;
-        ConvertInternationalString(gStringVar1, linkRecords->languages[whichLinkTrainer]);
-    }
-}
-#else
-static void BufferFanClubTrainerName_(u8 whichLinkTrainer, u8 whichNPCTrainer)
-{
-    switch (whichNPCTrainer)
-    {
-    case 0:
-        StringCopy(gStringVar1, sText_Wallace);
-        break;
-    case 1:
-        StringCopy(gStringVar1, sText_Steven);
-        break;
-    case 2:
-        StringCopy(gStringVar1, sText_Brawly);
-        break;
-    case 3:
-        StringCopy(gStringVar1, sText_Winona);
-        break;
-    case 4:
-        StringCopy(gStringVar1, sText_Phoebe);
-        break;
-    case 5:
-        StringCopy(gStringVar1, sText_Glacia);
-        break;
-    default:
-        StringCopy(gStringVar1, sText_Wallace);
-        break;
-    }
-}
-#endif //FREE_LINK_BATTLE_RECORDS
 
 void UpdateTrainerFansAfterLinkBattle(void)
 {

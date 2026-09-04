@@ -15,7 +15,6 @@
 #include "graphics.h"
 #include "international_string_util.h"
 #include "main.h"
-#include "mystery_gift.h"
 #include "menu.h"
 #include "move.h"
 #include "overworld.h"
@@ -1493,9 +1492,6 @@ void ShowEasyChatScreen(void)
         break;
     case EASY_CHAT_TYPE_APPRENTICE:
         words = gSaveBlock2Ptr->apprentices[0].speechWon;
-        break;
-    case EASY_CHAT_TYPE_QUESTIONNAIRE:
-        words = GetQuestionnaireWordsPtr();
         break;
     default:
         return;
@@ -5818,7 +5814,7 @@ void InitializeEasyChatWordArray(u16 *words, u16 length)
 void InitQuestionnaireWords(void)
 {
     int i;
-    u16 *words = GetQuestionnaireWordsPtr();
+    //u16 *words = GetQuestionnaireWordsPtr();
 
     if (words != NULL)
     {

@@ -77,7 +77,6 @@ static void SetOptionInvisibility(struct Sprite **, bool32);
 static void SpriteCB_OptionSlide(struct Sprite *);
 static void SpriteCB_OptionZoom(struct Sprite *);
 static void Task_OptionBlend(u8);
-static void SpriteCB_BlinkingBlueLight(struct Sprite *);
 static void DestroyRematchBlueLightSprite(void);
 static void AddOptionDescriptionWindow(void);
 static void PrintCurrentOptionDescription(void);
@@ -1149,16 +1148,6 @@ static void DestroyRematchBlueLightSprite(void)
 {
     struct Pokenav_MenuGfx *gfx = GetSubstructPtr(POKENAV_SUBSTRUCT_MENU_GFX);
     DestroySprite(gfx->blueLightSprite);
-}
-
-static void SpriteCB_BlinkingBlueLight(struct Sprite *sprite)
-{
-    sprite->data[0]++;
-    if (sprite->data[0] > 8)
-    {
-        sprite->data[0] = 0;
-        sprite->invisible ^= 1;
-    }
 }
 
 static void AddOptionDescriptionWindow(void)

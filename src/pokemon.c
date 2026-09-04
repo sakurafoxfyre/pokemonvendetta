@@ -4930,9 +4930,19 @@ void AdjustFriendship(struct Pokemon *mon, u8 event)
                 return;
 
             enum TrainerClassID opponentTrainerClass = GetTrainerClassFromId(TRAINER_BATTLE_PARAM.opponentA);
-            if (!(opponentTrainerClass == TRAINER_CLASS_LEADER
-                || opponentTrainerClass == TRAINER_CLASS_ELITE_FOUR
-                || opponentTrainerClass == TRAINER_CLASS_CHAMPION))
+            if (!(opponentTrainerClass == TRAINER_CLASS_ROXANNE
+                || opponentTrainerClass == TRAINER_CLASS_BRAWLY
+                || opponentTrainerClass == TRAINER_CLASS_WALLY
+                || opponentTrainerClass == TRAINER_CLASS_FLANNERY
+                || opponentTrainerClass == TRAINER_CLASS_WALLACE
+                || opponentTrainerClass == TRAINER_CLASS_MAY
+                || opponentTrainerClass == TRAINER_CLASS_TATE
+                || opponentTrainerClass == TRAINER_CLASS_LIZA
+                || opponentTrainerClass == TRAINER_CLASS_ZINNIA
+                || opponentTrainerClass == TRAINER_CLASS_PHOEBE
+                || opponentTrainerClass == TRAINER_CLASS_NORMAN
+                || opponentTrainerClass == TRAINER_CLASS_BRENDAN
+                || opponentTrainerClass == TRAINER_CLASS_STEVEN))
                 return;
         }
 
@@ -5213,39 +5223,54 @@ u16 GetBattleBGM(void)
 
         switch (trainerClass)
         {
-        case TRAINER_CLASS_AQUA_LEADER:
-        case TRAINER_CLASS_MAGMA_LEADER:
+        case TRAINER_CLASS_ARCHIE:
+        case TRAINER_CLASS_COURTNEY:
+        case TRAINER_CLASS_CERISE:
             return MUS_VS_AQUA_MAGMA_LEADER;
         case TRAINER_CLASS_TEAM_AQUA:
         case TRAINER_CLASS_TEAM_MAGMA:
         case TRAINER_CLASS_AQUA_ADMIN:
         case TRAINER_CLASS_MAGMA_ADMIN:
             return MUS_VS_AQUA_MAGMA;
-        case TRAINER_CLASS_LEADER:
+        case TRAINER_CLASS_ROXANNE:
+        case TRAINER_CLASS_BRAWLY:
+        case TRAINER_CLASS_WALLY:
+        case TRAINER_CLASS_FLANNERY:
+        case TRAINER_CLASS_MAY:
+        case TRAINER_CLASS_WALLACE:
+        case TRAINER_CLASS_TATE:
+            if (*GetVarPointer(VAR_TATE_LIZA_STATE) == 1)
+                return MUS_VS_ELITE_FOUR;
+        case TRAINER_CLASS_ZINNIA:
             return MUS_VS_GYM_LEADER;
-        case TRAINER_CLASS_CHAMPION:
+        case TRAINER_CLASS_STEVEN:
             return MUS_VS_CHAMPION;
-        case TRAINER_CLASS_RIVAL:
+        case TRAINER_CLASS_DUNCAN:
             if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
                 return MUS_VS_RIVAL;
             if (!StringCompare(GetTrainerNameFromId(TRAINER_BATTLE_PARAM.opponentA), gText_BattleWallyName))
                 return MUS_VS_TRAINER;
             return MUS_VS_RIVAL;
-        case TRAINER_CLASS_ELITE_FOUR:
+        case TRAINER_CLASS_PHOEBE:
+        case TRAINER_CLASS_NORMAN:
+        case TRAINER_CLASS_LIZA:
+            if (*GetVarPointer(VAR_TATE_LIZA_STATE) == 1)
+                return MUS_VS_GYM_LEADER;
+        case TRAINER_CLASS_BRENDAN:
             return MUS_VS_ELITE_FOUR;
         case TRAINER_CLASS_CHAMPION_FRLG:
             return MUS_RG_VS_CHAMPION;
         case TRAINER_CLASS_LEADER_FRLG:
         case TRAINER_CLASS_ELITE_FOUR_FRLG:
             return MUS_RG_VS_GYM_LEADER;
-        case TRAINER_CLASS_SALON_MAIDEN:
-        case TRAINER_CLASS_DOME_ACE:
-        case TRAINER_CLASS_PALACE_MAVEN:
-        case TRAINER_CLASS_ARENA_TYCOON:
-        case TRAINER_CLASS_FACTORY_HEAD:
-        case TRAINER_CLASS_PIKE_QUEEN:
-        case TRAINER_CLASS_PYRAMID_KING:
-            return MUS_VS_FRONTIER_BRAIN;
+        // case TRAINER_CLASS_SALON_MAIDEN:
+        // case TRAINER_CLASS_DOME_ACE:
+        // case TRAINER_CLASS_PALACE_MAVEN:
+        // case TRAINER_CLASS_ARENA_TYCOON:
+        // case TRAINER_CLASS_FACTORY_HEAD:
+        // case TRAINER_CLASS_PIKE_QUEEN:
+        // case TRAINER_CLASS_PYRAMID_KING:
+        //     return MUS_VS_FRONTIER_BRAIN;
         default:
             if (GetCurrentRegion() == REGION_KANTO)
                 return MUS_RG_VS_TRAINER;

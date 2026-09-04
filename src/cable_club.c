@@ -1,7 +1,6 @@
 #include "global.h"
 #include "main.h"
 #include "battle.h"
-#include "battle_records.h"
 #include "battle_setup.h"
 #include "cable_club.h"
 #include "data.h"
@@ -18,7 +17,6 @@
 #include "overworld.h"
 #include "palette.h"
 #include "union_room.h"
-#include "mystery_gift.h"
 #include "script.h"
 #include "script_pokemon_util.h"
 #include "sound.h"
@@ -997,7 +995,6 @@ void CB2_ReturnFromCableClubBattle(void)
 
     if (gSpecialVar_0x8004 == USING_SINGLE_BATTLE || gSpecialVar_0x8004 == USING_DOUBLE_BATTLE)
     {
-        UpdatePlayerLinkBattleRecords(gLocalLinkPlayerId ^ 1);
         if (gWirelessCommType)
         {
             switch (gBattleOutcome)

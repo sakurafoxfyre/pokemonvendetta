@@ -24,7 +24,6 @@
 #include "load_save.h"
 #include "menu.h"
 #include "menu_helpers.h"
-#include "mystery_gift.h"
 #include "mystery_gift_menu.h"
 #include "overworld.h"
 #include "palette.h"
@@ -1541,11 +1540,6 @@ static void Task_ExchangeCards(u8 taskId)
                 // If the player has a saved Wonder Card and it is the same Wonder Card
                 // as their partner then mystery gift stats are enabled.
                 recvBuff = gBlockRecvBuffer[GetMultiplayerId() ^ 1];
-                MysteryGift_TryEnableStatsByFlagId(((struct TrainerCard *)recvBuff)->hasAllFrontierSymbols);
-            }
-            else
-            {
-                MysteryGift_DisableStats();
             }
 
             ResetBlockReceivedFlags();
@@ -1633,15 +1627,11 @@ static void CreateTrainerCardInBuffer(void *dest, bool32 setWonderCard)
     TrainerCard_GenerateCardForLinkPlayer(card);
 
     // Below field is re-used, to be read by Task_ExchangeCards
-    if (setWonderCard)
-        card->hasAllFrontierSymbols = GetWonderCardFlagID();
-    else
-        card->hasAllFrontierSymbols = 0;
+    card->hasAllFrontierSymbols = 0;
 }
 
 static void Task_StartActivity(u8 taskId)
 {
-    MysteryGift_DisableStats();
     switch (gPlayerCurrActivity)
     {
     case ACTIVITY_BATTLE_SINGLE:

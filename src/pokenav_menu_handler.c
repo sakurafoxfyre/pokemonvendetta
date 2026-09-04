@@ -25,8 +25,6 @@ static u32 CB2_ReturnToMainMenu(struct Pokenav_Menu *);
 static u32 HandleConditionSearchMenuInput(struct Pokenav_Menu *);
 static u32 HandleConditionMenuInput(struct Pokenav_Menu *);
 static u32 HandleCantOpenRibbonsInput(struct Pokenav_Menu *);
-static u32 HandleMainMenuInputEndTutorial(struct Pokenav_Menu *);
-static u32 HandleMainMenuInputTutorial(struct Pokenav_Menu *);
 static u32 HandleMainMenuInput(struct Pokenav_Menu *);
 static u32 (*GetMainMenuInputHandler(void))(struct Pokenav_Menu *);
 static void SetMenuInputHandler(struct Pokenav_Menu *);
@@ -166,10 +164,6 @@ static u32 (*GetMainMenuInputHandler(void))(struct Pokenav_Menu *)
     default:
     case POKENAV_MODE_NORMAL:
         return HandleMainMenuInput;
-    case POKENAV_MODE_FORCE_CALL_READY:
-        return HandleMainMenuInputTutorial;
-    case POKENAV_MODE_FORCE_CALL_EXIT:
-        return HandleMainMenuInputEndTutorial;
     }
 }
 

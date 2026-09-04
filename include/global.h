@@ -1165,9 +1165,6 @@ struct SaveBlock1
     /*0x2e64*/ struct DewfordTrend dewfordTrends[SAVED_TRENDS_COUNT];
     /*0x2e90*/ struct ContestWinner contestWinners[NUM_CONTEST_WINNERS]; // see CONTEST_WINNER_*
     /*0x3030*/ struct DayCare daycare;
-#if FREE_LINK_BATTLE_RECORDS == FALSE
-    /*0x3150*/ struct LinkBattleRecords linkBattleRecords;
-#endif //FREE_LINK_BATTLE_RECORDS
     /*0x31A8*/ u8 giftRibbons[NUM_GIFT_RIBBONS];
                u8 padding[4];
     /*0x31B3*/ struct ExternalEventData externalEventData;
@@ -1176,26 +1173,14 @@ struct SaveBlock1
 #if FREE_ENIGMA_BERRY == FALSE
     /*0x31F8*/ struct EnigmaBerry enigmaBerry;
 #endif //FREE_ENIGMA_BERRY
-#if FREE_MYSTERY_GIFT == FALSE
-    /*0x322C*/ struct MysteryGiftSave mysteryGift;
-#endif //FREE_MYSTERY_GIFT
     /*0x3???*/ u8 dexSeen[NUM_DEX_FLAG_BYTES];
     /*0x3???*/ u8 dexCaught[NUM_DEX_FLAG_BYTES];
 #if FREE_TRAINER_HILL == FALSE
     /*0x3???*/ u32 trainerHillTimes[NUM_TRAINER_HILL_MODES];
 #endif //FREE_TRAINER_HILL
-#if FREE_MYSTERY_EVENT_BUFFERS == FALSE
-    /*0x3???*/ struct RamScript ramScript;
-#endif //FREE_MYSTERY_EVENT_BUFFERS
     /*0x3???*/ struct RecordMixingGift recordMixingGift;
     /*0x3???*/ LilycoveLady lilycoveLady;
     /*0x3???*/ struct TrainerNameRecord trainerNameRecords[20];
-#if FREE_UNION_ROOM_CHAT == FALSE
-    /*0x3???*/ u8 registeredTexts[UNION_ROOM_KB_ROW_COUNT][21];
-#endif //FREE_UNION_ROOM_CHAT
-#if FREE_TRAINER_HILL == FALSE
-    /*0x3???*/ struct TrainerHillSave trainerHill;
-#endif //FREE_TRAINER_HILL
     /*0x3???*/ struct WaldaPhrase waldaPhrase;
 #if FREE_TRAINER_TOWER == FALSE && IS_FRLG
     u32 towerChallengeId;

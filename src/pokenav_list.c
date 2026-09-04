@@ -647,9 +647,6 @@ static void EraseListEntry(struct PokenavListMenuWindow *listWindow, s32 offset,
         CopyWindowToVram(listWindow->windowId, COPYWIN_GFX);
     }
 
-    for (entries--; entries != -1; offset = (offset + 1) & 0xF, entries--)
-        ClearRematchPokeballIcon(listWindow->windowId, offset);
-
     CopyWindowToVram(listWindow->windowId, COPYWIN_MAP);
 }
 

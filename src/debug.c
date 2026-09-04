@@ -2074,37 +2074,6 @@ static void DebugAction_Trainers_SwitchDoublesFlag(u8 taskId)
         sDebugMenuListData->data[5] = TRUE;
 }
 
-static void DebugAction_Trainers_SetRematch(u8 taskId)
-{
-    s32 rematchId = sDebugMenuListData->data[1];
-
-    if (rematchId == -1)
-    {
-        FlagToggle(TRAINER_FLAGS_START + sDebugMenuListData->data[0]);
-        return;
-    }
-
-    for (u32 i = 0; i < REMATCHES_COUNT; i++)
-    {
-        if (gRematchTable[rematchId].trainerIds[i] == 0)
-            break;
-
-        if (!HasTrainerBeenFought(gRematchTable[rematchId].trainerIds[i]))
-        {
-            FlagToggle(TRAINER_FLAGS_START + gRematchTable[rematchId].trainerIds[i]);
-            return;
-        }
-    }
-
-    for (u32 i = 0; i < REMATCHES_COUNT; i++)
-    {
-        if (gRematchTable[rematchId].trainerIds[i] == 0)
-            break;
-
-        FlagToggle(TRAINER_FLAGS_START + gRematchTable[rematchId].trainerIds[i]);
-    }
-}
-
 static void DebugAction_Trainers_TryBattle(u8 taskId)
 {
     s32 trainer1Id = sDebugMenuListData->data[0];
