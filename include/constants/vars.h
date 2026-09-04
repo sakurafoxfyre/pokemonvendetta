@@ -55,13 +55,72 @@
 // vendetta vars
 #define VAR_WORLD_DIFFICULTY                             0x4100
 #define VAR_NUMBER_OF_KEYS                               0x4101
-#define VAR_TATE_LIZA_STATE                              0x4102
+#define VAR_TATE_LIZA_STATE                              0x4102 // 0 = Tate gym, Liza E4, 1 = Liza gym, Tate E4
 
 // vendetta - stretch levels
+#define VAR_FALLARBOR_RUSTBORO_LEVEL                     0x4150
+#define VAR_FALLARBOR_LAVARIDGE_LEVEL                    0x4151
+#define VAR_RUSTBORO_MAUVILLE_LEVEL                      0x4152
+#define VAR_LAVARIDGE_MAUVILLE_LEVEL                     0x4153 
+#define VAR_RUSTBORO_PETALBURG_LEVEL                     0x4154  
+#define VAR_PETALBURG_DEWFORD_LEVEL                      0x4155
+#define VAR_DEWFORD_SLATEPORT_LEVEL                      0x4156
+#define VAR_SLATEPORT_MAUVILLE_LEVEL                     0x4157
+#define VAR_LAVARIDGE_FORTREE_LEVEL                      0x4158
+#define VAR_MAUVILLE_MTPYRE_LEVEL                        0x4159
+#define VAR_FORTREE_MTPYRE_LEVEL                         0x415A
+#define VAR_MTPYRE_LILYCOVE_LEVEL                        0x415B
+#define VAR_LILYCOVE_MOSSDEEP_LEVEL                      0x415C
+#define VAR_SLATEPORT_MOSSDEEP_LEVEL                     0x415D
+#define VAR_PLACEHOLDER_STRETCH_LEVEL_1                  0x415E
+#define VAR_PLACEHOLDER_STRETCH_LEVEL_2                  0x415F
+#define VAR_PLACEHOLDER_STRETCH_LEVEL_3                  0x4160
+#define VAR_PLACEHOLDER_STRETCH_LEVEL_4                  0x4161
+#define VAR_PLACEHOLDER_STRETCH_LEVEL_5                  0x4162
 
 // vendetta - anchor levels
+#define VAR_FALLARBOR_LEVEL                              0x4163
+#define VAR_RUSTBORO_LEVEL                               0x4164
+#define VAR_PETALBURG_LEVEL                              0x4165
+#define VAR_DEWFORD_LEVEL                                0x4166
+#define VAR_SLATEPORT_LEVEL                              0x4167
+#define VAR_MAUVILLE_LEVEL                               0x4168
+#define VAR_LAVARIDGE_LEVEL                              0x4169
+#define VAR_FORTREE_LEVEL                                0x416A
+#define VAR_MTPYRE_LEVEL                                 0x416B
+#define VAR_LILYCOVE_LEVEL                               0x416C
+#define VAR_MOSSDEEP_LEVEL                               0x416D
+#define VAR_SOOTOPOLIS_LEVEL                             0x416E
+#define VAR_PLACEHOLDER_ANCHOR_LEVEL_1                   0x416F
+#define VAR_PLACEHOLDER_ANCHOR_LEVEL_2                   0x4170
+#define VAR_PLACEHOLDER_ANCHOR_LEVEL_3                   0x4171
+#define VAR_PLACEHOLDER_ANCHOR_LEVEL_4                   0x4172
+#define VAR_PLACEHOLDER_ANCHOR_LEVEL_5                   0x4173
 
 // vendetta - anchor boss aces
+#define VAR_ROXANNE_ACE                                  0x4174
+#define VAR_BRAWLY_ACE                                   0x4175
+#define VAR_WALLY_ACE                                    0x4176
+#define VAR_FLANNERY_ACE                                 0x4177
+#define VAR_MAY_ACE                                      0x4178
+#define VAR_LIZA_GYM_ACE                                 0x4179
+#define VAR_TATE_GYM_ACE                                 0x417A
+#define VAR_WALLACE_ACE                                  0x417B
+#define VAR_ZINNIA_ACE                                   0x417C
+#define VAR_ARCHIE_ACE                                   0x417D
+#define VAR_COURTNEY_ACE                                 0x417E
+#define VAR_CERISE_ACE                                   0x417F
+#define VAR_PHOEBE_ACE                                   0x4180
+#define VAR_NORMAN_ACE                                   0x4181
+#define VAR_TATE_E4_ACE                                  0x4182
+#define VAR_LIZA_E4_ACE                                  0x4183
+#define VAR_BRENDAN_ACE                                  0x4184
+#define VAR_STEVEN_ACE                                   0x4185
+#define VAR_PLACEHOLDER_BOSS_ACE_1                       0x4186
+#define VAR_PLACEHOLDER_BOSS_ACE_2                       0x4187
+#define VAR_PLACEHOLDER_BOSS_ACE_3                       0x4188
+#define VAR_PLACEHOLDER_BOSS_ACE_4                       0x4189
+#define VAR_PLACEHOLDER_BOSS_ACE_5                       0x418A
 
 // double check/unsure
 #define VAR_ICE_STEP_COUNT                               0x4200

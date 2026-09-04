@@ -302,28 +302,24 @@ static const s8 sCenterToCornerVecXs[8] ={-32, -16, -16, -32, -32};
 #include "data/types_info.h"
 
 // [TRAINER_CLASS_XYZ] = { _("name"), <money=5>, <ball=BALL_POKE> }
-const struct TrainerClass gTrainerClasses[TRAINER_CLASS_COUNT] =
+struct TrainerClass gTrainerClasses[TRAINER_CLASS_COUNT] =
 {
-    [TRAINER_CLASS_PKMN_TRAINER_1] = { _("{PKMN} TRAINER") },
-    [TRAINER_CLASS_PKMN_TRAINER_2] = { _("{PKMN} TRAINER") },
     [TRAINER_CLASS_HIKER] = { _("HIKER"), 10, B_TRAINER_CLASS_POKE_BALLS >= GEN_8 ? BALL_ULTRA : BALL_POKE },
     [TRAINER_CLASS_TEAM_AQUA] = { _("TEAM AQUA") },
     [TRAINER_CLASS_PKMN_BREEDER] = { _("{PKMN} BREEDER"), 10, B_TRAINER_CLASS_POKE_BALLS >= GEN_8 ? BALL_HEAL : BALL_FRIEND },
     [TRAINER_CLASS_COOLTRAINER] = { _("COOLTRAINER"), 12, BALL_ULTRA },
     [TRAINER_CLASS_BIRD_KEEPER] = { _("BIRD KEEPER"), 8 },
     [TRAINER_CLASS_COLLECTOR] = { _("COLLECTOR"), 15, BALL_PREMIER },
-    [TRAINER_CLASS_SWIMMER_M] = { _("SWIMMER♂"), 2, BALL_DIVE },
+    [TRAINER_CLASS_SWIMMER] = { _("SWIMMER"), 2, BALL_DIVE },
     [TRAINER_CLASS_TEAM_MAGMA] = { _("TEAM MAGMA") },
     [TRAINER_CLASS_EXPERT] = { _("EXPERT"), 10 },
     [TRAINER_CLASS_AQUA_ADMIN] = { _("AQUA ADMIN"), 10 },
     [TRAINER_CLASS_BLACK_BELT] = { _("BLACK BELT"), 8, BALL_ULTRA },
-    [TRAINER_CLASS_AQUA_LEADER] = { _("AQUA LEADER"), 20, BALL_MASTER },
+    [TRAINER_CLASS_ARCHIE] = { _("AQUA LEADER"), 20, BALL_MASTER },
     [TRAINER_CLASS_HEX_MANIAC] = { _("HEX MANIAC"), 6 },
     [TRAINER_CLASS_AROMA_LADY] = { _("AROMA LADY"), 10 },
     [TRAINER_CLASS_RUIN_MANIAC] = { _("RUIN MANIAC"), 15 },
-    [TRAINER_CLASS_INTERVIEWER] = { _("INTERVIEWER"), 12 },
-    [TRAINER_CLASS_TUBER_F] = { _("TUBER"), 1 },
-    [TRAINER_CLASS_TUBER_M] = { _("TUBER"), 1 },
+    [TRAINER_CLASS_TUBER] = { _("TUBER"), 1 },
     [TRAINER_CLASS_LADY] = { _("LADY"), 50 },
     [TRAINER_CLASS_BEAUTY] = { _("BEAUTY"), 20, B_TRAINER_CLASS_POKE_BALLS >= GEN_8 ? BALL_GREAT : BALL_POKE },
     [TRAINER_CLASS_RICH_BOY] = { _("RICH BOY"), 50 },
@@ -335,41 +331,41 @@ const struct TrainerClass gTrainerClasses[TRAINER_CLASS_COUNT] =
     [TRAINER_CLASS_BUG_MANIAC] = { _("BUG MANIAC"), 15 },
     [TRAINER_CLASS_PSYCHIC] = { _("PSYCHIC"), 6 },
     [TRAINER_CLASS_GENTLEMAN] = { _("GENTLEMAN"), 20, BALL_LUXURY },
-    [TRAINER_CLASS_ELITE_FOUR] = { _("ELITE FOUR"), 25, BALL_ULTRA },
-    [TRAINER_CLASS_LEADER] = { _("LEADER"), 25, B_TRAINER_CLASS_POKE_BALLS >= GEN_8 ? BALL_ULTRA : BALL_POKE },
     [TRAINER_CLASS_SCHOOL_KID] = { _("SCHOOL KID") },
     [TRAINER_CLASS_SR_AND_JR] = { _("SR. AND JR."), 4 },
-    [TRAINER_CLASS_WINSTRATE] = { _("WINSTRATE"), 10 },
     [TRAINER_CLASS_POKEFAN] = { _("POKéFAN"), 20 },
     [TRAINER_CLASS_YOUNGSTER] = { _("YOUNGSTER"), 4 },
-    [TRAINER_CLASS_CHAMPION] = { _("CHAMPION"), 50, BALL_ULTRA },
+    [TRAINER_CLASS_STEVEN] = { _("CHAMPION"), 50, BALL_ULTRA },
     [TRAINER_CLASS_FISHERMAN] = { _("FISHERMAN"), 10, B_TRAINER_CLASS_POKE_BALLS >= GEN_8 ? BALL_DIVE : BALL_LURE },
     [TRAINER_CLASS_TRIATHLETE] = { _("TRIATHLETE"), 10 },
     [TRAINER_CLASS_DRAGON_TAMER] = { _("DRAGON TAMER"), 12 },
     [TRAINER_CLASS_NINJA_BOY] = { _("NINJA BOY"), 3 },
     [TRAINER_CLASS_BATTLE_GIRL] = { _("BATTLE GIRL"), 6 },
     [TRAINER_CLASS_PARASOL_LADY] = { _("PARASOL LADY"), 10 },
-    [TRAINER_CLASS_SWIMMER_F] = { _("SWIMMER♀"), 2, BALL_DIVE },
     [TRAINER_CLASS_TWINS] = { _("TWINS"), 3 },
     [TRAINER_CLASS_SAILOR] = { _("SAILOR"), 8 },
-    [TRAINER_CLASS_COOLTRAINER_2] = { _("COOLTRAINER"), 5, BALL_ULTRA },
     [TRAINER_CLASS_MAGMA_ADMIN] = { _("MAGMA ADMIN"), 10 },
-    [TRAINER_CLASS_RIVAL] = { _("{PKMN} TRAINER"), 15 },
     [TRAINER_CLASS_BUG_CATCHER] = { _("BUG CATCHER"), 4 },
     [TRAINER_CLASS_PKMN_RANGER] = { _("{PKMN} RANGER"), 12 },
-    [TRAINER_CLASS_MAGMA_LEADER] = { _("MAGMA LEADER"), 20, BALL_MASTER },
+    [TRAINER_CLASS_COURTNEY] = { _("MAGMA LEADER"), 20, BALL_MASTER },
     [TRAINER_CLASS_LASS] = { _("LASS"), 4 },
     [TRAINER_CLASS_YOUNG_COUPLE] = { _("YOUNG COUPLE"), 8 },
-    [TRAINER_CLASS_OLD_COUPLE] = { _("OLD COUPLE"), 10 },
     [TRAINER_CLASS_SIS_AND_BRO] = { _("SIS AND BRO"), 3 },
-    [TRAINER_CLASS_SALON_MAIDEN] = { _("SALON MAIDEN"), 5, BALL_ULTRA },
-    [TRAINER_CLASS_DOME_ACE] = { _("DOME ACE") },
-    [TRAINER_CLASS_PALACE_MAVEN] = { _("PALACE MAVEN") },
-    [TRAINER_CLASS_ARENA_TYCOON] = { _("ARENA TYCOON") },
-    [TRAINER_CLASS_FACTORY_HEAD] = { _("FACTORY HEAD") },
-    [TRAINER_CLASS_PIKE_QUEEN] = { _("PIKE QUEEN") },
-    [TRAINER_CLASS_PYRAMID_KING] = { _("PYRAMID KING") },
-    [TRAINER_CLASS_RS_PROTAG] = { _("{PKMN} TRAINER") },
+    [TRAINER_CLASS_ROXANNE] = { _("GYM LEADER"), 1},
+    [TRAINER_CLASS_BRAWLY] = { _("GYM LEADER"), 1},
+    [TRAINER_CLASS_WALLY] = { _("GYM LEADER"), 1},
+    [TRAINER_CLASS_FLANNERY] = { _("GYM LEADER"), 1},
+    [TRAINER_CLASS_MAY] = { _("GYM LEADER"), 1},
+    [TRAINER_CLASS_LIZA] = { _("GYM LEADER"), 1},
+    [TRAINER_CLASS_WALLACE] = { _("GYM LEADER"), 1},
+    [TRAINER_CLASS_ZINNIA] = { _("GYM LEADER"), 1},
+    [TRAINER_CLASS_AETHER] = { _("AETHER"), 1},
+    [TRAINER_CLASS_AETHER_ADMIN] = { _("AETHER ADMIN"), 1},
+    [TRAINER_CLASS_CERISE] = { _("AETHER LEADER"), 1},
+    [TRAINER_CLASS_PHOEBE] = { _("ELITE FOUR"), 1},
+    [TRAINER_CLASS_NORMAN] = { _("ELITE FOUR"), 1},
+    [TRAINER_CLASS_TATE] = { _("ELITE FOUR"), 1},
+    [TRAINER_CLASS_BRENDAN] = { _("ELITE FOUR"), 1},
 
     [TRAINER_CLASS_YOUNGSTER_FRLG] =       { _("YOUNGSTER"), 4 },
     [TRAINER_CLASS_BUG_CATCHER_FRLG] =     { _("BUG CATCHER"), 3 },
@@ -1864,6 +1860,17 @@ void CustomTrainerPartyAssignMoves(struct Pokemon *mon, const struct TrainerMon 
     }
 }
 
+void CustomTrainerPartyAssignMovesSet(struct Pokemon *mon, const u32 moveset[4]) 
+{
+    u32 j;
+
+    for (j = 0; j <MAX_MON_MOVES; ++j) {
+        u32 pp = GetMovePP(moveset[j]);
+        SetMonData(mon, MON_DATA_MOVE1 + j, &moveset[j]);
+        SetMonData(mon, MON_DATA_PP1 + j, &pp);
+    }
+}
+
 u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer *trainer, bool32 halfTeam, u32 battleTypeFlags)
 {
     u32 personalityValue;
@@ -1937,7 +1944,7 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
         if (trainer->isSpecialTrainer) { //non-standard trainer
             trainerPool = SpecialtyPool(trainer);
         } else { //standard trainer
-            trainerPool = CombinePool(trainer);
+            trainerPool = CombinePools(trainer);
         }
 
         DoTrainerPartyPool(trainer, monIndices, monsCount, battleTypeFlags, trainerPool);
@@ -1966,7 +1973,7 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
             else if (partyData[monIndex].gender == TRAINER_MON_RANDOM_GENDER)
                 personalityValue = (personalityValue & 0xFFFFFF00) | GeneratePersonalityForGender(Random() & 1 ? MON_MALE : MON_FEMALE, partyData[monIndex].species);
 
-            // -- NATURE --/
+            // -- NATURE -- //
             u8 currentNature;
             if (partyData[monIndex].nature) { //checks if a nature has been defined or not
                 currentNature = partyData[monIndex].nature;
@@ -4835,14 +4842,6 @@ u32 GetBattlerTotalSpeedStat(enum BattlerId battler, enum Ability ability, enum 
     else if (ability == ABILITY_UNBURDEN && gBattleMons[battler].volatiles.unburdenActive)
         speed *= 2;
 
-    // player's badge boost
-    if (!(gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_RECORDED_LINK | BATTLE_TYPE_FRONTIER))
-        && ShouldGetStatBadgeBoost(B_FLAG_BADGE_BOOST_SPEED, battler)
-        && IsOnPlayerSide(battler))
-    {
-        speed = uq4_12_multiply_by_int_half_down(GetBadgeBoostModifier(), speed);
-    }
-
     // item effects
     if (holdEffect == HOLD_EFFECT_MACHO_BRACE || holdEffect == HOLD_EFFECT_POWER_ITEM)
         speed /= 2;
@@ -5482,19 +5481,38 @@ static void HandleEndTurn_BattleWon(void)
 
         switch (GetTrainerClassFromId(TRAINER_BATTLE_PARAM.opponentA))
         {
-        case TRAINER_CLASS_ELITE_FOUR:
-        case TRAINER_CLASS_CHAMPION:
+        case TRAINER_CLASS_PHOEBE:
+        case TRAINER_CLASS_NORMAN:
+        case TRAINER_CLASS_LIZA:
+            if (*GetVarPointer(VAR_TATE_LIZA_STATE) == 1)
+                PlayBGM(MUS_VICTORY_GYM_LEADER);
+                break;
+        case TRAINER_CLASS_BRENDAN:
+        case TRAINER_CLASS_STEVEN:
             PlayBGM(MUS_VICTORY_LEAGUE);
             break;
         case TRAINER_CLASS_TEAM_AQUA:
         case TRAINER_CLASS_TEAM_MAGMA:
         case TRAINER_CLASS_AQUA_ADMIN:
-        case TRAINER_CLASS_AQUA_LEADER:
+        case TRAINER_CLASS_ARCHIE:
         case TRAINER_CLASS_MAGMA_ADMIN:
-        case TRAINER_CLASS_MAGMA_LEADER:
+        case TRAINER_CLASS_COURTNEY:
+        case TRAINER_CLASS_AETHER:
+        case TRAINER_CLASS_AETHER_ADMIN:
+        case TRAINER_CLASS_CERISE:
             PlayBGM(MUS_VICTORY_AQUA_MAGMA);
             break;
-        case TRAINER_CLASS_LEADER:
+        case TRAINER_CLASS_ROXANNE:
+        case TRAINER_CLASS_BRAWLY:
+        case TRAINER_CLASS_WALLY:
+        case TRAINER_CLASS_FLANNERY:
+        case TRAINER_CLASS_MAY:
+        case TRAINER_CLASS_TATE:
+            if (*GetVarPointer(VAR_TATE_LIZA_STATE) == 1)
+                PlayBGM(MUS_VICTORY_LEAGUE);
+                break;
+        case TRAINER_CLASS_WALLACE:
+        case TRAINER_CLASS_ZINNIA:
             PlayBGM(MUS_VICTORY_GYM_LEADER);
             break;
         default:

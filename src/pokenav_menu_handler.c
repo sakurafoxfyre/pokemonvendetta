@@ -49,20 +49,12 @@ static const u8 sMenuItems[][MAX_POKENAV_MENUITEMS] =
         POKENAV_MENUITEM_CONDITION,
         [2 ... MAX_POKENAV_MENUITEMS - 1] = POKENAV_MENUITEM_SWITCH_OFF
     },
-    [POKENAV_MENU_TYPE_UNLOCK_MC] =
-    {
-        POKENAV_MENUITEM_MAP,
-        POKENAV_MENUITEM_CONDITION,
-        POKENAV_MENUITEM_MATCH_CALL,
-        [3 ... MAX_POKENAV_MENUITEMS - 1] = POKENAV_MENUITEM_SWITCH_OFF
-    },
     [POKENAV_MENU_TYPE_UNLOCK_MC_RIBBONS] =
     {
         POKENAV_MENUITEM_MAP,
         POKENAV_MENUITEM_CONDITION,
-        POKENAV_MENUITEM_MATCH_CALL,
         POKENAV_MENUITEM_RIBBONS,
-        [4 ... MAX_POKENAV_MENUITEMS - 1] = POKENAV_MENUITEM_SWITCH_OFF
+        [3 ... MAX_POKENAV_MENUITEMS - 1] = POKENAV_MENUITEM_SWITCH_OFF
     },
     [POKENAV_MENU_TYPE_CONDITION] =
     {
@@ -86,13 +78,8 @@ static u8 GetPokenavMainMenuType(void)
 {
     u8 menuType = POKENAV_MENU_TYPE_DEFAULT;
 
-    if (FlagGet(FLAG_ADDED_MATCH_CALL_TO_POKENAV))
-    {
-        menuType = POKENAV_MENU_TYPE_UNLOCK_MC;
-
-        if (FlagGet(FLAG_SYS_RIBBON_GET))
-            menuType = POKENAV_MENU_TYPE_UNLOCK_MC_RIBBONS;
-    }
+    if (FlagGet(FLAG_SYS_RIBBON_GET))
+        menuType = POKENAV_MENU_TYPE_UNLOCK_MC_RIBBONS;
 
     return menuType;
 }
@@ -106,20 +93,6 @@ bool32 PokenavCallback_Init_MainMenuCursorOnMap(void)
     menu->menuType = GetPokenavMainMenuType();
     menu->cursorPos = POKENAV_MENUITEM_MAP;
     menu->currMenuItem = POKENAV_MENUITEM_MAP;
-    menu->helpBarIndex = HELPBAR_NONE;
-    SetMenuInputHandler(menu);
-    return TRUE;
-}
-
-bool32 PokenavCallback_Init_MainMenuCursorOnMatchCall(void)
-{
-    struct Pokenav_Menu *menu = AllocSubstruct(POKENAV_SUBSTRUCT_MAIN_MENU_HANDLER, sizeof(struct Pokenav_Menu));
-    if (!menu)
-        return FALSE;
-
-    menu->menuType = GetPokenavMainMenuType();
-    menu->cursorPos = POKENAV_MENUITEM_MATCH_CALL;
-    menu->currMenuItem = POKENAV_MENUITEM_MATCH_CALL;
     menu->helpBarIndex = HELPBAR_NONE;
     SetMenuInputHandler(menu);
     return TRUE;
@@ -230,10 +203,6 @@ static u32 HandleMainMenuInput(struct Pokenav_Menu *menu)
             menu->currMenuItem = sMenuItems[POKENAV_MENU_TYPE_CONDITION][0];
             menu->callback = HandleConditionMenuInput;
             return POKENAV_MENU_FUNC_OPEN_CONDITION;
-        case POKENAV_MENUITEM_MATCH_CALL:
-            menu->helpBarIndex = HELPBAR_MC_TRAINER_LIST;
-            SetMenuIdAndCB(menu, POKENAV_MATCH_CALL);
-            return POKENAV_MENU_FUNC_OPEN_FEATURE;
         case POKENAV_MENUITEM_RIBBONS:
             if (CanViewRibbonsMenu())
             {
@@ -258,66 +227,66 @@ static u32 HandleMainMenuInput(struct Pokenav_Menu *menu)
 }
 
 // Force the player to select Match Call during the call Mr. Stone PokéNav tutorial
-static u32 HandleMainMenuInputTutorial(struct Pokenav_Menu *menu)
-{
-    if (UpdateMenuCursorPos(menu))
-        return POKENAV_MENU_FUNC_MOVE_CURSOR;
+// static u32 HandleMainMenuInputTutorial(struct Pokenav_Menu *menu)
+// {
+//     if (UpdateMenuCursorPos(menu))
+//         return POKENAV_MENU_FUNC_MOVE_CURSOR;
 
-    if (JOY_NEW(A_BUTTON))
-    {
-        if (sMenuItems[menu->menuType][menu->cursorPos] == POKENAV_MENUITEM_MATCH_CALL)
-        {
-            menu->helpBarIndex = HELPBAR_MC_TRAINER_LIST;
-            SetMenuIdAndCB(menu, POKENAV_MATCH_CALL);
-            return POKENAV_MENU_FUNC_OPEN_FEATURE;
-        }
-        else
-        {
-            PlaySE(SE_FAILURE);
-            return POKENAV_MENU_FUNC_NONE;
-        }
-    }
+//     if (JOY_NEW(A_BUTTON))
+//     {
+//         if (sMenuItems[menu->menuType][menu->cursorPos] == POKENAV_MENUITEM_MATCH_CALL)
+//         {
+//             menu->helpBarIndex = HELPBAR_MC_TRAINER_LIST;
+//             SetMenuIdAndCB(menu, POKENAV_MATCH_CALL);
+//             return POKENAV_MENU_FUNC_OPEN_FEATURE;
+//         }
+//         else
+//         {
+//             PlaySE(SE_FAILURE);
+//             return POKENAV_MENU_FUNC_NONE;
+//         }
+//     }
 
-    if (JOY_NEW(B_BUTTON))
-    {
-        PlaySE(SE_FAILURE);
-        return POKENAV_MENU_FUNC_NONE;
-    }
+//     if (JOY_NEW(B_BUTTON))
+//     {
+//         PlaySE(SE_FAILURE);
+//         return POKENAV_MENU_FUNC_NONE;
+//     }
 
-    return POKENAV_MENU_FUNC_NONE;
-}
+//     return POKENAV_MENU_FUNC_NONE;
+// }
 
-// After calling Mr. Stone during the PokéNav tutorial, force player to exit or use Match Call again
-static u32 HandleMainMenuInputEndTutorial(struct Pokenav_Menu *menu)
-{
-    if (UpdateMenuCursorPos(menu))
-        return POKENAV_MENU_FUNC_MOVE_CURSOR;
+// // After calling Mr. Stone during the PokéNav tutorial, force player to exit or use Match Call again
+// static u32 HandleMainMenuInputEndTutorial(struct Pokenav_Menu *menu)
+// {
+//     if (UpdateMenuCursorPos(menu))
+//         return POKENAV_MENU_FUNC_MOVE_CURSOR;
 
-    if (JOY_NEW(A_BUTTON))
-    {
-        u32 menuItem = sMenuItems[menu->menuType][menu->cursorPos];
-        if (menuItem != POKENAV_MENUITEM_MATCH_CALL && menuItem != POKENAV_MENUITEM_SWITCH_OFF)
-        {
-            PlaySE(SE_FAILURE);
-            return POKENAV_MENU_FUNC_NONE;
-        }
-        else if (menuItem == POKENAV_MENUITEM_MATCH_CALL)
-        {
-            menu->helpBarIndex = HELPBAR_MC_TRAINER_LIST;
-            SetMenuIdAndCB(menu, POKENAV_MATCH_CALL);
-            return POKENAV_MENU_FUNC_OPEN_FEATURE;
-        }
-        else
-        {
-            return -1;
-        }
-    }
-    else if (JOY_NEW(B_BUTTON))
-    {
-        return -1;
-    }
-    return POKENAV_MENU_FUNC_NONE;
-}
+//     if (JOY_NEW(A_BUTTON))
+//     {
+//         u32 menuItem = sMenuItems[menu->menuType][menu->cursorPos];
+//         if (menuItem != POKENAV_MENUITEM_MATCH_CALL && menuItem != POKENAV_MENUITEM_SWITCH_OFF)
+//         {
+//             PlaySE(SE_FAILURE);
+//             return POKENAV_MENU_FUNC_NONE;
+//         }
+//         else if (menuItem == POKENAV_MENUITEM_MATCH_CALL)
+//         {
+//             menu->helpBarIndex = HELPBAR_MC_TRAINER_LIST;
+//             SetMenuIdAndCB(menu, POKENAV_MATCH_CALL);
+//             return POKENAV_MENU_FUNC_OPEN_FEATURE;
+//         }
+//         else
+//         {
+//             return -1;
+//         }
+//     }
+//     else if (JOY_NEW(B_BUTTON))
+//     {
+//         return -1;
+//     }
+//     return POKENAV_MENU_FUNC_NONE;
+// }
 
 // Handles input after selecting Ribbons when there are no ribbon winners left
 // Selecting it again just reprints the Ribbon description to replace the "No Ribbon winners" message

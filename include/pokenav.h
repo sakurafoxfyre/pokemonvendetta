@@ -14,18 +14,10 @@ struct PokenavMonListItem
     u16 data;
 };
 
-struct PokenavMatchCallEntry
-{
-    bool8 isSpecialTrainer;
-    mapsec_u8_t mapSec;
-    u16 headerId;
-};
-
 struct PokenavListItem
 {
     union {
         struct PokenavMonListItem mon;
-        struct PokenavMatchCallEntry call;
     } item;
 };
 
@@ -76,8 +68,6 @@ enum
     POKENAV_SUBSTRUCT_MENU_GFX,
     POKENAV_SUBSTRUCT_REGION_MAP_STATE,
     POKENAV_SUBSTRUCT_REGION_MAP_ZOOM,
-    POKENAV_SUBSTRUCT_MATCH_CALL_MAIN,
-    POKENAV_SUBSTRUCT_MATCH_CALL_OPEN,
     POKENAV_SUBSTRUCT_CONDITION_SEARCH_RESULTS,
     POKENAV_SUBSTRUCT_CONDITION_SEARCH_RESULTS_GFX,
     POKENAV_SUBSTRUCT_RIBBONS_MON_LIST,
@@ -98,7 +88,6 @@ enum
     POKENAV_GFX_MAIN_MENU,
     POKENAV_GFX_CONDITION_MENU,
     POKENAV_GFX_RIBBONS_MENU,
-    POKENAV_GFX_MATCH_CALL_MENU,
     POKENAV_GFX_MAP_MENU_ZOOMED_OUT,
     POKENAV_GFX_MAP_MENU_ZOOMED_IN,
     POKENAV_GFX_PARTY_MENU,
@@ -120,14 +109,12 @@ enum
     POKENAV_MAIN_MENU_CURSOR_ON_MAP,
     POKENAV_CONDITION_MENU,                     // The first Condition screen where the player selects Party or Search
     POKENAV_CONDITION_SEARCH_MENU,              // The Condition search menu where the player selects a search parameter
-    POKENAV_MAIN_MENU_CURSOR_ON_MATCH_CALL,
     POKENAV_MAIN_MENU_CURSOR_ON_RIBBONS,
     POKENAV_REGION_MAP,
     POKENAV_CONDITION_GRAPH_PARTY,              // The Condition graph screen when Party has been selected
     POKENAV_CONDITION_SEARCH_RESULTS,           // The list of results from a Condition search
     POKENAV_CONDITION_GRAPH_SEARCH,             // The Condition graph screen when a search result has been selected
     POKENAV_RETURN_CONDITION_SEARCH,            // Exited the graph screen back to the list of Condition search results
-    POKENAV_MATCH_CALL,
     POKENAV_RIBBONS_MON_LIST,                   // The list of Pokémon with ribbons
     POKENAV_RIBBONS_SUMMARY_SCREEN,             // The ribbon summary screen shown when a Pokémon has been selected
     POKENAV_RIBBONS_RETURN_TO_MON_LIST,         // Exited the summary screen back to the ribbon list
@@ -149,7 +136,6 @@ enum
 {
     POKENAV_MENUITEM_MAP,
     POKENAV_MENUITEM_CONDITION,
-    POKENAV_MENUITEM_MATCH_CALL,
     POKENAV_MENUITEM_RIBBONS,
     POKENAV_MENUITEM_SWITCH_OFF,
     POKENAV_MENUITEM_CONDITION_PARTY,
@@ -213,26 +199,12 @@ enum
 
 enum
 {
-    MATCH_CALL_OPTION_CALL,
-    MATCH_CALL_OPTION_CHECK,
-    MATCH_CALL_OPTION_CANCEL,
-    MATCH_CALL_OPTION_COUNT
-};
-
-enum
-{
     CHECK_PAGE_STRATEGY,
     CHECK_PAGE_POKEMON,
     CHECK_PAGE_INTRO_1,
     CHECK_PAGE_INTRO_2,
     CHECK_PAGE_ENTRY_COUNT
 };
-
-#define MCFLAVOR(name) {[CHECK_PAGE_STRATEGY] = gText_MatchCall##name##_Strategy, \
-                        [CHECK_PAGE_POKEMON]  = gText_MatchCall##name##_Pokemon,  \
-                        [CHECK_PAGE_INTRO_1]  = gText_MatchCall##name##_Intro1,   \
-                        [CHECK_PAGE_INTRO_2]  = gText_MatchCall##name##_Intro2}
-
 
 // PokéNav Function IDs
 // Indices into the LoopedTask tables for each of the main PokéNav features
@@ -344,18 +316,6 @@ void PrintCheckPageInfo(s16 delta);
 u32 PokenavList_GetTopIndex(void);
 void PokenavList_ReshowListFromCheckPage(void);
 
-// pokenav_match_call_data.c
-bool32 MatchCall_HasCheckPage(u32 idx);
-u8 MatchCall_GetMapSec(u32 idx);
-bool32 MatchCall_HasRematchId(u32 idx);
-bool32 MatchCall_GetEnabled(u32 idx);
-u32 MatchCall_GetRematchTableIdx(u32 idx);
-u32 GetTrainerIdxByRematchIdx(u32 rematchIdx);
-int MatchCall_GetOverrideFacilityClass(u32 idx);
-void MatchCall_GetMessage(u32 idx, u8 *dest);
-const u8 *MatchCall_GetOverrideFlavorText(u32 idx, u32 offset);
-void MatchCall_GetNameAndDesc(u32 idx, const u8 **desc, const u8 **name);
-
 // pokenav_main_menu.c
 bool32 InitPokenavMainMenu(void);
 void CopyPaletteIntoBufferUnfaded(const u16 *palette, u32 bufferOffset, u32 size);
@@ -387,7 +347,6 @@ void ShutdownPokenav(void);
 
 // pokenav_menu_handler.c
 bool32 PokenavCallback_Init_MainMenuCursorOnMap(void);
-bool32 PokenavCallback_Init_MainMenuCursorOnMatchCall(void);
 bool32 PokenavCallback_Init_MainMenuCursorOnRibbons(void);
 bool32 PokenavCallback_Init_ConditionMenu(void);
 bool32 PokenavCallback_Init_ConditionSearchMenu(void);
@@ -405,33 +364,6 @@ void CreateMenuHandlerLoopedTask(s32 ltIdx);
 bool32 IsMenuHandlerLoopedTaskActive(void);
 void FreeMenuHandlerSubstruct2(void);
 void ResetBldCnt_(void);
-
-// pokenav_match_call_list.c
-bool32 PokenavCallback_Init_MatchCall(void);
-u32 GetMatchCallCallback(void);
-void FreeMatchCallSubstruct1(void);
-int IsMatchCallListInitFinished(void);
-int GetNumberRegistered(void);
-struct PokenavMatchCallEntry *GetMatchCallList(void);
-mapsec_u16_t GetMatchCallMapSec(int index);
-bool32 ShouldDrawRematchPokeballIcon(int index);
-void ClearRematchPokeballIcon(u16 windowId, u32 tileOffset);
-enum TrainerPicID GetMatchCallTrainerPic(int index);
-const u8 *GetMatchCallFlavorText(int index, int checkPageEntry);
-const u8 *GetMatchCallMessageText(int index, bool8 *newRematchRequest);
-u16 GetMatchCallOptionCursorPos(void);
-u16 GetMatchCallOptionId(int optionId);
-void BufferMatchCallNameAndDesc(struct PokenavMatchCallEntry *matchCallEntry, u8 *str);
-mapsec_u8_t GetMatchTableMapSectionId(int rematchIndex);
-int GetIndexDeltaOfNextCheckPageDown(int index);
-int GetIndexDeltaOfNextCheckPageUp(int index);
-bool32 IsRematchEntryRegistered(int rematchIndex);
-
-// pokenav_match_call_gfx.c
-bool32 OpenMatchCall(void);
-void CreateMatchCallLoopedTask(s32 index);
-bool32 IsMatchCallLoopedTaskActive(void);
-void FreeMatchCallSubstruct2(void);
 
 // pokenav_region_map.c
 u32 PokenavCallback_Init_RegionMap(void);

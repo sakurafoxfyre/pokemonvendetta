@@ -9,7 +9,6 @@
 #include "lottery_corner.h"
 #include "play_time.h"
 #include "mauville_old_man.h"
-#include "match_call.h"
 #include "lilycove_lady.h"
 #include "load_save.h"
 #include "pokeblock.h"
@@ -51,6 +50,10 @@
 #include "constants/items.h"
 #include "difficulty.h"
 #include "follower_npc.h"
+#include "script_ven_util.h"
+#include "constants/flags.h"
+#include "constants/trainers.h"
+#include "battle_main.h"
 
 extern const u8 EventScript_ResetAllMapFlags[];
 extern const u8 EventScript_ResetAllMapFlagsFrlg[];
@@ -221,7 +224,6 @@ void NewGameInitData(void)
     InitLilycoveLady();
     ResetAllApprenticeData();
     ClearRankingHallRecords();
-    InitMatchCallCounters();
     ClearMysteryGift();
     WipeTrainerNameRecords();
     ResetTrainerHillResults();
@@ -232,7 +234,12 @@ void NewGameInitData(void)
     ResetDexNav();
     ClearFollowerNPCData();
 
-    VarSet(VAR_WORLD_DIFFICULTY, DIFFICULTY_WORLD_ONE);
+    FlagSet(FLAG_SYS_B_DASH);
+    VarSet(VAR_WORLD_DIFFICULTY, DIFFICULTY_WORLD_ZERO);
+    VarSet(VAR_NUMBER_OF_KEYS, 0);
+    EnableNationalPokedex();
+    SpecialtyTrainerSetup();
+
 }
 
 static void ResetMiniGamesRecords(void)
@@ -256,4 +263,38 @@ static void ResetDexNav(void)
     memset(gSaveBlock3Ptr->dexNavSearchLevels, 0, sizeof(gSaveBlock3Ptr->dexNavSearchLevels));
 #endif
     gSaveBlock3Ptr->dexNavChain = 0;
+}
+
+void SpecialtyTrainerSetup(void) {
+    //rolls tate/liza gym/e4
+    int tatelizaroll = Random() % 2;
+    if (tatelizaroll == 0)
+        VarSet(VAR_TATE_LIZA_STATE, 0);
+    else
+        VarSet(VAR_TATE_LIZA_STATE, 1);
+        gTrainerClasses[TRAINER_CLASS_LIZA] = { _("ELITE FOUR"), 1};
+        gTrainerClasses[TRAINER_CLASS_TATE] = { _("GYM LEADER"), 1};
+
+    //rolls boss and e4 aces
+    VarSet(VAR_ROXANNE_ACE, Random() % 3);
+    VarSet(VAR_BRAWLY_ACE, Random() % 3);
+    VarSet(VAR_WALLY_ACE, Random() % 3);
+    VarSet(VAR_FLANNERY_ACE, Random() % 3);
+    VarSet(VAR_MAY_ACE, Random() % 3);
+    if (*GetVarPointer(VAR_TATE_LIZA_STATE) == 0) {
+        VarSet(VAR_TATE_GYM_ACE, Random() % 3);
+        VarSet(VAR_LIZA_E4_ACE, Random() % 3);
+    } else {
+        VarSet(VAR_LIZA_GYM_ACE, Random() % 3);
+        VarSet(VAR_TATE_E4_ACE, Random() % 3);
+    }
+    VarSet(VAR_WALLACE_ACE, Random() % 3);
+    VarSet(VAR_ZINNIA_ACE, Random() % 3);
+    VarSet(VAR_ARCHIE_ACE, Random() % 3);
+    VarSet(VAR_COURTNEY_ACE, Random() % 3);
+    VarSet(VAR_CERISE_ACE, Random() % 3);
+    VarSet(VAR_PHOEBE_ACE, Random() % 3);
+    VarSet(VAR_NORMAN_ACE, Random() % 3);
+    VarSet(VAR_BRENDAN_ACE, Random() % 3);
+    VarSet(VAR_STEVEN_ACE, Random() % 3);
 }

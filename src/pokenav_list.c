@@ -73,9 +73,6 @@ static void ToggleListArrows(struct PokenavList *, bool32);
 static void DestroyListArrows(struct PokenavList *);
 static void CreateListArrowSprites(const struct PokenavListWindowState *, struct PokenavList *);
 static void LoadListArrowGfx(void);
-static void PrintMatchCallFlavorText(struct PokenavListWindowState *, struct PokenavList *, u32);
-static void PrintMatchCallFieldNames(struct PokenavList *, u32);
-static void PrintMatchCallListTrainerName(struct PokenavListWindowState *, struct PokenavList *);
 static void PrintCheckPageTrainerName(struct PokenavListWindowState *, struct PokenavList *);
 static void EraseListEntry(struct PokenavListMenuWindow *, s32, s32);
 static void CreateMoveListWindowTask(s32, struct PokenavList *);
@@ -92,10 +89,6 @@ static u32 LoopedTask_PrintCheckPageInfo(s32);
 
 static const u16 sListArrow_Pal[] = INCGFX_U16("graphics/pokenav/list_arrows.png", ".gbapal");
 static const u32 sListArrow_Gfx[] = INCGFX_U32("graphics/pokenav/list_arrows.png", ".4bpp.smol");
-
-static const u8 gText_PokenavMatchCall_Strategy[] = _("STRATEGY");
-static const u8 gText_PokenavMatchCall_TrainerPokemon[] = _("TRAINER'S POKéMON");
-static const u8 gText_PokenavMatchCall_SelfIntroduction[] = _("SELF-INTRODUCTION");
 
 bool32 CreatePokenavList(const struct BgTemplate *bgTemplate, struct PokenavListTemplate *listTemplate, u32 tileOffset)
 {
@@ -552,27 +545,6 @@ static u32 LoopedTask_PrintCheckPageInfo(s32 state)
     case 0:
         PrintCheckPageTrainerName(&list->windowState, list);
         break;
-    case 1:
-        PrintMatchCallFieldNames(list, 0);
-        break;
-    case 2:
-        PrintMatchCallFlavorText(&list->windowState, list, CHECK_PAGE_STRATEGY);
-        break;
-    case 3:
-        PrintMatchCallFieldNames(list, 1);
-        break;
-    case 4:
-        PrintMatchCallFlavorText(&list->windowState, list, CHECK_PAGE_POKEMON);
-        break;
-    case 5:
-        PrintMatchCallFieldNames(list, 2);
-        break;
-    case 6:
-        PrintMatchCallFlavorText(&list->windowState, list, CHECK_PAGE_INTRO_1);
-        break;
-    case 7:
-        PrintMatchCallFlavorText(&list->windowState, list, CHECK_PAGE_INTRO_2);
-        break;
     default:
         return LT_FINISH;
     }
@@ -594,9 +566,6 @@ static u32 LoopedTask_ReshowListFromCheckPage(s32 state)
     switch (state)
     {
     case 0:
-        // Rewrite the name of the trainer whose check page was just being viewed.
-        // This is done to erase the red background it had.
-        PrintMatchCallListTrainerName(windowState, listAlias);
         return LT_INC_AND_PAUSE;
     case 1:
         if (++list->eraseIndex < list->windowState.entriesOnscreen)
@@ -711,52 +680,6 @@ static void PrintCheckPageTrainerName(struct PokenavListWindowState *state, stru
     AddTextPrinterParameterized3(list->listWindow.windowId, list->listWindow.fontId, 8, (list->listWindow.unkA * 16) + 1, colors, TEXT_SKIP_DRAW, list->itemTextBuffer);
     SetListMarginTile(&list->listWindow, TRUE);
     CopyWindowRectToVram(list->listWindow.windowId, COPYWIN_FULL, 0, list->listWindow.unkA * 2, list->listWindow.width, 2);
-}
-
-// Print the trainer's name and title for the list (to replace the check page name and title, which has a red background)
-static void PrintMatchCallListTrainerName(struct PokenavListWindowState *state, struct PokenavList *list)
-{
-    list->bufferItemFunc(state->listPtr + state->listItemSize * state->windowTopIndex, list->itemTextBuffer);
-    FillWindowPixelRect(list->listWindow.windowId, PIXEL_FILL(1), 0, list->listWindow.unkA * 16, list->listWindow.width * 8, 16);
-    AddTextPrinterParameterized(list->listWindow.windowId, list->listWindow.fontId, list->itemTextBuffer, 8, list->listWindow.unkA * 16 + 1, TEXT_SKIP_DRAW, NULL);
-    SetListMarginTile(&list->listWindow, FALSE);
-    CopyWindowToVram(list->listWindow.windowId, COPYWIN_FULL);
-}
-
-static void PrintMatchCallFieldNames(struct PokenavList *list, u32 fieldId)
-{
-    const u8 *fieldNames[] = {
-        gText_PokenavMatchCall_Strategy,
-        gText_PokenavMatchCall_TrainerPokemon,
-        gText_PokenavMatchCall_SelfIntroduction
-    };
-    u8 colors[3] = {TEXT_COLOR_WHITE, TEXT_COLOR_RED, TEXT_COLOR_LIGHT_RED};
-    u32 top = (list->listWindow.unkA + 1 + (fieldId * 2)) & 0xF;
-
-    FillWindowPixelRect(list->listWindow.windowId, PIXEL_FILL(1), 0, top << 4, list->listWindow.width, 16);
-    AddTextPrinterParameterized3(list->listWindow.windowId, FONT_NARROW, 2, (top << 4) + 1, colors, TEXT_SKIP_DRAW, fieldNames[fieldId]);
-    CopyWindowRectToVram(list->listWindow.windowId, COPYWIN_GFX, 0, top << 1, list->listWindow.width, 2);
-}
-
-static void PrintMatchCallFlavorText(struct PokenavListWindowState *windowState, struct PokenavList *list, u32 checkPageEntry)
-{
-    // lines 1, 3, and 5 are the field names printed by PrintMatchCallFieldNames
-    static const u8 lineOffsets[CHECK_PAGE_ENTRY_COUNT] = {
-        [CHECK_PAGE_STRATEGY] = 2,
-        [CHECK_PAGE_POKEMON]  = 4,
-        [CHECK_PAGE_INTRO_1]  = 6,
-        [CHECK_PAGE_INTRO_2]  = 7
-    };
-
-    u32 r6 = (list->listWindow.unkA + lineOffsets[checkPageEntry]) & 0xF;
-    const u8 *str = GetMatchCallFlavorText(windowState->windowTopIndex, checkPageEntry);
-
-    if (str != NULL)
-    {
-        FillWindowTilesByRow(list->listWindow.windowId, 1, r6 * 2, list->listWindow.width - 1, 2);
-        AddTextPrinterParameterized(list->listWindow.windowId, FONT_NARROW, str, 2, (r6 << 4) + 1, TEXT_SKIP_DRAW, NULL);
-        CopyWindowRectToVram(list->listWindow.windowId, COPYWIN_GFX, 0, r6 * 2, list->listWindow.width, 2);
-    }
 }
 
 static const struct CompressedSpriteSheet sListArrowSpriteSheets[] =

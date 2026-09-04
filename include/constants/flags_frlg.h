@@ -1639,9 +1639,6 @@
 #define FLAG_DEFEATED_RIVAL_RUSTBORO         0
 #define FLAG_RECEIVED_RED_OR_BLUE_ORB        0
 #define FLAG_RECEIVED_PREMIER_BALL_RUSTBORO  0
-#define FLAG_ENABLE_WALLY_MATCH_CALL         0
-#define FLAG_ENABLE_SCOTT_MATCH_CALL         0
-#define FLAG_ENABLE_MOM_MATCH_CALL           0
 #define FLAG_MET_DIVING_TREASURE_HUNTER      0
 #define FLAG_MET_WAILMER_TRAINER             0
 #define FLAG_EVIL_LEADER_PLEASE_STOP         0
@@ -1680,7 +1677,6 @@
 #define FLAG_RECEIVED_WATMEL_BERRY           0
 #define FLAG_RECEIVED_DURIN_BERRY            0
 #define FLAG_RECEIVED_BELUE_BERRY            0
-#define FLAG_ENABLE_RIVAL_MATCH_CALL         0
 #define FLAG_RECEIVED_CHARCOAL               0
 #define FLAG_LATIOS_OR_LATIAS_ROAMING        0
 #define FLAG_RECEIVED_REPEAT_BALL            0
@@ -1708,7 +1704,6 @@
 #define FLAG_RECEIVED_SOOTHE_BELL            0
 #define FLAG_RECEIVED_WHITE_HERB             0
 #define FLAG_RECEIVED_SOFT_SAND              0
-#define FLAG_ENABLE_PROF_BIRCH_MATCH_CALL    0
 #define FLAG_RECEIVED_CLEANSE_TAG            0
 #define FLAG_RECEIVED_FOCUS_BAND             0
 #define FLAG_DECLINED_WALLY_BATTLE_MAUVILLE  0
@@ -1730,10 +1725,7 @@
 #define FLAG_MET_FANCLUB_YOUNGER_BROTHER     0
 #define FLAG_RIVAL_LEFT_FOR_ROUTE103         0
 #define FLAG_OMIT_DIVE_FROM_STEVEN_LETTER    0
-#define FLAG_HAS_MATCH_CALL                  0
-#define FLAG_ADDED_MATCH_CALL_TO_POKENAV     0
 #define FLAG_REGISTERED_STEVEN_POKENAV       0
-#define FLAG_ENABLE_NORMAN_MATCH_CALL        0
 #define FLAG_STEVEN_GUIDES_TO_CAVE_OF_ORIGIN 0 // Set after you follow Steven to the entrance of the Cave of Origin.
 #define FLAG_MET_ARCHIE_SOOTOPOLIS           0
 #define FLAG_MET_MAXIE_SOOTOPOLIS            0
@@ -1758,90 +1750,6 @@
 #define FLAG_NURSE_MENTIONS_GOLD_CARD        0
 #define FLAG_MET_FRONTIER_BEAUTY_MOVE_TUTOR  0
 #define FLAG_MET_FRONTIER_SWIMMER_MOVE_TUTOR 0
-
-// Flags for whether a rematchable trainer has been registered in the player's Match Call.
-// Most are used implicitly by adding their REMATCH_* id to TRAINER_REGISTERED_FLAGS_START.
-// Some Match Call entries (like those for gym leaders, Wally, and all non-trainer NPCs like Prof. Birch)
-// have their own separate flag that needs to be set to be enabled; see src/pokenav_match_call_data.c
-#define TRAINER_REGISTERED_FLAGS_START       0
-#define FLAG_REGISTERED_ROSE                 0
-#define FLAG_REGISTERED_ANDRES               0
-#define FLAG_REGISTERED_DUSTY                0
-#define FLAG_REGISTERED_LOLA                 0
-#define FLAG_REGISTERED_RICKY                0
-#define FLAG_REGISTERED_LILA_AND_ROY         0
-#define FLAG_REGISTERED_CRISTIN              0
-#define FLAG_REGISTERED_BROOKE               0
-#define FLAG_REGISTERED_WILTON               0
-#define FLAG_REGISTERED_VALERIE              0
-#define FLAG_REGISTERED_CINDY                0
-#define FLAG_REGISTERED_THALIA               0
-#define FLAG_REGISTERED_JESSICA              0
-#define FLAG_REGISTERED_WINSTON              0
-#define FLAG_REGISTERED_STEVE                0
-#define FLAG_REGISTERED_TONY                 0
-#define FLAG_REGISTERED_NOB                  0
-#define FLAG_REGISTERED_KOJI                 0
-#define FLAG_REGISTERED_FERNANDO             0
-#define FLAG_REGISTERED_DALTON               0
-#define FLAG_REGISTERED_BERNIE               0
-#define FLAG_REGISTERED_ETHAN                0
-#define FLAG_REGISTERED_JOHN_AND_JAY         0
-#define FLAG_REGISTERED_JEFFREY              0
-#define FLAG_REGISTERED_CAMERON              0
-#define FLAG_REGISTERED_JACKI                0
-#define FLAG_REGISTERED_WALTER               0
-#define FLAG_REGISTERED_KAREN                0
-#define FLAG_REGISTERED_JERRY                0
-#define FLAG_REGISTERED_ANNA_AND_MEG         0
-#define FLAG_REGISTERED_ISABEL               0
-#define FLAG_REGISTERED_MIGUEL               0
-#define FLAG_REGISTERED_TIMOTHY              0
-#define FLAG_REGISTERED_SHELBY               0
-#define FLAG_REGISTERED_CALVIN               0
-#define FLAG_REGISTERED_ELLIOT               0
-#define FLAG_REGISTERED_ISAIAH               0
-#define FLAG_REGISTERED_MARIA                0
-#define FLAG_REGISTERED_ABIGAIL              0
-#define FLAG_REGISTERED_DYLAN                0
-#define FLAG_REGISTERED_KATELYN              0
-#define FLAG_REGISTERED_BENJAMIN             0
-#define FLAG_REGISTERED_PABLO                0
-#define FLAG_REGISTERED_NICOLAS              0
-#define FLAG_REGISTERED_ROBERT               0
-#define FLAG_REGISTERED_LAO                  0
-#define FLAG_REGISTERED_CYNDY                0
-#define FLAG_REGISTERED_MADELINE             0
-#define FLAG_REGISTERED_JENNY                0
-#define FLAG_REGISTERED_DIANA                0
-#define FLAG_REGISTERED_AMY_AND_LIV          0
-#define FLAG_REGISTERED_ERNEST               0
-#define FLAG_REGISTERED_CORY                 0
-#define FLAG_REGISTERED_EDWIN                0
-#define FLAG_REGISTERED_LYDIA                0
-#define FLAG_REGISTERED_ISAAC                0
-#define FLAG_REGISTERED_GABRIELLE            0
-#define FLAG_REGISTERED_CATHERINE            0
-#define FLAG_REGISTERED_JACKSON              0
-#define FLAG_REGISTERED_HALEY                0
-#define FLAG_REGISTERED_JAMES                0
-#define FLAG_REGISTERED_TRENT                0
-#define FLAG_REGISTERED_SAWYER               0
-#define FLAG_REGISTERED_KIRA_AND_DAN         0
-#define FLAG_REGISTERED_WALLY                0
-#define FLAG_REGISTERED_ROXANNE              0
-#define FLAG_REGISTERED_BRAWLY               0
-#define FLAG_REGISTERED_WATTSON              0
-#define FLAG_REGISTERED_FLANNERY             0
-#define FLAG_REGISTERED_NORMAN               0
-#define FLAG_REGISTERED_WINONA               0
-#define FLAG_REGISTERED_TATE_AND_LIZA        0
-#define FLAG_REGISTERED_JUAN                 0
-#define FLAG_REGISTERED_SIDNEY               0
-#define FLAG_REGISTERED_PHOEBE               0
-#define FLAG_REGISTERED_GLACIA               0
-#define FLAG_REGISTERED_DRAKE                0
-#define FLAG_REGISTERED_WALLACE              0
 
 #define FLAG_DEFEATED_DEOXYS                 0
 #define FLAG_BATTLED_DEOXYS                  0
@@ -1881,13 +1789,6 @@
 #define FLAG_MET_SCOTT_ON_SS_TIDAL           0
 #define FLAG_SCOTT_GIVES_BATTLE_POINTS       0
 #define FLAG_COLLECTED_ALL_GOLD_SYMBOLS      0
-#define FLAG_ENABLE_ROXANNE_MATCH_CALL       0
-#define FLAG_ENABLE_BRAWLY_MATCH_CALL        0
-#define FLAG_ENABLE_WATTSON_MATCH_CALL       0
-#define FLAG_ENABLE_FLANNERY_MATCH_CALL      0
-#define FLAG_ENABLE_WINONA_MATCH_CALL        0
-#define FLAG_ENABLE_TATE_AND_LIZA_MATCH_CALL 0
-#define FLAG_ENABLE_JUAN_MATCH_CALL          0
 
 #define FLAG_UNUSED_0x1DA                    0 // Unused Flag
 

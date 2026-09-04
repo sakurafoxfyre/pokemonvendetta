@@ -273,7 +273,7 @@ extern const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT];
 extern const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT];
 extern const struct Trainer gBattlePartners[DIFFICULTY_COUNT][PARTNER_COUNT];
 
-extern const struct TrainerClass gTrainerClasses[TRAINER_CLASS_COUNT];
+extern struct TrainerClass gTrainerClasses[TRAINER_CLASS_COUNT];
 
 extern const struct EggData gEggDatas[EGG_ID_COUNT];
 

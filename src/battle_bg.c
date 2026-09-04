@@ -1303,7 +1303,10 @@ void DrawBattleEntryBackground(void)
         if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
         {
             enum TrainerClassID trainerClass = GetTrainerClassFromId(TRAINER_BATTLE_PARAM.opponentA);
-            if (trainerClass == TRAINER_CLASS_LEADER || trainerClass == TRAINER_CLASS_CHAMPION)
+            if (trainerClass == TRAINER_CLASS_ARCHIE
+                || trainerClass == TRAINER_CLASS_COURTNEY
+                || trainerClass == TRAINER_CLASS_CERISE 
+                || trainerClass == TRAINER_CLASS_STEVEN)
             {
                 LoadBattleEnvironmentEntryGfx(GetBattleEnvironmentOverride());
                 return;
