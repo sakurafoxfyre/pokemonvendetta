@@ -562,13 +562,7 @@
     "BattleFrontier_Lounge9",
     "BattleFrontier_PokemonCenter_1F",
     "BattleFrontier_PokemonCenter_2F",
-    "BattleFrontier_Mart",
-    "TrainerHill_Entrance",
-    "TrainerHill_1F",
-    "TrainerHill_2F",
-    "TrainerHill_3F",
-    "TrainerHill_4F",
-    "TrainerHill_Elevator"
+    "BattleFrontier_Mart"
   ],
   "gMapGroup_IndoorRoute104Prototype": [
     "Route104_Prototype",
