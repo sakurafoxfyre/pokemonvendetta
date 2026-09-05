@@ -57,9 +57,7 @@ SlateportCity_BattleTentBattleRoom_EventScript_EnterRoom::
 	waitmessage
 	closemessage
 	special HealPlayerParty
-	setvar VAR_0x8004, SPECIAL_BATTLE_FACTORY
-	setvar VAR_0x8005, 0
-	special DoSpecialTrainerBattle
+	dofacilitytrainerbattle FACILITY_BATTLE_FACTORY
 	waitstate
 	switch VAR_RESULT
 	case 1, SlateportCity_BattleTentBattleRoom_EventScript_DefeatedOpponent
@@ -102,4 +100,3 @@ SlateportCity_BattleTentBattleRoom_Movement_OpponentEnter:
 	walk_down
 	walk_in_place_faster_left
 	step_end
-

@@ -1000,10 +1000,8 @@ void CB2_ReturnFromCableClubBattle(void)
             switch (gBattleOutcome)
             {
             case B_OUTCOME_WON:
-                MysteryGift_TryIncrementStat(CARD_STAT_BATTLES_WON, gLinkPlayers[GetMultiplayerId() ^ 1].trainerId);
                 break;
             case B_OUTCOME_LOST:
-                MysteryGift_TryIncrementStat(CARD_STAT_BATTLES_LOST, gLinkPlayers[GetMultiplayerId() ^ 1].trainerId);
                 break;
             }
         }

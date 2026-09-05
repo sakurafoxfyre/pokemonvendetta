@@ -1201,8 +1201,8 @@ static void DomePrintPrevOrCurrentStreak(u8 battleMode, enum FrontierLevelMode l
 static void ShowDomeResultsWindow(u8 battleMode)
 {
     //gRecordsWindowId = AddWindow(&sFrontierResultsWindowTemplate);
-    DrawStdWindowFrame(gRecordsWindowId, FALSE);
-    FillWindowPixelBuffer(gRecordsWindowId, PIXEL_FILL(1));
+    //DrawStdWindowFrame(gRecordsWindowId, FALSE);
+    //FillWindowPixelBuffer(gRecordsWindowId, PIXEL_FILL(1));
     if (battleMode == FRONTIER_MODE_SINGLES)
         StringExpandPlaceholders(gStringVar4, gText_SingleBattleTourneyResults);
     else
@@ -1395,8 +1395,8 @@ static void ArenaPrintPrevOrCurrentStreak(enum FrontierLevelMode lvlMode, u8 x1,
 static void ShowArenaResultsWindow(void)
 {
     //gRecordsWindowId = AddWindow(&sFrontierResultsWindowTemplate);
-    DrawStdWindowFrame(gRecordsWindowId, FALSE);
-    FillWindowPixelBuffer(gRecordsWindowId, PIXEL_FILL(1));
+    //DrawStdWindowFrame(gRecordsWindowId, FALSE);
+    //FillWindowPixelBuffer(gRecordsWindowId, PIXEL_FILL(1));
     PrintHyphens(10);
     StringExpandPlaceholders(gStringVar4, gText_SetKOTourneyResults);
     PrintAligned(gStringVar4, 2);

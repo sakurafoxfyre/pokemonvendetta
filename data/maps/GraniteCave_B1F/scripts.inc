@@ -186,4 +186,3 @@ GraniteCaveB1F_EventScript_Long::
 	trainerbattle_single TRAINER_LONG, GraniteCave_Text_LongIntro, GraniteCave_Text_LongDefeated
 	msgbox GraniteCave_Text_LongPostBattle, MSGBOX_AUTOCLOSE
 	end
-	

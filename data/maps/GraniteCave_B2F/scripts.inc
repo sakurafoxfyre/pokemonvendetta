@@ -116,4 +116,3 @@ GraniteCaveB2F_EventScript_Ziel::
 	trainerbattle_single TRAINER_ZIEL, GraniteCave_Text_ZielIntro, GraniteCave_Text_ZielDefeated
 	msgbox GraniteCave_Text_ZielPostBattle, MSGBOX_AUTOCLOSE
 	end
-	
