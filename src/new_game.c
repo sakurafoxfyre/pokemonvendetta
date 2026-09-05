@@ -18,7 +18,6 @@
 #include "easy_chat.h"
 #include "event_data.h"
 #include "money.h"
-#include "trainer_hill.h"
 #include "trainer_tower.h"
 #include "tv.h"
 #include "coins.h"
@@ -51,7 +50,7 @@
 #include "script_ven_util.h"
 #include "constants/flags.h"
 #include "constants/trainers.h"
-#include "battle_main.h"
+#include "trainer_classes.h"
 
 extern const u8 EventScript_ResetAllMapFlags[];
 extern const u8 EventScript_ResetAllMapFlagsFrlg[];
@@ -223,7 +222,6 @@ void NewGameInitData(void)
     ResetAllApprenticeData();
     ClearRankingHallRecords();
     WipeTrainerNameRecords();
-    ResetTrainerHillResults();
     ResetTrainerTowerResults();
     ResetContestLinkResults();
     SetCurrentDifficultyLevel(DIFFICULTY_NORMAL);

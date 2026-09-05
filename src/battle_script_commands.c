@@ -74,6 +74,7 @@
 #include "test/battle.h"
 #include "follower_npc.h"
 #include "load_save.h"
+#include "trainer_classes.h"
 
 // Helper for accessing command arguments and advancing gBattlescriptCurrInstr.
 //

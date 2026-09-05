@@ -71,6 +71,7 @@ SECTIONS {
     ALIGN(4)
     {
         data/*.o(script_data);
+        KEEP(*(.data*))
     } > ROM =0
 
     .rodata.compound_string :

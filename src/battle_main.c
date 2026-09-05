@@ -82,6 +82,7 @@
 #include "new_game.h"
 #include "script_ven_trainer_pool_construction.h"
 #include "script_ven_specialty_trainer_pool.h"
+#include "trainer_classes.h"
 
 extern const struct BgTemplate gBattleBgTemplates[];
 extern const struct WindowTemplate *const gBattleWindowTemplates[];
@@ -300,124 +301,6 @@ const struct OamData gOamData_BattleSpritePlayerSide =
 static const s8 sCenterToCornerVecXs[8] ={-32, -16, -16, -32, -32};
 
 #include "data/types_info.h"
-
-// [TRAINER_CLASS_XYZ] = { _("name"), <money=5>, <ball=BALL_POKE> }
-struct TrainerClass gTrainerClasses[TRAINER_CLASS_COUNT] =
-{
-    [TRAINER_CLASS_HIKER] = { _("HIKER"), 10, B_TRAINER_CLASS_POKE_BALLS >= GEN_8 ? BALL_ULTRA : BALL_POKE },
-    [TRAINER_CLASS_TEAM_AQUA] = { _("TEAM AQUA") },
-    [TRAINER_CLASS_PKMN_BREEDER] = { _("{PKMN} BREEDER"), 10, B_TRAINER_CLASS_POKE_BALLS >= GEN_8 ? BALL_HEAL : BALL_FRIEND },
-    [TRAINER_CLASS_COOLTRAINER] = { _("COOLTRAINER"), 12, BALL_ULTRA },
-    [TRAINER_CLASS_BIRD_KEEPER] = { _("BIRD KEEPER"), 8 },
-    [TRAINER_CLASS_COLLECTOR] = { _("COLLECTOR"), 15, BALL_PREMIER },
-    [TRAINER_CLASS_SWIMMER] = { _("SWIMMER"), 2, BALL_DIVE },
-    [TRAINER_CLASS_TEAM_MAGMA] = { _("TEAM MAGMA") },
-    [TRAINER_CLASS_EXPERT] = { _("EXPERT"), 10 },
-    [TRAINER_CLASS_AQUA_ADMIN] = { _("AQUA ADMIN"), 10 },
-    [TRAINER_CLASS_BLACK_BELT] = { _("BLACK BELT"), 8, BALL_ULTRA },
-    [TRAINER_CLASS_ARCHIE] = { _("AQUA LEADER"), 20, BALL_MASTER },
-    [TRAINER_CLASS_HEX_MANIAC] = { _("HEX MANIAC"), 6 },
-    [TRAINER_CLASS_AROMA_LADY] = { _("AROMA LADY"), 10 },
-    [TRAINER_CLASS_RUIN_MANIAC] = { _("RUIN MANIAC"), 15 },
-    [TRAINER_CLASS_TUBER] = { _("TUBER"), 1 },
-    [TRAINER_CLASS_LADY] = { _("LADY"), 50 },
-    [TRAINER_CLASS_BEAUTY] = { _("BEAUTY"), 20, B_TRAINER_CLASS_POKE_BALLS >= GEN_8 ? BALL_GREAT : BALL_POKE },
-    [TRAINER_CLASS_RICH_BOY] = { _("RICH BOY"), 50 },
-    [TRAINER_CLASS_POKEMANIAC] = { _("POKéMANIAC"), 15 },
-    [TRAINER_CLASS_GUITARIST] = { _("GUITARIST"), 8 },
-    [TRAINER_CLASS_KINDLER] = { _("KINDLER"), 8 },
-    [TRAINER_CLASS_CAMPER] = { _("CAMPER"), 4 },
-    [TRAINER_CLASS_PICNICKER] = { _("PICNICKER"), 4 },
-    [TRAINER_CLASS_BUG_MANIAC] = { _("BUG MANIAC"), 15 },
-    [TRAINER_CLASS_PSYCHIC] = { _("PSYCHIC"), 6 },
-    [TRAINER_CLASS_GENTLEMAN] = { _("GENTLEMAN"), 20, BALL_LUXURY },
-    [TRAINER_CLASS_SCHOOL_KID] = { _("SCHOOL KID") },
-    [TRAINER_CLASS_SR_AND_JR] = { _("SR. AND JR."), 4 },
-    [TRAINER_CLASS_POKEFAN] = { _("POKéFAN"), 20 },
-    [TRAINER_CLASS_YOUNGSTER] = { _("YOUNGSTER"), 4 },
-    [TRAINER_CLASS_STEVEN] = { _("CHAMPION"), 50, BALL_ULTRA },
-    [TRAINER_CLASS_FISHERMAN] = { _("FISHERMAN"), 10, B_TRAINER_CLASS_POKE_BALLS >= GEN_8 ? BALL_DIVE : BALL_LURE },
-    [TRAINER_CLASS_TRIATHLETE] = { _("TRIATHLETE"), 10 },
-    [TRAINER_CLASS_DRAGON_TAMER] = { _("DRAGON TAMER"), 12 },
-    [TRAINER_CLASS_NINJA_BOY] = { _("NINJA BOY"), 3 },
-    [TRAINER_CLASS_BATTLE_GIRL] = { _("BATTLE GIRL"), 6 },
-    [TRAINER_CLASS_PARASOL_LADY] = { _("PARASOL LADY"), 10 },
-    [TRAINER_CLASS_TWINS] = { _("TWINS"), 3 },
-    [TRAINER_CLASS_SAILOR] = { _("SAILOR"), 8 },
-    [TRAINER_CLASS_MAGMA_ADMIN] = { _("MAGMA ADMIN"), 10 },
-    [TRAINER_CLASS_BUG_CATCHER] = { _("BUG CATCHER"), 4 },
-    [TRAINER_CLASS_PKMN_RANGER] = { _("{PKMN} RANGER"), 12 },
-    [TRAINER_CLASS_COURTNEY] = { _("MAGMA LEADER"), 20, BALL_MASTER },
-    [TRAINER_CLASS_LASS] = { _("LASS"), 4 },
-    [TRAINER_CLASS_YOUNG_COUPLE] = { _("YOUNG COUPLE"), 8 },
-    [TRAINER_CLASS_SIS_AND_BRO] = { _("SIS AND BRO"), 3 },
-    [TRAINER_CLASS_ROXANNE] = { _("GYM LEADER"), 1},
-    [TRAINER_CLASS_BRAWLY] = { _("GYM LEADER"), 1},
-    [TRAINER_CLASS_WALLY] = { _("GYM LEADER"), 1},
-    [TRAINER_CLASS_FLANNERY] = { _("GYM LEADER"), 1},
-    [TRAINER_CLASS_MAY] = { _("GYM LEADER"), 1},
-    [TRAINER_CLASS_LIZA] = { _("GYM LEADER"), 1},
-    [TRAINER_CLASS_WALLACE] = { _("GYM LEADER"), 1},
-    [TRAINER_CLASS_ZINNIA] = { _("GYM LEADER"), 1},
-    [TRAINER_CLASS_AETHER] = { _("AETHER"), 1},
-    [TRAINER_CLASS_AETHER_ADMIN] = { _("AETHER ADMIN"), 1},
-    [TRAINER_CLASS_CERISE] = { _("AETHER LEADER"), 1},
-    [TRAINER_CLASS_PHOEBE] = { _("ELITE FOUR"), 1},
-    [TRAINER_CLASS_NORMAN] = { _("ELITE FOUR"), 1},
-    [TRAINER_CLASS_TATE] = { _("ELITE FOUR"), 1},
-    [TRAINER_CLASS_BRENDAN] = { _("ELITE FOUR"), 1},
-
-    [TRAINER_CLASS_YOUNGSTER_FRLG] =       { _("YOUNGSTER"), 4 },
-    [TRAINER_CLASS_BUG_CATCHER_FRLG] =     { _("BUG CATCHER"), 3 },
-    [TRAINER_CLASS_LASS_FRLG] =            { _("LASS"), 4 },
-    [TRAINER_CLASS_SAILOR_FRLG] =          { _("SAILOR"), 8 },
-    [TRAINER_CLASS_CAMPER_FRLG] =          { _("CAMPER"), 5 },
-    [TRAINER_CLASS_PICNICKER_FRLG] =       { _("PICNICKER"), 5 },
-    [TRAINER_CLASS_POKEMANIAC_FRLG] =      { _("POKéMANIAC"), 12 },
-    [TRAINER_CLASS_SUPER_NERD_FRLG] =      { _("SUPER NERD"), 6 },
-    [TRAINER_CLASS_HIKER_FRLG] =           { _("HIKER"), 9 },
-    [TRAINER_CLASS_BIKER_FRLG] =           { _("BIKER"), 5 },
-    [TRAINER_CLASS_BURGLAR_FRLG] =         { _("BURGLAR"), 22 },
-    [TRAINER_CLASS_ENGINEER_FRLG] =        { _("ENGINEER"), 12 },
-    [TRAINER_CLASS_FISHERMAN_FRLG] =       { _("FISHERMAN"), 9, B_TRAINER_CLASS_POKE_BALLS >= GEN_8 ? BALL_DIVE : BALL_LURE },
-    [TRAINER_CLASS_SWIMMER_M_FRLG] =       { _("SWIMMER♂"), 1 },
-    [TRAINER_CLASS_CUE_BALL_FRLG] =        { _("CUE BALL"), 6 },
-    [TRAINER_CLASS_GAMER_FRLG] =           { _("GAMER"), 18 },
-    [TRAINER_CLASS_BEAUTY_FRLG] =          { _("BEAUTY"), 18 },
-    [TRAINER_CLASS_SWIMMER_F_FRLG] =       { _("SWIMMER♀"), 1, BALL_DIVE },
-    [TRAINER_CLASS_PSYCHIC_FRLG] =         { _("PSYCHIC"), 5 },
-    [TRAINER_CLASS_ROCKER_FRLG] =          { _("ROCKER"), 6 },
-    [TRAINER_CLASS_JUGGLER_FRLG] =         { _("JUGGLER"), 10 },
-    [TRAINER_CLASS_TAMER_FRLG] =           { _("TAMER"), 10 },
-    [TRAINER_CLASS_BIRD_KEEPER_FRLG] =     { _("BIRD KEEPER"), 6 },
-    [TRAINER_CLASS_BLACK_BELT_FRLG] =      { _("BLACK BELT"), 6, BALL_ULTRA },
-    [TRAINER_CLASS_RIVAL_EARLY_FRLG] =     { _("RIVAL"), 4 },
-    [TRAINER_CLASS_SCIENTIST_FRLG] =       { _("SCIENTIST"), 12 },
-    [TRAINER_CLASS_BOSS_FRLG] =            { _("BOSS"), 25 },
-    [TRAINER_CLASS_LEADER_FRLG] =          { _("LEADER"), 25 },
-    [TRAINER_CLASS_TEAM_ROCKET_FRLG] =     { _("TEAM ROCKET"), 8 },
-    [TRAINER_CLASS_COOLTRAINER_FRLG] =     { _("COOLTRAINER"), 9, BALL_ULTRA },
-    [TRAINER_CLASS_ELITE_FOUR_FRLG] =      { _("ELITE FOUR"), 25, BALL_ULTRA },
-    [TRAINER_CLASS_GENTLEMAN_FRLG] =       { _("GENTLEMAN"), 18, BALL_LUXURY },
-    [TRAINER_CLASS_RIVAL_LATE_FRLG] =      { _("RIVAL"), 9 },
-    [TRAINER_CLASS_CHAMPION_FRLG] =        { _("CHAMPION"), 25 },
-    [TRAINER_CLASS_CHANNELER_FRLG] =       { _("CHANNELER"), 8 },
-    [TRAINER_CLASS_TWINS_FRLG] =           { _("TWINS"), 3 },
-    [TRAINER_CLASS_COOL_COUPLE_FRLG] =     { _("COOL COUPLE"), 6 },
-    [TRAINER_CLASS_YOUNG_COUPLE_FRLG] =    { _("YOUNG COUPLE"), 7 },
-    [TRAINER_CLASS_CRUSH_KIN_FRLG] =       { _("CRUSH KIN"), 6 },
-    [TRAINER_CLASS_SIS_AND_BRO_FRLG] =     { _("SIS AND BRO"), 1 },
-    [TRAINER_CLASS_PKMN_PROF_FRLG] =       { _("{PKMN} PROF."), 25 },
-    [TRAINER_CLASS_PLAYER_FRLG] =          { _("{PKMN} TRAINER"), 1 },
-    [TRAINER_CLASS_CRUSH_GIRL_FRLG] =      { _("CRUSH GIRL"), 6 },
-    [TRAINER_CLASS_TUBER_FRLG] =           { _("TUBER"), 1 },
-    [TRAINER_CLASS_PKMN_BREEDER_FRLG] =    { _("{PKMN} BREEDER"), 7, B_TRAINER_CLASS_POKE_BALLS >= GEN_8 ? BALL_HEAL : BALL_FRIEND },
-    [TRAINER_CLASS_PKMN_RANGER_FRLG] =     { _("{PKMN} RANGER"), 9 },
-    [TRAINER_CLASS_AROMA_LADY_FRLG] =      { _("AROMA LADY"), 7 },
-    [TRAINER_CLASS_RUIN_MANIAC_FRLG] =     { _("RUIN MANIAC"), 12 },
-    [TRAINER_CLASS_LADY_FRLG] =            { _("LADY"), 50 },
-    [TRAINER_CLASS_PAINTER_FRLG] =         { _("PAINTER"), 4 },
-};
 
 static void (*const sTurnActionsFuncsTable[])(void) =
 {
@@ -1860,7 +1743,7 @@ void CustomTrainerPartyAssignMoves(struct Pokemon *mon, const struct TrainerMon 
     }
 }
 
-void CustomTrainerPartyAssignMovesSet(struct Pokemon *mon, const u32 moveset[4]) 
+void CustomTrainerPartyAssignMoveSet(struct Pokemon *mon, const u32 moveset[4]) 
 {
     u32 j;
 
@@ -5740,7 +5623,6 @@ static void FreeResetData_ReturnToOvOrDoEvolutions(void)
         else
             gSaveBlock3Ptr->dexNavChain = 0;
 
-        ClearCurrentTrainerWantRematchVsSeeker();
         gDexNavSpecies = SPECIES_NONE;
         ResetSpriteData();
         if (!(gBattleTypeFlags & (BATTLE_TYPE_LINK

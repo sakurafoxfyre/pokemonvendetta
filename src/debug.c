@@ -1899,7 +1899,6 @@ static void DebugAction_ChooseFromMap_Select(u8 taskId)
 
     if (JOY_NEW(A_BUTTON) || JOY_NEW(B_BUTTON))
     {
-        sDebugMenuListData->data[1] = FirstBattleTrainerIdToRematchTableId(gRematchTable, sDebugMenuListData->data[0]);
         sDebugMenuListData->data[3] = TRUE;
         FreeSpritePaletteByTag(TRAINER_TAG);
         DestroySprite(&gSprites[gTasks[taskId].tSpriteId]);
@@ -2083,9 +2082,8 @@ static void DebugAction_Trainers_TryBattle(u8 taskId)
     if (sDebugMenuListData->data[1] != -1)
     {
         s32 lastMatch = CountBattledRematchTeams(rematchId);
-        if (lastMatch == REMATCHES_COUNT || gRematchTable[rematchId].trainerIds[lastMatch] == 0)
+        if (lastMatch == REMATCHES_COUNT)
             lastMatch -= 1;
-        trainer1Id = gRematchTable[rematchId].trainerIds[lastMatch];
     }
     gBattleTypeFlags = BATTLE_TYPE_TRAINER;
     TRAINER_BATTLE_PARAM.opponentA = trainer1Id;

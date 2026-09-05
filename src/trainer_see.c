@@ -12,7 +12,6 @@
 #include "sprite.h"
 #include "task.h"
 #include "trainer_see.h"
-#include "trainer_hill.h"
 #include "util.h"
 #include "battle_pyramid.h"
 #include "constants/battle_frontier.h"
@@ -498,7 +497,7 @@ bool8 CheckForTrainersWantingBattle(void)
     }
 
 
-    if (InBattlePyramid_() || InTrainerHillChallenge())
+    if (InBattlePyramid_())
     {
         u8 facility = InBattlePyramid_() ? FACILITY_BATTLE_PYRAMID : FACILITY_BATTLE_TRAINER_HILL;
 
@@ -561,35 +560,23 @@ static u8 CheckTrainer(u8 objectEventId)
     if (approachDistance == 0)
         return 0;
 
-    if (InTrainerHill() == TRUE)
+    trainerBattlePtr = GetObjectEventScriptPointerByObjectEventId(objectEventId);
+    struct ScriptContext ctx;
+    if (RunScriptImmediatelyUntilEffect(SCREFF_V1 | SCREFF_SAVE | SCREFF_HARDWARE | SCREFF_TRAINERBATTLE, trainerBattlePtr, &ctx))
     {
-        trainerBattlePtr = GetTrainerHillTrainerScript();
+        if (*ctx.scriptPtr == SCR_OP_TRAINERBATTLE)
+            trainerBattlePtr = ctx.scriptPtr;
+        else
+            trainerBattlePtr = NULL;
     }
     else
     {
-        trainerBattlePtr = GetObjectEventScriptPointerByObjectEventId(objectEventId);
-        struct ScriptContext ctx;
-        if (RunScriptImmediatelyUntilEffect(SCREFF_V1 | SCREFF_SAVE | SCREFF_HARDWARE | SCREFF_TRAINERBATTLE, trainerBattlePtr, &ctx))
-        {
-            if (*ctx.scriptPtr == SCR_OP_TRAINERBATTLE)
-                trainerBattlePtr = ctx.scriptPtr;
-            else
-                trainerBattlePtr = NULL;
-        }
-        else
-        {
-            return 0; // no effect
-        }
+        return 0; // no effect
     }
 
     if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE)
     {
         if (GetBattlePyramidTrainerFlag(objectEventId))
-            return 0;
-    }
-    else if (InTrainerHill() == TRUE)
-    {
-        if (GetHillTrainerFlag(objectEventId))
             return 0;
     }
     else if (trainerBattlePtr)

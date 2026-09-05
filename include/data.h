@@ -7,6 +7,7 @@
 #include "constants/pokeball.h"
 #include "difficulty.h"
 #include "debug.h"
+#include "trainer_classes.h"
 
 #define MAX_TRAINER_ITEMS 4
 
@@ -200,13 +201,6 @@ struct Trainer
     bool8 isSpecialTrainer;
 };
 
-struct TrainerClass
-{
-    u8 name[20];
-    u8 money;
-    u16 ball;
-};
-
 struct TypeInfo
 {
     u8 name[TYPE_NAME_LENGTH + 1];
@@ -272,8 +266,6 @@ extern const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT];
 
 extern const struct Trainer gTrainers[DIFFICULTY_COUNT][TRAINERS_COUNT];
 extern const struct Trainer gBattlePartners[DIFFICULTY_COUNT][PARTNER_COUNT];
-
-extern struct TrainerClass gTrainerClasses[TRAINER_CLASS_COUNT];
 
 extern const struct EggData gEggDatas[EGG_ID_COUNT];
 

@@ -540,7 +540,6 @@ CableClub_EventScript_ShowBattleRecords_Frlg::
 	lockall
 	fadescreen FADE_TO_BLACK
 	setvar VAR_0x8004, 0
-	special ShowTrainerHillRecords
 	releaseall
 	end
 

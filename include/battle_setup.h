@@ -2,7 +2,6 @@
 #define GUARD_BATTLE_SETUP_H
 
 #include "battle_transition.h"
-#include "gym_leader_rematch.h"
 
 #define REMATCHES_COUNT 5
 
@@ -42,8 +41,6 @@ typedef union PACKED TrainerBattleParameter
     } params;
     u8 data[sizeof(struct _TrainerBattleParameter)];
 } TrainerBattleParameter;
-
-extern const struct RematchTrainer gRematchTable[REMATCH_TABLE_ENTRIES];
 
 extern TrainerBattleParameter gTrainerBattleParameter;
 extern u16 gPartnerTrainerId;
@@ -93,7 +90,6 @@ const u8 *GetTrainerALoseText(void);
 const u8 *GetTrainerBLoseText(void);
 const u8 *GetTrainerWonSpeech(void);
 void UpdateRematchIfDefeated(s32 rematchTableId);
-void ClearCurrentTrainerWantRematchVsSeeker(void);
 void IncrementRematchStepCounter(void);
 void TryUpdateRandomTrainerRematches(u16 mapGroup, u16 mapNum);
 bool32 DoesSomeoneWantRematchIn(u16 mapGroup, u16 mapNum);
