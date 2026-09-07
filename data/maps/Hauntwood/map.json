@@ -33,15 +33,17 @@
       "x": 6,
       "y": 0,
       "elevation": 0,
-      "dest_map": "MAP_HAUNTWOOD_DELTA",
-      "dest_warp_id": "8"
+      "dest_map": "MAP_ABANDONED_SHIP_CAPTAINS_OFFICE",
+      "dest_warp_id": "8",
+      "was hauntwood delta": ""
     },
     {
       "x": 7,
       "y": 0,
       "elevation": 0,
-      "dest_map": "MAP_HAUNTWOOD_DELTA",
-      "dest_warp_id": "9"
+      "dest_map": "MAP_ABANDONED_SHIP_CAPTAINS_OFFICE",
+      "dest_warp_id": "9",
+      "was hauntwood delta": ""
     }
   ],
   "coord_events": [],

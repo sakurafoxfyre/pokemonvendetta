@@ -373,7 +373,6 @@ bool8 ScrCmd_setmysteryeventstatus(struct ScriptContext *ctx)
 
     Script_RequestEffects(SCREFF_V1);
 
-    SetMysteryEventScriptStatus(status);
     return FALSE;
 }
 

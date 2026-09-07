@@ -359,8 +359,9 @@
       "x": 28,
       "y": 12,
       "elevation": 0,
-      "dest_map": "MAP_CARGO_SHIP_DECK",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_ABANDONED_SHIP_CAPTAINS_OFFICE",
+      "dest_warp_id": "0",
+      "was cargo ship deck": ""
     },
     {
       "x": 40,

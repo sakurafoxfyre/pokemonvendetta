@@ -17,7 +17,6 @@ void TryPutTrainerFanClubOnAir(void);
 void IncrementDailyPlantedBerries(void);
 void IncrementDailyPickedBerries(void);
 void IncrementDailyBattlePoints(u16 delta);
-void HideBattleTowerReporter(void);
 void ReceiveTvShowsData(void *src, u32 size, u8 playersLinkId);
 void TryPutSpotTheCutiesOnAir(struct Pokemon *pokemon, u8 ribbonMonDataIdx);
 u32 GetPlayerIDAsU32(void);

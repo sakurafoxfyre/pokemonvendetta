@@ -156,7 +156,6 @@ static void ZeroObjectEvent(struct ObjectEvent *);
 static void SpawnLinkPlayerObjectEvent(u8, s16, s16, u8);
 static void InitLinkPlayerObjectEventPos(struct ObjectEvent *, s16, s16);
 static u8 GetSpriteForLinkedPlayer(u8);
-static void RunTerminateLinkScript(void);
 static u32 GetLinkSendQueueLength(void);
 static void ZeroLinkPlayerObjectEvent(struct LinkPlayerObjectEvent *);
 static const u8 *TryInteractWithPlayer(struct CableClubPlayer *);
@@ -164,7 +163,6 @@ static u16 GetDirectionForEventScript(const u8 *);
 static void InitLinkPlayerQueueScript(void);
 static void InitLinkRoomStartMenuScript(void);
 static void RunInteractLocalPlayerScript(const u8 *);
-static void RunConfirmLeaveCableClubScript(void);
 static void InitMenuBasedScript(const u8 *);
 static void LoadCableClubPlayer(s32, s32, struct CableClubPlayer *);
 static bool32 IsCableClubPlayerUnfrozen(struct CableClubPlayer *);
@@ -2764,7 +2762,6 @@ static void HandleLinkPlayerKeyInput(u32 playerId, u16 key, struct CableClubPlay
             if (trainer->isLocalPlayer)
             {
                 SetKeyInterceptCallback(KeyInterCB_DeferToEventScript);
-                RunTerminateLinkScript();
             }
             return;
         }
@@ -2789,7 +2786,6 @@ static void HandleLinkPlayerKeyInput(u32 playerId, u16 key, struct CableClubPlay
                 if (trainer->isLocalPlayer)
                 {
                     SetKeyInterceptCallback(KeyInterCB_DeferToEventScript);
-                    RunConfirmLeaveCableClubScript();
                 }
             }
             break;
@@ -3051,7 +3047,6 @@ static u16 KeyInterCB_WaitForPlayersToExit(u32 keyOrPlayerId)
         CheckRfuKeepAliveTimer();
     if (AreAllPlayersInLinkState(PLAYER_LINK_STATE_EXITING_ROOM) == TRUE)
     {
-        ScriptContext_SetupScript(EventScript_DoLinkRoomExit);
         SetKeyInterceptCallback(KeyInterCB_SendNothing);
     }
     return LINK_KEY_CODE_EMPTY;
@@ -3180,18 +3175,6 @@ static const u8 *TryInteractWithPlayer(struct CableClubPlayer *player)
     otherPlayerPos.elevation = ELEVATION_TRANSITION;
     linkPlayerId = GetLinkPlayerIdAt(otherPlayerPos.x, otherPlayerPos.y);
 
-    if (linkPlayerId != MAX_LINK_PLAYERS)
-    {
-        if (!player->isLocalPlayer)
-            return CableClub_EventScript_TooBusyToNotice;
-        else if (sPlayerLinkStates[linkPlayerId] != PLAYER_LINK_STATE_IDLE)
-            return CableClub_EventScript_TooBusyToNotice;
-        else if (!GetLinkTrainerCardColor(linkPlayerId))
-            return CableClub_EventScript_ReadTrainerCard;
-        else
-            return CableClub_EventScript_ReadTrainerCardColored;
-    }
-
     return GetInteractedLinkPlayerScript(&otherPlayerPos, player->metatileBehavior, player->facing);
 }
 
@@ -3199,32 +3182,7 @@ static const u8 *TryInteractWithPlayer(struct CableClubPlayer *player)
 // these event scripts runs.
 static u16 GetDirectionForEventScript(const u8 *script)
 {
-    if (script == EventScript_BattleColosseum_4P_PlayerSpot0)
-        return FACING_FORCED_RIGHT;
-    else if (script == EventScript_BattleColosseum_4P_PlayerSpot1)
-        return FACING_FORCED_LEFT;
-    else if (script == EventScript_BattleColosseum_4P_PlayerSpot2)
-        return FACING_FORCED_RIGHT;
-    else if (script == EventScript_BattleColosseum_4P_PlayerSpot3)
-        return FACING_FORCED_LEFT;
-    else if (script == EventScript_RecordCenter_Spot0)
-        return FACING_FORCED_RIGHT;
-    else if (script == EventScript_RecordCenter_Spot1)
-        return FACING_FORCED_LEFT;
-    else if (script == EventScript_RecordCenter_Spot2)
-        return FACING_FORCED_RIGHT;
-    else if (script == EventScript_RecordCenter_Spot3)
-        return FACING_FORCED_LEFT;
-    else if (script == EventScript_BattleColosseum_2P_PlayerSpot0)
-        return FACING_FORCED_RIGHT;
-    else if (script == EventScript_BattleColosseum_2P_PlayerSpot1)
-        return FACING_FORCED_LEFT;
-    else if (script == EventScript_TradeCenter_Chair0)
-        return FACING_FORCED_RIGHT;
-    else if (script == EventScript_TradeCenter_Chair1)
-        return FACING_FORCED_LEFT;
-    else
-        return FACING_NONE;
+    return FACING_NONE;
 }
 
 static void InitLinkPlayerQueueScript(void)
@@ -3246,23 +3204,10 @@ static void RunInteractLocalPlayerScript(const u8 *script)
     LockPlayerFieldControls();
 }
 
-static void RunConfirmLeaveCableClubScript(void)
-{
-    PlaySE(SE_WIN_OPEN);
-    ScriptContext_SetupScript(EventScript_ConfirmLeaveCableClubRoom);
-    LockPlayerFieldControls();
-}
-
 static void InitMenuBasedScript(const u8 *script)
 {
     PlaySE(SE_SELECT);
     ScriptContext_SetupScript(script);
-    LockPlayerFieldControls();
-}
-
-static void RunTerminateLinkScript(void)
-{
-    ScriptContext_SetupScript(EventScript_TerminateLink);
     LockPlayerFieldControls();
 }
 

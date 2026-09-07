@@ -1725,10 +1725,8 @@ static void AwardBattleTowerRibbons(void)
 void TryHideBattleTowerReporter(void)
 {
     if (gSaveBlock2Ptr->frontier.challengeStatus == CHALLENGE_STATUS_SAVING)
-        HideBattleTowerReporter();
     if (FlagGet(FLAG_CANCEL_BATTLE_ROOM_CHALLENGE) == TRUE)
     {
-        HideBattleTowerReporter();
         FlagClear(FLAG_CANCEL_BATTLE_ROOM_CHALLENGE);
     }
 }

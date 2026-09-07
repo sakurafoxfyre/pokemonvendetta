@@ -1898,10 +1898,8 @@ static void Task_SendMysteryGift(u8 taskId)
         data->listenTaskId = CreateTask_ListenForCompatiblePartners(data->incomingPlayerList, 0xFF);
 
         winTemplate = sWindowTemplate_PlayerList;
-        winTemplate.baseBlock = GetMysteryGiftBaseBlock();
         winTemplate.paletteNum = 12;
         data->listWindowId = AddWindow(&winTemplate);
-        MG_DrawTextBorder(data->listWindowId);
         gMultiuseListMenuTemplate = sListMenuTemplate_PossibleGroupMembers;
         gMultiuseListMenuTemplate.windowId = data->listWindowId;
         data->listTaskId = ListMenuInit(&gMultiuseListMenuTemplate, 0, 0);
@@ -1916,7 +1914,6 @@ static void Task_SendMysteryGift(u8 taskId)
         data->state = 3;
         break;
     case 3:
-        MG_AddMessageTextPrinter(gStringVar4);
         data->state = 4;
         break;
     case 4:
@@ -1928,12 +1925,6 @@ static void Task_SendMysteryGift(u8 taskId)
         }
         break;
     case 6:
-        if (PrintMysteryGiftMenuMessage(&data->textState, sText_LinkWithFriendDropped))
-        {
-            data->playerCount = LeaderPrunePlayerList(data->playerList);
-            RedrawListMenu(data->listTaskId);
-            data->state = 2;
-        }
         break;
     case 5:
         data->state = 7;
@@ -1990,7 +1981,6 @@ static void Task_SendMysteryGift(u8 taskId)
         }
         break;
     case 9:
-        MG_AddMessageTextPrinter(gStringVar4);
         data->state = 10;
         break;
     case 10:
@@ -2025,11 +2015,6 @@ static void Task_SendMysteryGift(u8 taskId)
         data->state++;
         break;
     case 14:
-        if (PrintMysteryGiftMenuMessage(&data->textState, sText_PleaseStartOver))
-        {
-            DestroyTask(taskId);
-            gSpecialVar_Result = LINKUP_FAILED;
-        }
         break;
     case 15:
         if (RfuGetStatus() == RFU_STATUS_FATAL_ERROR || RfuGetStatus() == RFU_STATUS_CONNECTION_ERROR)
@@ -2093,7 +2078,6 @@ static void Task_CardOrNewsWithFriend(u8 taskId)
         data->state = 1;
         break;
     case 1:
-        MG_AddMessageTextPrinter(sText_ChooseTrainer);
         data->state = 2;
         break;
     case 2:
@@ -2102,7 +2086,6 @@ static void Task_CardOrNewsWithFriend(u8 taskId)
         data->listenTaskId = CreateTask_ListenForCompatiblePartners(data->incomingPlayerList, data->isWonderNews + LINK_GROUP_WONDER_CARD);
 
         listWinTemplate = sWindowTemplate_GroupList;
-        listWinTemplate.baseBlock = GetMysteryGiftBaseBlock();
         listWinTemplate.paletteNum = 12;
         data->listWindowId = AddWindow(&listWinTemplate);
 
@@ -2110,12 +2093,10 @@ static void Task_CardOrNewsWithFriend(u8 taskId)
         playerNameWinTemplate.paletteNum = 12;
         data->playerNameAndIdWindowId = AddWindow(&playerNameWinTemplate);
 
-        MG_DrawTextBorder(data->listWindowId);
         gMultiuseListMenuTemplate = sListMenuTemplate_UnionRoomGroups;
         gMultiuseListMenuTemplate.windowId = data->listWindowId;
         data->listTaskId = ListMenuInit(&gMultiuseListMenuTemplate, 0, 0);
 
-        MG_DrawTextBorder(data->playerNameAndIdWindowId);
         FillWindowPixelBuffer(data->playerNameAndIdWindowId, PIXEL_FILL(1));
         PutWindowTilemap(data->playerNameAndIdWindowId);
         PrintPlayerNameAndIdOnWindow(data->playerNameAndIdWindowId);
@@ -2165,7 +2146,6 @@ static void Task_CardOrNewsWithFriend(u8 taskId)
         }
         break;
     case 4:
-        MG_AddMessageTextPrinter(sText_AwaitingPlayersResponse);
         CopyAndTranslatePlayerName(gStringVar1, &data->playerList->players[data->leaderId]);
         data->state = 5;
         break;
@@ -2184,7 +2164,6 @@ static void Task_CardOrNewsWithFriend(u8 taskId)
             data->state = 8;
             break;
         case RFU_STATUS_JOIN_GROUP_OK:
-            MG_AddMessageTextPrinter(sText_PlayerSentBackOK);
             RfuSetStatus(RFU_STATUS_OK, 0);
             break;
         }
@@ -2202,17 +2181,9 @@ static void Task_CardOrNewsWithFriend(u8 taskId)
         data->state++;
         break;
     case 9:
-        if (PrintMysteryGiftMenuMessage(&data->textState, sLinkDroppedTexts[RfuGetStatus()]))
-        {
-            DestroyWirelessStatusIndicatorSprite();
-            DestroyTask(taskId);
-            LinkRfu_Shutdown();
-            gSpecialVar_Result = LINKUP_FAILED;
-        }
         break;
     case 7:
         DestroyWirelessStatusIndicatorSprite();
-        MG_AddMessageTextPrinter(sText_PleaseStartOver);
         DestroyTask(taskId);
         LinkRfu_Shutdown();
         gSpecialVar_Result = LINKUP_FAILED;
@@ -2261,7 +2232,6 @@ static void Task_CardOrNewsOverWireless(u8 taskId)
         data->state = 1;
         break;
     case 1:
-        MG_AddMessageTextPrinter(sText_SearchingForWirelessSystemWait);
         data->state = 2;
         break;
     case 2:
@@ -2272,10 +2242,8 @@ static void Task_CardOrNewsOverWireless(u8 taskId)
         if (data->showListMenu)
         {
             winTemplate = sWindowTemplate_GroupList;
-            winTemplate.baseBlock = GetMysteryGiftBaseBlock();
             data->listWindowId = AddWindow(&winTemplate);
 
-            MG_DrawTextBorder(data->listWindowId);
             gMultiuseListMenuTemplate = sListMenuTemplate_UnionRoomGroups;
             gMultiuseListMenuTemplate.windowId = data->listWindowId;
             data->listTaskId = ListMenuInit(&gMultiuseListMenuTemplate, 0, 0);
@@ -2330,7 +2298,6 @@ static void Task_CardOrNewsOverWireless(u8 taskId)
         }
         break;
     case 4:
-        MG_AddMessageTextPrinter(sText_AwaitingResponseFromWirelessSystem);
         CopyAndTranslatePlayerName(gStringVar1, &data->playerList->players[data->leaderId]);
         data->state = 5;
         break;
@@ -2349,7 +2316,6 @@ static void Task_CardOrNewsOverWireless(u8 taskId)
             data->state = 8;
             break;
         case RFU_STATUS_JOIN_GROUP_OK:
-            MG_AddMessageTextPrinter(sText_WirelessLinkEstablished);
             RfuSetStatus(RFU_STATUS_OK, 0);
             break;
         }
@@ -2370,31 +2336,10 @@ static void Task_CardOrNewsOverWireless(u8 taskId)
         data->state++;
         break;
     case 9:
-        if (PrintMysteryGiftMenuMessage(&data->textState, sText_WirelessLinkDropped))
-        {
-            DestroyWirelessStatusIndicatorSprite();
-            DestroyTask(taskId);
-            LinkRfu_Shutdown();
-            gSpecialVar_Result = LINKUP_FAILED;
-        }
         break;
     case 7:
-        if (PrintMysteryGiftMenuMessage(&data->textState, sText_WirelessSearchCanceled))
-        {
-            DestroyWirelessStatusIndicatorSprite();
-            DestroyTask(taskId);
-            LinkRfu_Shutdown();
-            gSpecialVar_Result = LINKUP_FAILED;
-        }
         break;
     case 11:
-        if (PrintMysteryGiftMenuMessage(&data->textState, sNoWonderSharedTexts[data->isWonderNews]))
-        {
-            DestroyWirelessStatusIndicatorSprite();
-            DestroyTask(taskId);
-            LinkRfu_Shutdown();
-            gSpecialVar_Result = LINKUP_FAILED;
-        }
         break;
     case 13:
         data->state++;

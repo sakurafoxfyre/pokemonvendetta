@@ -384,8 +384,9 @@
       "x": 48,
       "y": 63,
       "elevation": 0,
-      "dest_map": "MAP_GRANITE_CAVE_B1F_INTERIOR",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_ABANDONED_SHIP_CAPTAINS_OFFICE",
+      "dest_warp_id": "0",
+      "was granite cave b1f interior": ""
     }
   ],
   "coord_events": [],

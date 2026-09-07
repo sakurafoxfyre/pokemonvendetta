@@ -1105,11 +1105,6 @@ static u32 Debug_GenerateListTrainerMenu(const struct DebugMenuOption *items)
                     StringCopy(gStringVar1, COMPOUND_STRING("0"));
                 StringCopy(gStringVar2, COMPOUND_STRING("1"));
             }
-            else
-            {
-                ConvertIntToDecimalStringN(gStringVar1, CountBattledRematchTeams(rematchTableId), STR_CONV_MODE_LEADING_ZEROS, 1);
-                ConvertIntToDecimalStringN(gStringVar2, CountMaxPossibleRematch(rematchTableId), STR_CONV_MODE_LEADING_ZEROS, 1);
-            }
             break;
         case 6:
             if (I_VS_SEEKER_CHARGING || !isRealFight || rematchTableId == -1)
@@ -1812,11 +1807,6 @@ static void ParseObjectEventScript(const u8 *script)
     {
         TrainerBattleLoadArgs(script + 1);
     }
-    else if (Script_MatchesCallNative(script, NativeVsSeekerRematchId, TRUE))
-    {
-        ctx->scriptPtr = script + 5;
-        sDebugMenuListData->data[0] = ScriptPeekHalfword(ctx);
-    }
     else if (Script_MatchesSpecial(script, SavePlayerParty) && Script_MatchesCallNative(script + 3, SetMultiTrainerBattle, FALSE))
     {
         ctx->scriptPtr = script + 8;
@@ -2079,12 +2069,7 @@ static void DebugAction_Trainers_TryBattle(u8 taskId)
     s32 trainer2Id = sDebugMenuListData->data[2];
     s32 partnerId = sDebugMenuListData->data[4];
     s32 rematchId = sDebugMenuListData->data[1];
-    if (sDebugMenuListData->data[1] != -1)
-    {
-        s32 lastMatch = CountBattledRematchTeams(rematchId);
-        if (lastMatch == REMATCHES_COUNT)
-            lastMatch -= 1;
-    }
+    
     gBattleTypeFlags = BATTLE_TYPE_TRAINER;
     TRAINER_BATTLE_PARAM.opponentA = trainer1Id;
     TRAINER_BATTLE_PARAM.opponentB = 0xFFFF;

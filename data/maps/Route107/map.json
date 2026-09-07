@@ -104,8 +104,9 @@
       "x": 27,
       "y": 12,
       "elevation": 0,
-      "dest_map": "MAP_NORTH_ISLAND",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_ABANDONED_SHIP_CAPTAINS_OFFICE",
+      "dest_warp_id": "0",
+      "was north island": ""
     }
   ],
   "coord_events": [],

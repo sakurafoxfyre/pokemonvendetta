@@ -16,7 +16,6 @@
 #include "main_menu.h"
 #include "menu.h"
 #include "list_menu.h"
-#include "mystery_event_menu.h"
 #include "naming_screen.h"
 #include "oak_speech.h"
 #include "option_menu.h"
@@ -1102,18 +1101,6 @@ static void Task_HandleMainMenuAPressed(u8 taskId)
         case ACTION_OPTION:
             gMain.savedCallback = CB2_ReinitMainMenu;
             SetMainCallback2(CB2_InitOptionMenu);
-            DestroyTask(taskId);
-            break;
-        case ACTION_MYSTERY_GIFT:
-            SetMainCallback2(CB2_InitMysteryGift);
-            DestroyTask(taskId);
-            break;
-        case ACTION_MYSTERY_EVENTS:
-            SetMainCallback2(CB2_InitMysteryEventMenu);
-            DestroyTask(taskId);
-            break;
-        case ACTION_EREADER:
-            SetMainCallback2(CB2_InitEReader);
             DestroyTask(taskId);
             break;
         case ACTION_INVALID:
