@@ -2,31 +2,37 @@ Route107_MapScripts::
 	.byte 
 
 Route107_EventScript_Edmond::
-	trainerbattle_single TRAINER_EDMOND, Route107_Text_EdmondIntro, Route107_Text_EdmondDefeated
-	msgbox Route107_Text_EdmondPostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_EDMOND, Route107_Text_EdmondIntro, Route107_Text_EdmondDefeated
+	@msgbox Route107_Text_EdmondPostBattle, MSGBOX_AUTOCLOSE
+	release
 	end
 
 Route107_EventScript_Pete::
-	trainerbattle_single TRAINER_PETE, Route103_Text_PeteIntro, Route103_Text_PeteDefeated
-	msgbox Route103_Text_PetePostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_PETE, Route103_Text_PeteIntro, Route103_Text_PeteDefeated
+	@msgbox Route103_Text_PetePostBattle, MSGBOX_AUTOCLOSE
+	release
 	end
 
 Route107_EventScript_Isabelle::
-	trainerbattle_single TRAINER_ISABELLE, Route103_Text_IsabelleIntro, Route103_Text_IsabelleDefeated
-	msgbox Route103_Text_IsabellePostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_ISABELLE, Route103_Text_IsabelleIntro, Route103_Text_IsabelleDefeated
+	@msgbox Route103_Text_IsabellePostBattle, MSGBOX_AUTOCLOSE
+	release
 	end
 
 Route107_EventScript_Huey::
-	trainerbattle_single TRAINER_HUEY, Route109_Text_HueyIntro, Route109_Text_HueyDefeated
-	msgbox Route109_Text_HueyPostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_HUEY, Route109_Text_HueyIntro, Route109_Text_HueyDefeated
+	@msgbox Route109_Text_HueyPostBattle, MSGBOX_AUTOCLOSE
+	release
 	end
 
 Route107_EventScript_Elijah::
-	trainerbattle_single TRAINER_ELIJAH, Route109_Text_ElijahIntro, Route109_Text_ElijahDefeated
-	msgbox Route109_Text_ElijahPostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_ELIJAH, Route109_Text_ElijahIntro, Route109_Text_ElijahDefeated
+	@msgbox Route109_Text_ElijahPostBattle, MSGBOX_AUTOCLOSE
+	release
 	end
 
 Route107_EventScript_Carter::
-	trainerbattle_single TRAINER_CARTER, Route109_Text_CarterIntro, Route109_Text_CarterDefeated
-	msgbox Route109_Text_CarterPostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_CARTER, Route109_Text_CarterIntro, Route109_Text_CarterDefeated
+	@msgbox Route109_Text_CarterPostBattle, MSGBOX_AUTOCLOSE
+	release
 	end

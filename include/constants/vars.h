@@ -57,6 +57,7 @@
 #define VAR_NUMBER_OF_KEYS                               0x4101
 #define VAR_TATE_LIZA_STATE                              0x4102 // 0 = Tate gym, Liza E4, 1 = Liza gym, Tate E4
 #define VAR_KARMA                                        0x4103
+#define VAR_HAUNTWOOD_SHRINE                             0x4104
 
 // vendetta - stretch levels
 #define VAR_FALLARBOR_RUSTBORO_LEVEL                     0x4150

@@ -27,7 +27,6 @@ FallarborTown_ProfessorCozmosLab_EventScript_GrabStarter::
 	end
 
 FallarborTown_ProfessorCozmosLab_EventScript_SetLeave::
-	setvar VAR_CAN_LEAVE_COZMOS_LAB, 1
 	end
 
 FallarborTown_ProfessorCozmosLab_EventScript_PreventLeave::

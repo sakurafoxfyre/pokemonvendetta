@@ -420,7 +420,7 @@ BattleFrontier_BattleTowerLobby_EventScript_ShowSinglesResults::
 	lockall
 	frontier_results FRONTIER_FACILITY_TOWER, FRONTIER_MODE_SINGLES
 	waitbuttonpress
-	special RemoveRecordsWindow
+	@special RemoveRecordsWindow
 	releaseall
 	end
 
@@ -428,7 +428,7 @@ BattleFrontier_BattleTowerLobby_EventScript_ShowDoublesResults::
 	lockall
 	frontier_results FRONTIER_FACILITY_TOWER, FRONTIER_MODE_DOUBLES
 	waitbuttonpress
-	special RemoveRecordsWindow
+	@special RemoveRecordsWindow
 	releaseall
 	end
 
@@ -436,7 +436,7 @@ BattleFrontier_BattleTowerLobby_EventScript_ShowMultisResults::
 	lockall
 	frontier_results FRONTIER_FACILITY_TOWER, FRONTIER_MODE_MULTIS
 	waitbuttonpress
-	special RemoveRecordsWindow
+	@special RemoveRecordsWindow
 	releaseall
 	end
 

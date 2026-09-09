@@ -151,55 +151,59 @@ Route104_EventScript_Girl2::
 	end
 
 Route104_EventScript_Ivan::
-	trainerbattle_single TRAINER_IVAN, Route104_Text_IvanIntro, Route104_Text_IvanDefeat
-	msgbox Route104_Text_IvanPostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_IVAN, Route104_Text_IvanIntro, Route104_Text_IvanDefeat
+	@msgbox Route104_Text_IvanPostBattle, MSGBOX_AUTOCLOSE
+	release
 	end
 
 Route104_EventScript_Joel::
-	trainerbattle_single TRAINER_JOEL, Route104_Text_JoelIntro, Route104_Text_JoelDefeat
-	msgbox Route104_Text_JoelPostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_JOEL, Route104_Text_JoelIntro, Route104_Text_JoelDefeat
+	@msgbox Route104_Text_JoelPostBattle, MSGBOX_AUTOCLOSE
+	release
 	end
 
 Route104_EventScript_Billy::
-	trainerbattle_single TRAINER_BILLY, Route104_Text_BillyIntro, Route104_Text_BillyDefeat
-	msgbox Route104_Text_BillyPostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_BILLY, Route104_Text_BillyIntro, Route104_Text_BillyDefeat
+	@msgbox Route104_Text_BillyPostBattle, MSGBOX_AUTOCLOSE
+	release
 	end
 
 Route104_EventScript_Haley::
-	trainerbattle_single TRAINER_HALEY, Route104_Text_HaleyIntro, Route104_Text_HaleyDefeat
-	msgbox Route104_Text_HaleyPostBattle, MSGBOX_DEFAULT
+	@trainerbattle_single TRAINER_HALEY, Route104_Text_HaleyIntro, Route104_Text_HaleyDefeat
+	@msgbox Route104_Text_HaleyPostBattle, MSGBOX_DEFAULT
 	release
 	end
 
 Route104_EventScript_Winston::
-	trainerbattle_single TRAINER_WINSTON, Route104_Text_WinstonIntro, Route104_Text_WinstonDefeat
-	msgbox Route104_Text_WinstonPostBattle, MSGBOX_DEFAULT
+	@trainerbattle_single TRAINER_WINSTON, Route104_Text_WinstonIntro, Route104_Text_WinstonDefeat
+	@msgbox Route104_Text_WinstonPostBattle, MSGBOX_DEFAULT
 	release
 	end
 
 Route104_EventScript_Cindy::
-	trainerbattle_single TRAINER_CINDY, Route104_Text_CindyIntro, Route104_Text_CindyDefeat
-	msgbox Route104_Text_CindyPostBattle, MSGBOX_DEFAULT
+	@trainerbattle_single TRAINER_CINDY, Route104_Text_CindyIntro, Route104_Text_CindyDefeat
+	@msgbox Route104_Text_CindyPostBattle, MSGBOX_DEFAULT
 	release
 	end
 
 Route104_EventScript_Gina::
-	trainerbattle_double TRAINER_GINA_AND_MIA, Route104_Text_GinaIntro, Route104_Text_GinaDefeat, Route104_Text_GinaNotEnoughMons
-	special GetPlayerBigGuyGirlString
-	msgbox Route104_Text_GinaPostBattle, MSGBOX_DEFAULT
+	@trainerbattle_double TRAINER_GINA_AND_MIA, Route104_Text_GinaIntro, Route104_Text_GinaDefeat, Route104_Text_GinaNotEnoughMons
+	@special GetPlayerBigGuyGirlString
+	@msgbox Route104_Text_GinaPostBattle, MSGBOX_DEFAULT
 	release
 	end
 
 Route104_EventScript_Mia::
-	trainerbattle_double TRAINER_GINA_AND_MIA, Route104_Text_MiaIntro, Route104_Text_MiaDefeat, Route104_Text_MiaNotEnoughMons
-	special GetPlayerBigGuyGirlString
-	msgbox Route104_Text_MiaPostBattle, MSGBOX_DEFAULT
+	@trainerbattle_double TRAINER_GINA_AND_MIA, Route104_Text_MiaIntro, Route104_Text_MiaDefeat, Route104_Text_MiaNotEnoughMons
+	@special GetPlayerBigGuyGirlString
+	@msgbox Route104_Text_MiaPostBattle, MSGBOX_DEFAULT
 	release
 	end
 
 Route104_EventScript_Darian::
-	trainerbattle_single TRAINER_DARIAN, Route104_Text_DarianIntro, Route104_Text_DarianDefeat
-	msgbox Route104_Text_DarianPostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_DARIAN, Route104_Text_DarianIntro, Route104_Text_DarianDefeat
+	@msgbox Route104_Text_DarianPostBattle, MSGBOX_AUTOCLOSE
+	release
 	end
 
 Route104_Text_BrineyLivesInSeasideCottage:

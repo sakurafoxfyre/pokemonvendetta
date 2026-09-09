@@ -118,71 +118,71 @@ GraniteCave_SevenWaterGems::
 	end
 	
 GraniteCaveB1F_EventScript_Fiona::
-	trainerbattle_single TRAINER_FIONA, GraniteCave_Text_FionaIntro, GraniteCave_Text_FionaDefeated
-	msgbox GraniteCave_Text_FionaPostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_FIONA, GraniteCave_Text_FionaIntro, GraniteCave_Text_FionaDefeated
+	@msgbox GraniteCave_Text_FionaPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 GraniteCaveB1F_EventScript_Maxine::
-	trainerbattle_single TRAINER_MAXINE, GraniteCave_Text_MaxineIntro, GraniteCave_Text_MaxineDefeated
-	msgbox GraniteCave_Text_MaxinePostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_MAXINE, GraniteCave_Text_MaxineIntro, GraniteCave_Text_MaxineDefeated
+	@msgbox GraniteCave_Text_MaxinePostBattle, MSGBOX_AUTOCLOSE
 	end
 
 GraniteCaveB1F_EventScript_Lindon::
-	trainerbattle_single TRAINER_LINDON, GraniteCave_Text_LindonIntro, GraniteCave_Text_LindonDefeated
-	msgbox GraniteCave_Text_LindonPostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_LINDON, GraniteCave_Text_LindonIntro, GraniteCave_Text_LindonDefeated
+	@msgbox GraniteCave_Text_LindonPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 GraniteCaveB1F_EventScript_Velomachus::
-	trainerbattle_single TRAINER_VELOMACHUS, GraniteCave_Text_VelomachusIntro, GraniteCave_Text_VelomachusDefeated
-	msgbox GraniteCave_Text_VelomachusPostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_VELOMACHUS, GraniteCave_Text_VelomachusIntro, GraniteCave_Text_VelomachusDefeated
+	@msgbox GraniteCave_Text_VelomachusPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 GraniteCaveB1F_EventScript_Quentin::
-	trainerbattle_single TRAINER_QUENTIN, GraniteCave_Text_QuentinIntro, GraniteCave_Text_QuentinDefeated
-	msgbox GraniteCave_Text_QuentinPostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_QUENTIN, GraniteCave_Text_QuentinIntro, GraniteCave_Text_QuentinDefeated
+	@msgbox GraniteCave_Text_QuentinPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 GraniteCaveB1F_EventScript_Ezra::
-	trainerbattle_single TRAINER_EZRA, GraniteCave_Text_EzraIntro, GraniteCave_Text_EzraDefeated
-	msgbox GraniteCave_Text_EzraPostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_EZRA, GraniteCave_Text_EzraIntro, GraniteCave_Text_EzraDefeated
+	@msgbox GraniteCave_Text_EzraPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 GraniteCaveB1F_EventScript_Eithan::
-	trainerbattle_single TRAINER_EITHAN, GraniteCave_Text_EithanIntro, GraniteCave_Text_EithanDefeated
-	msgbox GraniteCave_Text_EithanPostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_EITHAN, GraniteCave_Text_EithanIntro, GraniteCave_Text_EithanDefeated
+	@msgbox GraniteCave_Text_EithanPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 GraniteCaveB1F_EventScript_Yerin::
-	trainerbattle_single TRAINER_YERIN, GraniteCave_Text_YerinIntro, GraniteCave_Text_YerinDefeated
-	msgbox GraniteCave_Text_YerinPostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_YERIN, GraniteCave_Text_YerinIntro, GraniteCave_Text_YerinDefeated
+	@msgbox GraniteCave_Text_YerinPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 GraniteCaveB1F_EventScript_Daishou::
-	trainerbattle_single TRAINER_DAISHOU, GraniteCave_Text_DaishouIntro, GraniteCave_Text_DaishouDefeated
-	msgbox GraniteCave_Text_DaishouPostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_DAISHOU, GraniteCave_Text_DaishouIntro, GraniteCave_Text_DaishouDefeated
+	@msgbox GraniteCave_Text_DaishouPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 GraniteCaveB1F_EventScript_Dimitri::
-	trainerbattle_single TRAINER_DIMITRI, GraniteCave_Text_DimitriIntro, GraniteCave_Text_DimitriDefeated
-	msgbox GraniteCave_Text_DimitriPostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_DIMITRI, GraniteCave_Text_DimitriIntro, GraniteCave_Text_DimitriDefeated
+	@msgbox GraniteCave_Text_DimitriPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 GraniteCaveB1F_EventScript_Lumis::
-	trainerbattle_single TRAINER_LUMIS, GraniteCave_Text_LumisIntro, GraniteCave_Text_LumisDefeated
-	msgbox GraniteCave_Text_LumisPostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_LUMIS, GraniteCave_Text_LumisIntro, GraniteCave_Text_LumisDefeated
+	@msgbox GraniteCave_Text_LumisPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 GraniteCaveB1F_EventScript_Umbra::
-	trainerbattle_single TRAINER_UMBRA, GraniteCave_Text_UmbraIntro, GraniteCave_Text_UmbraDefeated
-	msgbox GraniteCave_Text_UmbraPostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_UMBRA, GraniteCave_Text_UmbraIntro, GraniteCave_Text_UmbraDefeated
+	@msgbox GraniteCave_Text_UmbraPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 GraniteCaveB1F_EventScript_Cassias::
-	trainerbattle_single TRAINER_CASSIAS, GraniteCave_Text_CassiasIntro, GraniteCave_Text_CassiasDefeated
-	msgbox GraniteCave_Text_CassiasPostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_CASSIAS, GraniteCave_Text_CassiasIntro, GraniteCave_Text_CassiasDefeated
+	@msgbox GraniteCave_Text_CassiasPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 GraniteCaveB1F_EventScript_Long::
-	trainerbattle_single TRAINER_LONG, GraniteCave_Text_LongIntro, GraniteCave_Text_LongDefeated
-	msgbox GraniteCave_Text_LongPostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_LONG, GraniteCave_Text_LongIntro, GraniteCave_Text_LongDefeated
+	@msgbox GraniteCave_Text_LongPostBattle, MSGBOX_AUTOCLOSE
 	end

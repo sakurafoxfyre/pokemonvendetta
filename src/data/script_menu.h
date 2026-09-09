@@ -1140,6 +1140,13 @@ static const struct MenuAction MultichoiceList_WorldLevel[] =
     {gText_WorldLevel11},
 };
 
+static const struct MenuAction MultichoiceList_BriarRival[] =
+{
+    {COMPOUND_STRING("...Sorry.")},
+    {COMPOUND_STRING("Sure, dude.")},
+    {gText_Exit},
+};
+
 struct MultichoiceListStruct
 {
     const struct MenuAction *list;
@@ -1307,6 +1314,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_HOF_VICTORIES_QUIT]                         = MULTICHOICE(sMultichoiceList_HOF_Victories_Quit),
     [MULTI_EGGS_VICTORIES_QUIT]                        = MULTICHOICE(sMultichoiceList_Eggs_Victories_Quit),
     [MULTI_HOF_EGGS_VICTORIES_QUIT]                    = MULTICHOICE(sMultichoiceList_HOF_Eggs_Victories_Quit),
+    [MULTI_BRIAR_RIVAL]                                = MULTICHOICE(MultichoiceList_BriarRival),
 };
 
 const u8 *const gStdStrings[] =

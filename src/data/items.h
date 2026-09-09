@@ -12167,14 +12167,14 @@ const struct ItemInfo gItemsInfo[] =
 
 // TMs/HMs. They don't have a set flingPower, as that's handled by GetFlingPowerFromItemId.
 
-    [ITEM_TM_FOCUS_PUNCH] =
+    [ITEM_TM_SWEET_SCENT] =
     {
         .name = ITEM_NAME("TM01"),
         .price = 3000,
         .description = COMPOUND_STRING(
-            "Powerful, but makes\n"
-            "the user flinch if\n"
-            "hit by the foe."),
+            "A candy-like scent\n"
+            "that sets up\n"
+            "Aromatic Terrain."),
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -15512,10 +15512,10 @@ const struct ItemInfo gItemsInfo[] =
         .iconPalette = gItemIconPalette_SwiftMochi,
     },
 
-    [ITEM_FRESH_START_MOCHI] =
+    [ITEM_PURE_MOCHI] =
     {
-        .name = ITEM_NAME("Fresh-Start Mochi"),
-        .pluralName = ITEM_PLURAL_NAME("Fresh-Start Mochi"),
+        .name = ITEM_NAME("Pure Mochi"),
+        .pluralName = ITEM_PLURAL_NAME("Pure Mochi"),
         .price = 300,
         .description = COMPOUND_STRING(
             "An item that resets\n"
@@ -15528,7 +15528,7 @@ const struct ItemInfo gItemsInfo[] =
         .effect = gItemEffect_ResetMochi,
         .flingPower = 30,
         .iconPic = gItemIcon_Mochi,
-        .iconPalette = gItemIconPalette_FreshStartMochi,
+        .iconPalette = gItemIconPalette_PureMochi,
     },
 
     [ITEM_GLIMMERING_CHARM] =

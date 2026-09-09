@@ -10,36 +10,39 @@ Route109_EventScript_TrainerTipsSign::
 	end
 
 Route109_EventScript_David::
-	trainerbattle_single TRAINER_DAVID, Route109_Text_DavidIntro, Route109_Text_DavidDefeated
-	msgbox Route109_Text_DavidPostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_DAVID, Route109_Text_DavidIntro, Route109_Text_DavidDefeated
+	@msgbox Route109_Text_DavidPostBattle, MSGBOX_AUTOCLOSE
+	release
 	end
 
 Route109_EventScript_Joline::
-	trainerbattle_single TRAINER_JOLINE, Route109_Text_JolineIntro, Route109_Text_JolineDefeated
-	msgbox Route109_Text_JolinePostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_JOLINE, Route109_Text_JolineIntro, Route109_Text_JolineDefeated
+	@msgbox Route109_Text_JolinePostBattle, MSGBOX_AUTOCLOSE
+	release
 	end
 
 Route109_EventScript_Ricky::
-	trainerbattle_single TRAINER_RICKY, Route109_Text_RickyIntro, Route109_Text_RickyDefeated, Route109_TuberKing_EventScript_CheckTrainersCompletion
-	msgbox Route109_Text_RickyPostBattle, MSGBOX_DEFAULT
+	@trainerbattle_single TRAINER_RICKY, Route109_Text_RickyIntro, Route109_Text_RickyDefeated, Route109_TuberKing_EventScript_CheckTrainersCompletion
+	@msgbox Route109_Text_RickyPostBattle, MSGBOX_DEFAULT
 	release
 	end
 
 Route109_EventScript_Lola::
-	trainerbattle_single TRAINER_LOLA, Route109_Text_LolaIntro, Route109_Text_LolaDefeated, Route109_TuberKing_EventScript_CheckTrainersCompletion
-	msgbox Route109_Text_LolaPostBattle, MSGBOX_DEFAULT
+	@trainerbattle_single TRAINER_LOLA, Route109_Text_LolaIntro, Route109_Text_LolaDefeated, Route109_TuberKing_EventScript_CheckTrainersCompletion
+	@msgbox Route109_Text_LolaPostBattle, MSGBOX_DEFAULT
 	release
 	end
 
 Route109_EventScript_Austina::
-	trainerbattle_single TRAINER_AUSTINA, Route109_Text_AustinaIntro, Route109_Text_AustinaDefeated, Route109_TuberKing_EventScript_CheckTrainersCompletion
-	msgbox Route109_Text_AustinaPostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_AUSTINA, Route109_Text_AustinaIntro, Route109_Text_AustinaDefeated, Route109_TuberKing_EventScript_CheckTrainersCompletion
+	@msgbox Route109_Text_AustinaPostBattle, MSGBOX_AUTOCLOSE
+	release
 	end
 
 Route109_EventScript_Gwen::
 	lock
 	faceplayer
-	goto_if_set FLAG_DEFEATED_TUBERS, Route109_EventScript_ChallengeGwen
+	@goto_if_set FLAG_DEFEATED_TUBERS, Route109_EventScript_ChallengeGwen
 	msgbox Route109_Text_IAmTuberQueen, MSGBOX_DEFAULT
 	applymovement Gwen, LookDown
 	waitmovement 0
@@ -51,8 +54,8 @@ LookDown:
 	step_end
 
 Route109_EventScript_ChallengeGwen::
-	trainerbattle_single TRAINER_GWEN, Route109_Text_GwenIntro, Route109_Text_GwenDefeated
-	msgbox Route109_Text_GwenPostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_GWEN, Route109_Text_GwenIntro, Route109_Text_GwenDefeated
+	@msgbox Route109_Text_GwenPostBattle, MSGBOX_AUTOCLOSE
 	giveitem ITEM_TM_SWEET_SCENT
 	release
 	end
@@ -63,23 +66,27 @@ Route109_EventScript_ReceivedSweetScent::
 	end
 
 Route109_EventScript_Paul::
-	trainerbattle_double TRAINER_MEL_AND_PAUL, Route109_Text_PaulIntro, Route109_Text_PaulDefeated, Route109_Text_PaulNotEnoughPokemon
-	msgbox Route109_Text_PaulPostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_double TRAINER_MEL_AND_PAUL, Route109_Text_PaulIntro, Route109_Text_PaulDefeated, Route109_Text_PaulNotEnoughPokemon
+	@msgbox Route109_Text_PaulPostBattle, MSGBOX_AUTOCLOSE
+	release
 	end
 
 Route109_EventScript_Mel::
-	trainerbattle_double TRAINER_MEL_AND_PAUL, Route109_Text_MelIntro, Route109_Text_MelDefeated, Route109_Text_MelNotEnoughPokemon
-	msgbox Route109_Text_MelPostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_double TRAINER_MEL_AND_PAUL, Route109_Text_MelIntro, Route109_Text_MelDefeated, Route109_Text_MelNotEnoughPokemon
+	@msgbox Route109_Text_MelPostBattle, MSGBOX_AUTOCLOSE
+	release
 	end
 
 Route109_EventScript_Chandler::
-	trainerbattle_single TRAINER_CHANDLER, Route109_Text_ChandlerIntro, Route109_Text_ChandlerDefeated, Route109_TuberKing_EventScript_CheckTrainersCompletion
-	msgbox Route109_Text_ChandlerPostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_CHANDLER, Route109_Text_ChandlerIntro, Route109_Text_ChandlerDefeated, Route109_TuberKing_EventScript_CheckTrainersCompletion
+	@msgbox Route109_Text_ChandlerPostBattle, MSGBOX_AUTOCLOSE
+	release
 	end
 
 Route109_EventScript_Hailey::
-	trainerbattle_single TRAINER_HAILEY, Route109_Text_HaileyIntro, Route109_Text_HaileyDefeated, Route109_TuberKing_EventScript_CheckTrainersCompletion
-	msgbox Route109_Text_HaileyPostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_HAILEY, Route109_Text_HaileyIntro, Route109_Text_HaileyDefeated, Route109_TuberKing_EventScript_CheckTrainersCompletion
+	@msgbox Route109_Text_HaileyPostBattle, MSGBOX_AUTOCLOSE
+	release
 	end
 
 Route109_TuberKing_EventScript_CheckTrainersCompletion::

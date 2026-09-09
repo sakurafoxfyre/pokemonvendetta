@@ -368,7 +368,7 @@ ContestHall_EventScript_ShowContestMonPic::
 	releaseall
 	call ContestHall_EventScript_TryWaitForLink
 	call ContestHall_EventScript_CheckIfContestWithRSPlayer
-	addobject LOCALID_CONTEST_POKEBALL
+	@addobject LOCALID_CONTEST_POKEBALL
 	playse SE_LEDGE
 	lockall
 	applymovement VAR_0x800B, ContestHall_Movement_ContestantDelay32
@@ -704,7 +704,7 @@ ContestHall_EventScript_AudienceMember8AlreadyEmoted::
 ContestHall_EventScript_ContestantReturn::
 	closemessage
 	release
-	removeobject LOCALID_CONTEST_POKEBALL
+	@removeobject LOCALID_CONTEST_POKEBALL
 	special HideContestEntryMonPic
 	call ContestHall_EventScript_TryWaitForLink
 	switch VAR_0x8006

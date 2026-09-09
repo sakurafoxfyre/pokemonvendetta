@@ -30,7 +30,6 @@
 #include "menu.h"
 #include "menu_helpers.h"
 #include "metatile_behavior.h"
-#include "oras_dowse.h"
 #include "overworld.h"
 #include "palette.h"
 #include "party_menu.h"
@@ -370,17 +369,11 @@ static void ItemUseOnFieldCB_Itemfinder(u8 taskId)
 {
     if (I_ORAS_DOWSING_FLAG != 0)
     {
-        if (!TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_SURFING) && !TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_UNDERWATER))
-            gTasks[taskId].func = Task_UseORASDowsingMachine;
-        else
-            DisplayItemMessageOnField(taskId, gText_DadsAdvice, Task_CloseItemfinderMessage);
+        DisplayItemMessageOnField(taskId, gText_DadsAdvice, Task_CloseItemfinderMessage);
     }
     else
     {
-        if (ItemfinderCheckForHiddenItems(gMapHeader.events, taskId) == TRUE)
-            gTasks[taskId].func = Task_UseItemfinder;
-        else
-            DisplayItemMessageOnField(taskId, sText_ItemFinderNothing, Task_CloseItemfinderMessage);
+        DisplayItemMessageOnField(taskId, sText_ItemFinderNothing, Task_CloseItemfinderMessage);
     }
 }
 
@@ -437,125 +430,8 @@ static void Task_CloseItemfinderMessage(u8 taskId)
     DestroyTask(taskId);
 }
 
-bool8 ItemfinderCheckForHiddenItems(const struct MapEvents *events, u8 taskId)
-{
-    s16 playerX, playerY, i, distanceX, distanceY;
-    PlayerGetDestCoords(&playerX, &playerY);
-    if (I_ORAS_DOWSING_FLAG != 0)
-        gSprites[gObjectEvents[gPlayerAvatar.objectEventId].fieldEffectSpriteId].tItemFound = FALSE;
-    else
-        gTasks[taskId].tItemFound = FALSE;
-
-    for (i = 0; i < events->bgEventCount; i++)
-    {
-        // Check if there are any hidden items on the current map that haven't been picked up
-        if (events->bgEvents[i].kind == BG_EVENT_HIDDEN_ITEM && !FlagGet(events->bgEvents[i].bgUnion.hiddenItem.hiddenItemId + FLAG_HIDDEN_ITEMS_START))
-        {
-            distanceX = events->bgEvents[i].x + MAP_OFFSET - playerX;
-            distanceY = events->bgEvents[i].y + MAP_OFFSET - playerY;
-
-            // Player can see 7 metatiles on either side horizontally
-            // and 5 metatiles on either side vertically
-            if (distanceX >= -7 && distanceX <= 7 && distanceY >= -5 && distanceY <= 5)
-                SetDistanceOfClosestHiddenItem(taskId, distanceX, distanceY);
-        }
-    }
-
-    CheckForHiddenItemsInMapConnection(taskId);
-    if (gTasks[taskId].tItemFound == TRUE || gSprites[gObjectEvents[gPlayerAvatar.objectEventId].fieldEffectSpriteId].tItemFound)
-        return TRUE;
-    else
-        return FALSE;
-}
-
-static bool8 IsHiddenItemPresentAtCoords(const struct MapEvents *events, s16 x, s16 y)
-{
-    u8 bgEventCount = events->bgEventCount;
-    const struct BgEvent *bgEvent = events->bgEvents;
-    int i;
-
-    for (i = 0; i < bgEventCount; i++)
-    {
-        if (bgEvent[i].kind == BG_EVENT_HIDDEN_ITEM && x == bgEvent[i].x && y == bgEvent[i].y) // hidden item and coordinates matches x and y passed?
-        {
-            if (!FlagGet(bgEvent[i].bgUnion.hiddenItem.hiddenItemId + FLAG_HIDDEN_ITEMS_START))
-                return TRUE;
-            else
-                return FALSE;
-        }
-    }
-    return FALSE;
-}
-
-static bool8 IsHiddenItemPresentInConnection(const struct MapConnection *connection, int x, int y)
-{
-    s16 connectionX, connectionY;
-    struct MapHeader const *const connectionHeader = GetMapHeaderFromConnection(connection);
-
-// To convert our x/y into coordinates that are relative to the connected map, we must:
-//  - Subtract the virtual offset used for the border buffer (MAP_OFFSET).
-//  - Subtract the horizontal offset between North/South connections, or the vertical offset for East/West
-//  - Account for map size. (0,0) is in the NW corner of our map, so when looking North/West we have to add the height/width of the connected map,
-//     and when looking South/East we have to subtract the height/width of our current map.
-#define localX (x - MAP_OFFSET)
-#define localY (y - MAP_OFFSET)
-    switch (connection->direction)
-    {
-    case CONNECTION_NORTH:
-        connectionX = localX - connection->offset;
-        connectionY = connectionHeader->mapLayout->height + localY;
-        break;
-    case CONNECTION_SOUTH:
-        connectionX = localX - connection->offset;
-        connectionY = localY - gMapHeader.mapLayout->height;
-        break;
-    case CONNECTION_WEST:
-        connectionX = connectionHeader->mapLayout->width + localX;
-        connectionY = localY - connection->offset;
-        break;
-    case CONNECTION_EAST:
-        connectionX = localX - gMapHeader.mapLayout->width;
-        connectionY = localY - connection->offset;
-        break;
-    default:
-        return FALSE;
-    }
-    return IsHiddenItemPresentAtCoords(connectionHeader->events, connectionX, connectionY);
-}
-
 #undef localX
 #undef localY
-
-static void CheckForHiddenItemsInMapConnection(u8 taskId)
-{
-    s16 playerX, playerY;
-    s16 x, y;
-    s16 width = gMapHeader.mapLayout->width + MAP_OFFSET;
-    s16 height = gMapHeader.mapLayout->height + MAP_OFFSET;
-
-    s16 var1 = MAP_OFFSET;
-    s16 var2 = MAP_OFFSET;
-
-    PlayerGetDestCoords(&playerX, &playerY);
-
-    // Player can see 7 metatiles on either side horizontally
-    // and 5 metatiles on either side vertically
-    for (x = playerX - 7; x <= playerX + 7; x++)
-    {
-        for (y = playerY - 5; y <= playerY + 5; y++)
-        {
-            if (var1 > x
-             || x >= width
-             || var2 > y
-             || y >= height)
-            {
-                const struct MapConnection *conn = GetMapConnectionAtPos(x, y);
-                if (conn && IsHiddenItemPresentInConnection(conn, x, y) == TRUE)
-                    SetDistanceOfClosestHiddenItem(taskId, x - playerX, y - playerY);
-            }
-        }
-    }
-}
 
 static void SetDistanceOfClosestHiddenItem(u8 taskId, s16 itemDistanceX, s16 itemDistanceY)
 {

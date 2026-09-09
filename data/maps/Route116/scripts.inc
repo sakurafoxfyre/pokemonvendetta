@@ -97,60 +97,69 @@ Route116_Movement_GlassesManExitEast:
 	step_end
 
 Route116_EventScript_Joey::
-	trainerbattle_single TRAINER_JOEY, Route116_Text_JoeyIntro, Route116_Text_JoeyDefeat
-	msgbox Route116_Text_JoeyPostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_JOEY, Route116_Text_JoeyIntro, Route116_Text_JoeyDefeat
+	@msgbox Route116_Text_JoeyPostBattle, MSGBOX_AUTOCLOSE
+	release
 	end
 
 Route116_EventScript_Laurent::
-	trainerbattle_single TRAINER_LAURENT, Route116_Text_LaurentIntro, Route116_Text_LaurentDefeat
-	msgbox Route116_Text_LaurentPostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_LAURENT, Route116_Text_LaurentIntro, Route116_Text_LaurentDefeat
+	@msgbox Route116_Text_LaurentPostBattle, MSGBOX_AUTOCLOSE
+	release
 	end
 
 Route116_EventScript_Jose::
-	trainerbattle_single TRAINER_JOSE, Route116_Text_JoseIntro, Route116_Text_JoseDefeat
-	msgbox Route116_Text_JosePostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_JOSE, Route116_Text_JoseIntro, Route116_Text_JoseDefeat
+	@msgbox Route116_Text_JosePostBattle, MSGBOX_AUTOCLOSE
+	release
 	end
 
 Route116_EventScript_Jerry::
-	trainerbattle_single TRAINER_JERRY, Route116_Text_JerryIntro, Route116_Text_JerryDefeat
-	msgbox Route116_Text_JerryPostBattle, MSGBOX_DEFAULT
+	@trainerbattle_single TRAINER_JERRY, Route116_Text_JerryIntro, Route116_Text_JerryDefeat
+	@msgbox Route116_Text_JerryPostBattle, MSGBOX_DEFAULT
 	release
 	end
 
 Route116_EventScript_Clark::
-	trainerbattle_single TRAINER_CLARK, Route116_Text_ClarkIntro, Route116_Text_ClarkDefeat
-	msgbox Route116_Text_ClarkPostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_CLARK, Route116_Text_ClarkIntro, Route116_Text_ClarkDefeat
+	@msgbox Route116_Text_ClarkPostBattle, MSGBOX_AUTOCLOSE
+	release
 	end
 
 Route116_EventScript_Janice::
-	trainerbattle_single TRAINER_JANICE, Route116_Text_JaniceIntro, Route116_Text_JaniceDefeat
-	msgbox Route116_Text_JanicePostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_JANICE, Route116_Text_JaniceIntro, Route116_Text_JaniceDefeat
+	@msgbox Route116_Text_JanicePostBattle, MSGBOX_AUTOCLOSE
+	release
 	end
 
 Route116_EventScript_Karen::
-	trainerbattle_single TRAINER_KAREN, Route116_Text_KarenIntro, Route116_Text_KarenDefeat
-	msgbox Route116_Text_KarenPostBattle, MSGBOX_DEFAULT
+	@trainerbattle_single TRAINER_KAREN, Route116_Text_KarenIntro, Route116_Text_KarenDefeat
+	@msgbox Route116_Text_KarenPostBattle, MSGBOX_DEFAULT
 	release
 	end
 
 Route116_EventScript_Sarah::
-	trainerbattle_single TRAINER_SARAH, Route116_Text_SarahIntro, Route116_Text_SarahDefeat
-	msgbox Route116_Text_SarahPostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_SARAH, Route116_Text_SarahIntro, Route116_Text_SarahDefeat
+	@msgbox Route116_Text_SarahPostBattle, MSGBOX_AUTOCLOSE
+	release
 	end
 
 Route116_EventScript_Dawson::
-	trainerbattle_single TRAINER_DAWSON, Route116_Text_DawsonIntro, Route116_Text_DawsonDefeat
-	msgbox Route116_Text_DawsonPostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_DAWSON, Route116_Text_DawsonIntro, Route116_Text_DawsonDefeat
+	@msgbox Route116_Text_DawsonPostBattle, MSGBOX_AUTOCLOSE
+	release
 	end
 
 Route116_EventScript_Devan::
-	trainerbattle_single TRAINER_DEVAN, Route116_Text_DevanIntro, Route116_Text_DevanDefeat
-	msgbox Route116_Text_DevanPostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_DEVAN, Route116_Text_DevanIntro, Route116_Text_DevanDefeat
+	@msgbox Route116_Text_DevanPostBattle, MSGBOX_AUTOCLOSE
+	release
 	end
 
 Route116_EventScript_Johnson::
-	trainerbattle_single TRAINER_JOHNSON, Route116_Text_JohnsonIntro, Route116_Text_JohnsonDefeat
-	msgbox Route116_Text_JohnsonPostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_JOHNSON, Route116_Text_JohnsonIntro, Route116_Text_JohnsonDefeat
+	@msgbox Route116_Text_JohnsonPostBattle, MSGBOX_AUTOCLOSE
+	release
 	end
 
 Route116_Text_CanYouHelpMeFindGlasses:

@@ -46,7 +46,6 @@
 #include "mirage_tower.h"
 #include "money.h"
 #include "new_game.h"
-#include "oras_dowse.h"
 #include "palette.h"
 #include "play_time.h"
 #include "random.h"
@@ -2363,7 +2362,6 @@ static bool32 ReturnToFieldLocal(u8 *state)
     case 1:
         InitViewGraphics();
         FollowerNPC_BindToSurfBlobOnReloadScreen();
-        ResumeORASDowseFieldEffect();
         (*state)++;
         break;
     case 2:

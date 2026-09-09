@@ -83,36 +83,36 @@ GraniteCave_FiveResistFeathers::
 	end
 	
 GraniteCaveB2F_EventScript_Tyler::
-	trainerbattle_single TRAINER_TYLER, GraniteCave_Text_TylerIntro, GraniteCave_Text_TylerDefeated
-	msgbox GraniteCave_Text_TylerPostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_TYLER, GraniteCave_Text_TylerIntro, GraniteCave_Text_TylerDefeated
+	@msgbox GraniteCave_Text_TylerPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 GraniteCaveB2F_EventScript_Egg::
-	trainerbattle_single TRAINER_EGG, GraniteCave_Text_EggIntro, GraniteCave_Text_EggDefeated
-	msgbox GraniteCave_Text_EggPostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_EGG, GraniteCave_Text_EggIntro, GraniteCave_Text_EggDefeated
+	@msgbox GraniteCave_Text_EggPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 GraniteCaveB2F_EventScript_Dunk::
-	trainerbattle_single TRAINER_DUNK, GraniteCave_Text_DunkIntro, GraniteCave_Text_DunkDefeated
-	msgbox GraniteCave_Text_DunkPostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_DUNK, GraniteCave_Text_DunkIntro, GraniteCave_Text_DunkDefeated
+	@msgbox GraniteCave_Text_DunkPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 GraniteCaveB2F_EventScript_Harmony::
-	trainerbattle_single TRAINER_HARMONY, GraniteCave_Text_HarmonyIntro, GraniteCave_Text_HarmonyDefeated
-	msgbox GraniteCave_Text_HarmonyPostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_HARMONY, GraniteCave_Text_HarmonyIntro, GraniteCave_Text_HarmonyDefeated
+	@msgbox GraniteCave_Text_HarmonyPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 GraniteCaveB2F_EventScript_Mercy::
-	trainerbattle_single TRAINER_MERCY, GraniteCave_Text_MercyIntro, GraniteCave_Text_MercyDefeated
-	msgbox GraniteCave_Text_MercyPostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_MERCY, GraniteCave_Text_MercyIntro, GraniteCave_Text_MercyDefeated
+	@msgbox GraniteCave_Text_MercyPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 GraniteCaveB2F_EventScript_Frank::
-	trainerbattle_single TRAINER_FRANK, GraniteCave_Text_FrankIntro, GraniteCave_Text_FrankDefeated
-	msgbox GraniteCave_Text_FrankPostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_FRANK, GraniteCave_Text_FrankIntro, GraniteCave_Text_FrankDefeated
+	@msgbox GraniteCave_Text_FrankPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 GraniteCaveB2F_EventScript_Ziel::
-	trainerbattle_single TRAINER_ZIEL, GraniteCave_Text_ZielIntro, GraniteCave_Text_ZielDefeated
-	msgbox GraniteCave_Text_ZielPostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_ZIEL, GraniteCave_Text_ZielIntro, GraniteCave_Text_ZielDefeated
+	@msgbox GraniteCave_Text_ZielPostBattle, MSGBOX_AUTOCLOSE
 	end

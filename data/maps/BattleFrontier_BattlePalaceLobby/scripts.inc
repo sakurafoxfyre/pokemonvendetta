@@ -300,7 +300,7 @@ BattleFrontier_BattlePalaceLobby_EventScript_ShowSinglesResults::
 	lockall
 	frontier_results FRONTIER_FACILITY_PALACE, FRONTIER_MODE_SINGLES
 	waitbuttonpress
-	special RemoveRecordsWindow
+	@special RemoveRecordsWindow
 	releaseall
 	end
 
@@ -308,7 +308,7 @@ BattleFrontier_BattlePalaceLobby_EventScript_ShowDoublesResults::
 	lockall
 	frontier_results FRONTIER_FACILITY_PALACE, FRONTIER_MODE_DOUBLES
 	waitbuttonpress
-	special RemoveRecordsWindow
+	@special RemoveRecordsWindow
 	releaseall
 	end
 

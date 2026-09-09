@@ -7,8 +7,6 @@ EventScript_TV::
 	goto_if_eq VAR_RESULT, PLAYERS_HOUSE_TV_LATI, EventScript_PlayersHouseLatiNewsFlash
 	goto_if_unset FLAG_SYS_TV_START, EventScript_MomDadMightLikeThis1
 	goto_if_set FLAG_SYS_TV_WATCH, EventScript_MomDadMightLikeThis1
-	specialvar VAR_RESULT, IsGabbyAndTyShowOnTheAir
-	goto_if_eq VAR_RESULT, TRUE, EventScript_DoInSearchOfTrainers
 	goto EventScript_TryDoPokeNews
 	end
 
@@ -30,7 +28,7 @@ EventScript_MomDadMightLikeThis1::
 	end
 
 EventScript_PlayersHouseMovie::
-	msgbox PlayersHouse_1F_Text_TheresAMovieOnTV, MSGBOX_DEFAULT
+@	msgbox PlayersHouse_1F_Text_TheresAMovieOnTV, MSGBOX_DEFAULT
 	releaseall
 	end
 
@@ -38,7 +36,6 @@ EventScript_PlayersHouseMovie::
 @ It's called again when Mom actually asks for the color, overwriting
 @ whatever it does here.
 EventScript_PlayersHouseLatiNewsFlash::
-	msgbox PlayersHouse_1F_Text_LatiEmergencyNewsFlash, MSGBOX_DEFAULT
 	special InitRoamer
 	clearflag FLAG_SYS_TV_LATIAS_LATIOS
 	setflag FLAG_LATIOS_OR_LATIAS_ROAMING
@@ -73,13 +70,5 @@ EventScript_TryDoPokeNews::
 	goto_if_eq VAR_RESULT, FALSE, EventScript_TryDoTVShow
 	waitmessage
 	waitbuttonpress
-	goto EventScript_TurnOffTV
-	end
-
-EventScript_DoInSearchOfTrainers::
-	special DoTVShowInSearchOfTrainers
-	waitmessage
-	waitbuttonpress
-	goto_if_eq VAR_RESULT, 0, EventScript_DoInSearchOfTrainers
 	goto EventScript_TurnOffTV
 	end

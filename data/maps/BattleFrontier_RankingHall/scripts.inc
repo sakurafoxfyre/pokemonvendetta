@@ -66,7 +66,7 @@ BattleFrontier_RankingHall_EventScript_ShowRecords::
 	waitbuttonpress
 	special ScrollRankingHallRecordsWindow
 	waitbuttonpress
-	special RemoveRecordsWindow
+	@special RemoveRecordsWindow
 	releaseall
 	end
 

@@ -117,83 +117,93 @@ Route110_EventScript_PlayerRidingAcroBike::
 	end
 
 Route110_EventScript_Edward::
-	trainerbattle_single TRAINER_EDWARD, Route110_Text_EdwardIntro, Route110_Text_EdwardDefeated
-	msgbox Route110_Text_EdwardPostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_EDWARD, Route110_Text_EdwardIntro, Route110_Text_EdwardDefeated
+	@msgbox Route110_Text_EdwardPostBattle, MSGBOX_AUTOCLOSE
+	release
 	end
 
 Route110_EventScript_Jebediah::
-	trainerbattle_single TRAINER_JEBEDIAH, Route110_Text_JebediahIntro, Route110_Text_JebediahDefeated
-	msgbox Route110_Text_JebediahPostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_JEBEDIAH, Route110_Text_JebediahIntro, Route110_Text_JebediahDefeated
+	@msgbox Route110_Text_JebediahPostBattle, MSGBOX_AUTOCLOSE
 	removeobject Jebediah
+	release
 	end
 
 Route110_EventScript_Jaclyn::
-	trainerbattle_single TRAINER_JACLYN, Route110_Text_JaclynIntro, Route110_Text_JaclynDefeated
-	msgbox Route110_Text_JaclynPostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_JACLYN, Route110_Text_JaclynIntro, Route110_Text_JaclynDefeated
+	@msgbox Route110_Text_JaclynPostBattle, MSGBOX_AUTOCLOSE
+	release
 	end
 
 Route110_EventScript_Edwin::
-	trainerbattle_single TRAINER_EDWIN, Route110_Text_EdwinIntro, Route110_Text_EdwinDefeated
-	msgbox Route110_Text_EdwinJosephPostBattle, MSGBOX_DEFAULT
+	@trainerbattle_single TRAINER_EDWIN, Route110_Text_EdwinIntro, Route110_Text_EdwinDefeated
+	@msgbox Route110_Text_EdwinJosephPostBattle, MSGBOX_DEFAULT
 	release
 	end
 
 Route110_EventScript_Dale::
-	trainerbattle_single TRAINER_DALE, Route110_Text_DaleIntro, Route110_Text_DaleDefeated
-	msgbox Route110_Text_DalePostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_DALE, Route110_Text_DaleIntro, Route110_Text_DaleDefeated
+	@msgbox Route110_Text_DalePostBattle, MSGBOX_AUTOCLOSE
+	release
 	end
 
 Route110_EventScript_Jacob::
-	trainerbattle_single TRAINER_JACOB, Route110_Text_JacobIntro, Route110_Text_JacobDefeated
-	msgbox Route110_Text_JacobPostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_JACOB, Route110_Text_JacobIntro, Route110_Text_JacobDefeated
+	@msgbox Route110_Text_JacobPostBattle, MSGBOX_AUTOCLOSE
+	release
 	end
 
 Route110_EventScript_Anthony::
-	trainerbattle_single TRAINER_ANTHONY, Route110_Text_AnthonyIntro, Route110_Text_AnthonyDefeated
-	msgbox Route110_Text_AnthonyPostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_ANTHONY, Route110_Text_AnthonyIntro, Route110_Text_AnthonyDefeated
+	@msgbox Route110_Text_AnthonyPostBattle, MSGBOX_AUTOCLOSE
+	release
 	end
 
 Route110_EventScript_Benjamin::
-	trainerbattle_single TRAINER_BENJAMIN, Route110_Text_BenjaminIntro, Route110_Text_BenjaminDefeated
-	msgbox Route110_Text_BenjaminPostBattle, MSGBOX_DEFAULT
+	@trainerbattle_single TRAINER_BENJAMIN, Route110_Text_BenjaminIntro, Route110_Text_BenjaminDefeated
+	@msgbox Route110_Text_BenjaminPostBattle, MSGBOX_DEFAULT
 	release
 	end
 
 Route110_EventScript_Jasmine::
-	trainerbattle_single TRAINER_JASMINE, Route110_Text_JasmineIntro, Route110_Text_JasmineDefeated
-	msgbox Route110_Text_JasminePostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_JASMINE, Route110_Text_JasmineIntro, Route110_Text_JasmineDefeated
+	@msgbox Route110_Text_JasminePostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route110_EventScript_Abigail::
-	trainerbattle_single TRAINER_ABIGAIL, Route110_Text_AbigailIntro, Route110_Text_AbigailDefeated
-	msgbox Route110_Text_AbigailPostBattle, MSGBOX_DEFAULT
+	@trainerbattle_single TRAINER_ABIGAIL, Route110_Text_AbigailIntro, Route110_Text_AbigailDefeated
+	@msgbox Route110_Text_AbigailPostBattle, MSGBOX_DEFAULT
 	release
 	end
 
 Route110_EventScript_Isabel::
-	trainerbattle_single TRAINER_ISABEL, Route110_Text_IsabelIntro, Route110_Text_IsabelDefeated
-	msgbox Route110_Text_IsabelPostBattle, MSGBOX_DEFAULT
+	@trainerbattle_single TRAINER_ISABEL, Route110_Text_IsabelIntro, Route110_Text_IsabelDefeated
+	@msgbox Route110_Text_IsabelPostBattle, MSGBOX_DEFAULT
 	release
 	end
 
 Route110_EventScript_Timmy::
-	trainerbattle_single TRAINER_TIMMY, Route110_Text_TimmyIntro, Route110_Text_TimmyDefeated
-	msgbox Route110_Text_TimmyPostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_TIMMY, Route110_Text_TimmyIntro, Route110_Text_TimmyDefeated
+	@msgbox Route110_Text_TimmyPostBattle, MSGBOX_AUTOCLOSE
+	release
 	end
 
 Route110_EventScript_Kaleb::
-	trainerbattle_single TRAINER_KALEB, Route110_Text_KalebIntro, Route110_Text_KalebDefeated
-	msgbox Route110_Text_KalebPostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_KALEB, Route110_Text_KalebIntro, Route110_Text_KalebDefeated
+	@msgbox Route110_Text_KalebPostBattle, MSGBOX_AUTOCLOSE
+	release
 	end
 
 Route110_EventScript_Joseph::
-	trainerbattle_single TRAINER_JOSEPH, Route110_Text_JosephIntro, Route110_Text_JosephDefeated
-	msgbox Route110_Text_EdwinJosephPostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_JOSEPH, Route110_Text_JosephIntro, Route110_Text_JosephDefeated
+	@msgbox Route110_Text_EdwinJosephPostBattle, MSGBOX_AUTOCLOSE
+	release
 	end
 
 Route110_EventScript_Alyssa::
-	trainerbattle_single TRAINER_ALYSSA, Route110_Text_AlyssaIntro, Route110_Text_AlyssaDefeated
-	msgbox Route110_Text_AlyssaPostBattle, MSGBOX_AUTOCLOSE
+	@trainerbattle_single TRAINER_ALYSSA, Route110_Text_AlyssaIntro, Route110_Text_AlyssaDefeated
+	@msgbox Route110_Text_AlyssaPostBattle, MSGBOX_AUTOCLOSE
+	release
 	end
 
 Route110_EventScript_CyclingChallengeEnd::

@@ -129,44 +129,6 @@ PetalburgCity_EventScript_Reject_ToDewford::
 	release
 	end
 
-PetalburgCity_EventScript_Check_ToSlateport::
-	goto_if_unset FLAG_PETALBURG_SLATEPORT_STRETCH, PetalburgCity_EventScript_Check_Petalburg_Slateport
-	end
-
-PetalburgCity_EventScript_Check_Petalburg_Slateport::
-	lock
-	goto_if_unset FLAG_PETALBURG_BOSS, PetalburgCity_EventScript_ToSlateport_BossUndefeated
-	goto_if_lt VAR_NUMBER_OF_KEYS, 1, PetalburgCity_EventScript_Cannot_Unlock_Slateport
-	msgbox PetalburgCity_Text_To_Slateport, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, PetalburgCity_EventScript_Reject_ToSlateport
-	setflag FLAG_PETALBURG_SLATEPORT_STRETCH
-	copyvar VAR_PETALBURG_SLATEPORT_LEVEL, VAR_WORLD_DIFFICULTY
-	copyvar VAR_SLATEPORT_LEVEL, VAR_WORLD_DIFFICULTY
-	special DecrementPlayerKeys
-	release
-	end
-
-PetalburgCity_EventScript_ToSlateport_BossUndefeated::
-	msgbox PetalburgCity_Text_Boss_Undefeated, MSGBOX_DEFAULT
-	applymovement LOCALID_PLAYER, PetalburgCity_Movement_TurnFrom_Slateport
-	waitmovement 0
-	release
-	end
-
-PetalburgCity_EventScript_Cannot_Unlock_Slateport::
-	msgbox PetalburgCity_Text_Cannot_Unlock, MSGBOX_DEFAULT
-	applymovement LOCALID_PLAYER, PetalburgCity_Movement_TurnFrom_Slateport
-	waitmovement 0
-	release
-	end
-
-PetalburgCity_EventScript_Reject_ToSlateport::
-	msgbox PetalburgCity_Text_Reject_Path, MSGBOX_DEFAULT
-	applymovement LOCALID_PLAYER, PetalburgCity_Movement_TurnFrom_Slateport
-	waitmovement 0
-	release
-	end
-
 PetalburgCity_Movement_TurnFrom_Rustboro::
 	walk_right
 	step_end

@@ -423,7 +423,6 @@ SlateportCity_EventScript_TestBoss_FlagsAfterBattle::
 	special IncrementWorldLevel
 	goto_if_set FLAG_MAUVILLE_BOSS, SlateportCity_EventScript_AutoUnlock_Mauville
 	goto_if_set FLAG_DEWFORD_BOSS, SlateportCity_EventScript_AutoUnlock_Dewford
-	goto_if_set FLAG_PETALBURG_BOSS, SlateportCity_EventScript_AutoUnlock_Petalburg
 	goto_if_set FLAG_MOSSDEEP_BOSS, SlateportCity_EventScript_AutoUnlock_Mossdeep
 	release
 	end
@@ -513,51 +512,6 @@ SlateportCity_EventScript_Cannot_Unlock_Dewford::
 SlateportCity_EventScript_Reject_ToDewford::
 	msgbox SlateportCity_Text_Reject_Path, MSGBOX_DEFAULT
 	applymovement LOCALID_PLAYER, SlateportCity_Movement_TurnFrom_Dewford
-	waitmovement 0
-	release
-	end
-
-SlateportCity_EventScript_Check_ToPetalburg::
-	goto_if_unset FLAG_PETALBURG_SLATEPORT_STRETCH, SlateportCity_EventScript_Check_Petalburg_Slateport
-	end
-
-SlateportCity_EventScript_Check_Petalburg_Slateport::
-	lock
-	goto_if_unset FLAG_SLATEPORT_BOSS, SlateportCity_EventScript_ToPetalburg_BossUndefeated
-	goto_if_lt VAR_NUMBER_OF_KEYS, 1, SlateportCity_EventScript_Cannot_Unlock_Petalburg
-	msgbox SlateportCity_Text_To_Petalburg, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, SlateportCity_EventScript_Reject_ToPetalburg
-	msgbox SlateportCity_Text_Accept_Petalburg, MSGBOX_DEFAULT
-	setflag FLAG_PETALBURG_SLATEPORT_STRETCH
-	copyvar VAR_PETALBURG_SLATEPORT_LEVEL, VAR_WORLD_DIFFICULTY
-	copyvar VAR_PETALBURG_LEVEL, VAR_WORLD_DIFFICULTY
-	special DecrementPlayerKeys
-	release
-	end
-
-SlateportCity_EventScript_ToPetalburg_BossUndefeated::
-	msgbox SlateportCity_Text_Boss_Undefeated, MSGBOX_DEFAULT
-	applymovement LOCALID_PLAYER, SlateportCity_Movement_TurnFrom_Petalburg
-	waitmovement 0
-	release
-	end
-
-SlateportCity_EventScript_AutoUnlock_Petalburg::
-	setflag FLAG_PETALBURG_SLATEPORT_STRETCH
-	copyvar VAR_PETALBURG_SLATEPORT_LEVEL, VAR_WORLD_DIFFICULTY
-	return
-	end
-
-SlateportCity_EventScript_Cannot_Unlock_Petalburg::
-	msgbox SlateportCity_Text_Cannot_Unlock, MSGBOX_DEFAULT
-	applymovement LOCALID_PLAYER, SlateportCity_Movement_TurnFrom_Petalburg
-	waitmovement 0
-	release
-	end
-
-SlateportCity_EventScript_Reject_ToPetalburg::
-	msgbox SlateportCity_Text_Reject_Path, MSGBOX_DEFAULT
-	applymovement LOCALID_PLAYER, SlateportCity_Movement_TurnFrom_Petalburg
 	waitmovement 0
 	release
 	end

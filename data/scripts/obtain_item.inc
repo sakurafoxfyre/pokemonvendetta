@@ -216,18 +216,6 @@ EventScript_FoundMultipleItems::
 	return
 
 EventScript_PutHiddenItemInPocket::
-	callnative Script_ClearDowsingColor
-	delay 10
-	showitemdescription
-	waitmessage
-	waitfanfare
-	bufferitemnameplural STR_VAR_2, VAR_0x8004, 1
-	copyvar VAR_0x8004, VAR_0x8008
-	msgbox gText_PutItemInPocket, MSGBOX_DEFAULT
-	hideitemdescription
-	special TryPutTreasureInvestigatorsOnAir
-	special SetHiddenItemFlag
-	callnative Script_UpdateDowseState
 	releaseall
 	end
 

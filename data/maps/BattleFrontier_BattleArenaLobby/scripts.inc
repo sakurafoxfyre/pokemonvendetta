@@ -293,7 +293,7 @@ BattleFrontier_BattleArenaLobby_EventScript_ShowResults::
 	lockall
 	frontier_results FRONTIER_FACILITY_ARENA
 	waitbuttonpress
-	special RemoveRecordsWindow
+	@special RemoveRecordsWindow
 	releaseall
 	end
 

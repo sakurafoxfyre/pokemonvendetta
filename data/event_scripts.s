@@ -564,6 +564,7 @@ gStdScripts_End::
 	.include "data/maps/Route119_WeatherInstitute_2F/scripts.inc"
 	.include "data/maps/Route119_House/scripts.inc"
 	.include "data/maps/Route124_DivingTreasureHuntersHouse/scripts.inc"
+	.include "data/maps/FallarborTown_ProfessorCozmosLab/scripts.inc"
 	.include "data/maps/MeteorFalls_Deep/scripts.inc"
 	.include "data/maps/MeteorFalls_Peak/scripts.inc"
 	.include "data/maps/PetalburgHauntedHouse/scripts.inc"
@@ -572,6 +573,26 @@ gStdScripts_End::
 	.include "data/maps/RustboroPier/scripts.inc"
 	.include "data/maps/AmaraDesert/scripts.inc"
 	.include "data/maps/Whitegrave/scripts.inc"
+	.include "data/maps/GraniteCave_Entrance_Chamber_2/scripts.inc"
+	.include "data/maps/GraniteCave_Entrance_Chamber_3/scripts.inc"
+	.include "data/maps/GraniteCave_Entrance_Chamber_4/scripts.inc"
+	.include "data/maps/GraniteCave_Entrance_Chamber_1/scripts.inc"
+	.include "data/maps/CargoShip_Rooms_B1F/scripts.inc"
+	.include "data/maps/CargoShip_Corridors_B1F/scripts.inc"
+	.include "data/maps/CargoShip_Rooms2_B1F/scripts.inc"
+	.include "data/maps/CargoShip_Rooms2_1F/scripts.inc"
+	.include "data/maps/CargoShip_Deck/scripts.inc"
+	.include "data/maps/CargoShip_Room_B1F/scripts.inc"
+	.include "data/maps/CargoShip_Rooms_1F/scripts.inc"
+	.include "data/maps/CargoShip_Corridors_1F/scripts.inc"
+	.include "data/maps/CargoShip_Room_B1F_2/scripts.inc"
+	.include "data/maps/GraniteCave_B1F_Interior/scripts.inc"
+	.include "data/maps/NorthIsland/scripts.inc"
+	.include "data/maps/Hauntwood_Aleph/scripts.inc"
+	.include "data/maps/Hauntwood_Bet/scripts.inc"
+	.include "data/maps/Hauntwood_Charlie/scripts.inc"
+	.include "data/maps/Hauntwood_Delta/scripts.inc"
+	.include "data/maps/Hauntwood_Epsilon/scripts.inc"
 
 .if IS_FRLG
 
@@ -1272,8 +1293,6 @@ EventScript_HideMrBriney::
 	return
 
 RusturfTunnel_EventScript_SetRusturfTunnelOpen::
-	removeobject LOCALID_RUSTURF_TUNNEL_WANDAS_BF
-	removeobject LOCALID_RUSTURF_TUNNEL_WANDA
 	clearflag FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WANDAS_BOYFRIEND
 	clearflag FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WANDA
 	setvar VAR_RUSTURF_TUNNEL_STATE, 6
@@ -1558,7 +1577,6 @@ Common_EventScript_UnionRoomAttendant::
 #if IS_FRLG
 	call CableClub_EventScript_UnionRoomAttendant_Frlg
 #else
-	call CableClub_EventScript_UnionRoomAttendant
 #endif
 	end
 
@@ -1566,7 +1584,6 @@ Common_EventScript_WirelessClubAttendant::
 #if IS_FRLG
 	call CableClub_EventScript_WirelessClubAttendant_Frlg
 #else
-	call CableClub_EventScript_WirelessClubAttendant
 #endif
 	end
 
@@ -1574,7 +1591,6 @@ Common_EventScript_DirectCornerAttendant::
 #if IS_FRLG
 	call CableClub_EventScript_DirectCornerAttendant_Frlg
 #else
-	call CableClub_EventScript_DirectCornerAttendant
 #endif
 	end
 
@@ -1592,13 +1608,6 @@ Common_EventScript_LegendaryFlewAway::
 	bufferspeciesname STR_VAR_1, VAR_0x8004
 	msgbox gText_LegendaryFlewAway, MSGBOX_DEFAULT
 	release
-	end
-
-EventScript_VsSeekerChargingDone::
-	special VsSeekerFreezeObjectsAfterChargeComplete
-	waitstate
-	special VsSeekerResetObjectMovementAfterChargeComplete
-	releaseall
 	end
 
 @ FRLG scripts
@@ -1667,7 +1676,6 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/scripts/tv.inc"
 	.include "data/text/tv.inc"
 	.include "data/scripts/interview.inc"
-	.include "data/scripts/gabby_and_ty.inc"
 	.include "data/text/pokemon_news.inc"
 	.include "data/scripts/mauville_man.inc"
 	.include "data/scripts/field_move_scripts.inc"
@@ -1675,7 +1683,6 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/scripts/profile_man.inc"
 	.include "data/scripts/day_care.inc"
 	.include "data/scripts/flash.inc"
-	.include "data/scripts/players_house.inc"
 	.include "data/scripts/berry_blender.inc"
 	.include "data/text/mauville_man.inc"
 	.include "data/text/trainers.inc"

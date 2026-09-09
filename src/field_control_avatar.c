@@ -447,15 +447,6 @@ static const u8 *GetInteractedBackgroundEventScript(struct MapPosition *position
         break;
     case 5:
     case 6:
-    case BG_EVENT_HIDDEN_ITEM:
-        if (bgEvent->bgUnion.hiddenItem.underfoot == TRUE)
-            return NULL;
-        gSpecialVar_0x8004 = bgEvent->bgUnion.hiddenItem.hiddenItemId + FLAG_HIDDEN_ITEMS_START;
-        gSpecialVar_0x8005 = bgEvent->bgUnion.hiddenItem.item;
-        gSpecialVar_0x8009 = bgEvent->bgUnion.hiddenItem.quantity;
-        if (FlagGet(gSpecialVar_0x8004) == TRUE)
-            return NULL;
-        return EventScript_HiddenItemScript;
     case BG_EVENT_SECRET_BASE:
         if (direction == DIR_NORTH)
         {
@@ -490,8 +481,6 @@ static const u8 *GetInteractedMetatileScript(struct MapPosition *position, u8 me
         return Route110_TrickHousePuzzle_EventScript_Door;
     if (MetatileBehavior_IsRegionMap(metatileBehavior) == TRUE)
         return EventScript_RegionMap;
-    if (MetatileBehavior_IsRunningShoesManual(metatileBehavior) == TRUE)
-        return EventScript_RunningShoesManual;
     if (MetatileBehavior_IsPictureBookShelf(metatileBehavior) == TRUE)
         return EventScript_PictureBookShelf;
     if (MetatileBehavior_IsBookShelf(metatileBehavior) == TRUE)

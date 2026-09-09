@@ -77,9 +77,6 @@ gSpecials::
 	def_special GetTrainerFlag
 	def_special DoTrainerApproach, waitstate=1
 	def_special PlayTrainerEncounterMusic
-	def_special ShouldTryRematchBattle
-	def_special IsTrainerReadyForRematch
-	def_special BattleSetup_StartRematchBattle, waitstate=1
 	def_special ShowPokemonStorageSystemPC, waitstate=1
 	def_special HasEnoughMonsForDoubleBattle
 	def_special TurnOffTVScreen
@@ -192,14 +189,6 @@ gSpecials::
 	def_special UpdateTrainerFanClubGameClear
 	def_special Script_TryGainNewFanFromCounter
 	def_special RockSmashWildEncounter
-	def_special GabbyAndTyGetBattleNum
-	def_special GabbyAndTyAfterInterview
-	def_special GabbyAndTyBeforeInterview
-	def_special DoTVShowInSearchOfTrainers
-	def_special IsGabbyAndTyShowOnTheAir
-	def_special GabbyAndTyGetLastQuote
-	def_special GabbyAndTyGetLastBattleTrivia
-	def_special GetGabbyAndTyLocalIds
 	def_special GetBattleOutcome
 	def_special GetDaycareMonNicknames
 	def_special GetDaycareState
@@ -216,7 +205,6 @@ gSpecials::
 	def_special ScriptHatchMon
 	def_special EggHatch, waitstate=1
 	def_special CheckDaycareMonReceivedMail
-	def_special ShowLinkBattleRecords
 	def_special IsEnoughForCostInVar0x8005
 	def_special SubtractMoneyFromVar0x8005
 	def_special TryFieldPoisonWhiteOut, waitstate=1
@@ -280,8 +268,6 @@ gSpecials::
 	def_special RetrieveLotteryNumber
 	def_special PickLotteryCornerTicket
 	def_special ShowBerryBlenderRecordWindow
-	def_special ResetTrickHouseNuggetFlag
-	def_special SetTrickHouseNuggetFlag
 	def_special ScriptMenu_CreatePCMultichoice, waitstate=1
 	def_special AccessHallOfFamePC, waitstate=1
 	def_special Special_ShowDiploma, waitstate=1
@@ -307,10 +293,6 @@ gSpecials::
 	def_special BufferEReaderTrainerName
 	def_special GetSlotMachineId
 	def_special GetPlayerFacingDirection, requests_effects=TRUE
-	def_special FoundAbandonedShipRoom1Key
-	def_special FoundAbandonedShipRoom2Key
-	def_special FoundAbandonedShipRoom4Key
-	def_special FoundAbandonedShipRoom6Key
 	def_special LeadMonHasEffortRibbon
 	def_special GiveLeadMonEffortRibbon
 	def_special Special_AreLeadMonEVsMaxedOut
@@ -335,7 +317,6 @@ gSpecials::
 	def_special StartRegiBattle, waitstate=1
 	def_special SetTrainerFacingDirection
 	def_special DoSealedChamberShakingEffect_Short, waitstate=1
-	def_special FoundBlackGlasses
 	def_special StartDroughtWeatherBlend
 	def_special DoDiveWarp
 	def_special DoFallWarp, waitstate=1
@@ -440,11 +421,9 @@ gSpecials::
 	def_special ShowWirelessCommunicationScreen, waitstate=1
 	def_special InitUnionRoom
 	def_special BufferUnionRoomPlayerName
-	def_special WonderNews_GetRewardInfo
 	def_special ChooseMonForWirelessMinigame, waitstate=1
 	def_special Script_ResetUnionRoomTrade
 	def_special IsBadEggInParty
-	def_special ValidateSavedWonderCard
 	def_special HasAtLeastOneBerry
 	def_special IsPokemonJumpSpeciesInParty
 	def_special ShowPokemonJumpRecords, waitstate=1
@@ -513,19 +492,16 @@ gSpecials::
 	def_special SaveForBattleTowerLink, waitstate=1
 	def_special Unused_SetWeatherSunny
 	def_special SetUnlockedPokedexFlags
-	def_special IsTrainerRegistered
 	def_special ShouldDoBrailleRegicePuzzle
 	def_special EnableNationalPokedex
 	def_special ScriptMenu_CreateLilycoveSSTidalMultichoice, waitstate=1
 	def_special GetLilycoveSSTidalSelection
 	def_special TurnOnTVScreen
-	def_special SetMewAboveGrass
 	def_special ShouldDistributeEonTicket
 	def_special LinkRetireStatusWithBattleTowerPartner, waitstate=1
 	def_special BattleTowerReconnectLink
 	def_special Script_DoRayquazaScene, waitstate=1 @ Listed twice
 	def_special LoopWingFlapSE
-	def_special DestroyMewEmergingGrassSprite
 	def_special ShowBerryCrushRankings, waitstate=1
 	def_special TryBufferWaldaPhrase
 	def_special DoWaldaNamingScreen, waitstate=1
@@ -537,15 +513,13 @@ gSpecials::
 	def_special IsLastMonThatKnowsSurf
 	def_special CountPartyAliveNonEggMons
 	def_special TryPrepareSecondApproachingTrainer
-	def_special RemoveRecordsWindow
+	@def_special RemoveRecordsWindow
 	def_special CloseDeptStoreElevatorWindow
 	def_special TrySetBattleTowerLinkType
 	def_special GetNumberSprayStrength
 	def_special GetSprayId
 	def_special GetLastUsedSprayType
 	def_special TrySkyBattle
-	def_special VsSeekerResetObjectMovementAfterChargeComplete
-	def_special VsSeekerFreezeObjectsAfterChargeComplete
 	def_special PlayerHasMulch
 	def_special Bag_ChooseMulch
 	def_special ObjectEventInteractionApplyMulch
@@ -609,14 +583,6 @@ gSpecials::
 	def_special DrawElevatorCurrentFloorWindow
 	def_special GetElevatorFloor
 	def_special ForcePlayerOntoBike
-	def_special Script_IsFanClubMemberFanOfPlayer
-	def_special Script_GetNumFansOfPlayerInTrainerFanClub
-	def_special Script_BufferFanClubTrainerName
-	def_special Script_TryLoseFansFromPlayTimeAfterLinkBattle
-	def_special Script_TryLoseFansFromPlayTime
-	def_special Script_SetPlayerGotFirstFans
-	def_special Script_UpdateTrainerFanClubGameClear
-	def_special Script_TryGainNewFanFromCounterFrlg
 	def_special IsNationalPokedexEnabled
 	def_special SetPostgameFlags
 	def_special IsPlayerNotInTrainerTowerLobby

@@ -366,7 +366,7 @@ LilycoveCity_ContestLobby_EventScript_BerryBlenderSpeedRecords::
 	lockall
 	@special ShowBerryBlenderRecordWindow
 	waitbuttonpress
-	special RemoveRecordsWindow
+	@special RemoveRecordsWindow
 	releaseall
 	end
 
@@ -374,7 +374,7 @@ LilycoveCity_ContestLobby_EventScript_LinkContestResults::
 	lockall
 	frontier_results FACILITY_LINK_CONTEST
 	waitbuttonpress
-	special RemoveRecordsWindow
+	@special RemoveRecordsWindow
 	releaseall
 	end
 

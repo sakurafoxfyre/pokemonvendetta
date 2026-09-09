@@ -1740,7 +1740,7 @@ extern const u16 gItemIconPalette_ResistMochi[];
 extern const u16 gItemIconPalette_GeniusMochi[];
 extern const u16 gItemIconPalette_CleverMochi[];
 extern const u16 gItemIconPalette_SwiftMochi[];
-extern const u16 gItemIconPalette_FreshStartMochi[];
+extern const u16 gItemIconPalette_PureMochi[];
 
 extern const u32 gItemIcon_WellspringMask[];
 extern const u16 gItemIconPalette_WellspringMask[];

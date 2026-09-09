@@ -161,16 +161,6 @@
       "var_value": "0",
       "script": "PetalburgCity_EventScript_Check_ToDewford",
       "stretchentrance": "todewford"
-    },
-    {
-      "type": "trigger",
-      "x": 28,
-      "y": 16,
-      "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "PetalburgCity_EventScript_Check_Petalburg_Slateport",
-      "stretchentrance": "toslateport"
     }
   ],
   "bg_events": [

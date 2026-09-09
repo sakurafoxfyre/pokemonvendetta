@@ -2053,7 +2053,7 @@ const u16 gItemIconPalette_ResistMochi[] = INCGFX_U16("graphics/items/icon_palet
 const u16 gItemIconPalette_GeniusMochi[] = INCGFX_U16("graphics/items/icon_palettes/genius_mochi.pal", ".gbapal");
 const u16 gItemIconPalette_CleverMochi[] = INCGFX_U16("graphics/items/icon_palettes/clever_mochi.pal", ".gbapal");
 const u16 gItemIconPalette_SwiftMochi[] = INCGFX_U16("graphics/items/icon_palettes/swift_mochi.pal", ".gbapal");
-const u16 gItemIconPalette_FreshStartMochi[] = INCGFX_U16("graphics/items/icon_palettes/fresh_start_mochi.pal", ".gbapal");
+const u16 gItemIconPalette_PureMochi[] = INCGFX_U16("graphics/items/icon_palettes/pure_mochi.pal", ".gbapal");
 
 // Ogerpon masks
 

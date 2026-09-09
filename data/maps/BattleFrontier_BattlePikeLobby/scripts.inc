@@ -198,7 +198,7 @@ BattleFrontier_BattlePikeLobby_EventScript_ShowResults::
 	lockall
 	frontier_results FRONTIER_FACILITY_PIKE
 	waitbuttonpress
-	special RemoveRecordsWindow
+	@special RemoveRecordsWindow
 	releaseall
 	end
 
