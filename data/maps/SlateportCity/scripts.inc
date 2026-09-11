@@ -427,6 +427,24 @@ SlateportCity_EventScript_TestBoss_FlagsAfterBattle::
 	release
 	end
 
+SlateportCity_EventScript_AutoUnlock_Mauville::
+	setflag FLAG_SLATEPORT_MAUVILLE_STRETCH
+	copyvar VAR_SLATEPORT_MAUVILLE_LEVEL, VAR_WORLD_DIFFICULTY
+	return
+	end
+
+SlateportCity_EventScript_AutoUnlock_Dewford::
+	setflag FLAG_DEWFORD_SLATEPORT_STRETCH
+	copyvar VAR_DEWFORD_SLATEPORT_LEVEL, VAR_WORLD_DIFFICULTY
+	return
+	end
+
+SlateportCity_EventScript_AutoUnlock_Mossdeep::
+	setflag FLAG_SLATEPORT_MOSSDEEP_STRETCH
+	copyvar VAR_SLATEPORT_MOSSDEEP_LEVEL, VAR_WORLD_DIFFICULTY
+	return
+	end
+
 SlateportCity_EventScript_Check_ToMauville::
 	goto_if_unset FLAG_SLATEPORT_MAUVILLE_STRETCH, SlateportCity_EventScript_Check_Slateport_Mauville
 	end
@@ -450,12 +468,6 @@ SlateportCity_EventScript_ToMauville_BossUndefeated::
 	applymovement LOCALID_PLAYER, SlateportCity_Movement_TurnFrom_Mauville
 	waitmovement 0
 	release
-	end
-
-SlateportCity_EventScript_AutoUnlock_Mauville::
-	setflag FLAG_SLATEPORT_MAUVILLE_STRETCH
-	copyvar VAR_SLATEPORT_MAUVILLE_LEVEL, VAR_WORLD_DIFFICULTY
-	return
 	end
 
 SlateportCity_EventScript_Cannot_Unlock_Mauville::
@@ -496,12 +508,6 @@ SlateportCity_EventScript_ToDewford_BossUndefeated::
 	release
 	end
 
-SlateportCity_EventScript_AutoUnlock_Dewford::
-	setflag FLAG_DEWFORD_SLATEPORT_STRETCH
-	copyvar VAR_DEWFORD_SLATEPORT_LEVEL, VAR_WORLD_DIFFICULTY
-	return
-	end
-
 SlateportCity_EventScript_Cannot_Unlock_Dewford::
 	msgbox SlateportCity_Text_Cannot_Unlock, MSGBOX_DEFAULT
 	applymovement LOCALID_PLAYER, SlateportCity_Movement_TurnFrom_Dewford
@@ -540,12 +546,6 @@ SlateportCity_EventScript_ToMossdeep_BossUndefeated::
 	release
 	end
 
-SlateportCity_EventScript_AutoUnlock_Mossdeep::
-	setflag FLAG_SLATEPORT_MOSSDEEP_STRETCH
-	copyvar VAR_SLATEPORT_MOSSDEEP_LEVEL, VAR_WORLD_DIFFICULTY
-	return
-	end
-
 SlateportCity_EventScript_Cannot_Unlock_Mossdeep::
 	msgbox SlateportCity_Text_Cannot_Unlock, MSGBOX_DEFAULT
 	applymovement LOCALID_PLAYER, SlateportCity_Movement_TurnFrom_Mossdeep
@@ -558,10 +558,6 @@ SlateportCity_EventScript_Reject_ToMossdeep::
 	applymovement LOCALID_PLAYER, SlateportCity_Movement_TurnFrom_Mossdeep
 	waitmovement 0
 	release
-	end
-
-SlateportyCity_EventScript_Already_Unlocked::
-	return
 	end
 
 SlateportCity_Movement_TurnFrom_Mauville:
@@ -579,6 +575,27 @@ SlateportCity_Movement_TurnFrom_Petalburg:
 SlateportCity_Movement_TurnFrom_Mossdeep:
 	walk_left
 	step_end
+
+SlateportCity_EventScript_Test_SetMauvilleFlag::
+	goto_if_set FLAG_MAUVILLE_BOSS, SlateportCity_EventScript_Test_UnsetMauvilleBossFlag
+	setflag FLAG_MAUVILLE_BOSS
+	msgbox SlateportCity_Text_Test_MauvilleBossFlagSet, MSGBOX_DEFAULT
+	releaseall
+	end
+
+SlateportCity_EventScript_Test_UnsetMauvilleBossFlag::
+	clearflag FLAG_MAUVILLE_BOSS
+	msgbox SlateportCity_Text_Test_MauvilleBossFlagUnset, MSGBOX_DEFAULT
+	releaseall
+	end
+
+SlateportCity_Text_Test_MauvilleBossFlagSet:
+	.string "The Mauville Boss Flag\n"
+	.string "has been set.$"
+
+SlateportCity_Text_Test_MauvilleBossFlagUnset:
+	.string "The Mauville Boss Flag\n"
+	.string "has been un-set.$"
 
 SlateportCity_Text_ItemCollectorSellWhatYouNeed:
 	.string "I collect rare items like Light Ball.\p"
@@ -843,13 +860,6 @@ SlateportCity_Text_To_Dewford:
 
 SlateportCity_Text_Accept_Dewford:
 	.string "Time to head for Dewford Town.$"
-
-SlateportCity_Text_To_Petalburg:
-	.string "This is the way to Petalburg City...\n"
-	.string "Head this way?$"
-
-SlateportCity_Text_Accept_Petalburg:
-	.string "Time to head for Petalburg City.$"
 
 SlateportCity_Text_To_Mossdeep:
 	.string "This is the way to Mossdeep City...\n"

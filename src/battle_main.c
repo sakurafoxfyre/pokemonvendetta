@@ -1826,11 +1826,13 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
 
         if (trainer->isSpecialTrainer) { //non-standard trainer
             trainerPool = SpecialtyPool(trainer);
+            DebugPrintf("%d", trainerPool[0].species);
         } else { //standard trainer
             trainerPool = CombinePools(trainer);
         }
 
         DoTrainerPartyPool(trainer, monIndices, monsCount, battleTypeFlags, trainerPool);
+        DebugPrintf("%d", trainerPool[0].species);
 
         for (s32 i = 0; i < monsCount; i++)
         {
@@ -1884,6 +1886,7 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
 
             // -- LEVEL AND EVO -- //
 
+            DebugPrintf("%d", "Level and Evo");
             if (partyData[monIndex].lvl) { // if a set level has been defined
                 if (HasLevelEvolution(partyData[i].species, partyData[monIndex].lvl + (6* *GetVarPointer(VAR_WORLD_DIFFICULTY)))) {
                     CreateMon(&party[i], HasLevelEvolution(partyData[i].species, partyData[monIndex].lvl + (6 * *GetVarPointer(VAR_WORLD_DIFFICULTY))), partyData[monIndex].lvl + (6 * *GetVarPointer(VAR_WORLD_DIFFICULTY)), personalityValue, otId);
