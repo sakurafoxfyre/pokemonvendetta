@@ -487,11 +487,16 @@
 #define TRAINER_JEBEDIAH                    480
 #define TRAINER_JOEL                        481
 #define TRAINER_LAURENT                     482
+#define TRAINER_JACQUES                     483
+#define TRAINER_MADISON                     484
+#define TRAINER_LINIE                       485
+#define TRAINER_LUGNER                      486
+#define TRAINER_WALLY                       487
 
 //       You can freely add trainers to this list until you hit 863, then some fiddling will need to e done. :)
 //       MAX_TRAINERS_COUNT can be increased but will take up additional saveblock space
 
-#define TRAINERS_COUNT_EMERALD     483
+#define TRAINERS_COUNT_EMERALD     488
 #define MAX_TRAINERS_COUNT_EMERALD 864
 
 #if IS_FRLG

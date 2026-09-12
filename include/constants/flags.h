@@ -55,6 +55,7 @@
 #define FLAG_DEFEATED_TUBERS                         0x20
 #define FLAG_WEATHER_INSTITUTE_LENSES                0x21
 #define FLAG_CARGO_RIP_RIVAL_ONE                     0x22
+#define FLAG_DEFEATED_MAUVILLE_GYM_TRAINERS          0x23
 
 // Vendetta item flags
 #define FLAG_ITEM_ROUTE_108_MYSTIC_WATER             0x1F4

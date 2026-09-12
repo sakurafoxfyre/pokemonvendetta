@@ -593,6 +593,7 @@ gStdScripts_End::
 	.include "data/maps/Hauntwood_Charlie/scripts.inc"
 	.include "data/maps/Hauntwood_Delta/scripts.inc"
 	.include "data/maps/Hauntwood_Epsilon/scripts.inc"
+	.include "data/maps/DewfordBeach/scripts.inc"
 
 .if IS_FRLG
 
@@ -1714,3 +1715,5 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/scripts/battle_frontier.inc"
 	.include "data/scripts/apricorn_tree.inc"
 	.include "data/scripts/wild_encounter.inc"
+
+	.include "data/maps/SlateportCity_SternsShipyard_B1F/scripts.inc"

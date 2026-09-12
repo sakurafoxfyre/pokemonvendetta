@@ -213,9 +213,14 @@ Route110_EventScript_CyclingChallengeEnd::
 	releaseall
 	end
 
-Route110_EventScript_CyclingChallengeResults::
+Route110_EventScript_TrickGuard::
+	lockall
+	@msgbox Route110_Text_TrickGuard, MSGBOX_AUTOCLOSE
+	releaseall
 	end
 
+Route110_EventScript_CyclingChallengeResults::
+	end
 
 Route110_Text_RideBikeAtFullSpeed:
 	.string "Wouldn't it be great to ride a BIKE\n"
@@ -314,3 +319,14 @@ Route110_Text_ThereIsNoRecord:
 	.string "THE BEST RECORD TO DATE…\p"
 	.string "No one seems to have taken the\n"
 	.string "challenge. There is no record…$"
+
+Route110_Text_TrickGuard:
+	.string "Ahem. Hello.\n"
+	.string "To the west of here is Route 103,\l"
+	.string "a lush, naturally preserved sanctuary\l"
+	.string "for rare and valuable Pokemon.\p"
+	.string "Further beyond, Route 103 connects to\n"
+	.string "Oldale Town and, from there, Petalburg\l"
+	.string "City and Littleroot, home of Birch Labs.\p"
+	.string "If you wish to pass, you must have\n"
+	.string "a Tricket.$"

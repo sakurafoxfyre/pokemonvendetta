@@ -25,7 +25,7 @@
     },
     {
       "map": "MAP_ROUTE103",
-      "offset": 52,
+      "offset": 60,
       "direction": "left"
     }
   ],
@@ -279,7 +279,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_POKEFAN_F",
-      "x": 13,
+      "x": 20,
       "y": 71,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -292,7 +292,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_POKEFAN_M",
-      "x": 13,
+      "x": 20,
       "y": 68,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -381,6 +381,19 @@
       "trainer_sight_or_berry_tree_id": "3",
       "script": "Route110_EventScript_Jebediah",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_POLICEMAN",
+      "x": 7,
+      "y": 67,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "5",
+      "script": "Route110_EventScript_TrickGuard",
+      "flag": "0"
     }
   ],
   "warp_events": [
@@ -393,7 +406,7 @@
     },
     {
       "x": 11,
-      "y": 66,
+      "y": 65,
       "elevation": 0,
       "dest_map": "MAP_ROUTE110_TRICK_HOUSE_ENTRANCE",
       "dest_warp_id": "0"
@@ -530,6 +543,14 @@
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "Route110_EventScript_CyclingRoadSign"
+    },
+    {
+      "type": "sign",
+      "x": 11,
+      "y": 66,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Route110_EventScript_TrickHouseSign"
     }
   ]
 }

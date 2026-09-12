@@ -1585,3 +1585,25 @@ const struct Tileset gTileset_NewGeneral =
     .metatileAttributes = gMetatileAttributes_NewGeneral,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_BeachCaveSecondary =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_BeachCaveSecondary,
+    .palettes = gTilesetPalettes_BeachCaveSecondary,
+    .metatiles = gMetatiles_BeachCaveSecondary,
+    .metatileAttributes = gMetatileAttributes_BeachCaveSecondary,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_BrickCafeInteriorSecondary =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_BrickCafeInteriorSecondary,
+    .palettes = gTilesetPalettes_BrickCafeInteriorSecondary,
+    .metatiles = gMetatiles_BrickCafeInteriorSecondary,
+    .metatileAttributes = gMetatileAttributes_BrickCafeInteriorSecondary,
+    .callback = NULL,
+};

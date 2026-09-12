@@ -246,7 +246,7 @@
     {
       "id": "LAYOUT_ROUTE107",
       "name": "Route107_Layout",
-      "width": 60,
+      "width": 30,
       "height": 20,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Dewford",
@@ -260,7 +260,7 @@
       "width": 60,
       "height": 20,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Slateport",
+      "secondary_tileset": "gTileset_Dewford",
       "border_filepath": "data/layouts/Route108/border.bin",
       "blockdata_filepath": "data/layouts/Route108/map.bin",
       "layout_version": "emerald"
@@ -291,7 +291,7 @@
       "id": "LAYOUT_ROUTE111",
       "name": "Route111_Layout",
       "width": 40,
-      "height": 140,
+      "height": 56,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Mauville",
       "border_filepath": "data/layouts/Route111/border.bin",
@@ -972,10 +972,10 @@
     {
       "id": "LAYOUT_MAUVILLE_CITY_GYM",
       "name": "MauvilleCity_Gym_Layout",
-      "width": 10,
-      "height": 21,
+      "width": 26,
+      "height": 19,
       "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_MauvilleGym",
+      "secondary_tileset": "gTileset_BrickCafeInteriorSecondary",
       "border_filepath": "data/layouts/MauvilleCity_Gym/border.bin",
       "blockdata_filepath": "data/layouts/MauvilleCity_Gym/map.bin",
       "layout_version": "emerald"
@@ -9469,10 +9469,10 @@
     {
       "id": "LAYOUT_NORTH_ISLAND",
       "name": "NorthIsland_Layout",
-      "width": 15,
+      "width": 16,
       "height": 14,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Cave",
+      "secondary_tileset": "gTileset_BeachCaveSecondary",
       "border_filepath": "data/layouts/NorthIsland/border.bin",
       "blockdata_filepath": "data/layouts/NorthIsland/map.bin"
     },
@@ -9525,6 +9525,27 @@
       "secondary_tileset": "gTileset_Hauntwoods",
       "border_filepath": "data/layouts/Hauntwood_Epsilon/border.bin",
       "blockdata_filepath": "data/layouts/Hauntwood_Epsilon/map.bin"
+    },
+    {
+      "id": "LAYOUT_DEWFORD_BEACH",
+      "name": "DewfordBeach_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Dewford",
+      "border_filepath": "data/layouts/DewfordBeach/border.bin",
+      "blockdata_filepath": "data/layouts/DewfordBeach/map.bin"
+    },
+    {
+      "id": "LAYOUT_SLATEPORT_CITY_STERNS_SHIPYARD_B1F",
+      "name": "SlateportCity_SternsShipyard_B1F_Layout",
+      "width": 21,
+      "height": 15,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/SlateportCity_SternsShipyard_B1F/border.bin",
+      "blockdata_filepath": "data/layouts/SlateportCity_SternsShipyard_B1F/map.bin",
+      "layout_version": "emerald"
     }
   ]
 }

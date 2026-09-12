@@ -420,3 +420,9 @@ const u16 gMetatileAttributes_HallOfFame[] = INCBIN_U16("data/tilesets/secondary
 
 const u16 gMetatiles_NewGeneral[] = INCBIN_U16("data/tilesets/primary/new_general/metatiles.bin");
 const u16 gMetatileAttributes_NewGeneral[] = INCBIN_U16("data/tilesets/primary/new_general/metatile_attributes.bin");
+
+const u16 gMetatiles_BeachCaveSecondary[] = INCBIN_U16("data/tilesets/secondary/beach_cave_secondary/metatiles.bin");
+const u16 gMetatileAttributes_BeachCaveSecondary[] = INCBIN_U16("data/tilesets/secondary/beach_cave_secondary/metatile_attributes.bin");
+
+const u16 gMetatiles_BrickCafeInteriorSecondary[] = INCBIN_U16("data/tilesets/secondary/brick_cafe_interior_secondary/metatiles.bin");
+const u16 gMetatileAttributes_BrickCafeInteriorSecondary[] = INCBIN_U16("data/tilesets/secondary/brick_cafe_interior_secondary/metatile_attributes.bin");

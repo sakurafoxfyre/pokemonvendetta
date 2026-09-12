@@ -131,7 +131,7 @@
     },
     {
       "x": 35,
-      "y": 5,
+      "y": 4,
       "elevation": 0,
       "dest_map": "MAP_MAUVILLE_CITY_BIKE_SHOP",
       "dest_warp_id": "0"
@@ -145,21 +145,21 @@
     },
     {
       "x": 32,
-      "y": 14,
+      "y": 13,
       "elevation": 0,
       "dest_map": "MAP_MAUVILLE_CITY_HOUSE1",
       "dest_warp_id": "0"
     },
     {
       "x": 8,
-      "y": 13,
+      "y": 12,
       "elevation": 0,
       "dest_map": "MAP_MAUVILLE_CITY_GAME_CORNER",
       "dest_warp_id": "0"
     },
     {
       "x": 19,
-      "y": 14,
+      "y": 13,
       "elevation": 0,
       "dest_map": "MAP_MAUVILLE_CITY_HOUSE2",
       "dest_warp_id": "0"
@@ -281,6 +281,38 @@
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "MauvilleCity_EventScript_GameCornerSign"
+    },
+    {
+      "type": "sign",
+      "x": 35,
+      "y": 5,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "MauvilleCity_EventScript_BikeShopSign"
+    },
+    {
+      "type": "sign",
+      "x": 32,
+      "y": 14,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "MauvilleCity_EventScript_BikeShopSign"
+    },
+    {
+      "type": "sign",
+      "x": 19,
+      "y": 14,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "MauvilleCity_EventScript_BikeShopSign"
+    },
+    {
+      "type": "sign",
+      "x": 8,
+      "y": 13,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "MauvilleCity_EventScript_BikeShopSign"
     }
   ]
 }
