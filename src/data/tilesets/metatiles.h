@@ -426,3 +426,6 @@ const u16 gMetatileAttributes_BeachCaveSecondary[] = INCBIN_U16("data/tilesets/s
 
 const u16 gMetatiles_BrickCafeInteriorSecondary[] = INCBIN_U16("data/tilesets/secondary/brick_cafe_interior_secondary/metatiles.bin");
 const u16 gMetatileAttributes_BrickCafeInteriorSecondary[] = INCBIN_U16("data/tilesets/secondary/brick_cafe_interior_secondary/metatile_attributes.bin");
+
+const u16 gMetatiles_AltPokecenterSecondary[] = INCBIN_U16("data/tilesets/secondary/alt_pokecenter_secondary/metatiles.bin");
+const u16 gMetatileAttributes_AltPokecenterSecondary[] = INCBIN_U16("data/tilesets/secondary/alt_pokecenter_secondary/metatile_attributes.bin");

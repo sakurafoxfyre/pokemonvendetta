@@ -286,6 +286,8 @@ static void WhenSingles(enum Move move, struct BattlePokemon *attacker, struct B
             TURN { MOVE(attacker, MOVE_PSYCHIC_TERRAIN); }
         else if (variation == 4)
             TURN { MOVE(attacker, MOVE_MISTY_TERRAIN); }
+        else if (variation == 5)
+            TURN { MOVE(attacker, MOVE_AROMATIC_TERRAIN); }
     }
     else if (gBattleMoveEffects[gMovesInfo[move].effect].twoTurnEffect)
     {
@@ -502,6 +504,8 @@ static void DoublesWhen(enum Move move, struct BattlePokemon *attacker, struct B
             TURN { MOVE(attacker, MOVE_PSYCHIC_TERRAIN); }
         else if (variation == 4)
             TURN { MOVE(attacker, MOVE_MISTY_TERRAIN); }
+        else if (variation == 5)
+            TURN { MOVE(attacker, MOVE_AROMATIC_TERRAIN); }
     }
     else if (gBattleMoveEffects[gMovesInfo[move].effect].twoTurnEffect)
     {

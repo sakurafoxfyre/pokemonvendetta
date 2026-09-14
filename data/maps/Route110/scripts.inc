@@ -213,14 +213,62 @@ Route110_EventScript_CyclingChallengeEnd::
 	releaseall
 	end
 
-Route110_EventScript_TrickGuard::
+Route110GateTile1::
 	lockall
-	@msgbox Route110_Text_TrickGuard, MSGBOX_AUTOCLOSE
+	applymovement LOCALID_PLAYER, Route110_Movement_FaceUp
+	waitmovement 0
+	applymovement TrickGuard, Route110_Movement_GuardApproaches1
+	waitmovement 0
+	msgbox Route110_Text_TrickGuard, MSGBOX_AUTOCLOSE
+	applymovement LOCALID_PLAYER, Route110_Movement_PlayerTurnedAway
+	applymovement TrickGuard, Route110_Movement_GuardReturns1
+	waitmovement 0
 	releaseall
+	end
+
+Route110_Movement_FaceUp::
+	unlock_facing_direction
+	face_up
+	lock_facing_direction
+	step_end
+	return
+	end
+
+Route110_Movement_PlayerTurnedAway::
+	walk_right
+	step_end
+	return
+	end
+
+Route110_Movement_GuardApproaches1::
+	walk_down
+	walk_down
+	walk_down
+	step_end
+	step_end
+	return
+	end
+
+Route110_Movement_GuardReturns1::
+	walk_up
+	walk_up
+	walk_up
+	step_end
+	step_end
+	return
+	end
+
+Route110_TrickGuard_TalkAfterTicket::
+	@msgbox Route110_Text_TrickGuardTalking, MSGBOX_AUTOCLOSE
+	release
 	end
 
 Route110_EventScript_CyclingChallengeResults::
 	end
+
+Route110_Text_TrickGuardTalking:
+	.string "Enjoy Route 103! I wish I could, but\n"
+	.string "my paycheck isn't enough to afford it.$"
 
 Route110_Text_RideBikeAtFullSpeed:
 	.string "Wouldn't it be great to ride a BIKE\n"

@@ -698,3 +698,28 @@ MauvilleCity_GameCorner_Text_CantPlayWithNoCoinCase:
 	.string "You can't play if you don't have\n"
 	.string "a COIN CASE.$"
 
+
+
+
+
+MauvilleTMEmporium_EventScript_DeskAgent::
+	lock
+	faceplayer
+	message MauvilleTMEmporium_Text_ItemCollectorSellWhatYouNeed
+	waitmessage
+	pokemart MauvilleTMEmporiumy_Pokemart_ItemCollector
+	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
+	release
+	end
+	.align 2
+
+MauvilleTMEmporiumy_Pokemart_ItemCollector:
+	.2byte ITEM_TM_FLAMETHROWER
+	.2byte ITEM_TM_ICE_BEAM
+	.2byte ITEM_TM_PSYCHIC
+	pokemartlistend
+
+MauvilleTMEmporium_Text_ItemCollectorSellWhatYouNeed:
+	.string "Welcome to the Mauville TM Emporium,\n"
+	.string "where even Champions shop!$"
+	

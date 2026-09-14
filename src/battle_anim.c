@@ -446,6 +446,9 @@ void LaunchBattleAnimation(u32 animType, u32 animId)
                 case STATUS_FIELD_MISTY_TERRAIN:
                     sBattleAnimScriptPtr = gBattleAnimMove_FairyWind;
                     break;
+                case STATUS_FIELD_AROMATIC_TERRAIN:
+                    sBattleAnimScriptPtr = gBattleAnimMove_FairyWind;
+                    break;
                 case STATUS_FIELD_GRASSY_TERRAIN:
                     sBattleAnimScriptPtr = gBattleAnimMove_NeedleArm;
                     break;

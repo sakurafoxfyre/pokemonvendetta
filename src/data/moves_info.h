@@ -6283,33 +6283,25 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     {
         .name = COMPOUND_STRING("Sweet Scent"),
         .description = COMPOUND_STRING(
-        #if B_UPDATED_MOVE_DATA >= GEN_6
-            "Allures the foes to harshly\n"
-            "reduce evasiveness."),
-        #else
-            "Allures the foes to reduce\n"
-            "evasiveness."),
-        #endif
-        .effect = EFFECT_STAT_CHANGE,
+            "Covers the ground with a\n"
+            "sweet aroma for 5 turns."),
+        .effect = EFFECT_AROMATIC_TERRAIN,
         .power = 0,
-        .type = TYPE_NORMAL,
-        .accuracy = 100,
-        .pp = 20,
-        .target = TARGET_BOTH,
+        .type = TYPE_FAIRY,
+        .accuracy = 0,
+        .pp = 10,
+        .target = TARGET_FIELD,
         .priority = 0,
         .category = DAMAGE_CATEGORY_STATUS,
-        .zMove = { .effect = Z_EFFECT_ACC_UP_1 },
-        .magicCoatAffected = TRUE,
-        .contestEffect = C_UPDATED_MOVE_EFFECTS >= GEN_6 ? CONTEST_EFFECT_AVOID_STARTLE_ONCE : CONTEST_EFFECT_BADLY_STARTLE_PREV_MONS,
-        .contestCategory = CONTEST_CATEGORY_CUTE,
-        .contestComboStarterId = COMBO_STARTER_SWEET_SCENT,
+        .zMove = { .effect = Z_EFFECT_SPDEF_UP_1 },
+        .ignoresProtect = TRUE,
+        .mirrorMoveBanned = TRUE,
+        .skyBattleBanned = TRUE,
+        .contestEffect = CONTEST_EFFECT_BETTER_WHEN_AUDIENCE_EXCITED, //CONTEST_EFFECT_EXCITES_AUDIENCE_MORE_IF_FIRST
+        .contestCategory = CONTEST_CATEGORY_BEAUTY,
+        .contestComboStarterId = COMBO_STARTER_MISTY_TERRAIN,
         .contestComboMoves = {0},
-        .additionalEffects = ADDITIONAL_EFFECTS({
-            .moveEffect = STAT_CHANGE_EFFECT_MINUS,
-            .evasion = (B_UPDATED_MOVE_DATA >= GEN_6) ? 2 : 1,
-        }),
-        .battleAnimScript = gBattleAnimMove_SweetScent,
-        .validApprenticeMove = TRUE,
+        .battleAnimScript = gBattleAnimMove_MistyTerrain,
     },
 
     [MOVE_IRON_TAIL] =
@@ -15424,6 +15416,31 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Covers the ground with mist\n"
             "for 5 turns. Blocks status."),
         .effect = EFFECT_MISTY_TERRAIN,
+        .power = 0,
+        .type = TYPE_FAIRY,
+        .accuracy = 0,
+        .pp = 10,
+        .target = TARGET_FIELD,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_STATUS,
+        .zMove = { .effect = Z_EFFECT_SPDEF_UP_1 },
+        .ignoresProtect = TRUE,
+        .mirrorMoveBanned = TRUE,
+        .skyBattleBanned = TRUE,
+        .contestEffect = CONTEST_EFFECT_BETTER_WHEN_AUDIENCE_EXCITED, //CONTEST_EFFECT_EXCITES_AUDIENCE_MORE_IF_FIRST
+        .contestCategory = CONTEST_CATEGORY_BEAUTY,
+        .contestComboStarterId = COMBO_STARTER_MISTY_TERRAIN,
+        .contestComboMoves = {0},
+        .battleAnimScript = gBattleAnimMove_MistyTerrain,
+    },
+
+    [MOVE_AROMATIC_TERRAIN] =
+    {
+        .name = COMPOUND_STRING("Aromatic Terrain"),
+        .description = COMPOUND_STRING(
+            "Covers the ground with a\n"
+            "sweet aroma for 5 turns."),
+        .effect = EFFECT_AROMATIC_TERRAIN,
         .power = 0,
         .type = TYPE_FAIRY,
         .accuracy = 0,

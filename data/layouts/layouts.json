@@ -983,10 +983,10 @@
     {
       "id": "LAYOUT_MAUVILLE_CITY_BIKE_SHOP",
       "name": "MauvilleCity_BikeShop_Layout",
-      "width": 12,
-      "height": 9,
+      "width": 13,
+      "height": 15,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_BikeShop",
+      "secondary_tileset": "gTileset_AltPokecenterSecondary",
       "border_filepath": "data/layouts/MauvilleCity_BikeShop/border.bin",
       "blockdata_filepath": "data/layouts/MauvilleCity_BikeShop/map.bin",
       "layout_version": "emerald"
@@ -994,7 +994,7 @@
     {
       "id": "LAYOUT_MAUVILLE_CITY_GAME_CORNER",
       "name": "MauvilleCity_GameCorner_Layout",
-      "width": 22,
+      "width": 20,
       "height": 11,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_MauvilleGameCorner",

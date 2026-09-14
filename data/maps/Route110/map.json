@@ -240,8 +240,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 26,
-      "y": 47,
+      "x": 20,
+      "y": 92,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
@@ -383,6 +383,7 @@
       "flag": "0"
     },
     {
+      "local_id": "TrickGuard",
       "graphics_id": "OBJ_EVENT_GFX_POLICEMAN",
       "x": 7,
       "y": 67,
@@ -392,7 +393,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "5",
-      "script": "Route110_EventScript_TrickGuard",
+      "script": "Route110_TrickGuard_TalkAfterTicket",
       "flag": "0"
     }
   ],
@@ -440,7 +441,17 @@
       "dest_warp_id": "2"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 7,
+      "y": 71,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "Route110GateTile1"
+    }
+  ],
   "bg_events": [
     {
       "type": "sign",

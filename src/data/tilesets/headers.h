@@ -1607,3 +1607,14 @@ const struct Tileset gTileset_BrickCafeInteriorSecondary =
     .metatileAttributes = gMetatileAttributes_BrickCafeInteriorSecondary,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_AltPokecenterSecondary =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_AltPokecenterSecondary,
+    .palettes = gTilesetPalettes_AltPokecenterSecondary,
+    .metatiles = gMetatiles_AltPokecenterSecondary,
+    .metatileAttributes = gMetatileAttributes_AltPokecenterSecondary,
+    .callback = NULL,
+};

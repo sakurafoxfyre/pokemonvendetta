@@ -584,6 +584,7 @@ extern const u8 gBattleAnimMove_CraftyShield[];
 extern const u8 gBattleAnimMove_FlowerShield[];
 extern const u8 gBattleAnimMove_GrassyTerrain[];
 extern const u8 gBattleAnimMove_MistyTerrain[];
+extern const u8 gBattleAnimMove_AromaticTerrain[];
 extern const u8 gBattleAnimMove_Electrify[];
 extern const u8 gBattleAnimMove_PlayRough[];
 extern const u8 gBattleAnimMove_FairyWind[];
