@@ -2239,6 +2239,7 @@ static inline bool32 IgnoreTargetingForMoveEffect(enum MoveEffect moveEffect) //
     case MOVE_EFFECT_SANDSTORM:
     case MOVE_EFFECT_HAIL:
     case MOVE_EFFECT_MISTY_TERRAIN:
+    case MOVE_EFFECT_AROMATIC_TERRAIN:
     case MOVE_EFFECT_GRASSY_TERRAIN:
     case MOVE_EFFECT_ELECTRIC_TERRAIN:
     case MOVE_EFFECT_PSYCHIC_TERRAIN:
@@ -2769,6 +2770,10 @@ void SetMoveEffect(enum BattlerId battlerAtk, enum BattlerId effectBattler, enum
                     SetStatChange(effectBattler, STAT_SPATK, -1);
                     statDown = TRUE;
                     break;
+                case STATUS_FIELD_AROMATIC_TERRAIN:
+                    SetStatChange(effectBattler, STAT_SPATK, -1);
+                    statDown = TRUE;
+                    break;
                 case STATUS_FIELD_GRASSY_TERRAIN:
                     moveEffect = MOVE_EFFECT_SLEEP;
                     break;
@@ -3076,6 +3081,7 @@ void SetMoveEffect(enum BattlerId battlerAtk, enum BattlerId effectBattler, enum
         break;
     }
     case MOVE_EFFECT_MISTY_TERRAIN:
+    case MOVE_EFFECT_AROMATIC_TERRAIN:
     case MOVE_EFFECT_GRASSY_TERRAIN:
     case MOVE_EFFECT_ELECTRIC_TERRAIN:
     case MOVE_EFFECT_PSYCHIC_TERRAIN:
@@ -3085,6 +3091,10 @@ void SetMoveEffect(enum BattlerId battlerAtk, enum BattlerId effectBattler, enum
         {
         case MOVE_EFFECT_MISTY_TERRAIN:
             statusFlag = STATUS_FIELD_MISTY_TERRAIN;
+            gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_TERRAIN_SET_MISTY;
+            break;
+        case MOVE_EFFECT_AROMATIC_TERRAIN:
+            statusFlag = STATUS_FIELD_AROMATIC_TERRAIN;
             gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_TERRAIN_SET_MISTY;
             break;
         case MOVE_EFFECT_GRASSY_TERRAIN:
@@ -6657,6 +6667,9 @@ static void RemoveAllTerrains(void)
     case STATUS_FIELD_MISTY_TERRAIN:
         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_TERRAIN_END_MISTY;
         break;
+    case STATUS_FIELD_AROMATIC_TERRAIN:
+        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_TERRAIN_END_MISTY;
+        break;
     case STATUS_FIELD_GRASSY_TERRAIN:
         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_TERRAIN_END_GRASSY;
         break;
@@ -9586,6 +9599,9 @@ static void Cmd_settypetoenvironment(void)
     case STATUS_FIELD_MISTY_TERRAIN:
         environmentType = TYPE_FAIRY;
         break;
+    case STATUS_FIELD_AROMATIC_TERRAIN:
+        environmentType = TYPE_FAIRY;
+        break;
     case STATUS_FIELD_PSYCHIC_TERRAIN:
         environmentType = TYPE_PSYCHIC;
         break;
@@ -11409,6 +11425,13 @@ void BS_SetTerrain(void)
         if (!(gFieldStatuses & STATUS_FIELD_MISTY_TERRAIN))
         {
             statusFlag = STATUS_FIELD_MISTY_TERRAIN;
+            gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_TERRAIN_SET_MISTY;
+        }
+        break;
+    case EFFECT_AROMATIC_TERRAIN:
+        if (!(gFieldStatuses & STATUS_FIELD_AROMATIC_TERRAIN))
+        {
+            statusFlag = STATUS_FIELD_AROMATIC_TERRAIN;
             gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_TERRAIN_SET_MISTY;
         }
         break;

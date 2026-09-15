@@ -97,7 +97,8 @@
     "Hauntwood",
     "AmaraDesert",
     "RustboroPier",
-    "Whitegrave"
+    "Whitegrave",
+    "DewfordBeach"
   ],
   "gMapGroup_IndoorLittleroot": [
     "LittlerootTown_BrendansHouse_1F",
@@ -184,7 +185,8 @@
     "SlateportCity_House",
     "SlateportCity_PokemonCenter_1F",
     "SlateportCity_PokemonCenter_2F",
-    "SlateportCity_Mart"
+    "SlateportCity_Mart",
+    "SlateportCity_SternsShipyard_B1F"
   ],
   "gMapGroup_IndoorMauville": [
     "MauvilleCity_Gym",
@@ -442,7 +444,8 @@
     "GraniteCave_Entrance_Chamber_1",
     "GraniteCave_Entrance_Chamber_2",
     "GraniteCave_Entrance_Chamber_3",
-    "GraniteCave_Entrance_Chamber_4"
+    "GraniteCave_Entrance_Chamber_4",
+    "NorthIsland"
   ],
   "gMapGroup_IndoorDynamic": [
     "SecretBase_RedCave1",

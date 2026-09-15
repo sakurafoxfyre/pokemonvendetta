@@ -19243,6 +19243,7 @@ static const struct LevelUpMove sMilceryLevelUpLearnset[] = {
 };
 
 static const struct LevelUpMove sAlcremieLevelUpLearnset[] = {
+    LEVEL_UP_MOVE( 0, MOVE_AROMATIC_TERRAIN),
     LEVEL_UP_MOVE( 0, MOVE_DECORATE),
     LEVEL_UP_MOVE( 1, MOVE_TACKLE),
     LEVEL_UP_MOVE( 1, MOVE_SWEET_KISS),

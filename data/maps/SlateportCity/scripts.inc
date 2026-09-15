@@ -67,8 +67,7 @@ SlateportCity_EventScript_OldWoman::
 SlateportCity_EventScript_Girl::
 	lock
 	faceplayer
-	goto_if_set FLAG_RECEIVED_SECRET_POWER, SlateportCity_EventScript_GirlSecretBase
-	msgbox SlateportCity_Text_SlateportWonderfulPlace, MSGBOX_DEFAULT
+	msgbox SlateportCity_Text_MarketplaceEarly, MSGBOX_DEFAULT
 	release
 	end
 
@@ -571,9 +570,7 @@ SlateportCity_Text_BattleTentSign:
 	.string "“Find it! The ultimate POKéMON!”$"
 
 SlateportCity_Text_SternsShipyardWantedSign:
-	.string "STERN'S SHIPYARD\p"
-	.string "“Wanted: A sailor capable of sailing\n"
-	.string "in all currents.”$"
+	.string "STERN'S SHIPYARD is written in faded ink.$"
 
 SlateportCity_Text_SternsShipyardFerryComplete:
 	.string "STERN'S SHIPYARD\p"
@@ -690,3 +687,14 @@ SlateportCity_Text_TestBoss_PostBattle:
 	.string "Oh, you should have also gotten a key.\p"
 	.string "It's not in your inventory though.\n"
 	.string "It's a var in the script!$"
+
+SlateportCity_Text_DoorLocked:
+	.string "Better not draw too much attention\n"
+	.string "by wandering into random buildings.$"
+
+SlateportCity_Text_MarketplaceEarly:
+	.string "The marketplace looks strange, huh,\n"
+	.string "all empty like this?\p"
+	.string "We're early in the season yet.\n"
+	.string "Keep coming back, and it'll fill up\l"
+	.string "in no time, you'll see.$"

@@ -6,7 +6,7 @@
   "region_map_section": "MAPSEC_ROUTE_123",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
-  "map_type": "MAP_TYPE_INDOOR",
+  "map_type": "MAP_TYPE_UNDERGROUND",
   "allow_cycling": false,
   "allow_escaping": false,
   "allow_running": false,
@@ -30,18 +30,11 @@
   ],
   "warp_events": [
     {
-      "x": 3,
-      "y": 7,
+      "x": 5,
+      "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_PETALBURG_WOODS",
-      "dest_warp_id": "6"
-    },
-    {
-      "x": 4,
-      "y": 7,
-      "elevation": 0,
-      "dest_map": "MAP_PETALBURG_WOODS",
-      "dest_warp_id": "7"
+      "dest_map": "MAP_HAUNTWOOD",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [],

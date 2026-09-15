@@ -7764,6 +7764,8 @@ void AnimTask_TerrainPulse(u8 taskId)
             gBattleAnimArgs[0] = TYPE_GRASS;
         else if (gFieldStatuses & STATUS_FIELD_MISTY_TERRAIN)
             gBattleAnimArgs[0] = TYPE_FAIRY;
+        else if (gFieldStatuses & STATUS_FIELD_AROMATIC_TERRAIN)
+            gBattleAnimArgs[0] = TYPE_FAIRY;
         else if (gFieldStatuses & STATUS_FIELD_PSYCHIC_TERRAIN)
             gBattleAnimArgs[0] = TYPE_PSYCHIC;
         else //failsafe

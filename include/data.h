@@ -117,6 +117,7 @@ struct StartingStatuses
     // Expands to:
     // u32 electricTerrain:1;
     // u32 mistyTerrain:1;
+    // u32 aromaticTerrain:1;
     // u32 grassyTerrain:1;
     // u32 psychicTerrain:1;
     // u32 trickRoom:1;
