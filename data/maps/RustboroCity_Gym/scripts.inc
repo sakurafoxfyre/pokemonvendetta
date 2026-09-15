@@ -2,22 +2,26 @@ RustboroCity_Gym_MapScripts::
 	.byte 0
 
 RustboroCity_Gym_EventScript_Roxanne::
-	trainerbattle_single TRAINER_ROXANNE, RustboroCity_Gym_Text_RoxanneIntro, RustboroCity_Gym_Text_RoxanneDefeat, RustboroCity_Gym_EventScript_RoxanneDefeated, NO_MUSIC
-	msgbox RustboroCity_Gym_Text_RoxannePostBattle, MSGBOX_DEFAULT
-	@ goto if set 
+	lock
+	faceplayer
+	goto_if_defeated TRAINER_ROXANNE, RustboroCity_Gym_EventScript_Roxanne_AlreadyFought
+	trainerbattle_single TRAINER_ROXANNE, RustboroCity_Gym_Text_Placeholder, RustboroCity_Gym_Text_Placeholder, RustboroCity_Gym_EventScript_Roxanne_FlagsAfterBattle
 	release
 	end
 
-RustboroCity_Gym_EventScript_RoxanneDefeated::
-	message RustboroCity_Gym_Text_ReceivedStoneBadge
-	waitmessage
-	call Common_EventScript_PlayGymBadgeFanfare
-	msgbox RustboroCity_Gym_Text_StoneBadgeInfoTakeThis, MSGBOX_DEFAULT
-	setflag FLAG_DEFEATED_RUSTBORO_GYM
-	setflag FLAG_BADGE01_GET
-	setvar VAR_0x8008, 1
-	call Common_EventScript_SetGymTrainers
-	goto RustboroCity_Gym_EventScript_GiveRockTomb
+RustboroCity_Gym_EventScript_Roxanne_AlreadyFought::
+	msgbox RustboroCity_Gym_Text_Placeholder, MSGBOX_DEFAULT
+	release
+	end
+
+RustboroCity_Gym_EventScript_Roxanne_FlagsAfterBattle::
+	setflag FLAG_RUSTBORO_BOSS
+	special IncrementPlayerKeys
+	special IncrementWorldLevel
+	goto_if_set FLAG_FALLARBOR_BOSS, RustboroCity_Gym_EventScript_AutoUnlock_Fallarbor
+	goto_if_set FLAG_MAUVILLE_BOSS, RustboroCity_Gym_EventScript_AutoUnlock_Mauville
+	goto_if_set FLAG_PETALBURG_BOSS, RustboroCity_Gym_EventScript_AutoUnlock_Petalburg
+	release
 	end
 
 RustboroCity_Gym_EventScript_AutoUnlock_Fallarbor::
@@ -36,13 +40,6 @@ RustboroCity_Gym_EventScript_AutoUnlock_Petalburg::
 	setflag FLAG_RUSTBORO_PETALBURG_STRETCH
 	copyvar VAR_RUSTBORO_PETALBURG_LEVEL, VAR_WORLD_DIFFICULTY
 	return
-	end
-
-RustboroCity_Gym_EventScript_GiveRockTomb::
-	giveitem ITEM_TM_ROCK_TOMB
-	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
-	msgbox RustboroCity_Gym_Text_ExplainRockTomb, MSGBOX_DEFAULT
-	release
 	end
 
 RustboroCity_Gym_EventScript_Josh::
@@ -218,3 +215,6 @@ RustboroCity_Gym_Text_GymStatueCertified:
 	.string "RUSTBORO CITY POKéMON GYM\p"
 	.string "ROXANNE'S CERTIFIED TRAINERS:\n"
 	.string "{PLAYER}$"
+
+RustboroCity_Gym_Text_Placeholder:
+	.string "This is placeholder text.$"

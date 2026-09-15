@@ -168,46 +168,6 @@
   "coord_events": [
     {
       "type": "trigger",
-      "x": 0,
-      "y": 7,
-      "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "MauvilleCity_EventScript_Check_ToRustboro",
-      "stretchentrance": "torustboro"
-    },
-    {
-      "type": "trigger",
-      "x": 15,
-      "y": 18,
-      "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "MauvilleCity_EventScript_Check_ToSlateport",
-      "stretchentrance": "toslateport"
-    },
-    {
-      "type": "trigger",
-      "x": 13,
-      "y": 0,
-      "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "MauvilleCity_EventScript_Check_ToLavaridge",
-      "stretchentrance": "tolavaridge"
-    },
-    {
-      "type": "trigger",
-      "x": 39,
-      "y": 7,
-      "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "MauvilleCity_EventScript_Check_ToMtPyre",
-      "stretchentrance": "tomtpyre"
-    },
-    {
-      "type": "trigger",
       "x": 39,
       "y": 7,
       "elevation": 0,

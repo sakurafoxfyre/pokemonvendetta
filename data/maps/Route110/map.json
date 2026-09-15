@@ -427,26 +427,7 @@
       "dest_warp_id": "2"
     }
   ],
-  "coord_events": [
-    {
-      "type": "trigger",
-      "x": 6,
-      "y": 68,
-      "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "Route110_EventScript_Check_ToPetalburg"
-    },
-    {
-      "type": "trigger",
-      "x": 20,
-      "y": 69,
-      "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "Route110_EventScript_Check_ToMauville"
-    }
-  ],
+  "coord_events": [],
   "bg_events": [
     {
       "type": "sign",

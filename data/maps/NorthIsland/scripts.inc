@@ -27,4 +27,3 @@ NorthIsland_FourCleverFeathers::
 NorthIsland_FiveCleverFeathers::
 	finditem ITEM_CLEVER_FEATHER, amount=5
 	end
-	

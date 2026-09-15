@@ -1,20 +1,20 @@
 MauvilleCity_Gym_MapScripts::
 	.byte 0
 
-MauvilleCity_Gym_EventScript_MauvilleBoss::
+MauvilleCity_Gym_EventScript_Wally::
 	lock
 	faceplayer
-	goto_if_defeated TRAINER_SLATEPORT_BOSS, MauvilleCity_Gym_EventScript_MauvilleBoss_AlreadyFought
-	trainerbattle_single TRAINER_SLATEPORT_BOSS, MauvilleCity_Gym_Text_TestBattle, MauvilleCity_Gym_Text_TestLose, MauvilleCity_Gym_EventScript_MauvilleBoss_FlagsAfterBattle
+	goto_if_defeated TRAINER_SLATEPORT_BOSS, MauvilleCity_Gym_EventScript_Wally_AlreadyFought
+	trainerbattle_single TRAINER_SLATEPORT_BOSS, MauvilleCity_Gym_Text_Placeholder, MauvilleCity_Gym_Text_Placeholder, MauvilleCity_Gym_EventScript_Wally_FlagsAfterBattle
 	release
 	end
 
-MauvilleCity_Gym_EventScript_MauvilleBoss_AlreadyFought::
-	msgbox MauvilleCity_Gym_Text_TestPostBattle, MSGBOX_AUTOCLOSE
+MauvilleCity_Gym_EventScript_Wally_AlreadyFought::
+	msgbox MauvilleCity_Gym_Text_Placeholder, MSGBOX_AUTOCLOSE
 	release
 	end
 
-MauvilleCity_Gym_EventScript_MauvilleBoss_FlagsAfterBattle::
+MauvilleCity_Gym_EventScript_Wally_FlagsAfterBattle::
 	setflag FLAG_MAUVILLE_BOSS
 	special IncrementPlayerKeys
 	special IncrementWorldLevel
@@ -36,9 +36,11 @@ MauvilleCity_Gym_EventScript_AutoUnlock_Lavaridge::
 	return
 	end
 
-MauvilleCity_Gym_EventScript_AutoUnlock_Rustboro::
-	setflat FLAG_MAUVILLE_MTPYRE_STRETCH
+MauvilleCity_Gym_EventScript_AutoUnlock_MtPyre::
+	setflag FLAG_MAUVILLE_MTPYRE_STRETCH
 	copyvar VAR_MAUVILLE_MTPYRE_LEVEL, VAR_WORLD_DIFFICULTY
 	return
 	end
 
+MauvilleCity_Gym_Text_Placeholder:
+	.string "This is placeholder text.$"

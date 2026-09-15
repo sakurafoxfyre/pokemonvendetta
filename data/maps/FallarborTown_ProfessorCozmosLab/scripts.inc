@@ -20,7 +20,6 @@ FallarborTown_ProfessorCozmosLab_EventScript_GrabStarter::
 	lock
 	fadescreen FADE_TO_BLACK
 	special ChooseStarter
-	waitstate
 	setflag FLAG_GRABBED_STARTER
 	goto_if_set FLAG_STOLE_COZMOS_BAG, FallarborTown_ProfessorCozmosLab_EventScript_SetLeave
 	release

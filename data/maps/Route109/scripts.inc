@@ -111,7 +111,7 @@ Route109_EventScript_Check_Dewford_Slateport::
 	lock
 	goto_if_unset FLAG_SLATEPORT_BOSS, Route109_EventScript_ToDewford_BossUndefeated
 	goto_if_lt VAR_NUMBER_OF_KEYS, 1, Route109_EventScript_Cannot_Unlock_Dewford
-	msgbox SlateportCity_Text_To_Dewford, MSGBOX_YESNO
+	msgbox Route109_Text_To_Dewford, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, Route109_EventScript_Reject_ToDewford
 	msgbox Route109_Text_Accept_Dewford, MSGBOX_DEFAULT
 	setflag FLAG_DEWFORD_SLATEPORT_STRETCH
@@ -136,8 +136,8 @@ Route109_EventScript_Cannot_Unlock_Dewford::
 	end
 
 Route109_EventScript_Reject_ToDewford::
-	msgbox SlateportCity_Text_Reject_Path, MSGBOX_DEFAULT
-	applymovement LOCALID_PLAYER, SlateportCity_Movement_TurnFrom_Dewford
+	msgbox Route109_Text_Reject_Path, MSGBOX_DEFAULT
+	applymovement LOCALID_PLAYER, Route109_Movement_TurnFrom_Dewford
 	waitmovement 0
 	release
 	end

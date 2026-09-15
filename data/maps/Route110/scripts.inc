@@ -316,15 +316,15 @@ Route110_Text_To_Petalburg:
 Route110_Text_Accept_Petalburg:
 	.string "Time to head for Petalburg City.$"
 
+Route110_Text_Boss_Undefeated:
+	.string "There are still things I need\n"
+	.string "to do here.$"
+
 Route110_Text_Cannot_Unlock:
 	.string "I have things to do elsewhere first.$"
 
 Route110_Text_Reject_Path:
 	.string "Maybe next time.$"
-
-SlateportCity_Text_Boss_Undefeated:
-	.string "There are still things I need\n"
-	.string "to do here.$"
 
 Route110_Text_RideBikeAtFullSpeed:
 	.string "Wouldn't it be great to ride a BIKE\n"

@@ -400,8 +400,6 @@ SlateportCity_EventScript_SlateportBoss::
 	lock
 	faceplayer
 	goto_if_defeated TRAINER_SLATEPORT_BOSS, SlateportCity_EventScript_SlateportBoss_AlreadyFought
-	msgbox SlateportCity_Text_TestBoss_Intro, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, SlateportCity_EventScript_TestBossNoBattle
 	trainerbattle_single TRAINER_SLATEPORT_BOSS, SlateportCity_Text_TestBoss_YesBattle, SlateportCity_Text_TestBoss_Lose, SlateportCity_EventScript_SlateportBoss_FlagsAfterBattle
 	release
 	end
@@ -430,7 +428,7 @@ SlateportCity_EventScript_AutoUnlock_Mauville::
 
 SlateportCity_EventScript_AutoUnlock_Petalburg::
 	setflag FLAG_PETALBURG_SLATEPORT_STRETCH
-	copyvar VAR_PETALBURG_SLATEPORT_LEVEL
+	copyvar VAR_PETALBURG_SLATEPORT_LEVEL, VAR_WORLD_DIFFICULTY
 	return
 	end
 

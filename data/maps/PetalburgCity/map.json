@@ -141,28 +141,7 @@
       "dest_warp_id": "0"
     }
   ],
-  "coord_events": [
-    {
-      "type": "trigger",
-      "x": 1,
-      "y": 12,
-      "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "PetalburgCity_EventScript_Check_ToRustboro",
-      "stretchentrance": "torustboro"
-    },
-    {
-      "type": "trigger",
-      "x": 18,
-      "y": 28,
-      "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "PetalburgCity_EventScript_Check_ToDewford",
-      "stretchentrance": "todewford"
-    }
-  ],
+  "coord_events": [],
   "bg_events": [
     {
       "type": "sign",

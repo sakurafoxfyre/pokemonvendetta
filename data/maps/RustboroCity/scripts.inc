@@ -118,37 +118,47 @@ RustboroCity_EventScript_Boy1::
 	end
 
 RustboroCity_EventScript_Check_ToFallarbor::
+	goto RustboroCity_EventScript_Block_Fallarbor
 	goto_if_unset FLAG_FALLARBOR_RUSTBORO_STRETCH, RustboroCity_EventScript_Check_Fallarbor_Rustboro
+	end
+
+RustboroCity_EventScript_Block_Fallarbor::
+	lock
+	msgbox RustboroCity_Text_Blocked, MSGBOX_DEFAULT
+	applymovement LOCALID_PLAYER, RustboroCity_Movement_TurnFrom_Fallarbor
+	waitmovement 0
+	release
 	end
 
 RustboroCity_EventScript_Check_Fallarbor_Rustboro::
 	lock
 	goto_if_unset FLAG_RUSTBORO_BOSS, RustboroCity_EventScript_ToFallarbor_BossUndefeated
 	goto_if_lt VAR_NUMBER_OF_KEYS, 1, RustboroCity_EventScript_Cannot_Unlock_Fallarbor
-	@ msgbox RustboroCity_Text_To_Fallarbor, MSGBOX_YESNO
+	msgbox RustboroCity_Text_To_Fallarbor, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, RustboroCity_EventScript_Reject_ToFallarbor
 	copyvar VAR_FALLARBOR_RUSTBORO_LEVEL, VAR_WORLD_DIFFICULTY
+	copyvar VAR_FALLARBOR_LEVEL, VAR_WORLD_DIFFICULTY
 	special DecrementPlayerKeys
 	release
 	end
 
 RustboroCity_EventScript_ToFallarbor_BossUndefeated::
-	@ msgbox RustboroCity_Text_Boss_Undefeated, MSGBOX_DEFAULT
-	@ applymovement LOCALID_PLAYER, RustboroCity_Movement_TurnFrom_Fallarbor
+	msgbox RustboroCity_Text_Boss_Undefeated, MSGBOX_DEFAULT
+	applymovement LOCALID_PLAYER, RustboroCity_Movement_TurnFrom_Fallarbor
 	waitmovement 0
 	release
 	end
 
 RustboroCity_EventScript_Cannot_Unlock_Fallarbor::
-	@ msgbox RustboroCity_Text_Cannot_Unlock, MSGBOX_DEFAULT
-	@ applymovement LOCALID_PLAYER, RustboroCity_Movement_TurnFrom_Fallarbor
+	msgbox RustboroCity_Text_Cannot_Unlock, MSGBOX_DEFAULT
+	applymovement LOCALID_PLAYER, RustboroCity_Movement_TurnFrom_Fallarbor
 	waitmovement 0
 	release
 	end
 
 RustboroCity_EventScript_Reject_ToFallarbor::
-	@ msgbox RustboroCity_Text_Reject_Path, MSGBOX_DEFAULT
-	@ applymovement LOCALID_PLAYER, RustboroCity_Movement_TurnFrom_Fallarbor
+	msgbox RustboroCity_Text_Reject_Path, MSGBOX_DEFAULT
+	applymovement LOCALID_PLAYER, RustboroCity_Movement_TurnFrom_Fallarbor
 	waitmovement 0
 	release
 	end
@@ -159,14 +169,90 @@ RustboroCity_EventScript_Check_ToMauville::
 
 RustboroCity_EventScript_Check_Rustboro_Mauville::
 	lock
-	@ goto_if_unset FLAG_RUSTBORO_BOSS, RustboroCity_EventScript_ToMauville_BossUndefeated
-	@ goto_if_lt VAR_NUMBER_OF_KEYS, 1 RustboroCity_EventScript_Cannot_Unlock_Mauville
-	@ msgbox RustboroCity_Text_To_Mauville, MSGBOX_YESNO
-	@ goto_if_eq VAR_RESULT, NO, RustboroCity_EventScript_Reject_ToMauville
+	goto_if_unset FLAG_RUSTBORO_BOSS, RustboroCity_EventScript_ToMauville_BossUndefeated
+	goto_if_lt VAR_NUMBER_OF_KEYS, 1 RustboroCity_EventScript_Cannot_Unlock_Mauville
+	msgbox RustboroCity_Text_To_Mauville, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, RustboroCity_EventScript_Reject_ToMauville
 	copyvar VAR_RUSTBORO_MAUVILLE_LEVEL, VAR_WORLD_DIFFICULTY
+	copyvar VAR_MAUVILLE_LEVEL, VAR_WORLD_DIFFICULTY
 	special DecrementPlayerKeys
 	release
 	end
+
+RustboroCity_EventScript_ToMauville_BossUndefeated::
+	msgbox RustboroCity_Text_Boss_Undefeated, MSGBOX_DEFAULT
+	applymovement LOCALID_PLAYER, RustboroCity_Movement_TurnFrom_Mauville
+	waitmovement 0
+	release
+	end
+
+RustboroCity_EventScript_Cannot_Unlock_Mauville::
+	msgbox RustboroCity_Text_Cannot_Unlock, MSGBOX_DEFAULT
+	applymovement LOCALID_PLAYER, RustboroCity_Movement_TurnFrom_Mauville
+	waitmovement 0
+	release
+	end
+
+RustboroCity_EventScript_Reject_ToMauville::
+	msgbox RustboroCity_Text_Reject_Path, MSGBOX_DEFAULT
+	applymovement LOCALID_PLAYER, RustboroCity_Movement_TurnFrom_Mauville
+	waitmovement 0
+	release
+	end
+
+RustboroCity_EventScript_Check_ToPetalburg::
+	goto_if_unset FLAG_RUSTBORO_PETALBURG_STRETCH, RustboroCity_EventScript_Check_Rustboro_Petalburg
+	end
+
+RustboroCity_EventScript_Check_Rustboro_Petalburg::
+	lock
+	goto_if_unset FLAG_RUSTBORO_BOSS, RustboroCity_EventScript_ToPetalburg_BossUndefeated
+	goto_if_lt VAR_NUMBER_OF_KEYS, 1, RustboroCity_EventScript_Cannot_Unlock_Petalburg
+	msgbox RustboroCity_Text_To_Petalburg, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, RustboroCity_EventScript_Reject_ToPetalburg
+	msgbox RustboroCity_Text_Accept_Petalburg, MSGBOX_DEFAULT
+	setflag FLAG_RUSTBORO_PETALBURG_STRETCH
+	copyvar VAR_RUSTBORO_PETALBURG_LEVEL, VAR_WORLD_DIFFICULTY
+	copyvar VAR_PETALBURG_LEVEL, VAR_WORLD_DIFFICULTY
+	special DecrementPlayerKeys
+	release
+	end
+
+RustboroCity_EventScript_ToPetalburg_BossUndefeated::
+	msgbox RustboroCity_Text_Boss_Undefeated, MSGBOX_DEFAULT
+	applymovement LOCALID_PLAYER, RustboroCity_Movement_TurnFrom_Petalburg
+	waitmovement 0
+	release
+	end
+
+RustboroCity_EventScript_Cannot_Unlock_Petalburg::
+	msgbox RustboroCity_Text_Cannot_Unlock, MSGBOX_DEFAULT
+	applymovement LOCALID_PLAYER, RustboroCity_Movement_TurnFrom_Petalburg
+	waitmovement 0
+	release
+	end
+
+RustboroCity_EventScript_Reject_ToPetalburg::
+	msgbox RustboroCity_Text_Reject_Path, MSGBOX_DEFAULT
+	applymovement LOCALID_PLAYER, RustboroCity_Movement_TurnFrom_Petalburg
+	waitmovement 0
+	release
+	end
+
+RustboroCity_Movement_TurnFrom_Fallarbor::
+	walk_down
+	step_end
+
+RustboroCity_Movement_TurnFrom_Mauville::
+	walk_left
+	step_end
+
+RustboroCity_Movement_TurnFrom_Petalburg::
+	walk_up
+	step_end
+
+RustboroCity_Text_Blocked:
+	.string "I can't go this way right now.$"
 
 Rustboro_Text_SignDontEnter:
 	.string "No soliciting!$"
@@ -280,3 +366,34 @@ RustboroCity_Text_YouCanHave2On2Battle:
 	.string "they'll both challenge you.\p"
 	.string "Don't you think it'd be cool if you\n"
 	.string "could beat two TRAINERS by yourself?$"
+
+RustboroCity_Text_To_Fallarbor:
+	.string "This is the way to Fallarbor Town...\n"
+	.string "Head this way?$"
+
+RustboroCity_Text_Accept_Fallarbor:
+	.string "Time to head for Fallarbor Town.$"
+
+RustboroCity_Text_To_Mauville:
+	.string "This is the way to Mauville City...\n"
+	.string "Head this way?$"
+
+RustboroCity_Text_Accept_Mauville:
+	.string "Time to head for Mauville City.$"
+
+RustboroCity_Text_To_Petalburg:
+	.string "This is the way to Petalburg City...\n"
+	.string "Head this way?$"
+
+RustboroCity_Text_Accept_Petalburg:
+	.string "Time to head for Petalburg City.$"
+
+RustboroCity_Text_Boss_Undefeated:
+	.string "There are still things I need \n"
+	.string "to do here.$"
+
+RustboroCity_Text_Cannot_Unlock:
+	.string "I have things to do elsewhere first.$"
+
+RustboroCity_Text_Reject_Path:
+	.string "Maybe next time.$"

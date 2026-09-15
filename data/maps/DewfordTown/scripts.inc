@@ -106,6 +106,66 @@ DewfordTown_EventScript_PhraseNotTrendyEnough::
 	release
 	end
 
+DewfordTown_EventScript_ToSlateport::
+	goto_if_unset FLAG_DEWFORD_SLATEPORT_STRETCH, DewfordTown_EventScript_Check_Dewford_Slateport
+	end
+
+DewfordTown_EventScript_Check_Dewford_Slateport::
+	lock
+	goto_if_unset FLAG_DEWFORD_BOSS, DewfordTown_EventScript_ToSlateport_BossUndefeated
+	goto_if_lt VAR_NUMBER_OF_KEYS, 1, DewfordTown_EventScript_Cannot_Unlock_Slateport
+	msgbox DewfordTown_Text_To_Slateport, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, DewfordTown_EventScript_Reject_ToSlateport
+	msgbox DewfordTown_Text_Accept_Slateport, MSGBOX_DEFAULT
+	setflag FLAG_DEWFORD_SLATEPORT_STRETCH
+	copyvar VAR_DEWFORD_SLATEPORT_LEVEL, VAR_WORLD_DIFFICULTY
+	copyvar VAR_SLATEPORT_LEVEL, VAR_WORLD_DIFFICULTY
+	special DecrementPlayerKeys
+	release
+	end
+
+DewfordTown_EventScript_ToSlateport_BossUndefeated::
+	msgbox DewfordTown_Text_Boss_Undefeated, MSGBOX_DEFAULT
+	applymovement LOCALID_PLAYER, DewfordTown_Movement_TurnFrom_Slateport
+	waitmovement 0
+	release
+	end
+
+DewfordTown_EventScript_Cannot_Unlock_Slateport::
+	msgbox DewfordTown_Text_Cannot_Unlock, MSGBOX_DEFAULT
+	applymovement LOCALID_PLAYER, DewfordTown_Movement_TurnFrom_Slateport
+	waitmovement 0
+	release
+	end
+
+DewfordTown_EventScript_Reject_ToSlateport::
+	msgbox DewfordTown_Text_Reject_Path, MSGBOX_DEFAULT
+	applymovement LOCALID_PLAYER, DewfordTown_Movement_TurnFrom_Slateport
+	waitmovement 0
+	release
+	end
+
+DewfordTown_Movement_TurnFrom_Slateport:
+	walk_left
+	step_end
+
+DewfordTown_Text_To_Slateport:
+	.string "This is the way to Slateport City...\n"
+	.string "Head this way?$"
+
+DewfordTown_Text_Accept_Slateport:
+	.string "Time to head for Slateport City.$"
+
+DewfordTown_Text_Boss_Undefeated:
+	.string "There are still things I need\n"
+	.string "to do here.$"
+
+DewfordTown_Text_Cannot_Unlock:
+	.string "I have things to do elsewhere first.$"
+
+DewfordTown_Text_Reject_Path:
+	.string "Maybe next time.$"
+
 DewfordTown_Text_TinyIslandCommunity:
 	.string "DEWFORD is a tiny island community.\n"
 	.string "If something gets trendy here,\l"
