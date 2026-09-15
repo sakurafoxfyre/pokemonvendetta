@@ -1757,6 +1757,7 @@ void CustomTrainerPartyAssignMoveSet(struct Pokemon *mon, const struct TrainerMo
 
 u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer *trainer, bool32 halfTeam, u32 battleTypeFlags)
 {
+    DebugPrintf("%d", "Creating NPC Pokemon party...");
     u32 personalityValue;
     s32 i;
     u8 monsCount;
@@ -1802,6 +1803,7 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
         default:
             currentPartyCount = trainer->partySizeWorldEleven;
     }
+    DebugPrintf("currentParrtyCount: %d", currentPartyCount);
 
     if (battleTypeFlags & BATTLE_TYPE_TRAINER && !(battleTypeFlags & (BATTLE_TYPE_FRONTIER
                                                                         | BATTLE_TYPE_EREADER_TRAINER
@@ -1827,13 +1829,13 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
 
         if (trainer->isSpecialTrainer) { //non-standard trainer
             trainerPool = SpecialtyPool(trainer);
-            //DebugPrintf("%d", trainerPool[0].species);
+            DebugPrintf("%d", trainerPool[0].species);
         } else { //standard trainer
             trainerPool = CombinePools(trainer);
         }
 
         DoTrainerPartyPool(trainer, monIndices, monsCount, battleTypeFlags, trainerPool);
-        //DebugPrintf("%d", trainerPool[0].species);
+        DebugPrintf("%d", trainerPool[0].species);
 
         for (s32 i = 0; i < monsCount; i++)
         {
@@ -1860,6 +1862,7 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
                 personalityValue = (personalityValue & 0xFFFFFF00) | GeneratePersonalityForGender(Random() & 1 ? MON_MALE : MON_FEMALE, partyData[monIndex].species);
 
             // -- NATURE -- //
+            DebugPrintf("%d", "Nature");
             u8 currentNature;
             if (partyData[monIndex].nature) { //checks if a nature has been defined or not
                 currentNature = partyData[monIndex].nature;
@@ -1886,10 +1889,10 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
             }
 
             // -- LEVEL AND EVO -- //
-
-            //DebugPrintf("%d", "Level and Evo");
+            DebugPrintf("%d", "Level and Evo");
             if (partyData[monIndex].lvl) { // if a set level has been defined
                 if (HasLevelEvolution(partyData[i].species, partyData[monIndex].lvl + (6* *GetVarPointer(VAR_WORLD_DIFFICULTY)))) {
+                    DebugPrintf("%d", "This mon has an evolution!");
                     CreateMon(&party[i], HasLevelEvolution(partyData[i].species, partyData[monIndex].lvl + (6 * *GetVarPointer(VAR_WORLD_DIFFICULTY))), partyData[monIndex].lvl + (6 * *GetVarPointer(VAR_WORLD_DIFFICULTY)), personalityValue, otId);
                 } else {
                     CreateMon(&party[i], partyData[monIndex].species, partyData[monIndex].lvl + (6 * *GetVarPointer(VAR_WORLD_DIFFICULTY)), personalityValue, otId);
@@ -1907,6 +1910,7 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
             }
 
             // -- HELD ITEM -- //
+            DebugPrintf("%d", "Held Item");
             if (partyData[monIndex].heldItemList[0]) //if there is a held item list
             {
                 int actualsize = 0;
