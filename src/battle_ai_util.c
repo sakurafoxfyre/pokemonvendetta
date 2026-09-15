@@ -1934,6 +1934,8 @@ u32 AI_GetSwitchinFieldStatus(enum BattlerId battler)
         return SwitchinChangeBattleTerrain(STATUS_FIELD_GRASSY_TERRAIN, startingFieldStatus);
     case ABILITY_MISTY_SURGE:
         return SwitchinChangeBattleTerrain(STATUS_FIELD_MISTY_TERRAIN, startingFieldStatus);
+    case ABILITY_AROMA_VEIL:
+        return SwitchinChangeBattleTerrain(STATUS_FIELD_AROMATIC_TERRAIN, startingFieldStatus);
     case ABILITY_PSYCHIC_SURGE:
         return SwitchinChangeBattleTerrain(STATUS_FIELD_PSYCHIC_TERRAIN, startingFieldStatus);
     default:
@@ -4188,6 +4190,7 @@ static u32 GetAIEffectGroup(enum BattleMoveEffects effect)
     case EFFECT_ELECTRIC_TERRAIN:
     case EFFECT_GRASSY_TERRAIN:
     case EFFECT_MISTY_TERRAIN:
+    case EFFECT_AROMATIC_TERRAIN:
     case EFFECT_PSYCHIC_TERRAIN:
     case EFFECT_STEEL_ROLLER:
     case EFFECT_ICE_SPINNER:
@@ -4258,6 +4261,7 @@ static u32 GetAIEffectGroupFromMove(enum BattlerId battler, enum Move move)
         case MOVE_EFFECT_ELECTRIC_TERRAIN:
         case MOVE_EFFECT_GRASSY_TERRAIN:
         case MOVE_EFFECT_MISTY_TERRAIN:
+        case MOVE_EFFECT_AROMATIC_TERRAIN:
         case MOVE_EFFECT_PSYCHIC_TERRAIN:
             aiEffect |= AI_EFFECT_TERRAIN;
             break;

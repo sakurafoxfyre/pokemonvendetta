@@ -15,7 +15,7 @@
   "connections": [
     {
       "map": "MAP_ROUTE104",
-      "offset": 0,
+      "offset": -6,
       "direction": "up"
     },
     {
@@ -25,12 +25,12 @@
     },
     {
       "map": "MAP_PETALBURG_CITY",
-      "offset": 40,
+      "offset": 34,
       "direction": "up"
     },
     {
-      "map": "MAP_DEWFORD_TOWN",
-      "offset": 50,
+      "map": "MAP_ROUTE106",
+      "offset": 0,
       "direction": "down"
     }
   ],

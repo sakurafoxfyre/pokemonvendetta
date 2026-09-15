@@ -7,6 +7,7 @@ static const u16 terrainData[][2] =
     { MOVE_PSYCHIC_TERRAIN,  TYPE_PSYCHIC, },
     { MOVE_GRASSY_TERRAIN,   TYPE_GRASS, },
     { MOVE_MISTY_TERRAIN,    TYPE_FAIRY, },
+    { MOVE_AROMATIC_TERRAIN, TYPE_FAIRY, },
 };
 
 SINGLE_BATTLE_TEST("Mimicry changes the battler's type based on Terrain")
@@ -31,6 +32,7 @@ SINGLE_BATTLE_TEST("Mimicry changes the battler's type based on Terrain")
         case MOVE_PSYCHIC_TERRAIN:  MESSAGE("The opposing Stunfisk's type changed to Psychic!"); break;
         case MOVE_GRASSY_TERRAIN:   MESSAGE("The opposing Stunfisk's type changed to Grass!"); break;
         case MOVE_MISTY_TERRAIN:    MESSAGE("The opposing Stunfisk's type changed to Fairy!"); break;
+        case MOVE_AROMATIC_TERRAIN: MESSAGE("The opposing Stunfisk's type changed to Fairy!"); break;
         default: break;
         }
     } THEN {
@@ -65,6 +67,7 @@ SINGLE_BATTLE_TEST("Mimicry restores the battler's types when terrain is removed
         case MOVE_PSYCHIC_TERRAIN:  MESSAGE("The weirdness disappeared from the battlefield!"); break;
         case MOVE_GRASSY_TERRAIN:   MESSAGE("The grass disappeared from the battlefield."); break;
         case MOVE_MISTY_TERRAIN:    MESSAGE("The mist disappeared from the battlefield."); break;
+        case MOVE_AROMATIC_TERRAIN: MESSAGE("The aroma disappeared from the battlefield."); break;
         default: break;
         }
     } THEN {

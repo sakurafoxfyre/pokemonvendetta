@@ -2167,6 +2167,8 @@ bool32 ChangeTypeBasedOnTerrain(enum BattlerId battler)
         battlerType = TYPE_GRASS;
     else if (gFieldStatuses & STATUS_FIELD_MISTY_TERRAIN)
         battlerType = TYPE_FAIRY;
+    else if (gFieldStatuses & STATUS_FIELD_AROMATIC_TERRAIN)
+        battlerType = TYPE_FAIRY;
     else if (gFieldStatuses & STATUS_FIELD_PSYCHIC_TERRAIN)
         battlerType = TYPE_PSYCHIC;
     else // failsafe
@@ -2525,6 +2527,21 @@ bool32 TryFieldEffects(enum FieldEffectCases caseId)
                         0,
                         &gFieldTimers.terrainTimer, gStartingStatuses.mistyTerrain ? 0 : 5);
             gStartingStatuses.mistyTerrainTemporary = gStartingStatuses.mistyTerrain = FALSE;
+            isTerrain = TRUE;
+            if (effect)
+            {
+                BattleScriptPushCursorAndCallback(BattleScript_OverworldTerrain);
+                return TRUE;
+            }
+        }
+        else if (gStartingStatuses.aromaticTerrain || gStartingStatuses.aromaticTerrainTemporary)
+        {
+            effect = SetStartingFieldStatus(
+                        STATUS_FIELD_AROMATIC_TERRAIN,
+                        B_MSG_TERRAIN_SET_MISTY,
+                        0,
+                        &gFieldTimers.terrainTimer, gStartingStatuses.aromaticTerrain ? 0 : 5);
+            gStartingStatuses.aromaticTerrainTemporary = gStartingStatuses.aromaticTerrain = FALSE;
             isTerrain = TRUE;
             if (effect)
             {
@@ -3354,6 +3371,15 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
             if (TryChangeBattleTerrain(battler, STATUS_FIELD_MISTY_TERRAIN))
             {
                 BattleScriptCall(BattleScript_MistySurgeActivates);
+                effect++;
+            }
+            break;
+        case ABILITY_AROMA_VEIL:
+            if (!shouldAbilityTrigger)
+                break;
+            if (TryChangeBattleTerrain(battler, STATUS_FIELD_AROMATIC_TERRAIN))
+            {
+                BattleScriptCall(BattleScript_AromaVeilActivates);
                 effect++;
             }
             break;
@@ -5033,6 +5059,11 @@ bool32 IsMistyTerrainAffected(enum BattlerId battler, enum Ability ability, enum
     return IsBattlerTerrainAffected(battler, ability, holdEffect, fieldStatuses, STATUS_FIELD_MISTY_TERRAIN);
 }
 
+bool32 IsAromaticTerrainAffected(enum BattlerId battler, enum Ability ability, enum HoldEffect holdEffect, u32 fieldStatuses)
+{
+    return IsBattlerTerrainAffected(battler, ability, holdEffect, fieldStatuses, STATUS_FIELD_AROMATIC_TERRAIN);
+}
+
 bool32 IsGrassyTerrainAffected(enum BattlerId battler, enum Ability ability, enum HoldEffect holdEffect, u32 fieldStatuses)
 {
     return IsBattlerTerrainAffected(battler, ability, holdEffect, fieldStatuses, STATUS_FIELD_GRASSY_TERRAIN);
@@ -5429,6 +5460,10 @@ bool32 CanSetNonVolatileStatus(enum BattlerId battlerAtk, enum BattlerId battler
     else if (IsMistyTerrainAffected(battlerDef, abilityDef, GetBattlerHoldEffect(battlerDef), gFieldStatuses))
     {
         battleScript = BattleScript_MistyTerrainPrevents;
+    }
+        else if (IsAromaticTerrainAffected(battlerDef, abilityDef, GetBattlerHoldEffect(battlerDef), gFieldStatuses))
+    {
+        battleScript = BattleScript_AromaticTerrainPrevents;
     }
     else if (IsLeafGuardProtected(battlerDef, abilityDef))
     {

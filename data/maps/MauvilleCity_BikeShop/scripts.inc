@@ -316,3 +316,42 @@ MauvilleCity_BikeShop_Text_Jumps:
 	.string "change directions while jumping.\p"
 	.string "Want to read a different page?$"
 
+
+
+MauvilleCrystals_EventScript_DeskAgent::
+	lock
+	faceplayer
+	message MauvilleCrystals_Text_ItemCollectorSellWhatYouNeed
+	waitmessage
+	pokemart MauvilleCrystals_Pokemart_ItemCollector
+	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
+	release
+	end
+	.align 2
+
+MauvilleCrystals_Pokemart_ItemCollector:
+	.2byte ITEM_TM_HIDDEN_POWER
+	.2byte ITEM_FIRE_GEM
+	.2byte ITEM_WATER_GEM
+	.2byte ITEM_ELECTRIC_GEM
+	.2byte ITEM_GRASS_GEM
+	.2byte ITEM_ICE_GEM
+	.2byte ITEM_FIGHTING_GEM
+	.2byte ITEM_POISON_GEM
+	.2byte ITEM_GROUND_GEM
+	.2byte ITEM_FLYING_GEM
+	.2byte ITEM_PSYCHIC_GEM
+	.2byte ITEM_BUG_GEM
+	.2byte ITEM_ROCK_GEM
+	.2byte ITEM_GHOST_GEM
+	.2byte ITEM_DRAGON_GEM
+	.2byte ITEM_DARK_GEM
+	.2byte ITEM_STEEL_GEM
+	.2byte ITEM_NORMAL_GEM
+	.2byte ITEM_FAIRY_GEM
+	pokemartlistend
+
+MauvilleCrystals_Text_ItemCollectorSellWhatYouNeed:
+	.string "Welcome to the Mauville TM Emporium,\n"
+	.string "where even Champions shop!$"
+	

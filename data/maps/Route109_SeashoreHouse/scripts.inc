@@ -53,13 +53,6 @@ SlateportCity_MochiHouse_Vendor:
 	.2byte ITEM_GENIUS_MOCHI
 	.2byte ITEM_CLEVER_MOCHI
 	.2byte ITEM_SWIFT_MOCHI
-	.2byte ITEM_STRAWBERRY_SWEET
-	.2byte ITEM_LOVE_SWEET
-	.2byte ITEM_BERRY_SWEET
-	.2byte ITEM_CLOVER_SWEET
-	.2byte ITEM_FLOWER_SWEET
-	.2byte ITEM_STAR_SWEET
-	.2byte ITEM_RIBBON_SWEET
 	pokemartlistend
 
 Route109_SeashoreHouse_EventScript_Dwayne::

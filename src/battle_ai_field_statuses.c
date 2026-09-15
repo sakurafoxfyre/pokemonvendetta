@@ -41,6 +41,7 @@ static enum FieldEffectOutcome BenefitsFromRain(enum BattlerId battler);
 static enum FieldEffectOutcome BenefitsFromElectricTerrain(enum BattlerId battler);
 static enum FieldEffectOutcome BenefitsFromGrassyTerrain(enum BattlerId battler);
 static enum FieldEffectOutcome BenefitsFromMistyTerrain(enum BattlerId battler);
+static enum FieldEffectOutcome BenefitsFromAromaticTerrain(enum BattlerId battler);
 static enum FieldEffectOutcome BenefitsFromPsychicTerrain(enum BattlerId battler);
 static enum FieldEffectOutcome BenefitsFromGravity(enum BattlerId battler);
 static enum FieldEffectOutcome BenefitsFromTrickRoom(enum BattlerId battler);
@@ -118,6 +119,8 @@ bool32 FieldStatusChecker(enum BattlerId battler, u32 fieldStatus, enum FieldEff
             result = BenefitsFromGrassyTerrain(battler);
         if (fieldStatus & STATUS_FIELD_MISTY_TERRAIN)
             result = BenefitsFromMistyTerrain(battler);
+        if (fieldStatus & STATUS_FIELD_AROMATIC_TERRAIN)
+            result = BenefitsFromAromaticTerrain(battler);
         if (fieldStatus & STATUS_FIELD_PSYCHIC_TERRAIN)
             result = BenefitsFromPsychicTerrain(battler);
 
@@ -407,6 +410,26 @@ static enum FieldEffectOutcome BenefitsFromMistyTerrain(enum BattlerId battler)
     if (grounded && (gBattleMons[battler].status1 & STATUS1_SLEEP || gBattleMons[battler].volatiles.yawn))
         return FIELD_EFFECT_POSITIVE;
 
+    return FIELD_EFFECT_NEUTRAL;
+}
+
+static enum FieldEffectOutcome BenefitsFromAromaticTerrain(enum BattlerId battler)
+{
+    if (DoesAbilityBenefitFromFieldStatus(gAiLogicData->abilities[battler], STATUS_FIELD_AROMATIC_TERRAIN))
+        return FIELD_EFFECT_POSITIVE;
+
+    if (HasBattlerTerrainBoostMove(battler, STATUS_FIELD_AROMATIC_TERRAIN)
+     || HasBattlerTerrainBoostMove(GetPartnerBattler(battler), STATUS_FIELD_AROMATIC_TERRAIN))
+        return FIELD_EFFECT_POSITIVE;
+
+    bool32 grounded = AI_IsBattlerGrounded(battler);
+    bool32 allyGrounded = FALSE;
+    if (HasPartner(battler))
+        allyGrounded = AI_IsBattlerGrounded(GetPartnerBattler(battler));
+
+    if ((HasMoveWithEffect(GetBattlerLeftFoe(battler), EFFECT_REST) && AI_IsBattlerGrounded(GetBattlerLeftFoe(battler)))
+     || (HasMoveWithEffect(GetBattlerRightFoe(battler), EFFECT_REST) && AI_IsBattlerGrounded(GetBattlerRightFoe(battler))))
+        return FIELD_EFFECT_POSITIVE;
     return FIELD_EFFECT_NEUTRAL;
 }
 

@@ -417,3 +417,21 @@ const u16 gMetatiles_HallOfFame[] = INCBIN_U16("data/tilesets/secondary/hall_of_
 const u16 gMetatileAttributes_HallOfFame[] = INCBIN_U16("data/tilesets/secondary/hall_of_fame_frlg/metatile_attributes.bin");
 
 #endif // IS_FRLG
+
+const u16 gMetatiles_NewGeneral[] = INCBIN_U16("data/tilesets/primary/new_general/metatiles.bin");
+const u16 gMetatileAttributes_NewGeneral[] = INCBIN_U16("data/tilesets/primary/new_general/metatile_attributes.bin");
+
+const u16 gMetatiles_BeachCaveSecondary[] = INCBIN_U16("data/tilesets/secondary/beach_cave_secondary/metatiles.bin");
+const u16 gMetatileAttributes_BeachCaveSecondary[] = INCBIN_U16("data/tilesets/secondary/beach_cave_secondary/metatile_attributes.bin");
+
+const u16 gMetatiles_BrickCafeInteriorSecondary[] = INCBIN_U16("data/tilesets/secondary/brick_cafe_interior_secondary/metatiles.bin");
+const u16 gMetatileAttributes_BrickCafeInteriorSecondary[] = INCBIN_U16("data/tilesets/secondary/brick_cafe_interior_secondary/metatile_attributes.bin");
+
+const u16 gMetatiles_AltPokecenterSecondary[] = INCBIN_U16("data/tilesets/secondary/alt_pokecenter_secondary/metatiles.bin");
+const u16 gMetatileAttributes_AltPokecenterSecondary[] = INCBIN_U16("data/tilesets/secondary/alt_pokecenter_secondary/metatile_attributes.bin");
+
+const u16 gMetatiles_DojoExterior[] = INCBIN_U16("data/tilesets/primary/dojo_exterior/metatiles.bin");
+const u16 gMetatileAttributes_DojoExterior[] = INCBIN_U16("data/tilesets/primary/dojo_exterior/metatile_attributes.bin");
+
+const u16 gMetatiles_DojoInterior[] = INCBIN_U16("data/tilesets/secondary/dojo_interior/metatiles.bin");
+const u16 gMetatileAttributes_DojoInterior[] = INCBIN_U16("data/tilesets/secondary/dojo_interior/metatile_attributes.bin");
