@@ -1743,14 +1743,15 @@ void CustomTrainerPartyAssignMoves(struct Pokemon *mon, const struct TrainerMon 
     }
 }
 
-void CustomTrainerPartyAssignMoveSet(struct Pokemon *mon, const u32 moveset[4]) 
+void CustomTrainerPartyAssignMoveSet(struct Pokemon *mon, const struct TrainerMon *partyEntry, u16 setSelection) 
 {
     u32 j;
-
-    for (j = 0; j <MAX_MON_MOVES; ++j) {
-        u32 pp = GetMovePP(moveset[j]);
-        SetMonData(mon, MON_DATA_MOVE1 + j, &moveset[j]);
-        SetMonData(mon, MON_DATA_PP1 + j, &pp);
+    
+    for (j = 0; j < MAX_MON_MOVES; j++)
+    {
+        u32 pp = GetMovePP(partyEntry->moveList[setSelection][j]);
+        SetMonData(mon, MON_DATA_MOVE1 + j, &partyEntry->moveList[setSelection][j]);
+        SetMonData(mon, MON_DATA_PP1 +j, &pp);
     }
 }
 
@@ -1826,13 +1827,13 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
 
         if (trainer->isSpecialTrainer) { //non-standard trainer
             trainerPool = SpecialtyPool(trainer);
-            DebugPrintf("%d", trainerPool[0].species);
+            //DebugPrintf("%d", trainerPool[0].species);
         } else { //standard trainer
             trainerPool = CombinePools(trainer);
         }
 
         DoTrainerPartyPool(trainer, monIndices, monsCount, battleTypeFlags, trainerPool);
-        DebugPrintf("%d", trainerPool[0].species);
+        //DebugPrintf("%d", trainerPool[0].species);
 
         for (s32 i = 0; i < monsCount; i++)
         {
@@ -1886,7 +1887,7 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
 
             // -- LEVEL AND EVO -- //
 
-            DebugPrintf("%d", "Level and Evo");
+            //DebugPrintf("%d", "Level and Evo");
             if (partyData[monIndex].lvl) { // if a set level has been defined
                 if (HasLevelEvolution(partyData[i].species, partyData[monIndex].lvl + (6* *GetVarPointer(VAR_WORLD_DIFFICULTY)))) {
                     CreateMon(&party[i], HasLevelEvolution(partyData[i].species, partyData[monIndex].lvl + (6 * *GetVarPointer(VAR_WORLD_DIFFICULTY))), partyData[monIndex].lvl + (6 * *GetVarPointer(VAR_WORLD_DIFFICULTY)), personalityValue, otId);
@@ -1926,19 +1927,19 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
             }
 
             // -- MOVES -- //
-            if (partyData[monIndex].moveList[0]) // if there is a move set list
+            if (partyData[monIndex].moveList[0][0]) // if there is a move set list
             {
                 int actualsize = 0;
                 for (int k = 0; k < 10; k++)
                 {
-                    if (partyData[monIndex].moveList[k])
+                    if (partyData[monIndex].moveList[k][0])
                         actualsize++;
                     else
                         break;
                 }
 
-                int randMoveSet = Random() % actualsize;
-                CustomTrainerPartyAssignMoveSet(&party[i], &partyData[monIndex].moveList[randMoveSet]);
+                u16 randMoveSet = Random() % actualsize;
+                CustomTrainerPartyAssignMoveSet(&party[i], &partyData[monIndex], randMoveSet);
             } else {
                 CustomTrainerPartyAssignMoves(&party[i], &partyData[monIndex]);
             }

@@ -65,23 +65,24 @@ struct TrainerPicInfo
 // See CreateNPCTrainerPartyFromTrainer and CreateFacilityMon
 struct TrainerMon
 {
-    u16 species;
     const u8 *nickname;
-    enum Ability ability;
-    u8 nature:5;
-    u32 natureList[10];
-    u16 lvlUpperBound;
-    u16 lvlLowerBound;
-    u16 lvl;
+    const u8 *ev; //unsure if we'll need these for npc mons
     u32 iv;
     u32 ivUpperBound;
     u32 ivLowerBound;
-    u16 moves[4];
-    u32 moveList[10];
-    u16 heldItem;
+    enum Move moves[MAX_MON_MOVES];
+    enum Move moveList[10][MAX_MON_MOVES];
+    enum Species species;
+    enum Item heldItem;
     u32 heldItemList[10];
-    u8 ball;
+    enum Ability ability;
+    u8 lvl;
+    u8 lvlUpperBound;
+    u8 lvlLowerBound;
+    enum PokeBall ball:8;
     u8 friendship;
+    u8 nature:5;
+    u32 natureList[10];
     bool8 gender:2;
     bool8 isShiny:1;
     enum Type teraType:5;
