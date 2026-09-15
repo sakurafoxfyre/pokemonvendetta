@@ -17267,102 +17267,102 @@
               {
                 "min_level": 5,
                 "max_level": 10,
-                "species": "SPECIES_GASTLY"
+                "species": "SPECIES_SENTRET"
               },
               {
                 "min_level": 5,
                 "max_level": 10,
-                "species": "SPECIES_GASTLY"
+                "species": "SPECIES_SENTRET"
               },
               {
                 "min_level": 5,
                 "max_level": 10,
-                "species": "SPECIES_GASTLY"
+                "species": "SPECIES_SENTRET"
               },
               {
                 "min_level": 5,
                 "max_level": 10,
-                "species": "SPECIES_GASTLY"
+                "species": "SPECIES_SENTRET"
               },
               {
                 "min_level": 5,
                 "max_level": 10,
-                "species": "SPECIES_MISDREAVUS"
+                "species": "SPECIES_POOCHYENA"
               },
               {
                 "min_level": 5,
                 "max_level": 10,
-                "species": "SPECIES_MISDREAVUS"
+                "species": "SPECIES_POOCHYENA"
               },
               {
                 "min_level": 5,
                 "max_level": 10,
-                "species": "SPECIES_MISDREAVUS"
+                "species": "SPECIES_POOCHYENA"
               },
               {
                 "min_level": 5,
                 "max_level": 10,
-                "species": "SPECIES_MISDREAVUS"
+                "species": "SPECIES_TAILLOW"
               },
               {
                 "min_level": 5,
                 "max_level": 10,
-                "species": "SPECIES_LITWICK"
+                "species": "SPECIES_TAILLOW"
               },
               {
                 "min_level": 5,
                 "max_level": 10,
-                "species": "SPECIES_LITWICK"
+                "species": "SPECIES_TAILLOW"
               },
               {
                 "min_level": 5,
                 "max_level": 10,
-                "species": "SPECIES_LITWICK"
+                "species": "SPECIES_HATENNA"
               },
               {
                 "min_level": 5,
                 "max_level": 10,
-                "species": "SPECIES_SINISTEA"
+                "species": "SPECIES_HATENNA"
               },
               {
                 "min_level": 5,
                 "max_level": 10,
-                "species": "SPECIES_SINISTEA"
+                "species": "SPECIES_HATENNA"
               },
               {
                 "min_level": 5,
                 "max_level": 10,
-                "species": "SPECIES_SINISTEA"
+                "species": "SPECIES_MARILL"
               },
               {
                 "min_level": 5,
                 "max_level": 10,
-                "species": "SPECIES_POLTCHAGEIST"
+                "species": "SPECIES_MARILL"
               },
               {
                 "min_level": 5,
                 "max_level": 10,
-                "species": "SPECIES_POLTCHAGEIST"
+                "species": "SPECIES_MARILL"
               },
               {
                 "min_level": 5,
                 "max_level": 10,
-                "species": "SPECIES_POLTCHAGEIST"
+                "species": "SPECIES_RALTS"
               },
               {
                 "min_level": 5,
                 "max_level": 10,
-                "species": "SPECIES_MIMIKYU"
+                "species": "SPECIES_RALTS"
               },
               {
                 "min_level": 5,
                 "max_level": 10,
-                "species": "SPECIES_MIMIKYU"
+                "species": "SPECIES_RALTS"
               },
               {
                 "min_level": 5,
                 "max_level": 10,
-                "species": "SPECIES_MIMIKYU"
+                "species": "SPECIES_EEVEE"
               }
             ]
           }

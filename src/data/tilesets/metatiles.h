@@ -429,3 +429,9 @@ const u16 gMetatileAttributes_BrickCafeInteriorSecondary[] = INCBIN_U16("data/ti
 
 const u16 gMetatiles_AltPokecenterSecondary[] = INCBIN_U16("data/tilesets/secondary/alt_pokecenter_secondary/metatiles.bin");
 const u16 gMetatileAttributes_AltPokecenterSecondary[] = INCBIN_U16("data/tilesets/secondary/alt_pokecenter_secondary/metatile_attributes.bin");
+
+const u16 gMetatiles_DojoExterior[] = INCBIN_U16("data/tilesets/primary/dojo_exterior/metatiles.bin");
+const u16 gMetatileAttributes_DojoExterior[] = INCBIN_U16("data/tilesets/primary/dojo_exterior/metatile_attributes.bin");
+
+const u16 gMetatiles_DojoInterior[] = INCBIN_U16("data/tilesets/secondary/dojo_interior/metatiles.bin");
+const u16 gMetatileAttributes_DojoInterior[] = INCBIN_U16("data/tilesets/secondary/dojo_interior/metatile_attributes.bin");

@@ -224,7 +224,7 @@
     {
       "id": "LAYOUT_ROUTE105",
       "name": "Route105_Layout",
-      "width": 40,
+      "width": 60,
       "height": 80,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Dewford",
@@ -9272,7 +9272,7 @@
       "width": 11,
       "height": 8,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_GenericBuilding",
+      "secondary_tileset": "gTileset_DojoInterior",
       "border_filepath": "data/layouts/PetalburgHauntedHouse/border.bin",
       "blockdata_filepath": "data/layouts/PetalburgHauntedHouse/map.bin"
     },
@@ -9292,7 +9292,7 @@
       "width": 30,
       "height": 20,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Lilycove",
+      "secondary_tileset": "gTileset_Hauntwoods",
       "border_filepath": "data/layouts/Hauntwood/border.bin",
       "blockdata_filepath": "data/layouts/Hauntwood/map.bin"
     },

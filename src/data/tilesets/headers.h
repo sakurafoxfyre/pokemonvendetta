@@ -1618,3 +1618,25 @@ const struct Tileset gTileset_AltPokecenterSecondary =
     .metatileAttributes = gMetatileAttributes_AltPokecenterSecondary,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_DojoExterior =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_DojoExterior,
+    .palettes = gTilesetPalettes_DojoExterior,
+    .metatiles = gMetatiles_DojoExterior,
+    .metatileAttributes = gMetatileAttributes_DojoExterior,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_DojoInterior =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_DojoInterior,
+    .palettes = gTilesetPalettes_DojoInterior,
+    .metatiles = gMetatiles_DojoInterior,
+    .metatileAttributes = gMetatileAttributes_DojoInterior,
+    .callback = NULL,
+};
