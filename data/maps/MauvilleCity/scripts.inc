@@ -86,6 +86,7 @@ MauvilleCity_EventScript_Reject_ToRustboro::
 	end
 
 MauvilleCity_EventScript_Check_ToLavaridge::
+	goto MauvilleCity_EventScript_Block_Lavaridge
 	goto_if_unset FLAG_LAVARIDGE_MAUVILLE_STRETCH, MauvilleCity_EventScript_Check_Lavaridge_Mauville
 	end
 
@@ -124,6 +125,7 @@ MauvilleCity_EventScript_Reject_ToLavaridge::
 	end
 
 MauvilleCity_EventScript_Check_ToMtPyre::
+	goto MauvilleCity_EventScript_Block_MtPyre
 	goto_if_unset FLAG_MAUVILLE_MTPYRE_STRETCH, MauvilleCity_EventScript_Check_Mauville_MtPyre
 	end
 
@@ -194,6 +196,20 @@ MauvilleCity_EventScript_Cannot_Unlock_Slateport::
 MauvilleCity_EventScript_Reject_ToSlateport::
 	msgbox MauvilleCity_Text_Reject_Path, MSGBOX_DEFAULT
 	applymovement LOCALID_PLAYER, MauvilleCity_Movement_TurnFrom_Slateport
+	waitmovement 0
+	release
+	end
+
+MauvilleCity_EventScript_Block_Lavaridge::
+	msgbox MauvilleCity_Text_Cannot_Go, MSGBOX_DEFAULT
+	applymovement LOCALID_PLAYER, MauvilleCity_Movement_TurnFrom_Lavaridge
+	waitmovement 0
+	release
+	end
+
+MauvilleCity_EventScript_Block_MtPyre::
+	msgbox MauvilleCity_Text_Cannot_Go, MSGBOX_DEFAULT
+	applymovement LOCALID_PLAYER, MauvilleCity_Movement_TurnFrom_MtPyre
 	waitmovement 0
 	release
 	end
@@ -311,3 +327,6 @@ MauvilleCity_Text_Accept_Slateport:
 
 MauvilleCity_Text_Reject_Path:
 	.string "Maybe next time.$"
+	
+MauvilleCity_Text_Cannot_Go:
+	.string "I can't go this way right now."

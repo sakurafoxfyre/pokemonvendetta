@@ -1,9 +1,10 @@
 MauvilleCity_Gym_MapScripts::
 	.byte 0
 
-MauvilleGym_EventScript_Wally::
+MauvilleCity_Gym_EventScript_Wally::
 	lock
 	faceplayer
+	goto_if_defeated TRAINER_WALLY, MauvilleCity_Gym_EventScript_Wally_AlreadyFought
 	@goto_if_set FLAG_DEFEATED_MAUVILLE_GYM_TRAINERS, MauvilleGym_EventScript_ChallengeWally
 	msgbox MauvilleGym_Text_IAmLeaderWally, MSGBOX_DEFAULT
 	applymovement Wally, MauvilleLookDown
@@ -11,11 +12,45 @@ MauvilleGym_EventScript_Wally::
 	release
 	end
 
+MauvilleCity_Gym_EventScript_Wally_AlreadyFought::
+	msgbox MauvilleGym_Text_WallyPostBattle, MSGBOX_AUTOCLOSE
+	release
+	end
+
 MauvilleGym_EventScript_ChallengeWally::
 	@trainerbattle_single TRAINER_WALLY, MauvilleGym_Text_WallyIntro, MauvilleGym_Text_WallyDefeated
 	@msgbox MauvilleGym_Text_WallyPostBattle, MSGBOX_AUTOCLOSE
 	giveitem ITEM_TM_SWEET_SCENT
+	goto MauvilleCity_Gym_EventScript_Wally_FlagsAfterBattle
 	release
+	end
+
+MauvilleCity_Gym_EventScript_Wally_FlagsAfterBattle::
+	setflag FLAG_MAUVILLE_BOSS
+	special IncrementPlayerKeys
+	special IncrementWorldLevel
+	goto_if_set FLAG_RUSTBORO_BOSS, MauvilleCity_Gym_EventScript_AutoUnlock_Rustboro
+	goto_if_set FLAG_LAVARIDGE_BOSS, MauvilleCity_Gym_EventScript_AutoUnlock_Lavaridge
+	goto_if_set FLAG_MTPYRE_BOSS, MauvilleCity_Gym_EventScript_AutoUnlock_MtPyre
+	release
+	end
+
+MauvilleCity_Gym_EventScript_AutoUnlock_Rustboro::
+	setflag FLAG_RUSTBORO_MAUVILLE_STRETCH
+	copyvar VAR_RUSTBORO_MAUVILLE_LEVEL, VAR_WORLD_DIFFICULTY
+	return
+	end
+
+MauvilleCity_Gym_EventScript_AutoUnlock_Lavaridge::
+	setflag FLAG_LAVARIDGE_MAUVILLE_STRETCH
+	copyvar VAR_LAVARIDGE_MAUVILLE_LEVEL, VAR_WORLD_DIFFICULTY
+	return
+	end
+
+MauvilleCity_Gym_EventScript_AutoUnlock_MtPyre::
+	setflag FLAG_MAUVILLE_MTPYRE_STRETCH
+	copyvar VAR_MAUVILLE_MTPYRE_LEVEL, VAR_WORLD_DIFFICULTY
+	return
 	end
 
 MauvilleGym_Wally_EventScript_CheckTrainersCompletion::

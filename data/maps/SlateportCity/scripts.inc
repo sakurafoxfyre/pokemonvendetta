@@ -395,59 +395,27 @@ SlateportCity_EventScript_BerryCrushRankingsSign::
 	releaseall
 	end
 
-SlateportCity_EventScript_TestBoss::
+SlateportCity_EventScript_SlateportBoss::
 	lock
 	faceplayer
-	goto_if_defeated TRAINER_SLATEPORT_BOSS, SlateportCity_EventScript_TestBoss_AlreadyFought
-	msgbox SlateportCity_Text_TestBoss_Intro, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, SlateportCity_EventScript_TestBossNoBattle
-	trainerbattle_single TRAINER_SLATEPORT_BOSS, SlateportCity_Text_TestBoss_YesBattle, SlateportCity_Text_TestBoss_Lose, SlateportCity_EventScript_TestBoss_FlagsAfterBattle
+	goto_if_defeated TRAINER_SLATEPORT_BOSS, SlateportCity_EventScript_SlateportBoss_AlreadyFought
+	trainerbattle_single TRAINER_SLATEPORT_BOSS, SlateportCity_Text_TestBoss_YesBattle, SlateportCity_Text_TestBoss_Lose, SlateportCity_EventScript_SlateportBoss_FlagsAfterBattle
+	release
+	end
+
+SlateportCity_EventScript_SlateportBoss_AlreadyFought::
 	msgbox SlateportCity_Text_TestBoss_PostBattle, MSGBOX_AUTOCLOSE
 	release
 	end
 
-SlateportCity_EventScript_TestBoss_AlreadyFought::
-	msgbox SlateportCity_Text_TestBoss_PostBattle, MSGBOX_AUTOCLOSE
-	release
-	end
-
-SlateportCity_EventScript_TestBossNoBattle::
-	msgbox SlateportCity_Text_TestBoss_NoBattle, MSGBOX_DEFAULT
-	release
-	end
-
-SlateportCity_EventScript_TestBoss_FlagsAfterBattle::
+SlateportCity_EventScript_SlateportBoss_FlagsAfterBattle::
 	setflag FLAG_SLATEPORT_BOSS
 	special IncrementPlayerKeys
 	special IncrementWorldLevel
 	goto_if_set FLAG_MAUVILLE_BOSS, SlateportCity_EventScript_AutoUnlock_Mauville
+	goto_if_set FLAG_PETALBURG_BOSS, SlateportCity_EventScript_AutoUnlock_Petalburg
 	goto_if_set FLAG_DEWFORD_BOSS, SlateportCity_EventScript_AutoUnlock_Dewford
 	goto_if_set FLAG_MOSSDEEP_BOSS, SlateportCity_EventScript_AutoUnlock_Mossdeep
-	release
-	end
-
-SlateportCity_EventScript_Check_ToMauville::
-	goto_if_unset FLAG_SLATEPORT_MAUVILLE_STRETCH, SlateportCity_EventScript_Check_Slateport_Mauville
-	end
-
-SlateportCity_EventScript_Check_Slateport_Mauville::
-	lock
-	goto_if_unset FLAG_SLATEPORT_BOSS, SlateportCity_EventScript_ToMauville_BossUndefeated
-	goto_if_lt VAR_NUMBER_OF_KEYS, 1, SlateportCity_EventScript_Cannot_Unlock_Mauville
-	msgbox SlateportCity_Text_To_Mauville, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, SlateportCity_EventScript_Reject_ToMauville
-	msgbox SlateportCity_Text_Accept_Mauville, MSGBOX_DEFAULT
-	setflag FLAG_SLATEPORT_MAUVILLE_STRETCH
-	copyvar VAR_SLATEPORT_MAUVILLE_LEVEL, VAR_WORLD_DIFFICULTY
-	copyvar VAR_MAUVILLE_LEVEL, VAR_WORLD_DIFFICULTY
-	special DecrementPlayerKeys
-	release
-	end
-
-SlateportCity_EventScript_ToMauville_BossUndefeated::
-	msgbox SlateportCity_Text_Boss_Undefeated, MSGBOX_DEFAULT
-	applymovement LOCALID_PLAYER, SlateportCity_Movement_TurnFrom_Mauville
-	waitmovement 0
 	release
 	end
 
@@ -457,42 +425,10 @@ SlateportCity_EventScript_AutoUnlock_Mauville::
 	return
 	end
 
-SlateportCity_EventScript_Cannot_Unlock_Mauville::
-	msgbox SlateportCity_Text_Cannot_Unlock, MSGBOX_DEFAULT
-	applymovement LOCALID_PLAYER, SlateportCity_Movement_TurnFrom_Mauville
-	waitmovement 0
-	release
-	end
-
-SlateportCity_EventScript_Reject_ToMauville::
-	msgbox SlateportCity_Text_Reject_Path, MSGBOX_DEFAULT
-	applymovement LOCALID_PLAYER, SlateportCity_Movement_TurnFrom_Mauville
-	waitmovement 0
-	release
-	end
-
-SlateportCity_EventScript_Check_ToDewford::
-	goto_if_unset FLAG_DEWFORD_SLATEPORT_STRETCH, SlateportCity_EventScript_Check_Dewford_Slateport
-	end
-
-SlateportCity_EventScript_Check_Dewford_Slateport::
-	lock
-	goto_if_unset FLAG_SLATEPORT_BOSS, SlateportCity_EventScript_ToDewford_BossUndefeated
-	goto_if_lt VAR_NUMBER_OF_KEYS, 1, SlateportCity_EventScript_Cannot_Unlock_Dewford
-	msgbox SlateportCity_Text_To_Dewford, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, SlateportCity_EventScript_Reject_ToDewford
-	setflag FLAG_DEWFORD_SLATEPORT_STRETCH
-	copyvar VAR_DEWFORD_SLATEPORT_LEVEL, VAR_WORLD_DIFFICULTY
-	copyvar VAR_DEWFORD_LEVEL, VAR_WORLD_DIFFICULTY
-	special DecrementPlayerKeys
-	release
-	end
-
-SlateportCity_EventScript_ToDewford_BossUndefeated::
-	msgbox SlateportCity_Text_Boss_Undefeated, MSGBOX_DEFAULT
-	applymovement LOCALID_PLAYER, SlateportCity_Movement_TurnFrom_Dewford
-	waitmovement 0
-	release
+SlateportCity_EventScript_AutoUnlock_Petalburg::
+	setflag FLAG_PETALBURG_SLATEPORT_STRETCH
+	copyvar VAR_PETALBURG_SLATEPORT_LEVEL, VAR_WORLD_DIFFICULTY
+	return
 	end
 
 SlateportCity_EventScript_AutoUnlock_Dewford::
@@ -501,83 +437,11 @@ SlateportCity_EventScript_AutoUnlock_Dewford::
 	return
 	end
 
-SlateportCity_EventScript_Cannot_Unlock_Dewford::
-	msgbox SlateportCity_Text_Cannot_Unlock, MSGBOX_DEFAULT
-	applymovement LOCALID_PLAYER, SlateportCity_Movement_TurnFrom_Dewford
-	waitmovement 0
-	release
-	end
-
-SlateportCity_EventScript_Reject_ToDewford::
-	msgbox SlateportCity_Text_Reject_Path, MSGBOX_DEFAULT
-	applymovement LOCALID_PLAYER, SlateportCity_Movement_TurnFrom_Dewford
-	waitmovement 0
-	release
-	end
-
-SlateportCity_EventScript_Check_ToMossdeep::
-	goto_if_unset FLAG_SLATEPORT_MOSSDEEP_STRETCH, SlateportCity_EventScript_Check_Slateport_Mossdeep
-	end
-
-SlateportCity_EventScript_Check_Slateport_Mossdeep::
-	lock
-	goto_if_unset FLAG_SLATEPORT_BOSS, SlateportCity_EventScript_ToMossdeep_BossUndefeated
-	goto_if_lt VAR_NUMBER_OF_KEYS, 1, SlateportCity_EventScript_Cannot_Unlock_Mossdeep
-	msgbox SlateportCity_Text_To_Mossdeep, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, SlateportCity_EventScript_Reject_ToMossdeep
-	setflag FLAG_SLATEPORT_MOSSDEEP_STRETCH
-	copyvar VAR_SLATEPORT_MOSSDEEP_LEVEL, VAR_WORLD_DIFFICULTY
-	copyvar VAR_MOSSDEEP_LEVEL, VAR_WORLD_DIFFICULTY
-	special DecrementPlayerKeys
-	release
-	end
-
-SlateportCity_EventScript_ToMossdeep_BossUndefeated::
-	msgbox SlateportCity_Text_Boss_Undefeated, MSGBOX_DEFAULT
-	applymovement LOCALID_PLAYER, SlateportCity_Movement_TurnFrom_Mossdeep
-	waitmovement 0
-	release
-	end
-
 SlateportCity_EventScript_AutoUnlock_Mossdeep::
 	setflag FLAG_SLATEPORT_MOSSDEEP_STRETCH
 	copyvar VAR_SLATEPORT_MOSSDEEP_LEVEL, VAR_WORLD_DIFFICULTY
 	return
 	end
-
-SlateportCity_EventScript_Cannot_Unlock_Mossdeep::
-	msgbox SlateportCity_Text_Cannot_Unlock, MSGBOX_DEFAULT
-	applymovement LOCALID_PLAYER, SlateportCity_Movement_TurnFrom_Mossdeep
-	waitmovement 0
-	release
-	end
-
-SlateportCity_EventScript_Reject_ToMossdeep::
-	msgbox SlateportCity_Text_Reject_Path, MSGBOX_DEFAULT
-	applymovement LOCALID_PLAYER, SlateportCity_Movement_TurnFrom_Mossdeep
-	waitmovement 0
-	release
-	end
-
-SlateportyCity_EventScript_Already_Unlocked::
-	return
-	end
-
-SlateportCity_Movement_TurnFrom_Mauville:
-	walk_down
-	step_end
-
-SlateportCity_Movement_TurnFrom_Dewford:
-	walk_up
-	step_end
-
-SlateportCity_Movement_TurnFrom_Petalburg:
-	walk_right
-	step_end
-
-SlateportCity_Movement_TurnFrom_Mossdeep:
-	walk_left
-	step_end
 
 SlateportCity_Text_ItemCollectorSellWhatYouNeed:
 	.string "I collect rare items like Light Ball.\p"
@@ -799,6 +663,10 @@ SlateportCity_Text_ComeBackToTradeBerryPowder:
 	.string "I'm always running a bazaar here.\p"
 	.string "Did you know?$"
 
+SlateportCity_Text_DoorLocked:
+	.string "Better not draw too much attention\n"
+	.string "by wandering into random buildings.$"
+
 SlateportCity_Text_TestBoss_Intro:
 	.string "I am the boss for Slateport!\n"
 	.string "Do you want to battle me?$"
@@ -819,44 +687,6 @@ SlateportCity_Text_TestBoss_PostBattle:
 	.string "Oh, you should have also gotten a key.\p"
 	.string "It's not in your inventory though.\n"
 	.string "It's a var in the script!$"
-
-SlateportCity_Text_Boss_Undefeated:
-	.string "There are still things I need\n"
-	.string "to do here.$"
-
-SlateportCity_Text_Cannot_Unlock:
-	.string "I have things to do elsewhere first.$"
-
-SlateportCity_Text_To_Mauville:
-	.string "This is the way to Mauville City...\n"
-	.string "Head this way?$"
-
-SlateportCity_Text_Accept_Mauville:
-	.string "Time to head for Mauville City.$"
-
-SlateportCity_Text_To_Dewford:
-	.string "This is the way to Dewford Town...\n"
-	.string "Head this way?$"
-
-SlateportCity_Text_Accept_Dewford:
-	.string "Time to head for Dewford Town.$"
-
-SlateportCity_Text_To_Petalburg:
-	.string "This is the way to Petalburg City...\n"
-	.string "Head this way?$"
-
-SlateportCity_Text_Accept_Petalburg:
-	.string "Time to head for Petalburg City.$"
-
-SlateportCity_Text_To_Mossdeep:
-	.string "This is the way to Mossdeep City...\n"
-	.string "Head this way?$"
-
-SlateportCity_Text_Accept_Mossdeep:
-	.string "Time to head for Mossdeep City.$"
-
-SlateportCity_Text_Reject_Path:
-	.string "Maybe next time.$"
 
 SlateportCity_Text_DoorLocked:
 	.string "Better not draw too much attention\n"

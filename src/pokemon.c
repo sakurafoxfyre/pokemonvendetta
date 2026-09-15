@@ -6468,6 +6468,7 @@ bool32 TryBoxMonFormChange(struct BoxPokemon *boxMon, enum FormChanges method)
 
 enum Species SanitizeSpeciesId(enum Species species)
 {
+    DebugPrintf("%d", "SANITIZE CALL HERE.");
     assertf(species <= NUM_SPECIES, "invalid species: %d", species)
     {
         return SPECIES_NONE;

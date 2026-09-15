@@ -116,3 +116,40 @@ GraniteCaveB2F_EventScript_Ziel::
 	@trainerbattle_single TRAINER_ZIEL, GraniteCave_Text_ZielIntro, GraniteCave_Text_ZielDefeated
 	@msgbox GraniteCave_Text_ZielPostBattle, MSGBOX_AUTOCLOSE
 	end
+
+GraniteCave_B2F_EventScript_Brawly::
+	lock
+	faceplayer
+	goto_if_defeated TRAINER_SLATEPORT_BOSS, GraniteCave_B2F_EventScript_Brawly_AlreadyFought
+	trainerbattle_single TRAINER_SLATEPORT_BOSS, GraniteCave_B2F_Text_Placeholder, GraniteCave_B2F_Text_Placeholder, GraniteCave_B2F_EventScript_Brawly_FlagsAfterBattle
+	release
+	end
+
+GraniteCave_B2F_EventScript_Brawly_AlreadyFought::
+	msgbox GraniteCave_B2F_Text_Placeholder, MSGBOX_DEFAULT
+	release
+	end
+
+GraniteCave_B2F_EventScript_Brawly_FlagsAfterBattle::
+	setflag FLAG_DEWFORD_BOSS
+	special IncrementPlayerKeys
+	special IncrementWorldLevel
+	goto_if_set FLAG_PETALBURG_BOSS, GraniteCave_B2F_EventScript_AutoUnlock_Petalburg
+	goto_if_set FLAG_SLATEPORT_BOSS, GraniteCave_B2F_EventScript_AutoUnlock_Slateport
+	release
+	end
+
+GraniteCave_B2F_EventScript_AutoUnlock_Petalburg::
+	setflag FLAG_PETALBURG_DEWFORD_STRETCH
+	copyvar VAR_SLATEPORT_MAUVILLE_LEVEL, VAR_WORLD_DIFFICULTY
+	return
+	end
+
+GraniteCave_B2F_EventScript_AutoUnlock_Slateport::
+	setflag FLAG_DEWFORD_SLATEPORT_STRETCH
+	copyvar VAR_DEWFORD_SLATEPORT_LEVEL, VAR_WORLD_DIFFICULTY
+	return
+	end
+
+GraniteCave_B2F_Text_Placeholder:
+	.string "This is placeholder text.$"

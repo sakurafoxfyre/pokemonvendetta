@@ -494,7 +494,7 @@
 #define FLAG_RUSTBORO_PETALBURG_STRETCH  0x268 // Rustboro <--> Petalburg
 #define FLAG_PETALBURG_DEWFORD_STRETCH   0x269 // Petalburg <--> Dewford
 #define FLAG_DEWFORD_SLATEPORT_STRETCH   0x26A // Dewford <--> Slateport
-#define FLAG_UNUSED_0x26B                0x26B // Petalburg <--> Slateport
+#define FLAG_PETALBURG_SLATEPORT_STRETCH 0x26B // Petalburg <--> Slateport
 #define FLAG_SLATEPORT_MAUVILLE_STRETCH  0x26C // Slateport <--> Mauville
 #define FLAG_LAVARIDGE_FORTREE_STRETCH   0x26D // Lavaridge <--> Fortree
 #define FLAG_MAUVILLE_MTPYRE_STRETCH     0x26E // Mauville <--> Mt Pyre

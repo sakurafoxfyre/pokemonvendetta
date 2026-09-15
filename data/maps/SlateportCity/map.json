@@ -294,7 +294,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_EventScript_TestBoss",
+      "script": "SlateportCity_EventScript_SlateportBoss",
       "flag": "0"
     }
   ],
@@ -378,38 +378,7 @@
       "dest_warp_id": "0"
     }
   ],
-  "coord_events": [
-    {
-      "type": "trigger",
-      "x": 17,
-      "y": 57,
-      "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "SlateportCity_EventScript_Check_ToDewford",
-      "stretchentrance": "todewford"
-    },
-    {
-      "type": "trigger",
-      "x": 17,
-      "y": 9,
-      "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "SlateportCity_EventScript_Check_ToMauville",
-      "stretchentrance": "tomauville"
-    },
-    {
-      "type": "trigger",
-      "x": 32,
-      "y": 13,
-      "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "SlateportCity_EventScript_Check_ToMossdeep",
-      "stretchentrance": "tomossdeep"
-    }
-  ],
+  "coord_events": [],
   "bg_events": [
     {
       "type": "sign",

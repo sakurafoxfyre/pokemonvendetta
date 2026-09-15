@@ -32,51 +32,32 @@ PetalburgCity_Gym_EventScript_UnlockAllDoors::
 	call PetalburgCity_Gym_EventScript_OpenOHKORoomDoors
 	return
 
-PetalburgCity_Gym_EventScript_Norman::
+PetalburgCity_Gym_EventScript_May::
 	lock
 	faceplayer
-	@smile
-	@togo_if_unset FLAG_PETALBURG_BOSS, PetalburgCity_Gym_EventScript_NormanBattle
-	@togo_if_set FLAG_PETALBURG_BOSS, PetalburgCity_Gym_EventScript_NormanPostBattle
-	end
-
-PetalburgCity_Gym_EventScript_NormanPostBattle::
-	msgbox PetalburgCity_Gym_Text_DadGoingToKeepTraining, MSGBOX_DEFAULT
+	goto_if_defeated TRAINER_SLATEPORT_BOSS, PetalburgCity_Gym_EventScript_May_AlreadyFought
+	trainerbattle_single TRAINER_SLATEPORT_BOSS, PetalburgCity_Gym_Text_Placeholder, PetalburgCity_Gym_Text_Placeholder, PetalburgCity_Gym_EventScript_May_FlagsAfterBattle
 	release
 	end
 
-PetalburgCity_Gym_EventScript_GiveFacade2::
-	call PetalburgCity_Gym_EventScript_GiveFacade
+PetalburgCity_Gym_EventScript_May_AlreadyFought::
+	msgbox PetalburgCity_Gym_Text_Placeholder, MSGBOX_DEFAULT
 	release
 	end
 
-PetalburgCity_Gym_EventScript_NormanBattle::
-	msgbox PetalburgCity_Gym_Text_NormanIntro, MSGBOX_DEFAULT
-	trainerbattle_no_intro TRAINER_NORMAN, PetalburgCity_Gym_Text_NormanDefeat
-	message PetalburgCity_Gym_Text_ReceivedBalanceBadge
-	waitmessage
-	call Common_EventScript_PlayGymBadgeFanfare
-	setflag FLAG_DEFEATED_PETALBURG_GYM
-	setflag FLAG_BADGE05_GET
-	special ResetHealLocationFromDewford
-	setvar VAR_0x8008, 5
-	call Common_EventScript_SetGymTrainers
-	call PetalburgCity_Gym_EventScript_UnlockAllDoors
-	special DrawWholeMapView
-	call PetalburgCity_Gym_EventScript_GiveFacade
-	delay 30
-	msgbox PetalburgCity_Gym_Text_DadHappyAndSad, MSGBOX_DEFAULT
-	closemessage
+PetalburgCity_Gym_EventScript_May_FlagsAfterBattle::
 	setflag FLAG_PETALBURG_BOSS
 	special IncrementPlayerKeys
 	special IncrementWorldLevel
 	goto_if_set FLAG_RUSTBORO_BOSS, PetalburgCity_Gym_EventScript_AutoUnlock_Rustboro
 	goto_if_set FLAG_DEWFORD_BOSS, PetalburgCity_Gym_EventScript_AutoUnlock_Dewford
+	goto_if_set FLAG_SLATEPORT_BOSS, PetalburgCity_Gym_EventScript_AutoUnlock_Slateport
+	release
 	end
 
 PetalburgCity_Gym_EventScript_AutoUnlock_Rustboro::
 	setflag FLAG_RUSTBORO_PETALBURG_STRETCH
-	copyvar VAR_RUSTBORO_PETALBURG_LEVEL, VAR_WORLD_DIFFICULTY 
+	copyvar VAR_RUSTBORO_PETALBURG_LEVEL, VAR_WORLD_DIFFICULTY
 	return
 	end
 
@@ -86,11 +67,11 @@ PetalburgCity_Gym_EventScript_AutoUnlock_Dewford::
 	return
 	end
 
-PetalburgCity_Gym_EventScript_GiveFacade::
-	giveitem ITEM_TM_FACADE
-	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
-	msgbox PetalburgCity_Gym_Text_ExplainFacade, MSGBOX_DEFAULT
+PetalburgCity_Gym_EventScript_AutoUnlock_Slateport::
+	setflag FLAG_PETALBURG_SLATEPORT_STRETCH
+	copyvar VAR_PETALBURG_SLATEPORT_LEVEL, VAR_WORLD_DIFFICULTY
 	return
+	end	
 
 PetalburgCity_Gym_EventScript_SpeedRoomDoor::
 	lockall
@@ -495,6 +476,9 @@ PetalburgCity_Gym_EventScript_GymStatue::
 	msgbox PetalburgCity_Gym_Text_GymStatue, MSGBOX_DEFAULT
 	releaseall
 	end
+
+PetalburgCity_Gym_Text_Placeholder:
+	.string "This is placeholder text.$"
 
 PetalburgCity_Gym_Text_NormanIntro:
 	.string "DAD: Hm…\n"

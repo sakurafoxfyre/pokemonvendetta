@@ -17,4 +17,3 @@ Text_DoorIsLocked:
 	.string "The knob turns, but the door doesn't open.\n"
 	.string "Pressing your ear to the decaying wood,\l"
 	.string "you hear deep breathing on the other side.$"
-	

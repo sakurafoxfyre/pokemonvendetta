@@ -266,6 +266,116 @@ Route110_TrickGuard_TalkAfterTicket::
 Route110_EventScript_CyclingChallengeResults::
 	end
 
+Route110_EventScript_Check_ToMauville::
+	goto_if_unset FLAG_SLATEPORT_MAUVILLE_STRETCH, Route110_EventScript_Check_Slateport_Mauville
+	end
+
+Route110_EventScript_Check_Slateport_Mauville::
+	lock
+	goto_if_unset FLAG_SLATEPORT_BOSS, Route110_EventScript_ToMauville_BossUndefeated
+	goto_if_lt VAR_NUMBER_OF_KEYS, 1, Route110_EventScript_Cannot_Unlock_Mauville
+	msgbox Route110_Text_To_Mauville, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, Route110_EventScript_Reject_ToMauville
+	msgbox Route110_Text_Accept_Mauville, MSGBOX_DEFAULT
+	setflag FLAG_SLATEPORT_MAUVILLE_STRETCH
+	copyvar VAR_SLATEPORT_MAUVILLE_LEVEL, VAR_WORLD_DIFFICULTY
+	copyvar VAR_MAUVILLE_LEVEL, VAR_WORLD_DIFFICULTY
+	special DecrementPlayerKeys
+	release
+	end
+
+Route110_EventScript_ToMauville_BossUndefeated::
+	msgbox Route110_Text_Boss_Undefeated, MSGBOX_DEFAULT
+	applymovement LOCALID_PLAYER, Route110_Movement_TurnFrom_Mauville
+	waitmovement 0
+	release
+	end
+
+Route110_EventScript_Cannot_Unlock_Mauville::
+	msgbox Route110_Text_Cannot_Unlock, MSGBOX_DEFAULT
+	applymovement LOCALID_PLAYER, Route110_Movement_TurnFrom_Mauville
+	waitmovement 0
+	release
+	end
+
+Route110_EventScript_Reject_ToMauville::
+	msgbox Route110_Text_Reject_Path, MSGBOX_DEFAULT
+	applymovement LOCALID_PLAYER, Route110_Movement_TurnFrom_Mauville
+	waitmovement 0
+	release
+	end
+
+Route110_EventScript_Check_ToPetalburg::
+	goto_if_unset FLAG_PETALBURG_SLATEPORT_STRETCH, Route110_EventScript_Check_Petalburg_Slateport
+	end
+
+Route110_EventScript_Check_Petalburg_Slateport::
+	lock
+	goto_if_unset FLAG_SLATEPORT_BOSS, Route110_EventScript_ToPetalburg_BossUndefeated
+	goto_if_lt VAR_NUMBER_OF_KEYS, 1, Route110_EventScript_Cannot_Unlock_Petalburg
+	msgbox Route110_Text_To_Petalburg, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, Route110_EventScript_Reject_ToPetalburg
+	msgbox Route110_Text_Accept_Petalburg, MSGBOX_DEFAULT
+	setflag FLAG_PETALBURG_SLATEPORT_STRETCH
+	copyvar VAR_PETALBURG_SLATEPORT_LEVEL, VAR_WORLD_DIFFICULTY
+	copyvar VAR_DEWFORD_LEVEL, VAR_WORLD_DIFFICULTY
+	special DecrementPlayerKeys
+	release
+	end
+
+Route110_EventScript_ToPetalburg_BossUndefeated::
+	msgbox Route110_Text_Boss_Undefeated, MSGBOX_DEFAULT
+	applymovement LOCALID_PLAYER, Route110_Movement_TurnFrom_Petalburg
+	waitmovement 0
+	release
+	end
+
+Route110_EventScript_Cannot_Unlock_Petalburg::
+	msgbox Route110_Text_Cannot_Unlock, MSGBOX_DEFAULT
+	applymovement LOCALID_PLAYER, Route110_Movement_TurnFrom_Petalburg
+	waitmovement 0
+	release
+	end
+
+Route110_EventScript_Reject_ToPetalburg::
+	msgbox Route110_Text_Reject_Path, MSGBOX_DEFAULT
+	applymovement LOCALID_PLAYER, Route110_Movement_TurnFrom_Petalburg
+	waitmovement 0
+	release
+	end
+
+Route110_Movement_TurnFrom_Mauville:
+	walk_left
+	step_end
+
+Route110_Movement_TurnFrom_Petalburg:
+	walk_right
+	step_end
+
+Route110_Text_To_Mauville:
+	.string "This is the way to Mauville City...\n"
+	.string "Head this way?$"
+
+Route110_Text_Accept_Mauville:
+	.string "Time to head for Mauville City.$"
+
+Route110_Text_To_Petalburg:
+	.string "This is the way to Petalburg City...\n"
+	.string "Head this way?$"
+
+Route110_Text_Accept_Petalburg:
+	.string "Time to head for Petalburg City.$"
+
+Route110_Text_Boss_Undefeated:
+	.string "There are still things I need\n"
+	.string "to do here.$"
+
+Route110_Text_Cannot_Unlock:
+	.string "I have things to do elsewhere first.$"
+
+Route110_Text_Reject_Path:
+	.string "Maybe next time.$"
+	
 Route110_Text_TrickGuardTalking:
 	.string "Enjoy Route 103! I wish I could, but\n"
 	.string "my paycheck isn't enough to afford it.$"

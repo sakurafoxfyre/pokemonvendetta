@@ -103,6 +103,49 @@ Route109_TuberKing_EventScript_TrainersNotCompleted::
 	release
 	end
 
+Route109_EventScript_Check_ToDewford::
+	goto_if_unset FLAG_DEWFORD_SLATEPORT_STRETCH, Route109_EventScript_Check_Dewford_Slateport
+	end
+
+Route109_EventScript_Check_Dewford_Slateport::
+	lock
+	goto_if_unset FLAG_SLATEPORT_BOSS, Route109_EventScript_ToDewford_BossUndefeated
+	goto_if_lt VAR_NUMBER_OF_KEYS, 1, Route109_EventScript_Cannot_Unlock_Dewford
+	msgbox Route109_Text_To_Dewford, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, Route109_EventScript_Reject_ToDewford
+	msgbox Route109_Text_Accept_Dewford, MSGBOX_DEFAULT
+	setflag FLAG_DEWFORD_SLATEPORT_STRETCH
+	copyvar VAR_DEWFORD_SLATEPORT_LEVEL, VAR_WORLD_DIFFICULTY
+	copyvar VAR_DEWFORD_LEVEL, VAR_WORLD_DIFFICULTY
+	special DecrementPlayerKeys
+	release
+	end
+
+Route109_EventScript_ToDewford_BossUndefeated::
+	msgbox Route109_Text_Boss_Undefeated, MSGBOX_DEFAULT
+	applymovement LOCALID_PLAYER, Route109_Movement_TurnFrom_Dewford
+	waitmovement 0
+	release
+	end
+
+Route109_EventScript_Cannot_Unlock_Dewford::
+	msgbox Route109_Text_Cannot_Unlock, MSGBOX_DEFAULT
+	applymovement LOCALID_PLAYER, Route109_Movement_TurnFrom_Dewford
+	waitmovement 0
+	release
+	end
+
+Route109_EventScript_Reject_ToDewford::
+	msgbox Route109_Text_Reject_Path, MSGBOX_DEFAULT
+	applymovement LOCALID_PLAYER, Route109_Movement_TurnFrom_Dewford
+	waitmovement 0
+	release
+	end
+
+Route109_Movement_TurnFrom_Dewford:
+	walk_up
+	step_end
+
 Route109_Text_ExplainSweetScent:
 	.string "Let's change the subject to my favorite\n"
 	.string "move, Sweet Scent!\p"
@@ -158,3 +201,20 @@ Route109_Text_TrainerTipsSign:
 	.string "BEACH without supervision.\p"
 	.string "For questions, please contact the AETHER\n"
 	.string "FOUNDATION in FORTREE. It's their mess.$"
+
+Route109_Text_To_Dewford:
+	.string "This is the way to Dewford Town...\n"
+	.string "Head this way?$"
+
+Route109_Text_Accept_Dewford:
+	.string "Time to head for Dewford Town.$"
+
+Route109_Text_Boss_Undefeated:
+	.string "There are still things I need\n"
+	.string "to do here.$"
+
+Route109_Text_Cannot_Unlock:
+	.string "I have things to do elsewhere first.$"
+
+Route109_Text_Reject_Path:
+	.string "Maybe next time.$"
