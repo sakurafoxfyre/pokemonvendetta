@@ -4794,3 +4794,29 @@ VSSeeker_Text_TrainersNotReady::
 	.string "The other Trainers don't appear\n"
 	.string "to be ready for battle.\p"
 	.string "Let's wait till later.{PAUSE_UNTIL_PRESS}$"
+
+GraniteCave_Text_FionaIntro:
+	.string "This cave is so gorgeous!$"
+
+GraniteCave_Text_FionaDefeated:
+	.string "Well, I suppose it's time to head home...$"
+
+GraniteCave_Text_FionaPostBattle:
+	.string "I really do like coming here to train.\n"
+	.string "It's a shame the cave isn't as\l"
+	.string "picturesque, further down.$"
+
+GraniteCave_Text_EzraIntro:
+	.string "Wahahaha!\n"
+	.string "A cave system like this is surely\l"
+	.string "full of fossils.\p"
+	.string "For good luck, I'll defeat you first!$"
+
+GraniteCave_Text_EzraDefeated:
+	.string "My expedition comes to an early end!$"
+
+GraniteCave_Text_EzraPostBattle:
+	.string "Waha... ha...\n"
+	.string "Beginning an expedition with a defeat\l"
+	.string "is a poor omen. I doubt there are any\p"
+	.string "fossils here, anyway.$"

@@ -116,11 +116,6 @@ GraniteCave_FiveWaterGems::
 GraniteCave_SevenWaterGems::
 	finditem ITEM_WATER_GEM, amount=7
 	end
-	
-GraniteCaveB1F_EventScript_Fiona::
-	@trainerbattle_single TRAINER_FIONA, GraniteCave_Text_FionaIntro, GraniteCave_Text_FionaDefeated
-	@msgbox GraniteCave_Text_FionaPostBattle, MSGBOX_AUTOCLOSE
-	end
 
 GraniteCaveB1F_EventScript_Maxine::
 	@trainerbattle_single TRAINER_MAXINE, GraniteCave_Text_MaxineIntro, GraniteCave_Text_MaxineDefeated
@@ -140,11 +135,6 @@ GraniteCaveB1F_EventScript_Velomachus::
 GraniteCaveB1F_EventScript_Quentin::
 	@trainerbattle_single TRAINER_QUENTIN, GraniteCave_Text_QuentinIntro, GraniteCave_Text_QuentinDefeated
 	@msgbox GraniteCave_Text_QuentinPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-GraniteCaveB1F_EventScript_Ezra::
-	@trainerbattle_single TRAINER_EZRA, GraniteCave_Text_EzraIntro, GraniteCave_Text_EzraDefeated
-	@msgbox GraniteCave_Text_EzraPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 GraniteCaveB1F_EventScript_Eithan::
