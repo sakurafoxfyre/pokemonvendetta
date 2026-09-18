@@ -173,19 +173,23 @@ DewfordTown_Text_TinyIslandCommunity:
 
 DewfordTown_Text_TownSign:
 	.string "DEWFORD TOWN\n"
-	.string "“A tiny island in the blue sea.”$"
+	.string "“A tiny island in the blue sea.”/p"
+	.string "<i>The sign has been graffitied over.</i>/p"
+	.string "<i>In red paint, it reads,</i>/p"
+	.string "<i>“A tiny island forgotten by Hoenn.”</i>/p"
 
 DewfordTown_Text_GymSign:
 	.string "DEWFORD TOWN POKéMON GYM\n"
 	.string "LEADER: BRAWLY\l"
-	.string "“A big wave in fighting!”$"
+	.string "“A big wave in fighting!”\p"
+	.string "<i>The text is faded and weather-worn.</i>$"
 
 DewfordTown_Text_GymIsClosed:
 	.string "At granite cave\n"
 	.string "Be back later\l"
 	.string "Evergrand wont crush itself\p"
-	.string "The note is marked by a crude\n"
-	.string "drawing of a man flexing big muscles.$"
+	.string "<i>The note is marked by a crude</i>\n"
+	.string "<i>drawing of a man flexing big muscles.</i>$"
 
 DewfordTown_Text_HallSign:
 	.string "DEWFORD HALL\n"
