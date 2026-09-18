@@ -688,10 +688,6 @@ SlateportCity_Text_TestBoss_PostBattle:
 	.string "It's not in your inventory though.\n"
 	.string "It's a var in the script!$"
 
-SlateportCity_Text_DoorLocked:
-	.string "Better not draw too much attention\n"
-	.string "by wandering into random buildings.$"
-
 SlateportCity_Text_MarketplaceEarly:
 	.string "The marketplace looks strange, huh,\n"
 	.string "all empty like this?\p"
