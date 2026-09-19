@@ -4,6 +4,7 @@ PacifidlogTown_House3_MapScripts::
 PacifidlogTown_House3_EventScript_Trader::
 	lock
 	faceplayer
+	goto_if_set FLAG_PACIFIDLOG_CAUGHT, PacifidlogTown_House3_EventScript_Caught_Already
 	goto_if_set FLAG_PACIFIDLOG_NPC_TRADE_COMPLETED, PacifidlogTown_House3_EventScript_TradeCompleted
 	setvar VAR_0x8008, INGAME_TRADE_HORSEA
 	copyvar VAR_0x8004, VAR_0x8008
@@ -28,6 +29,11 @@ PacifidlogTown_House3_EventScript_Trader::
 	release
 	end
 
+PacifidlogTown_House3_EventScript_Caught_Already::
+	msgbox PacifidlogTown_House3_Text_Already_Caught, MSGBOX_DEFAULT
+	release
+	end
+
 PacifidlogTown_House3_EventScript_DeclineTrade::
 	msgbox PacifidlogTown_House3_Text_NotDesperateOrAnything, MSGBOX_DEFAULT
 	release
@@ -47,6 +53,11 @@ PacifidlogTown_House3_EventScript_TradeCompleted::
 PacifidlogTown_House3_EventScript_Girl::
 	msgbox PacifidlogTown_House3_Text_IsThatAPokedex, MSGBOX_NPC
 	end
+
+PacifidlogTown_House3_Text_Already_Caught:
+	.string "Hey, you already caught something\n"
+	.string "here in Pacifidlog!\p"
+	.string "I won't trade with you."
 
 PacifidlogTown_House3_Text_WillingToTradeIt:
 	.string "Check out this {STR_VAR_2}!\p"

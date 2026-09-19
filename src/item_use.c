@@ -47,6 +47,7 @@
 #include "constants/item_effects.h"
 #include "constants/items.h"
 #include "constants/songs.h"
+#include "script_ven_util.h"
 
 static void SetUpItemUseCallback(u8);
 static void FieldCB_UseItemOnField(void);
@@ -1010,6 +1011,12 @@ void ItemUseOutOfBattle_EvolutionStone(u8 taskId)
 
 static u32 GetBallThrowableState(void)
 {
+    bool8 canCatch = CanCatchInArea();
+    if (canCatch)
+        FlagClear(FLAG_DISABLE_CATCHING);
+    else if (!canCatch)
+        FlagSet(FLAG_DISABLE_CATCHING);
+
     if (FlagGet(FLAG_DISABLE_CATCHING))
         return BALL_THROW_UNABLE_DISABLED_FLAG;
     if (IsBattlerAlive(GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT))
