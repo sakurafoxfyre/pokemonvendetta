@@ -56,6 +56,7 @@
 #define FLAG_WEATHER_INSTITUTE_LENSES                0x21
 #define FLAG_CARGO_RIP_RIVAL_ONE                     0x22
 #define FLAG_DEFEATED_MAUVILLE_GYM_TRAINERS          0x23
+#define FLAG_DISABLE_CATCHING                        0x24
 
 // Vendetta item flags
 #define FLAG_ITEM_ROUTE_108_MYSTIC_WATER             0x1F4
@@ -504,96 +505,80 @@
 #define FLAG_SLATEPORT_MOSSDEEP_STRETCH  0x272 // Slateport <--> Mossdeep
 
 //ANCHOR BOSS FLAGS
-#define FLAG_RUSTBORO_BOSS   0x273 // 
-#define FLAG_PETALBURG_BOSS  0x274 //
-#define FLAG_DEWFORD_BOSS    0x275 //
-#define FLAG_SLATEPORT_BOSS  0x276 //
-#define FLAG_MAUVILLE_BOSS   0x277 //
-#define FLAG_LAVARIDGE_BOSS  0x278 //
-#define FLAG_FORTREE_BOSS    0x279 //
-#define FLAG_MTPYRE_BOSS     0x27A //
-#define FLAG_LILYCOVE_BOSS   0x27B //
-#define FLAG_MOSSDEEP_BOSS   0x27C //
-#define FLAG_FALLARBOR_BOSS  0x27D //
+#define FLAG_RUSTBORO_BOSS   0x273 
+#define FLAG_PETALBURG_BOSS  0x274 
+#define FLAG_DEWFORD_BOSS    0x275 
+#define FLAG_SLATEPORT_BOSS  0x276 
+#define FLAG_MAUVILLE_BOSS   0x277 
+#define FLAG_LAVARIDGE_BOSS  0x278 
+#define FLAG_FORTREE_BOSS    0x279 
+#define FLAG_MTPYRE_BOSS     0x27A 
+#define FLAG_LILYCOVE_BOSS   0x27B 
+#define FLAG_MOSSDEEP_BOSS   0x27C 
+#define FLAG_FALLARBOR_BOSS  0x27D 
 
-#define FLAG_UNUSED_0x27E  0x27E // Unused Flag
-#define FLAG_UNUSED_0x27F  0x27F // Unused Flag
-#define FLAG_UNUSED_0x280  0x280 // Unused Flag
-#define FLAG_UNUSED_0x281  0x281 // Unused Flag
-#define FLAG_UNUSED_0x282  0x282 // Unused Flag
-#define FLAG_UNUSED_0x283  0x283 // Unused Flag
-#define FLAG_UNUSED_0x284  0x284 // Unused Flag
-#define FLAG_UNUSED_0x285  0x285 // Unused Flag
-#define FLAG_UNUSED_0x286  0x286 // Unused Flag
-#define FLAG_UNUSED_0x287  0x287 // Unused Flag
-#define FLAG_UNUSED_0x288  0x288 // Unused Flag
-#define FLAG_UNUSED_0x289  0x289 // Unused Flag
-#define FLAG_UNUSED_0x28A  0x28A // Unused Flag
-#define FLAG_UNUSED_0x28B  0x28B // Unused Flag
-#define FLAG_UNUSED_0x28C  0x28C // Unused Flag
-#define FLAG_UNUSED_0x28D  0x28D // Unused Flag
-#define FLAG_UNUSED_0x28E  0x28E // Unused Flag
-#define FLAG_UNUSED_0x28F  0x28F // Unused Flag
-#define FLAG_UNUSED_0x290  0x290 // Unused Flag
-#define FLAG_UNUSED_0x291  0x291 // Unused Flag
-#define FLAG_UNUSED_0x292  0x292 // Unused Flag
-#define FLAG_UNUSED_0x293  0x293 // Unused Flag
-#define FLAG_UNUSED_0x294  0x294 // Unused Flag
-#define FLAG_UNUSED_0x295  0x295 // Unused Flag
-#define FLAG_UNUSED_0x296  0x296 // Unused Flag
-#define FLAG_UNUSED_0x297  0x297 // Unused Flag
-#define FLAG_UNUSED_0x298  0x298 // Unused Flag
-#define FLAG_UNUSED_0x299  0x299 // Unused Flag
-#define FLAG_UNUSED_0x29A  0x29A // Unused Flag
-#define FLAG_UNUSED_0x29B  0x29B // Unused Flag
-#define FLAG_UNUSED_0x29C  0x29C // Unused Flag
-#define FLAG_UNUSED_0x29D  0x29D // Unused Flag
-#define FLAG_UNUSED_0x29E  0x29E // Unused Flag
-#define FLAG_UNUSED_0x29F  0x29F // Unused Flag
-#define FLAG_UNUSED_0x2A0  0x2A0 // Unused Flag
-#define FLAG_UNUSED_0x2A1  0x2A1 // Unused Flag
-#define FLAG_UNUSED_0x2A2  0x2A2 // Unused Flag
-#define FLAG_UNUSED_0x2A3  0x2A3 // Unused Flag
-#define FLAG_UNUSED_0x2A4  0x2A4 // Unused Flag
-#define FLAG_UNUSED_0x2A5  0x2A5 // Unused Flag
-#define FLAG_UNUSED_0x2A6  0x2A6 // Unused Flag
-#define FLAG_UNUSED_0x2A7  0x2A7 // Unused Flag
-#define FLAG_UNUSED_0x2A8  0x2A8 // Unused Flag
-#define FLAG_UNUSED_0x2A9  0x2A9 // Unused Flag
-#define FLAG_UNUSED_0x2AA  0x2AA // Unused Flag
-#define FLAG_UNUSED_0x2AB  0x2AB // Unused Flag
-#define FLAG_UNUSED_0x2AC  0x2AC // Unused Flag
-#define FLAG_UNUSED_0x2AD  0x2AD // Unused Flag
-#define FLAG_UNUSED_0x2AE  0x2AE // Unused Flag
-#define FLAG_UNUSED_0x2AF  0x2AF // Unused Flag
-#define FLAG_UNUSED_0x2B0  0x2B0 // Unused Flag
-#define FLAG_UNUSED_0x2B1  0x2B1 // Unused Flag
-#define FLAG_UNUSED_0x2B2  0x2B2 // Unused Flag
-#define FLAG_UNUSED_0x2B3  0x2B3 // Unused Flag
-#define FLAG_UNUSED_0x2B4  0x2B4 // Unused Flag
-#define FLAG_UNUSED_0x2B5  0x2B5 // Unused Flag
-#define FLAG_UNUSED_0x2B6  0x2B6 // Unused Flag
-#define FLAG_UNUSED_0x2B7  0x2B7 // Unused Flag
-#define FLAG_UNUSED_0x2B8  0x2B8 // Unused Flag
-#define FLAG_UNUSED_0x2B9  0x2B9 // Unused Flag
-#define FLAG_UNUSED_0x2BA  0x2BA // Unused Flag
-#define FLAG_UNUSED_0x2BB  0x2BB // Unused Flag
+// keeps track of the routes players have caught pokemon on
+#define FLAG_101_CAUGHT              0x27E
+#define FLAG_102_CAUGHT              0x27F
+#define FLAG_103_CAUGHT              0x280
+#define FLAG_104_CAUGHT              0x281
+#define FLAG_105_CAUGHT              0x282
+#define FLAG_106_CAUGHT              0x283
+#define FLAG_107_CAUGHT              0x284
+#define FLAG_108_CAUGHT              0x285
+#define FLAG_109_CAUGHT              0x286
+#define FLAG_110_CAUGHT              0x287
+#define FLAG_111_CAUGHT              0x288
+#define FLAG_112_CAUGHT              0x289
+#define FLAG_113_CAUGHT              0x28A
+#define FLAG_114_CAUGHT              0x28B
+#define FLAG_115_CAUGHT              0x28C
+#define FLAG_116_CAUGHT              0x28D
+#define FLAG_117_CAUGHT              0x28E
+#define FLAG_118_CAUGHT              0x28F
+#define FLAG_119_CAUGHT              0x290
+#define FLAG_120_CAUGHT              0x291
+#define FLAG_121_CAUGHT              0x292
+#define FLAG_122_CAUGHT              0x293
+#define FLAG_123_CAUGHT              0x294
+#define FLAG_124_CAUGHT              0x295
+#define FLAG_125_CAUGHT              0x296
+#define FLAG_126_CAUGHT              0x297
+#define FLAG_127_CAUGHT              0x298
+#define FLAG_128_CAUGHT              0x299
+#define FLAG_129_CAUGHT              0x29A
+#define FLAG_130_CAUGHT              0x29B
+#define FLAG_131_CAUGHT              0x29C
+#define FLAG_132_CAUGHT              0x29D
+#define FLAG_133_CAUGHT              0x29E
+#define FLAG_134_CAUGHT              0x29F
+#define FLAG_LITTLEROOT_CAUGHT       0x2A0
+#define FLAG_OLDALE_CAUGHT           0x2A1
+#define FLAG_PETALBURG_CAUGHT        0x2A2
+#define FLAG_RUSTBORO_CAUGHT         0x2A3
+#define FLAG_DEWFORD_CAUGHT          0x2A4
+#define FLAG_SLATEPORT_CAUGHT        0x2A5
+#define FLAG_MAUVILLE_CAUGHT         0x2A6
+#define FLAG_VERDANTURF_CAUGHT       0x2A7
+#define FLAG_LAVARIDGE_CAUGHT        0x2A8
+#define FLAG_FALLARBOR_CAUGHT        0x2A9
+#define FLAG_FORTREE_CAUGHT          0x2B0
+#define FLAG_LILYCOVE_CAUGHT         0x2B1
+#define FLAG_MOSSDEEP_CAUGHT         0x2B2
+#define FLAG_SOOTOPOLIS_CAUGHT       0x2B3
+#define FLAG_GRANITE_CAVE_1F_CAUGHT  0x2B4
+#define FLAG_GRANITE_CAVE_B1F_CAUGHT 0x2B5
+#define FLAG_GRANITE_CAVE_B2F_CAUGHT 0x2B6
+#define FLAG_HAUNTWOOD_CAUGHT        0x2B7
+#define FLAG_HAUNTED_HOUSE_CAUGHT    0x2B8
+#define FLAG_RUSTBORO_PIER_CAUGHT    0x2B9
+#define FLAG_RUSTURF_TUNNEL_CAUGHT   0x2C0
+#define FLAG_PETALBURG_WOODS_CAUGHT  0x2C1
 
 // Event Flags
-#define FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG                      0x2BC
-#define FLAG_HIDE_APPRENTICE                                        0x2BD
-#define FLAG_HIDE_POKEMON_CENTER_2F_MYSTERY_GIFT_MAN                0x2BE
-#define FLAG_HIDE_UNION_ROOM_PLAYER_1                               0x2BF
-#define FLAG_HIDE_UNION_ROOM_PLAYER_2                               0x2C0
-#define FLAG_HIDE_UNION_ROOM_PLAYER_3                               0x2C1
-#define FLAG_HIDE_UNION_ROOM_PLAYER_4                               0x2C2
-#define FLAG_HIDE_UNION_ROOM_PLAYER_5                               0x2C3
-#define FLAG_HIDE_UNION_ROOM_PLAYER_6                               0x2C4
-#define FLAG_HIDE_UNION_ROOM_PLAYER_7                               0x2C5
-#define FLAG_HIDE_UNION_ROOM_PLAYER_8                               0x2C6
-#define FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_1               0x2C7
-#define FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_2               0x2C8
-#define FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_3               0x2C9
+#define FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG                      0x2C7
+#define FLAG_HIDE_APPRENTICE                                        0x2C8
+#define FLAG_HIDE_POKEMON_CENTER_2F_MYSTERY_GIFT_MAN                0x2C9
 #define FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_4               0x2CA
 #define FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_5               0x2CB
 #define FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_6               0x2CC

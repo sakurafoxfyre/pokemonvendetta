@@ -329,8 +329,10 @@ u8 ChooseWildMonLevel(const struct WildPokemon *wildPokemon, u8 wildMonIndex, en
     u8 range;
     u8 rand;
 
+    u8 worldLevelScaling = 6 * *GetVarPointer(VAR_WORLD_DIFFICULTY);
+
     if (LURE_STEP_COUNT == 0)
-    {
+    { //do not have a lure active
         // Make sure minimum level is less than maximum level
         if (wildPokemon[wildMonIndex].maxLevel >= wildPokemon[wildMonIndex].minLevel)
         {
@@ -352,25 +354,26 @@ u8 ChooseWildMonLevel(const struct WildPokemon *wildPokemon, u8 wildMonIndex, en
             if (ability == ABILITY_HUSTLE || ability == ABILITY_VITAL_SPIRIT || ability == ABILITY_PRESSURE)
             {
                 if (Random() % 2 == 0)
-                    return max;
+                    return max + worldLevelScaling;
 
                 if (rand != 0)
                     rand--;
             }
         }
-        return min + rand;
+        return min + rand + worldLevelScaling;
     }
     else
-    {
+    { //do have a lure active
         // Looks for the max level of all slots that share the same species as the selected slot.
         max = GetMaxLevelOfSpeciesInWildTable(wildPokemon, wildPokemon[wildMonIndex].species, area);
         if (max > 0)
-            return max + 1;
+            return max + 1 + worldLevelScaling;
         else // Failsafe
-            return wildPokemon[wildMonIndex].maxLevel + 1;
+            return wildPokemon[wildMonIndex].maxLevel + 1 + worldLevelScaling;
     }
 }
 
+//checks what route you are
 u16 GetCurrentMapWildMonHeaderId(void)
 {
     u16 i;
@@ -384,6 +387,8 @@ u16 GetCurrentMapWildMonHeaderId(void)
         if (gWildMonHeaders[i].mapGroup == gSaveBlock1Ptr->location.mapGroup &&
             gWildMonHeaders[i].mapNum == gSaveBlock1Ptr->location.mapNum)
         {
+            DebugPrintf(gWildMonHeaders[i].mapGroup);
+            DebugPrintf(gWildMonHeaders[i].mapNum);
             if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_ALTERING_CAVE) &&
                 gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_ALTERING_CAVE))
             {

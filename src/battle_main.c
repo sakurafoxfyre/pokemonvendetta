@@ -1891,7 +1891,7 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
             // -- LEVEL AND EVO -- //
             DebugPrintf("%d", "Level and Evo");
             if (partyData[monIndex].lvl) { // if a set level has been defined
-                if (HasLevelEvolution(partyData[i].species, partyData[monIndex].lvl + (6* *GetVarPointer(VAR_WORLD_DIFFICULTY)))) {
+                if (HasLevelEvolution(partyData[i].species, partyData[monIndex].lvl + (6 * *GetVarPointer(VAR_WORLD_DIFFICULTY)))) {
                     DebugPrintf("%d", "This mon has an evolution!");
                     CreateMon(&party[i], HasLevelEvolution(partyData[i].species, partyData[monIndex].lvl + (6 * *GetVarPointer(VAR_WORLD_DIFFICULTY))), partyData[monIndex].lvl + (6 * *GetVarPointer(VAR_WORLD_DIFFICULTY)), personalityValue, otId);
                 } else {
@@ -1975,6 +1975,8 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
             SetMonData(&party[i], MON_DATA_SPATK_EV, 0);
             SetMonData(&party[i], MON_DATA_SPDEF_EV, 0);
             SetMonData(&party[i], MON_DATA_SPEED_EV, 0);
+
+            // -- ABILITY -- //
 
             if (partyData[monIndex].ability != ABILITY_NONE)
             {

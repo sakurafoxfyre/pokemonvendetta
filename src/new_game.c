@@ -272,11 +272,11 @@ static void SpecialtyTrainerSetup(void) {
         gTrainerClasses[TRAINER_CLASS_TATE] = (struct TrainerClass){ _("GYM LEADER"), 1};
 
     //rolls boss and e4 aces
-    VarSet(VAR_ROXANNE_ACE, Random() % 3);
-    VarSet(VAR_BRAWLY_ACE, Random() % 3);
-    VarSet(VAR_WALLY_ACE, Random() % 3);
-    VarSet(VAR_FLANNERY_ACE, Random() % 3);
-    VarSet(VAR_MAY_ACE, Random() % 3);
+    VarSet(VAR_ROXANNE_ACE, Random() % 4);
+    VarSet(VAR_BRAWLY_ACE, Random() % 4);
+    VarSet(VAR_WALLY_ACE, Random() % 4);
+    VarSet(VAR_FLANNERY_ACE, Random() % 4);
+    VarSet(VAR_MAY_ACE, Random() % 4);
     if (*GetVarPointer(VAR_TATE_LIZA_STATE) == 0) {
         VarSet(VAR_TATE_GYM_ACE, Random() % 3);
         VarSet(VAR_LIZA_E4_ACE, Random() % 3);
@@ -284,13 +284,13 @@ static void SpecialtyTrainerSetup(void) {
         VarSet(VAR_LIZA_GYM_ACE, Random() % 3);
         VarSet(VAR_TATE_E4_ACE, Random() % 3);
     }
-    VarSet(VAR_WALLACE_ACE, Random() % 3);
-    VarSet(VAR_ZINNIA_ACE, Random() % 3);
-    VarSet(VAR_ARCHIE_ACE, Random() % 3);
-    VarSet(VAR_COURTNEY_ACE, Random() % 3);
-    VarSet(VAR_CERISE_ACE, Random() % 3);
-    VarSet(VAR_PHOEBE_ACE, Random() % 3);
-    VarSet(VAR_NORMAN_ACE, Random() % 3);
-    VarSet(VAR_BRENDAN_ACE, Random() % 3);
-    VarSet(VAR_STEVEN_ACE, Random() % 3);
+    VarSet(VAR_WALLACE_ACE, Random() % 4);
+    VarSet(VAR_ZINNIA_ACE, Random() % 4);
+    VarSet(VAR_ARCHIE_ACE, Random() % 4);
+    VarSet(VAR_COURTNEY_ACE, Random() % 4);
+    VarSet(VAR_CERISE_ACE, Random() % 4);
+    VarSet(VAR_PHOEBE_ACE, Random() % 4);
+    VarSet(VAR_NORMAN_ACE, Random() % 4);
+    VarSet(VAR_BRENDAN_ACE, Random() % 4);
+    VarSet(VAR_STEVEN_ACE, Random() % 4);
 }

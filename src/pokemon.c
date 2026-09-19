@@ -858,6 +858,31 @@ void CreateMon(struct Pokemon *mon, enum Species species, u8 level, u32 personal
 void CreateMonWithIVs(struct Pokemon *mon, enum Species species, u8 level, u32 personality, struct OriginalTrainerId trainerId, u8 fixedIV)
 {
     CreateMon(mon, species, level, personality, trainerId);
+
+    const struct SpeciesInfo *speciesInfo = &gSpeciesInfo[species];
+    u32 maxAbilityNum = ARRAY_COUNT(speciesInfo->abilities);
+    u32 abilityNum;
+    int abilitySelector = Random() % 101;
+
+    if (maxAbilityNum == 3) {
+        if (abilitySelector >= 50) {
+            abilityNum = 1;
+        } else if (abilitySelector < 50 && abilitySelector >= 35) {
+            abilityNum = 2;
+        } else {
+            abilityNum = 3;
+        }
+    } else if (maxAbilityNum == 2) {
+        if (abilitySelector >= 85) {
+            abilityNum = 1;
+        } else {
+            abilityNum = 2;
+        }
+    } else {
+        abilityNum = 1;
+    }
+    SetMonData(mon, MON_DATA_ABILITY_NUM, &abilityNum);
+
     SetBoxMonIVs(&mon->box, fixedIV);
     CalculateMonStats(mon);
 }
