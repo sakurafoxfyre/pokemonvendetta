@@ -1622,6 +1622,14 @@
       "y": 4,
       "width": 1,
       "height": 1
+    },
+    {
+      "id": "MAPSEC_HAUNTWOOD",
+      "name": "HAUNTWOOD"
+    },
+    {
+      "id": "MAPSEC_RUSTBORO_PIER",
+      "name": "RUSTBORO PIER"
     }
   ]
 }

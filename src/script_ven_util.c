@@ -182,15 +182,15 @@ bool8 CanCatchInArea(void) //returns TRUE if catching is allowed on the route, F
         case MAPSEC_PACIFIDLOG_TOWN:
             if (FlagGet(FLAG_PACIFIDLOG_CAUGHT)) return FALSE;
             else return TRUE;
-        // case MAPSEC_GRANITE_CAVE:
-        //     if (FlagGet(FLAG_GRANITE_CAVE_1F_CAUGHT)) return FALSE;
-        //     else return TRUE;
-        // case MAPSEC_HAUNTWOOD:
-        //     if (FlagGet(FLAG_HAUNTWOOD_CAUGHT)) return FALSE;
-        //     else return TRUE;
-        // case MAPSEC_RUSTBORO_PIER:
-        //     if (FlagGet(FLAG_RUSTBORO_PIER_CAUGHT)) return FALSE;
-        //     else return TRUE;
+        case MAPSEC_GRANITE_CAVE:
+            if (FlagGet(FLAG_GRANITE_CAVE_CAUGHT)) return FALSE;
+            else return TRUE;
+        case MAPSEC_HAUNTWOOD:
+            if (FlagGet(FLAG_HAUNTWOOD_CAUGHT)) return FALSE;
+            else return TRUE;
+        case MAPSEC_RUSTBORO_PIER:
+            if (FlagGet(FLAG_RUSTBORO_PIER_CAUGHT)) return FALSE;
+            else return TRUE;
         case MAPSEC_RUSTURF_TUNNEL:
             if (FlagGet(FLAG_RUSTURF_TUNNEL_CAUGHT)) return FALSE;
             else return TRUE;
@@ -356,15 +356,15 @@ void SetCatchFlag(void)
         case MAPSEC_PACIFIDLOG_TOWN:
             FlagSet(FLAG_PACIFIDLOG_CAUGHT);
             break;
-        // case MAPSEC_GRANITE_CAVE:
-        //     FlagSet(FLAG_GRANITE_CAVE_1F_CAUGHT);
-        //     break;
-        // case MAPSEC_HAUNTWOOD:
-        //     FlagSet(FLAG_HAUNTWOOD_CAUGHT);
-        //     break;
-        // case MAPSEC_RUSTBORO_PIER:
-        //     FlagSet(FLAG_RUSTBORO_PIER_CAUGHT);
-        //     break;
+        case MAPSEC_GRANITE_CAVE:
+            FlagSet(FLAG_GRANITE_CAVE_CAUGHT);
+            break;
+        case MAPSEC_HAUNTWOOD:
+            FlagSet(FLAG_HAUNTWOOD_CAUGHT);
+            break;
+        case MAPSEC_RUSTBORO_PIER:
+            FlagSet(FLAG_RUSTBORO_PIER_CAUGHT);
+            break;
         case MAPSEC_RUSTURF_TUNNEL:
             FlagSet(FLAG_RUSTURF_TUNNEL_CAUGHT);
             break;
