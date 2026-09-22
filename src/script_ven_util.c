@@ -182,14 +182,8 @@ bool8 CanCatchInArea(void) //returns TRUE if catching is allowed on the route, F
         case MAPSEC_PACIFIDLOG_TOWN:
             if (FlagGet(FLAG_PACIFIDLOG_CAUGHT)) return FALSE;
             else return TRUE;
-        // case MAPSEC_GRANITE_CAVE_1F:
+        // case MAPSEC_GRANITE_CAVE:
         //     if (FlagGet(FLAG_GRANITE_CAVE_1F_CAUGHT)) return FALSE;
-        //     else return TRUE;
-        // case MAPSEC_GRANITE_CAVE_B1F:
-        //     if (FlagGet(FLAG_GRANITE_CAVE_B1F_CAUGHT)) return FALSE;
-        //     else return TRUE;
-        // case MAPSEC_GRANITE_CAVE_B2F:
-        //     if (FlagGet(FLAG_GRANITE_CAVE_B2F_CAUGHT)) return FALSE;
         //     else return TRUE;
         // case MAPSEC_HAUNTWOOD:
         //     if (FlagGet(FLAG_HAUNTWOOD_CAUGHT)) return FALSE;
@@ -203,7 +197,10 @@ bool8 CanCatchInArea(void) //returns TRUE if catching is allowed on the route, F
         case MAPSEC_PETALBURG_WOODS:
             if (FlagGet(FLAG_PETALBURG_WOODS_CAUGHT)) return FALSE;
             else return TRUE;
-    }    
+        default:
+            return TRUE;
+            DebugPrintf("This area isn't in the can catch area switch statement.");
+    }  
 };
 
 void SetCatchFlag(void)
@@ -213,172 +210,168 @@ void SetCatchFlag(void)
     switch (mapId)
     {
         case MAPSEC_ROUTE_101:
-            SetFlag(FLAG_101_CAUGHT);
+            FlagSet(FLAG_101_CAUGHT);
             break;
         case MAPSEC_ROUTE_102:
-            SetFlag(FLAG_102_CAUGHT);
+            FlagSet(FLAG_102_CAUGHT);
             break;
         case MAPSEC_ROUTE_103:
-            SetFlag(FLAG_103_CAUGHT);
+            FlagSet(FLAG_103_CAUGHT);
             break;
         case MAPSEC_ROUTE_104:
-            SetFlag(FLAG_104_CAUGHT);
+            FlagSet(FLAG_104_CAUGHT);
             break;
         case MAPSEC_ROUTE_105:
-            SetFlag(FLAG_105_CAUGHT);
+            FlagSet(FLAG_105_CAUGHT);
             break;
         case MAPSEC_ROUTE_106:
-            SetFlag(FLAG_106_CAUGHT);
+            FlagSet(FLAG_106_CAUGHT);
             break;
         case MAPSEC_ROUTE_107:
-            SetFlag(FLAG_107_CAUGHT);
+            FlagSet(FLAG_107_CAUGHT);
             break;
         case MAPSEC_ROUTE_108:
-            SetFlag(FLAG_108_CAUGHT);
+            FlagSet(FLAG_108_CAUGHT);
             break;
         case MAPSEC_ROUTE_109:
-            SetFlag(FLAG_109_CAUGHT);
+            FlagSet(FLAG_109_CAUGHT);
             break;
         case MAPSEC_ROUTE_110:
-            SetFlag(FLAG_110_CAUGHT);
+            FlagSet(FLAG_110_CAUGHT);
             break;
         case MAPSEC_ROUTE_111:
-            SetFlag(FLAG_111_CAUGHT);
+            FlagSet(FLAG_111_CAUGHT);
             break;
         case MAPSEC_ROUTE_112:
-            SetFlag(FLAG_112_CAUGHT);
+            FlagSet(FLAG_112_CAUGHT);
             break;
         case MAPSEC_ROUTE_113:
-            SetFlag(FLAG_113_CAUGHT);
+            FlagSet(FLAG_113_CAUGHT);
             break;
         case MAPSEC_ROUTE_114:
-            SetFlag(FLAG_114_CAUGHT);
+            FlagSet(FLAG_114_CAUGHT);
             break;
         case MAPSEC_ROUTE_115:
-            SetFlag(FLAG_115_CAUGHT);
+            FlagSet(FLAG_115_CAUGHT);
             break;
         case MAPSEC_ROUTE_116:
-            SetFlag(FLAG_116_CAUGHT);
+            FlagSet(FLAG_116_CAUGHT);
             break;
         case MAPSEC_ROUTE_117:
-            SetFlag(FLAG_117_CAUGHT);
+            FlagSet(FLAG_117_CAUGHT);
             break;
         case MAPSEC_ROUTE_118:
-            SetFlag(FLAG_118_CAUGHT);
+            FlagSet(FLAG_118_CAUGHT);
             break;
         case MAPSEC_ROUTE_119:
-            SetFlag(FLAG_119_CAUGHT);
+            FlagSet(FLAG_119_CAUGHT);
             break;
         case MAPSEC_ROUTE_120:
-            SetFlag(FLAG_120_CAUGHT);
+            FlagSet(FLAG_120_CAUGHT);
             break;
         case MAPSEC_ROUTE_121:
-            SetFlag(FLAG_121_CAUGHT);
+            FlagSet(FLAG_121_CAUGHT);
             break;
         case MAPSEC_ROUTE_122:
-            SetFlag(FLAG_122_CAUGHT);
+            FlagSet(FLAG_122_CAUGHT);
             break;
         case MAPSEC_ROUTE_123:
-            SetFlag(FLAG_123_CAUGHT);
+            FlagSet(FLAG_123_CAUGHT);
             break;
         case MAPSEC_ROUTE_124:
-            SetFlag(FLAG_124_CAUGHT);
+            FlagSet(FLAG_124_CAUGHT);
             break;
         case MAPSEC_ROUTE_125:
-            SetFlag(FLAG_125_CAUGHT);
+            FlagSet(FLAG_125_CAUGHT);
             break;
         case MAPSEC_ROUTE_126:
-            SetFlag(FLAG_126_CAUGHT);
+            FlagSet(FLAG_126_CAUGHT);
             break;
         case MAPSEC_ROUTE_127:
-            SetFlag(FLAG_127_CAUGHT);
+            FlagSet(FLAG_127_CAUGHT);
             break;
         case MAPSEC_ROUTE_128:
-            SetFlag(FLAG_128_CAUGHT);
+            FlagSet(FLAG_128_CAUGHT);
             break;
         case MAPSEC_ROUTE_129:
-            SetFlag(FLAG_129_CAUGHT);
+            FlagSet(FLAG_129_CAUGHT);
             break;
         case MAPSEC_ROUTE_130:
-            SetFlag(FLAG_130_CAUGHT);
+            FlagSet(FLAG_130_CAUGHT);
             break;
         case MAPSEC_ROUTE_131:
-            SetFlag(FLAG_131_CAUGHT);
+            FlagSet(FLAG_131_CAUGHT);
             break;
         case MAPSEC_ROUTE_132:
-            SetFlag(FLAG_132_CAUGHT);
+            FlagSet(FLAG_132_CAUGHT);
             break;
         case MAPSEC_ROUTE_133:
-            SetFlag(FLAG_133_CAUGHT);
+            FlagSet(FLAG_133_CAUGHT);
             break;
         case MAPSEC_ROUTE_134:
-            SetFlag(FLAG_134_CAUGHT);
+            FlagSet(FLAG_134_CAUGHT);
             break;
         case MAPSEC_LITTLEROOT_TOWN:
-            SetFlag(FLAG_LITTLEROOT_CAUGHT);
+            FlagSet(FLAG_LITTLEROOT_CAUGHT);
             break;
         case MAPSEC_OLDALE_TOWN:
-            SetFlag(FLAG_OLDALE_CAUGHT);
+            FlagSet(FLAG_OLDALE_CAUGHT);
             break;
         case MAPSEC_PETALBURG_CITY:
-            SetFlag(FLAG_PETALBURG_CAUGHT);
+            FlagSet(FLAG_PETALBURG_CAUGHT);
             break;
         case MAPSEC_RUSTBORO_CITY:
-            SetFlag(FLAG_RUSTBORO_CAUGHT);
+            FlagSet(FLAG_RUSTBORO_CAUGHT);
             break;
         case MAPSEC_DEWFORD_TOWN:
-            SetFlag(FLAG_DEWFORD_CAUGHT);
+            FlagSet(FLAG_DEWFORD_CAUGHT);
             break;
         case MAPSEC_SLATEPORT_CITY:
-            SetFlag(FLAG_SLATEPORT_CAUGHT);
+            FlagSet(FLAG_SLATEPORT_CAUGHT);
             break;
         case MAPSEC_MAUVILLE_CITY:
-            SetFlag(FLAG_MAUVILLE_CAUGHT);
+            FlagSet(FLAG_MAUVILLE_CAUGHT);
             break;
         case MAPSEC_VERDANTURF_TOWN:
-            SetFlag(FLAG_VERDANTURF_CAUGHT);
+            FlagSet(FLAG_VERDANTURF_CAUGHT);
             break;
         case MAPSEC_LAVARIDGE_TOWN:
-            SetFlag(FLAG_LAVARIDGE_CAUGHT);
+            FlagSet(FLAG_LAVARIDGE_CAUGHT);
             break;
         case MAPSEC_FALLARBOR_TOWN:
-            SetFlag(FLAG_FALLARBOR_CAUGHT);
+            FlagSet(FLAG_FALLARBOR_CAUGHT);
             break;
         case MAPSEC_FORTREE_CITY:
-            SetFlag(FLAG_FORTREE_CAUGHT);
+            FlagSet(FLAG_FORTREE_CAUGHT);
             break;
         case MAPSEC_LILYCOVE_CITY:
-            SetFlag(FLAG_LILYCOVE_CAUGHT);
+            FlagSet(FLAG_LILYCOVE_CAUGHT);
             break;
         case MAPSEC_MOSSDEEP_CITY:
-            SetFlag(FLAG_MOSSDEEP_CAUGHT);
+            FlagSet(FLAG_MOSSDEEP_CAUGHT);
             break;
         case MAPSEC_SOOTOPOLIS_CITY:
-            SetFlag(FLAG_SOOTOPOLIS_CAUGHT);
+            FlagSet(FLAG_SOOTOPOLIS_CAUGHT);
             break;
         case MAPSEC_PACIFIDLOG_TOWN:
-            SetFlag(FLAG_PACIFIDLOG_CAUGHT);
+            FlagSet(FLAG_PACIFIDLOG_CAUGHT);
             break;
-        // case MAPSEC_GRANITE_CAVE_1F:
-        //     SetFlag(FLAG_GRANITE_CAVE_1F_CAUGHT);
-        //     break;
-        // case MAPSEC_GRANITE_CAVE_B1F:
-        //     SetFlag(FLAG_GRANITE_CAVE_B1F_CAUGHT);
-        //     break;
-        // case MAPSEC_GRANITE_CAVE_B2F:
-        //     SetFlag(FLAG_GRANITE_CAVE_B2F_CAUGHT);
+        // case MAPSEC_GRANITE_CAVE:
+        //     FlagSet(FLAG_GRANITE_CAVE_1F_CAUGHT);
         //     break;
         // case MAPSEC_HAUNTWOOD:
-        //     SetFlag(FLAG_HAUNTWOOD_CAUGHT);
+        //     FlagSet(FLAG_HAUNTWOOD_CAUGHT);
         //     break;
         // case MAPSEC_RUSTBORO_PIER:
-        //     SetFlag(FLAG_RUSTBORO_PIER_CAUGHT);
+        //     FlagSet(FLAG_RUSTBORO_PIER_CAUGHT);
         //     break;
         case MAPSEC_RUSTURF_TUNNEL:
-            SetFlag(FLAG_RUSTURF_TUNNEL_CAUGHT);
+            FlagSet(FLAG_RUSTURF_TUNNEL_CAUGHT);
             break;
         case MAPSEC_PETALBURG_WOODS:
-            SetFlag(FLAG_PETALBURG_WOODS_CAUGHT);
+            FlagSet(FLAG_PETALBURG_WOODS_CAUGHT);
             break;
+        default:
+            DebugPrintf("This place isn't in the set catch flag switch statement.");
     }
 }

@@ -387,8 +387,8 @@ u16 GetCurrentMapWildMonHeaderId(void)
         if (gWildMonHeaders[i].mapGroup == gSaveBlock1Ptr->location.mapGroup &&
             gWildMonHeaders[i].mapNum == gSaveBlock1Ptr->location.mapNum)
         {
-            DebugPrintf(gWildMonHeaders[i].mapGroup);
-            DebugPrintf(gWildMonHeaders[i].mapNum);
+            //DebugPrintf("%d", gWildMonHeaders[i].mapGroup);
+            //DebugPrintf("%d", gWildMonHeaders[i].mapNum);
             if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_ALTERING_CAVE) &&
                 gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_ALTERING_CAVE))
             {

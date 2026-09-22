@@ -40,6 +40,7 @@
 #include "constants/layouts.h"
 #include "constants/metatile_behaviors.h"
 #include "constants/songs.h"
+#include "script_ven_util.h"
 
 static EWRAM_DATA u8 sWildEncounterImmunitySteps = 0;
 static EWRAM_DATA u16 sPrevMetatileBehavior = 0;
@@ -738,9 +739,13 @@ static bool8 TryStartStepCountScript(u16 metatileBehavior)
     #endif
         if (ShouldEggHatch())
         {
-            IncrementGameStat(GAME_STAT_HATCHED_EGGS);
-            ScriptContext_SetupScript(EventScript_EggHatch);
-            return TRUE;
+            DebugPrintf("An egg wants to hatch!");
+            bool8 canHatch = CanCatchInArea();
+            if (canHatch) {
+                IncrementGameStat(GAME_STAT_HATCHED_EGGS);
+                ScriptContext_SetupScript(EventScript_EggHatch);
+                return TRUE;
+            }
         }
         if (AbnormalWeatherHasExpired() == TRUE)
         {
