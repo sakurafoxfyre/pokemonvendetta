@@ -30,7 +30,7 @@
 #include "constants/items.h"
 #include "constants/layouts.h"
 #include "constants/weather.h"
-#include "script_ven_wild_encounter.h";
+#include "script_ven_wild_encounter.h"
 
 extern const u8 EventScript_SprayWoreOff[];
 
@@ -475,6 +475,8 @@ static u8 PickWildMonNature(enum Species species)
 
 void CreateWildMon(enum Species species, u8 level)
 {
+    DebugPrintf("In CreateWildMon.");
+    //DebugPrintf("%d", species);
     ZeroEnemyPartyMons();
     u32 personality = GetMonPersonality(species, GetSynchronizedGender(WILDMON_ORIGIN, species), PickWildMonNature(species), RANDOM_UNOWN_LETTER);
     CreateMonWithIVs(&gParties[B_TRAINER_OPPONENT_A][0], species, level, personality, OTID_STRUCT_PLAYER_ID, USE_RANDOM_IVS);
@@ -491,10 +493,67 @@ bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, enum WildPok
 {
     //this is where we *actually* generate the mon, so this should actually have the mon level
     //might need to move the level match over here :)))) lol
+    //i'm... assuming the area thingie just tells the system if we're on land/surfing/rocksmash/fishing/whatever 'hidden' is lmao
     u8 wildMonIndex = 0;
-    u8 level;
 
-    const struct Ven_WildPokemon selectedMon;
+    struct Ven_WildPokemon selectedMon;
+    u8 worldLevelScaling = 6 * *GetVarPointer(VAR_WORLD_DIFFICULTY);
+    u8 level;
+    u8 min;
+    u8 max;
+    u8 range;
+    u8 rand;
+
+    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_ROUTE110) && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_ROUTE110))
+    {
+        DebugPrintf("You are on Route 110!");
+        switch(area)
+        {
+            case WILD_AREA_LAND:
+                DebugPrintf("This is a land encounter!");
+                selectedMon = Ven_GetLandEncounterMon();
+                if (LURE_STEP_COUNT == 0) //no lure active
+                {
+                    min = selectedMon.minLevel;
+                    max = selectedMon.maxLevel;
+                    range = max - min + 1;
+                    rand = Random() % range;
+
+                    //check first mon for Hustle/Vital Spirit/Pressure which applies a flat 50% that the mon will be max level
+                    if (!GetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_SANITY_IS_EGG))
+                    {
+                        enum Ability ability = GetMonAbility(&gParties[B_TRAINER_PLAYER][0]);
+                        if (ability == ABILITY_HUSTLE || ability == ABILITY_VITAL_SPIRIT || ability == ABILITY_PRESSURE)
+                        {
+                            if (Random() % 2 == 0)
+                            level = max + worldLevelScaling;
+
+                        if (rand != 0)
+                            rand--;
+                        }
+                    }
+                    level = min + rand + worldLevelScaling;
+                } 
+                else //have a lure active
+                { 
+                    max = selectedMon.maxLevel;
+                    level = max + 1 + worldLevelScaling;
+                }
+                break;
+            default:
+                DebugPrintf("The wild mon generation failed...");
+                return FALSE;
+        }
+
+        if (flags & WILD_CHECK_REPEL && !IsWildLevelAllowedByRepel(level))
+            return FALSE;
+        if (gMapHeader.mapLayoutId != LAYOUT_BATTLE_FRONTIER_BATTLE_PIKE_ROOM_WILD_MONS && flags & WILD_CHECK_KEEN_EYE && !IsAbilityAllowingEncounter(level))
+            return FALSE;
+
+        DebugPrintf("Just before the CreateWildMon call.");
+        CreateWildMon(selectedMon.species, level);
+        return TRUE;
+    }
 
     switch (area)
     {

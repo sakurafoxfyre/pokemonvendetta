@@ -33,3 +33,10 @@
     .species = SPECIES_JOLTEON,
     .encounterRate = 10,
 },
+[5] =
+{
+    .minLevel = 0,
+    .maxLevel = 0,
+    .species = SPECIES_NONE,
+    .encounterRate = 0,
+},

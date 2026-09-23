@@ -11,7 +11,7 @@ struct Ven_WildPokemon
     u8 encounterRate;
 };
 
-const struct Ven_WildPokemon Ven_GetLandEncounterMon(void);
 struct Ven_WildPokemon *Ven_GetLandEncounterArray(void);
+const struct Ven_WildPokemon Ven_GetLandEncounterMon(void);
 
 #endif //GUARD_SCRIPT_EVEN_WILD_ENCOUNTER_H

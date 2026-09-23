@@ -1,5 +1,8 @@
 #include "rtc.h"
-#include "constants/species.h";
+#include "constants/species.h"
+#include "random.h"
+#include "malloc.h"
+#include "event_data.h"
 
 struct Ven_WildPokemon
 {
@@ -9,19 +12,95 @@ struct Ven_WildPokemon
     u8 encounterRate;
 };
 
+const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
+{
+    DebugPrintf("Helloooooo...?");
+    struct Ven_WildPokemon* currentArray = Alloc(sizeof(struct Ven_WildPokemon) * 12);
+    u16 currentMapNum = gSaveBlock1Ptr->location.mapNum;
+
+    static struct Ven_WildPokemon fallbackMon[1] = 
+    {
+        {
+            .minLevel = 5,
+            .maxLevel = 5,
+            .species = SPECIES_SHINX,
+            .encounterRate = 100,
+        }
+    };
+
+    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_PETALBURG_CITY)) //gMapGroup_TownsAndRoutes
+    {
+        switch (currentMapNum)
+        {
+            case MAP_NUM(MAP_ROUTE110): //Route 110
+                switch(*GetVarPointer(VAR_WORLD_DIFFICULTY))
+                {
+                    case 0:
+                    case 1:
+                    case 2:
+                        const struct Ven_WildPokemon arrayData110land02[12] = 
+                        {
+                            #include "data/wildencounters/townsandroutes/route110/landencounters/route110land_02.h"
+                        };
+                        memcpy(currentArray, arrayData110land02, sizeof(arrayData110land02));
+                        return currentArray;
+                    case 3:
+                    case 4:
+                    case 5:
+                        const struct Ven_WildPokemon arrayData110land35[12] = {
+                            #include "data/wildencounters/townsandroutes/route110/landencounters/route110land_35.h"
+                        };
+                        memcpy(currentArray, arrayData110land35, sizeof(arrayData110land35));
+                        return currentArray;
+                    case 6:
+                    case 7:
+                    case 8:
+                        const struct Ven_WildPokemon arrayData110land68[12] = {
+                            #include "data/wildencounters/townsandroutes/route110/landencounters/route110land_68.h"
+                        };
+                        memcpy(currentArray, arrayData110land68, sizeof(arrayData110land68));
+                        return currentArray;
+                    case 9:
+                    case 10:
+                        const struct Ven_WildPokemon arrayData110land910[12] = {
+                            #include "data/wildencounters/townsandroutes/route110/landencounters/route110land_910.h"
+                        };
+                        memcpy(currentArray, arrayData110land910, sizeof(arrayData110land910));
+                        return currentArray;
+                    default:
+                        const struct Ven_WildPokemon arrayDatadefault[12] = {
+                            #include "data/wildencounters/townsandroutes/route110/landencounters/route110land_910.h"
+                        };
+                        memcpy(currentArray, arrayDatadefault, sizeof(arrayDatadefault));
+                        return currentArray;
+                }
+            default:
+                DebugPrintf("This encounter table hasn't been set up!");
+                return fallbackMon;
+        }
+    }
+    else
+    {
+        DebugPrintf("This encounter table hasn't been set up!");
+        return fallbackMon; 
+    }
+}
+
 struct Ven_WildPokemon Ven_GetLandEncounterMon(void)
 {
-
-    struct Ven_WildPokemon* encounterData = Ven_GetLandEncounterArray();
-    int encounterPercentile = Rand() % 100;
+    DebugPrintf("World Level: %d", *GetVarPointer(VAR_WORLD_DIFFICULTY));
+    const struct Ven_WildPokemon* encounterData = Ven_GetLandEncounterArray();
+    DebugPrintf("%d", encounterData[0].species);
+    int encounterPercentile = Random() % 100;
     int breakpointArray[12];
     int currentBreakpoint = 0;
-    int arrayIndex;
+    int arrayIndex = 0;
 
     for (int i = 0; i >= 11; i++)
     {
-        if (encounterData[i].minLevel != NULL)
+        if (encounterData[i].species != 0)
         {
+            DebugPrintf("encounterData[i] has data!");
             currentBreakpoint = currentBreakpoint + encounterData[i].encounterRate;
             breakpointArray[i] = currentBreakpoint;
         }
@@ -33,13 +112,14 @@ struct Ven_WildPokemon Ven_GetLandEncounterMon(void)
 
     for (int i = 0; i >= 11; i++)
     {
-        if (encounterPercentile > breakpointArray[i])
+        if (encounterPercentile >= breakpointArray[i])
         {
             arrayIndex = i;
-            DebugPrintf("%d", encounterPercentile);
+            DebugPrintf("encounterPercentile: %d", encounterPercentile);
         }
     }
 
+    DebugPrintf("arrayIndex is %d", arrayIndex);
     return encounterData[arrayIndex];
 
     //get map group(folder) and map num(actual map) gSaveBlock1Ptr->location.mapGroup/Num
@@ -72,74 +152,4 @@ struct Ven_WildPokemon Ven_GetLandEncounterMon(void)
     // there's going to be a lot of incremental testing here rip
     // 0-2, 3-5, 6-8, 9-11
     // 12 max for each type
-}
-
-struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
-{
-    struct Ven_WildPokemon* currentArray = Alloc(sizeof(struct Ven_WildPokemon) * 12);
-    u16 currentMapNum = gSaveBlock1Ptr->location.mapNum;
-
-    struct Ven_WildPokemon* fallbackMon = Alloc(sizeof(struct Ven_WildPokemon));
-    fallbackMon[1] = {
-        .minLevel = 5,
-        .maxLevel = 5,
-        .species = SPECIES_SHINX,
-        .encounterRate = 100,
-    };
-
-    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_PETALBURG_CITY)) //gMapGroup_TownsAndRoutes
-    {
-        switch (currentMapNum)
-        {
-            case MAP_NUM(MAP_ROUTE110): //Route 110
-                switch(GetVarPointer(VAR_WORLD_DIFFICULTY))
-                {
-                    case 0:
-                    case 1:
-                    case 2:
-                        const struct Ven_WildPokemon arrayData[12] = {
-                            #include "src/data/wildencounters/townsandroutes/route110/landencounters/route110land_02.h"
-                        };
-                        memcpy(currentArray, arrayData, sizeof(arrayData));
-                        return currentArray;
-                    case 3:
-                    case 4:
-                    case 5:
-                        const struct Ven_WildPokemon arrayData[12] = {
-                            #include "src/data/wildencounters/townsandroutes/route110/landencounters/route110land_35.h"
-                        };
-                        memcpy(currentArray, arrayData, sizeof(arrayData));
-                        return currentArray;
-                    case 6:
-                    case 7:
-                    case 8:
-                        const struct Ven_WildPokemon arrayData[12] = {
-                            #include "src/data/wildencounters/townsandroutes/route110/landencounters/route110land_68.h"
-                        };
-                        memcpy(currentArray, arrayData, sizeof(arrayData));
-                        return currentArray;
-                    case 9:
-                    case 10:
-                        const struct Ven_WildPokemon arrayData[12] = {
-                            #include "src/data/wildencounters/townsandroutes/route110/landencounters/route110land_910.h"
-                        };
-                        memcpy(currentArray, arrayData, sizeof(arrayData));
-                        return currentArray;
-                    default:
-                        const struct Ven_WildPokemon arrayData[12] = {
-                            #include "src/data/wildencounters/townsandroutes/route110/landencounters/route110land_910.h"
-                        };
-                        memcpy(currentArray, arrayData, sizeof(arrayData));
-                        return currentArray;
-                }
-            default:
-                DebugPrintf("This encounter table hasn't been set up!");
-                return fallbackMon;
-        }
-    }
-    else
-    {
-        DebugPrintf("This encounter table hasn't been set up!");
-        return fallbackMon; 
-    }
 }
