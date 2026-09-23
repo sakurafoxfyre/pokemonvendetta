@@ -30,6 +30,7 @@
 #include "constants/items.h"
 #include "constants/layouts.h"
 #include "constants/weather.h"
+#include "script_ven_wild_encounter.h";
 
 extern const u8 EventScript_SprayWoreOff[];
 
@@ -324,6 +325,10 @@ static u32 ChooseWildMonIndex_Fishing(u8 rod)
 
 u8 ChooseWildMonLevel(const struct WildPokemon *wildPokemon, u8 wildMonIndex, enum WildPokemonArea area)
 {
+    //need to switch the wildPokemon[wildMonIndex] out for the return from our util function
+    //area helps check the max level avail for that pokemon, if we collapse everything into one encoutner 
+    //per mon though we won't need that
+
     u8 min;
     u8 max;
     u8 range;
@@ -484,8 +489,12 @@ void CreateWildMon(enum Species species, u8 level)
 
 bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, enum WildPokemonArea area, u8 flags)
 {
+    //this is where we *actually* generate the mon, so this should actually have the mon level
+    //might need to move the level match over here :)))) lol
     u8 wildMonIndex = 0;
     u8 level;
+
+    const struct Ven_WildPokemon selectedMon;
 
     switch (area)
     {
