@@ -157,7 +157,6 @@ static void DexNavProximityUpdate(void);
 static void DexNavDrawIcons(void);
 static void DexNavUpdateSearchWindow(u8 proximity, u8 searchLevel);
 // HIDDEN MONS
-static void DexNavDrawHiddenIcons(void);
 static void DrawHiddenSearchWindow(u8 width);
 static void RevealHiddenMon(void);
 
@@ -813,7 +812,7 @@ static void SetUpDexNavSearch(void)
     LoadSearchIconData();
     if (sDexNavSearchDataPtr->hiddenSearch)
     {
-        DexNavDrawHiddenIcons();
+        
     }
     else
     {
@@ -2460,179 +2459,6 @@ static void Task_DexNavMain(u8 taskId)
             task->func = Task_DexNavExitAndSearch;
         }
     }
-}
-
-/////////////////////////
-//// HIDDEN POKEMON /////
-/////////////////////////
-bool32 TryFindHiddenPokemon(void)
-{
-    u16 *stepPtr = GetVarPointer(DN_VAR_STEP_COUNTER);
-
-    if (DEXNAV_ENABLED == 0
-            || sDexNavSearchDataPtr == NULL
-            || !FlagGet(DN_FLAG_DETECTOR_MODE)
-            || FlagGet(DN_FLAG_SEARCHING)
-            || GetFlashLevel() > 0)
-    {
-        if (stepPtr != NULL)
-            (*stepPtr) = 0;
-        return FALSE;
-    }
-
-    (*stepPtr)++;
-    (*stepPtr) %= HIDDEN_MON_STEP_COUNT;
-    if ((*stepPtr) == 0 && (Random() % 100 < HIDDEN_MON_SEARCH_RATE))
-    {
-        // hidden Pokémon
-        u32 headerId = GetCurrentMapWildMonHeaderId();
-        u8 index;
-        enum Species species;
-        enum EncounterType environment;
-
-        if (headerId == HEADER_NONE)
-            return FALSE;
-
-        enum TimeOfDay timeOfDay = GetTimeOfDayForEncounters(headerId, WILD_AREA_HIDDEN);
-        const struct WildPokemonInfo *hiddenMonsInfo = gWildMonHeaders[headerId].encounterTypes[timeOfDay].hiddenMonsInfo;
-        bool8 isHiddenMon = FALSE;
-
-        // while you can still technically find hidden Pokémon if there are not hidden-only Pokémon on a map,
-        // this prevents any potential lagging on maps you dont want hidden Pokémon to appear on
-        if (hiddenMonsInfo == NULL)
-            return FALSE;
-
-        // encounter rate signifies surfing (1) or land mons (0)!
-        // again, for simplicity
-        switch (hiddenMonsInfo->encounterRate)
-        {
-        case 0: // land
-            // there are surely better ways to do this, but this allows greatest flexibility
-            if (Random() % 100 < HIDDEN_MON_PROBABILTY)
-            {
-                index = ChooseHiddenMonIndex();
-                if (index == 0xFF)
-                    return FALSE;//no hidden info
-                species = hiddenMonsInfo->wildPokemon[index].species;
-                isHiddenMon = TRUE;
-                environment = ENCOUNTER_TYPE_HIDDEN;
-            }
-            else
-            {
-                species = gWildMonHeaders[headerId].encounterTypes[timeOfDay].landMonsInfo->wildPokemon[ChooseWildMonIndex_Land()].species;
-                environment = ENCOUNTER_TYPE_LAND;
-            }
-            break;
-        case 1: // water
-            if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_SURFING))
-            {
-                if (Random() % 100 < HIDDEN_MON_PROBABILTY)
-                {
-                    index = ChooseHiddenMonIndex();
-                    if (index == 0xFF)
-                        return FALSE;//no hidden info
-                    species = hiddenMonsInfo->wildPokemon[index].species;
-                    isHiddenMon = TRUE;
-                    environment = ENCOUNTER_TYPE_HIDDEN;
-                }
-                else
-                {
-                    species = gWildMonHeaders[headerId].encounterTypes[timeOfDay].waterMonsInfo->wildPokemon[ChooseWildMonIndex_Water()].species;
-                    environment = ENCOUNTER_TYPE_WATER;
-
-                }
-            }
-            else
-            {
-                // not surfing -> can't find hidden water mons
-                return FALSE;
-            }
-            break;
-        default:
-            return FALSE;
-        }
-
-        if (species == SPECIES_NONE)
-            return FALSE;
-
-        sDexNavSearchDataPtr = AllocZeroed(sizeof(struct DexNavSearch));
-        FlagSet(DN_FLAG_SEARCHING);
-        // init search data
-        sDexNavSearchDataPtr->isHiddenMon = isHiddenMon;
-        sDexNavSearchDataPtr->species = species;
-        sDexNavSearchDataPtr->hiddenSearch = TRUE;
-        sDexNavSearchDataPtr->environment = environment;    // updated in DexNavTryGenerateMonLevel if hidden mon
-        sDexNavSearchDataPtr->monLevel = DexNavTryGenerateMonLevel(species, environment);
-        if (sDexNavSearchDataPtr->monLevel == MON_LEVEL_NONEXISTENT)
-        {
-            FREE_AND_SET_NULL(sDexNavSearchDataPtr);
-            FlagClear(DN_FLAG_SEARCHING);
-            return FALSE;
-        }
-
-        // find tile for hidden mon and start effect if possible
-        if (!TryStartHiddenMonFieldEffect(sDexNavSearchDataPtr->environment, 8, 8, TRUE))
-        {
-            FREE_AND_SET_NULL(sDexNavSearchDataPtr);
-            FlagClear(DN_FLAG_SEARCHING);
-            return FALSE;
-        }
-
-        // exclamation mark over player
-        gFieldEffectArguments[0] = gSaveBlock1Ptr->pos.x;
-        gFieldEffectArguments[1] = gSaveBlock1Ptr->pos.y;
-        gFieldEffectArguments[2] = gSprites[gPlayerAvatar.spriteId].subpriority - 1;
-        gFieldEffectArguments[3] = 2;
-        ObjectEventGetLocalIdAndMap(&gObjectEvents[gPlayerAvatar.objectEventId], &gFieldEffectArguments[0], &gFieldEffectArguments[1], &gFieldEffectArguments[2]);
-        FieldEffectStart(FLDEFF_EXCLAMATION_MARK_ICON);
-
-        PlayCry_Script(species, 0);
-        SetUpDexNavSearch();
-        HideMapNamePopUpWindow();
-        ChangeBgY_ScreenOff(0, 0, 0);
-        return FALSE;   // we dont actually want to enable the script context or the game will freeze
-    }
-
-    return FALSE;
-}
-
-static void DrawSearchIcon(void)
-{
-    struct CompressedSpriteSheet spriteSheet;
-
-    spriteSheet.data = sHiddenSearchIconGfx;
-    spriteSheet.size = 0x200;
-    spriteSheet.tag = SELECTION_CURSOR_TAG;
-    LoadCompressedSpriteSheet(&spriteSheet);
-    sDexNavSearchDataPtr->iconSpriteId = CreateSprite(&sSearchIconSpriteTemplate, 18, GetSearchWindowY() + 12, 0);
-}
-
-// the initial hidden icon window ONLY shows search icon, ??? instead of name, and the search level (and pokeball icon if owned)
-// if the player presses R or moves close enough, the full search window will be created
-// this way, if the player is not interested in hidden Pokémon it will not be too intrusive
-static void DrawHiddenSearchWindow(u8 width)
-{
-    AddSearchWindow(width);
-    AddTextPrinterParameterized3(sDexNavSearchDataPtr->windowId, FONT_SMALL, SPECIES_ICON_X + 4, 0, sSearchFontColor, TEXT_SKIP_DRAW, sText_ThreeQmarks);
-
-    ConvertIntToDecimalStringN(gStringVar1, sDexNavSearchDataPtr->searchLevel, STR_CONV_MODE_LEFT_ALIGN, 2);
-    StringExpandPlaceholders(gStringVar4, sText_SearchLevel);
-    AddTextPrinterParameterized3(sDexNavSearchDataPtr->windowId, FONT_SMALL, SPECIES_ICON_X + 4, 12, sSearchFontColor, TEXT_SKIP_DRAW, gStringVar4);
-    CopyWindowToVram(sDexNavSearchDataPtr->windowId, 2);
-}
-
-static void DexNavDrawHiddenIcons(void)
-{
-    enum Species species = sDexNavSearchDataPtr->species;
-
-    DrawHiddenSearchWindow(12);
-    DrawSearchIcon();
-
-    if (GetSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_GET_CAUGHT))
-        sDexNavSearchDataPtr->ownedIconSpriteId = CreateSprite(&sOwnedIconTemplate, SPECIES_ICON_X + 6, GetSearchWindowY() + 2, 0);
-
-    if (sDexNavSearchDataPtr->isHiddenMon)
-        sDexNavSearchDataPtr->exclamationSpriteId = CreateSprite(&sHiddenMonIconTemplate, SPECIES_ICON_X + 34, GetSearchWindowY() + 8, 0);
 }
 
 /////////////////////////

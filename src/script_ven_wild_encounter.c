@@ -3,6 +3,8 @@
 #include "random.h"
 #include "malloc.h"
 #include "event_data.h"
+#include "constants/abilities.h"
+#include "pokemon.h"
 
 struct Ven_WildPokemon
 {
@@ -14,17 +16,23 @@ struct Ven_WildPokemon
 
 const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
 {
-    DebugPrintf("Helloooooo...?");
+    //DebugPrintf("Helloooooo...?");
     struct Ven_WildPokemon* currentArray = Alloc(sizeof(struct Ven_WildPokemon) * 12);
     u16 currentMapNum = gSaveBlock1Ptr->location.mapNum;
 
-    static struct Ven_WildPokemon fallbackMon[1] = 
+    static struct Ven_WildPokemon fallbackMon[2] = 
     {
         {
             .minLevel = 5,
             .maxLevel = 5,
             .species = SPECIES_SHINX,
             .encounterRate = 100,
+        },
+        {
+            .minLevel = 0,
+            .maxLevel = 0,
+            .species = SPECIES_NONE,
+            .encounterRate = 0,
         }
     };
 
@@ -88,68 +96,88 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
 
 struct Ven_WildPokemon Ven_GetLandEncounterMon(void)
 {
-    DebugPrintf("World Level: %d", *GetVarPointer(VAR_WORLD_DIFFICULTY));
+    //DebugPrintf("World Level: %d", *GetVarPointer(VAR_WORLD_DIFFICULTY));
     const struct Ven_WildPokemon* encounterData = Ven_GetLandEncounterArray();
-    DebugPrintf("%d", encounterData[0].species);
+    //DebugPrintf("%d", encounterData[0].species);
     int encounterPercentile = Random() % 100;
-    int breakpointArray[12];
+    //DebugPrintf("encounterPercentile: %d", encounterPercentile);
     int currentBreakpoint = 0;
-    int arrayIndex = 0;
+    enum Ability ability = GetMonAbility(&gParties[B_TRAINER_PLAYER][0]);
+    bool8 canHaveAbilityInfluencedEncounter = FALSE;
+    int currentAbilityPulledIndex = 0;
+    int abilityPulledIndicies[12];
+    int numberOfAbilityPulledMons = 0;
 
-    for (int i = 0; i >= 11; i++)
+    static struct Ven_WildPokemon fallbackMon = 
     {
-        if (encounterData[i].species != 0)
-        {
-            DebugPrintf("encounterData[i] has data!");
-            currentBreakpoint = currentBreakpoint + encounterData[i].encounterRate;
-            breakpointArray[i] = currentBreakpoint;
-        }
-        else
-        {
-            break;
-        }
+        .minLevel = 1,
+        .maxLevel = 1,
+        .species = SPECIES_SHINX,
+        .encounterRate = 100,
     };
 
-    for (int i = 0; i >= 11; i++)
+    if (ability == ABILITY_STATIC)
     {
-        if (encounterPercentile >= breakpointArray[i])
+        DebugPrintf("Lead mon has Static!");
+        for (int i = 0; i <= 11; i++) //check if there are any mons that even qualify
         {
-            arrayIndex = i;
-            DebugPrintf("encounterPercentile: %d", encounterPercentile);
+            if (IsSpeciesOfType(encounterData[i].species, TYPE_ELECTRIC))
+            {
+                abilityPulledIndicies[currentAbilityPulledIndex] = i;
+                currentAbilityPulledIndex ++;
+                numberOfAbilityPulledMons ++;
+                canHaveAbilityInfluencedEncounter = TRUE;
+            }
+        }
+
+        if (Random() % 2 == 1 && canHaveAbilityInfluencedEncounter) //passed the 50% flat check to force electric
+        {
+            DebugPrintf("Static is influencing this encounter...");
+            int newBreakpoint = (Random() % 100) / numberOfAbilityPulledMons + 1;
+            for (int i = 0; i <= numberOfAbilityPulledMons; i++)
+            {
+                if (newBreakpoint * (i + 1) >= encounterPercentile)
+                {
+                    return encounterData[abilityPulledIndicies[i]];
+                }
+            }
+            DebugPrintf("Generating encounter mon failed - Static found a applicable mon but did not return a valid output.");
+            return fallbackMon;
+        }
+        else //standard mon generation
+        {
+            for (int i = 0; i <= 11; i++)
+            {
+                if (encounterData[i].encounterRate!= 0)
+                {
+                    currentBreakpoint = currentBreakpoint + encounterData[i].encounterRate;
+                    //DebugPrintf("Current Breakpoint: %d", currentBreakpoint);
+                    if (currentBreakpoint >= encounterPercentile)
+                    {
+                        //DebugPrintf("i is currently %d.", i);
+                        return encounterData[i];
+                    }
+                }
+            }
+        }
+    }
+    else
+    {
+        for (int i = 0; i <= 11; i++)
+        {
+            if (encounterData[i].encounterRate!= 0)
+            {
+                currentBreakpoint = currentBreakpoint + encounterData[i].encounterRate;
+                //DebugPrintf("Current Breakpoint: %d", currentBreakpoint);
+                if (currentBreakpoint >= encounterPercentile)
+                {
+                    //DebugPrintf("i is currently %d.", i);
+                    return encounterData[i];
+                }
+            }
         }
     }
 
-    DebugPrintf("arrayIndex is %d", arrayIndex);
-    return encounterData[arrayIndex];
-
-    //get map group(folder) and map num(actual map) gSaveBlock1Ptr->location.mapGroup/Num
-    //need to switch based on location
-    //need to check world level
-    //include given file (similar to how trainer pools are included)
-    //get the encounter chances/ranges
-    // -> array of breakpoints? (ie 10% and 10% would make breakpoints 10, 20 (bc exclusive at the top, counting from 0))
-    // -> rand % 100
-    // -> find what breakpoint that falls in
-    // -> figure out what pokemon that corresponds with
-    // -> return that 
-    // -> return format will be {min level, max level, SPECIES}
-    // so files will be const struct WildPokemon *someAreaLandWilds = [ {mon} ]
-    // so then breakpoint indexes for the array of breakpoints will match their indx in the someAreaWilds array
-    // ie if we are in breakpoint area 1 (bc we count from 0), then someAreaLandWilds[1] will be the mon we want
-    // since this will be a "similar" set up to the class/route pools, we will need alice to provide the exact array sizes...
-    // if we do sizeOf(someAreaLandWilds) / sizeOf(WildPokemon) = array length...
-    // so we do a supplementary function that returns the specific array we need, and then we use the return of that here
-    // and do all the magic here which then returns the actual wild mon encounter to the function over in the other file?
-    // the main issue is the whole size thing... since there might be different amounts of enconters...
-    // so we lock a max amount, do the "check how many of these are actually there lmao", and go from there
-    // we'll need some extra work to account for abilities that attract other...
-    // there's a bunch of other stuff it looks like, but we'll start small and work our way up
-    // stuff to keep in mind
-    // different rods (old, good, super)
-    // rock smash
-    // surf
-    // sweet scent (probably just uses the other calls??????)
-    // there's going to be a lot of incremental testing here rip
-    // 0-2, 3-5, 6-8, 9-11
-    // 12 max for each type
+    DebugPrintf("Generating encounter mon failed - something very much went wrong in GetLandEncounterMon.");
+    return fallbackMon;
 }

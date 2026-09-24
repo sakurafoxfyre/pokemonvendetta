@@ -1,3 +1,7 @@
+//THIS FILE IS FOR GENERATING OVERWORLD ENCOUNTERS (Lets Go style)
+//as of right now it appears that all function calls are internal, and no external systems are referencing this file
+//lines that are commented out are stuff that was removed from the encounter system as part of the over haul
+
 #include "global.h"
 #include "wild_encounter_ow.h"
 #include "battle_setup.h"
@@ -271,7 +275,7 @@ void UpdateOverworldWildEncounter(void)
     u32 spawnSlot = GetNextOWESpawnSlot();
     s32 x, y;
     if (spawnSlot == OWE_INVALID_SPAWN_SLOT
-     || (shouldSpawnWaterMons && AreLegendariesInSootopolisPreventingEncounters())
+     || (shouldSpawnWaterMons)
      || !TrySelectTileForOWE(&x, &y))
     {
         SetMinimumOWESpawnTimer();
@@ -803,7 +807,7 @@ void SetOverworldObjectSpecies(struct ScriptContext *ctx)
     VarSet(varId, speciesId);
 }
 
-static bool32 CreateEnemyPartyOWE(struct InfoOWE *info, s32 x, s32 y)
+static bool32 CreateEnemyPartyOWE(struct InfoOWE *info, s32 x, s32 y) //tries to generate Roamer encounter, Mass Outbreak Encounter, or regulra encounter
 {
     const struct WildPokemonInfo *wildMonInfo;
     enum WildPokemonArea wildArea;
@@ -875,18 +879,9 @@ static bool32 CreateEnemyPartyOWE(struct InfoOWE *info, s32 x, s32 y)
             info->category = gEncounteredRoamerIndex;
             return TRUE;
         }
-        else if (WE_OWE_FEEBAS_SPOTS && MetatileBehavior_IsWaterWildEncounter(metatileBehavior) && CheckFeebasAtCoords(x, y))
+        else if (MetatileBehavior_IsLandWildEncounter(metatileBehavior)) // + DoMassOutbreakEncounterTest(), which looks like it basically checked if an outbreak is present and how common said poke is 
         {
-            CreateWildMon(gWildFeebas.species, ChooseWildMonLevel(&gWildFeebas, 0, WILD_AREA_FISHING));
-            info->category = OWE_CATEGORY_FEEBAS;
-            if (WE_OWE_PREVENT_FEEBAS_DESPAWN)
-                info->noDespawn = TRUE;
-
-            return TRUE;
-        }
-        else if (DoMassOutbreakEncounterTest() && MetatileBehavior_IsLandWildEncounter(metatileBehavior))
-        {
-            SetUpMassOutbreakEncounter(0);
+            //SetUpMassOutbreakEncounter(0);
             info->category = OWE_CATEGORY_MASS_OUTBREAK;
             return TRUE;
         }
@@ -957,7 +952,7 @@ static bool32 StartWildBattleWithOWE_CheckMassOutbreak(enum CategoryOWE category
      && gSaveBlock1Ptr->outbreakPokemonSpecies == speciesId)
     {
         ZeroEnemyPartyMons();
-        SetUpMassOutbreakEncounter(0);
+        //SetUpMassOutbreakEncounter(0); //sets up generating a wild mon with outbreak mon, outbreak level, and... special outbreak move set?
         BattleSetup_StartWildBattle();
         return TRUE;
     }
