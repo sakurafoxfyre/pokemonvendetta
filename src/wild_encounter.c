@@ -711,6 +711,7 @@ void FishingWildEncounter(u8 rod) // there's a whole gd file for fishing encount
 
 u16 GetLocalWildMon(bool8 *isWaterMon) //appears to be used for the random pokemon cries + some follower thing?
 {
+    DebugPrintf("Trying to get a LocalWildMon..."); //will probably need to change what we're calling so the pokemon cry isn't influenced by abilities whoops lmao
     u32 headerId;
     enum TimeOfDay timeOfDay;
     const struct WildPokemonInfo *landMonsInfo;

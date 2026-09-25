@@ -123,6 +123,7 @@ struct Ven_WildPokemon Ven_GetLandEncounterMon(void)
         {
             if (IsSpeciesOfType(encounterData[i].species, TYPE_ELECTRIC))
             {
+                //DebugPrintf("This pokemon is Electric type: %d", encounterData[i].species);
                 abilityPulledIndicies[currentAbilityPulledIndex] = i;
                 currentAbilityPulledIndex ++;
                 numberOfAbilityPulledMons ++;
@@ -132,16 +133,21 @@ struct Ven_WildPokemon Ven_GetLandEncounterMon(void)
 
         if (Random() % 2 == 1 && canHaveAbilityInfluencedEncounter) //passed the 50% flat check to force electric
         {
-            DebugPrintf("Static is influencing this encounter...");
+            //DebugPrintf("Static is influencing this encounter...");
             int newBreakpoint = (Random() % 100) / numberOfAbilityPulledMons + 1;
+            //DebugPrintf("newBreakpoint: %d", newBreakpoint);
+            //DebugPrintf("numberOfAbilityPulledMons: %d", numberOfAbilityPulledMons);
+            //DebugPrintf("encounterPercentile: %d", encounterPercentile);
             for (int i = 0; i <= numberOfAbilityPulledMons; i++)
             {
+                //DebugPrintf("breakpoint if check: %d", newBreakpoint * (i + 1));
                 if (newBreakpoint * (i + 1) >= encounterPercentile)
                 {
+                    //DebugPrintf("Yippee!!");
                     return encounterData[abilityPulledIndicies[i]];
                 }
             }
-            DebugPrintf("Generating encounter mon failed - Static found a applicable mon but did not return a valid output.");
+            DebugPrintf("Generating encounter mon failed - Static found a applicable mon and triggered but did not return a valid output.");
             return fallbackMon;
         }
         else //standard mon generation
