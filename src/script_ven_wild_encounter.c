@@ -100,7 +100,7 @@ struct Ven_WildPokemon Ven_GetLandEncounterMon(void)
     const struct Ven_WildPokemon* encounterData = Ven_GetLandEncounterArray();
     //DebugPrintf("%d", encounterData[0].species);
     int encounterPercentile = Random() % 100;
-    //DebugPrintf("encounterPercentile: %d", encounterPercentile);
+    DebugPrintf("encounterPercentile: %d", encounterPercentile);
     int currentBreakpoint = 0;
     enum Ability ability = GetMonAbility(&gParties[B_TRAINER_PLAYER][0]);
     bool8 canHaveAbilityInfluencedEncounter = FALSE;
@@ -118,7 +118,7 @@ struct Ven_WildPokemon Ven_GetLandEncounterMon(void)
 
     if (ability == ABILITY_STATIC)
     {
-        DebugPrintf("Lead mon has Static!");
+        //DebugPrintf("Lead mon has Static!");
         for (int i = 0; i <= 11; i++) //check if there are any mons that even qualify
         {
             if (IsSpeciesOfType(encounterData[i].species, TYPE_ELECTRIC))
@@ -133,20 +133,27 @@ struct Ven_WildPokemon Ven_GetLandEncounterMon(void)
 
         if (Random() % 2 == 1 && canHaveAbilityInfluencedEncounter) //passed the 50% flat check to force electric
         {
-            //DebugPrintf("Static is influencing this encounter...");
-            int newBreakpoint = (Random() % 100) / numberOfAbilityPulledMons + 1;
-            //DebugPrintf("newBreakpoint: %d", newBreakpoint);
-            //DebugPrintf("numberOfAbilityPulledMons: %d", numberOfAbilityPulledMons);
-            //DebugPrintf("encounterPercentile: %d", encounterPercentile);
-            for (int i = 0; i <= numberOfAbilityPulledMons; i++)
+            int newTotal = 0;
+            for (int i = 0; i < numberOfAbilityPulledMons; i++)
             {
-                //DebugPrintf("breakpoint if check: %d", newBreakpoint * (i + 1));
-                if (newBreakpoint * (i + 1) >= encounterPercentile)
+                newTotal = newTotal + encounterData[abilityPulledIndicies[i]].encounterRate;
+                DebugPrintf("Current newTotal: %d", newTotal);
+            }
+
+            int normalizationModifier = 100 / newTotal;
+            int modifiedEncounterRateTotal = 0;
+            for (int i = 0; i < numberOfAbilityPulledMons; i++)
+            {
+                int currentEncounterRate = encounterData[abilityPulledIndicies[i]].encounterRate * normalizationModifier;
+                modifiedEncounterRateTotal = modifiedEncounterRateTotal + currentEncounterRate;
+                DebugPrintf("Current modifiedEncounterRateTotal: %d", modifiedEncounterRateTotal);
+                if (encounterPercentile >= modifiedEncounterRateTotal)
                 {
-                    //DebugPrintf("Yippee!!");
+                    DebugPrintf("We are returning this mon!");
                     return encounterData[abilityPulledIndicies[i]];
                 }
             }
+
             DebugPrintf("Generating encounter mon failed - Static found a applicable mon and triggered but did not return a valid output.");
             return fallbackMon;
         }
