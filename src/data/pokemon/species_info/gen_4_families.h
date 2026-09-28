@@ -1431,7 +1431,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
     [SPECIES_LUXIO] =
     {
         .baseHP        = 60,
-        .baseAttack    = 895,
+        .baseAttack    = 85,
         .baseDefense   = 59,
         .baseSpeed     = 90,
         .baseSpAttack  = 95,

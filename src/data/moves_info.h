@@ -15508,6 +15508,33 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .battleAnimScript = gBattleAnimMove_PlayRough,
     },
 
+    [MOVE_CUDDLE] =
+    {
+        .name = COMPOUND_STRING("Cuddle"),
+        .description = COMPOUND_STRING(
+            "Plays gently with the foe.\n"
+            "May lower Attack."),
+        .effect = EFFECT_HIT,
+        .power = 50,
+        .type = TYPE_FAIRY,
+        .accuracy = 100,
+        .pp = 25,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_PHYSICAL,
+        .makesContact = TRUE,
+        .additionalEffects = ADDITIONAL_EFFECTS({
+            .moveEffect = MOVE_EFFECT_STAT_MINUS,
+            .attack = 1,
+            .chance = 10,
+        }),
+        .contestEffect = CONTEST_EFFECT_WORSEN_CONDITION_OF_PREV_MONS,
+        .contestCategory = CONTEST_CATEGORY_CUTE,
+        .contestComboStarterId = 0,
+        .contestComboMoves = {0},
+        .battleAnimScript = gBattleAnimMove_PlayRough,
+    },
+
     [MOVE_FAIRY_WIND] =
     {
         .name = COMPOUND_STRING("Fairy Wind"),

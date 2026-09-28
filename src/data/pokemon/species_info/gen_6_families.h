@@ -3690,7 +3690,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
     [SPECIES_MALAMAR] =
     {
         .baseHP        = 121,
-        .baseAttack    = 102,
+        .baseAttack    = 92,
         .baseDefense   = 88,
         .baseSpeed     = 73,
         .baseSpAttack  = 68,
@@ -3764,7 +3764,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .baseAttack    = 102,
         .baseDefense   = 88,
         .baseSpeed     = 88,
-        .baseSpAttack  = 136,
+        .baseSpAttack  = 126,
         .baseSpDefense = 120,
         .types = MON_TYPES(TYPE_DARK, TYPE_PSYCHIC),
         .catchRate = 80,
