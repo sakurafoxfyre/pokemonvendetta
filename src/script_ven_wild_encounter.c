@@ -286,7 +286,47 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                         };
                         return arrayData106landdefault;
                 }
-            
+            case MAP_NUM(MAP_ROUTE109):
+                switch(*GetVarPointer(VAR_WORLD_DIFFICULTY))
+                {
+                    case 0:
+                    case 1:
+                    case 2:
+                        const struct Ven_WildPokemon arrayData109land02[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/route109/landencounters/route109land_02.h"
+                        };
+                        return arrayData109land02;
+                    case 3:
+                    case 4:
+                    case 5:
+                        const struct Ven_WildPokemon arrayData109land35[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/route109/landencounters/route109land_35.h"
+                        };
+                        return arrayData109land35;
+                    case 6:
+                    case 7:
+                    case 8:
+                        const struct Ven_WildPokemon arrayData109land68[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/route109/landencounters/route109land_68.h"
+                        };
+                        return arrayData109land68;
+                    case 9:
+                    case 10:
+                        const struct Ven_WildPokemon arrayData109land910[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/route109/landencounters/route109land_910.h"
+                        };
+                        return arrayData109land910;
+                    default:
+                        const struct Ven_WildPokemon arrayData109landdefault[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/route109/landencounters/route109land_910.h"
+                        };
+                        return arrayData109landdefault;
+                }
             case MAP_NUM(MAP_ROUTE110): 
                 switch(*GetVarPointer(VAR_WORLD_DIFFICULTY))
                 {
@@ -324,6 +364,170 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                         };
                         return arrayDatadefault;
                 }
+            case MAP_NUM(MAP_ROUTE115):
+                switch(*GetVarPointer(VAR_WORLD_DIFFICULTY))
+                {
+                    case 0:
+                    case 1:
+                    case 2:
+                        const struct Ven_WildPokemon arrayData115land02[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/route115/landencounters/route115land_02.h"
+                        };
+                        return arrayData115land02;
+                    case 3:
+                    case 4:
+                    case 5:
+                        const struct Ven_WildPokemon arrayData115land35[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/route115/landencounters/route115land_35.h"
+                        };
+                        return arrayData115land35;
+                    case 6:
+                    case 7:
+                    case 8:
+                        const struct Ven_WildPokemon arrayData115land68[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/route115/landencounters/route115land_68.h"
+                        };
+                        return arrayData115land68;
+                    case 9:
+                    case 10:
+                        const struct Ven_WildPokemon arrayData115land910[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/route115/landencounters/route115land_910.h"
+                        };
+                        return arrayData115land910;
+                    default:
+                        const struct Ven_WildPokemon arrayData115landdefault[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/route115/landencounters/route115land_910.h"
+                        };
+                        return arrayData115landdefault;
+                }
+            case MAP_NUM(MAP_ROUTE116):
+                switch(*GetVarPointer(VAR_WORLD_DIFFICULTY))
+                {
+                    case 0:
+                    case 1:
+                    case 2:
+                        const struct Ven_WildPokemon arrayData116land02[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/route116/landencounters/route116land_02.h"
+                        };
+                        return arrayData116land02;
+                    case 3:
+                    case 4:
+                    case 5:
+                        const struct Ven_WildPokemon arrayData116land35[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/route116/landencounters/route116land_35.h"
+                        };
+                        return arrayData116land35;
+                    case 6:
+                    case 7:
+                    case 8:
+                        const struct Ven_WildPokemon arrayData116land68[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/route116/landencounters/route116land_68.h"
+                        };
+                        return arrayData116land68;
+                    case 9:
+                    case 10:
+                        const struct Ven_WildPokemon arrayData116land910[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/route116/landencounters/route116land_910.h"
+                        };
+                        return arrayData116land910;
+                    default:
+                        const struct Ven_WildPokemon arrayData116landdefault[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/route116/landencounters/route116land_910.h"
+                        };
+                        return arrayData116landdefault;
+                }
+            case MAP_NUM(MAP_ROUTE117):
+                switch(*GetVarPointer(VAR_WORLD_DIFFICULTY))
+                {
+                    case 0:
+                    case 1:
+                    case 2:
+                        const struct Ven_WildPokemon arrayData117land02[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/route117/landencounters/route117land_02.h"
+                        };
+                        return arrayData117land02;
+                    case 3:
+                    case 4:
+                    case 5:
+                        const struct Ven_WildPokemon arrayData117land35[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/route117/landencounters/route117land_35.h"
+                        };
+                        return arrayData117land35;
+                    case 6:
+                    case 7:
+                    case 8:
+                        const struct Ven_WildPokemon arrayData117land68[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/route117/landencounters/route117land_68.h"
+                        };
+                        return arrayData117land68;
+                    case 9:
+                    case 10:
+                        const struct Ven_WildPokemon arrayData117land910[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/route117/landencounters/route117land_910.h"
+                        };
+                        return arrayData117land910;
+                    default:
+                        const struct Ven_WildPokemon arrayData117landdefault[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/route117/landencounters/route117land_910.h"
+                        };
+                        return arrayData117landdefault;
+                }
+            case MAP_NUM(MAP_RUSTBORO_PIER):
+                switch(*GetVarPointer(VAR_WORLD_DIFFICULTY))
+                {
+                    case 0:
+                    case 1:
+                    case 2:
+                        const struct Ven_WildPokemon arrayDatarustboropierland02[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/rustboropier/landencounters/rustboropierland_02.h"
+                        };
+                        return arrayDatarustboropierland02;
+                    case 3:
+                    case 4:
+                    case 5:
+                        const struct Ven_WildPokemon arrayDatarustboropierland35[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/rustboropier/landencounters/rustboropierland_35.h"
+                        };
+                        return arrayDatarustboropierland35;
+                    case 6:
+                    case 7:
+                    case 8:
+                        const struct Ven_WildPokemon arrayDatarustboropierland68[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/rustboropier/landencounters/rustboropierland_68.h"
+                        };
+                        return arrayDatarustboropierland68;
+                    case 9:
+                    case 10:
+                        const struct Ven_WildPokemon arrayDatarustboropierland910[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/rustboropier/landencounters/rustboropierland_910.h"
+                        };
+                        return arrayDatarustboropierland910;
+                    default:
+                        const struct Ven_WildPokemon arrayDatarustboropierlanddefault[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/rustboropier/landencounters/rustboropierland_910.h"
+                        };
+                        return arrayDatarustboropierlanddefault;
+                }
             default:
                 DebugPrintf("This encounter table hasn't been set up!");
                 return fallbackMon;
@@ -331,11 +535,297 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
     }
     else if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_RUSTURF_TUNNEL)) //gMapGroup_Dungeons
     {
-
+        switch (currentMapNum){
+            case MAP_NUM(MAP_GRANITE_CAVE_1F):
+                switch(*GetVarPointer(VAR_WORLD_DIFFICULTY))
+                {
+                    case 0:
+                    case 1:
+                    case 2:
+                        const struct Ven_WildPokemon arrayDataGranite1fland02[12] = {
+                            #include "data/wildencounters/dungeons/granitecave_1f/landencounters/granite1fland_02.h"
+                        };
+                        return arrayDataGranite1fland02;
+                    case 3:
+                    case 4:
+                    case 5:
+                        const struct Ven_WildPokemon arrayDataGranite1fland35[12] = {
+                            #include "data/wildencounters/dungeons/granitecave_1f/landencounters/granite1fland_35.h"
+                        };
+                        return arrayDataGranite1fland35;
+                    case 6:
+                    case 7:
+                    case 8:
+                        const struct Ven_WildPokemon arrayDataGranite1fland68[12] = {
+                            #include "data/wildencounters/dungeons/granitecave_1f/landencounters/granite1fland_68.h"
+                        };
+                        return arrayDataGranite1fland68;
+                    case 9:
+                    case 10:
+                        const struct Ven_WildPokemon arrayDataGranite1fland910[12] = {
+                            #include "data/wildencounters/dungeons/granitecave_1f/landencounters/granite1fland_910.h"
+                        };
+                        return arrayDataGranite1fland910;
+                    default:
+                        const struct Ven_WildPokemon arrayDataGranite1flanddefualt[12] = {
+                            #include "data/wildencounters/dungeons/granitecave_1f/landencounters/granite1fland_910.h"
+                        };
+                        return arrayDataGranite1flanddefualt;
+                }
+            case MAP_NUM(MAP_GRANITE_CAVE_B1F):
+                switch(*GetVarPointer(VAR_WORLD_DIFFICULTY))
+                {
+                    case 0:
+                    case 1:
+                    case 2:
+                        const struct Ven_WildPokemon arrayDatagraniteb1fland02[12] =
+                        {
+                            #include "data/wildencounters/dungeons/granitecave_b1f/landencounters/graniteb1fland_02.h"
+                        };
+                        return arrayDatagraniteb1fland02;
+                    case 3:
+                    case 4:
+                    case 5:
+                        const struct Ven_WildPokemon arrayDatagraniteb1fland35[12] =
+                        {
+                            #include "data/wildencounters/dungeons/granitecave_b1f/landencounters/graniteb1fland_35.h"
+                        };
+                        return arrayDatagraniteb1fland35;
+                    case 6:
+                    case 7:
+                    case 8:
+                        const struct Ven_WildPokemon arrayDatagraniteb1fland68[12] =
+                        {
+                            #include "data/wildencounters/dungeons/granitecave_b1f/landencounters/graniteb1fland_68.h"
+                        };
+                        return arrayDatagraniteb1fland68;
+                    case 9:
+                    case 10:
+                        const struct Ven_WildPokemon arrayDatagraniteb1fland910[12] =
+                        {
+                            #include "data/wildencounters/dungeons/granitecave_b1f/landencounters/graniteb1fland_910.h"
+                        };
+                        return arrayDatagraniteb1fland910;
+                    default:
+                        const struct Ven_WildPokemon arrayDatagraniteb1flanddefault[12] =
+                        {
+                            #include "data/wildencounters/dungeons/granitecave_b1f/landencounters/graniteb1fland_910.h"
+                        };
+                        return arrayDatagraniteb1flanddefault;
+                }
+            case MAP_NUM(MAP_GRANITE_CAVE_B2F):
+                switch(*GetVarPointer(VAR_WORLD_DIFFICULTY))
+                {
+                    case 0:
+                    case 1:
+                    case 2:
+                        const struct Ven_WildPokemon dataArraygraniteb2fland02[12] =
+                        {
+                            #include "data/wildencounters/dungeons/granitecave_b2f/landencounters/graniteb2fland_02.h"
+                        };
+                        return dataArraygraniteb2fland02;
+                    case 3:
+                    case 4:
+                    case 5:
+                        const struct Ven_WildPokemon dataArraygraniteb2fland35[12] =
+                        {
+                            #include "data/wildencounters/dungeons/granitecave_b2f/landencounters/graniteb2fland_35.h"
+                        };
+                        return dataArraygraniteb2fland35;
+                    case 6:
+                    case 7:
+                    case 8:
+                        const struct Ven_WildPokemon dataArraygraniteb2fland68[12] =
+                        {
+                            #include "data/wildencounters/dungeons/granitecave_b2f/landencounters/graniteb2fland_68.h"
+                        };
+                        return dataArraygraniteb2fland68;
+                    case 9:
+                    case 10:
+                        const struct Ven_WildPokemon dataArraygraniteb2fland910[12] =
+                        {
+                            #include "data/wildencounters/dungeons/granitecave_b2f/landencounters/graniteb2fland_910.h"
+                        };
+                        return dataArraygraniteb2fland910;
+                    default:
+                        const struct Ven_WildPokemon dataArraygraniteb2flanddefault[12] =
+                        {
+                            #include "data/wildencounters/dungeons/granitecave_b2f/landencounters/graniteb2fland_910.h"
+                        };
+                        return dataArraygraniteb2flanddefault;
+                }
+            case MAP_NUM(MAP_NEW_MAUVILLE_INSIDE):
+                switch(*GetVarPointer(VAR_WORLD_DIFFICULTY))
+                {
+                    case 0:
+                    case 1:
+                    case 2:
+                        const struct Ven_WildPokemon newmauvileland02[12] =
+                        {
+                            #include "data/wildencounters/dungeons/newmauvile/landencounters/newmauvileland_02.h"
+                        };
+                        return newmauvileland02;
+                    case 3:
+                    case 4:
+                    case 5:
+                        const struct Ven_WildPokemon newmauvileland35[12] =
+                        {
+                            #include "data/wildencounters/dungeons/newmauvile/landencounters/newmauvileland_35.h"
+                        };
+                        return newmauvileland35;
+                    case 6:
+                    case 7:
+                    case 8:
+                        const struct Ven_WildPokemon newmauvileland68[12] =
+                        {
+                            #include "data/wildencounters/dungeons/newmauvile/landencounters/newmauvileland_68.h"
+                        };
+                        return newmauvileland68;
+                    case 9:
+                    case 10:
+                        const struct Ven_WildPokemon newmauvileland910[12] =
+                        {
+                            #include "data/wildencounters/dungeons/newmauvile/landencounters/newmauvileland_910.h"
+                        };
+                        return newmauvileland910;
+                    default:
+                        const struct Ven_WildPokemon newmauvilelanddefault[12] =
+                        {
+                            #include "data/wildencounters/dungeons/newmauvile/landencounters/newmauvileland_910.h"
+                        };
+                        return newmauvilelanddefault;
+                }
+            case MAP_NUM(MAP_PETALBURG_HAUNTED_HOUSE):
+                switch(*GetVarPointer(VAR_WORLD_DIFFICULTY))
+                {
+                    case 0:
+                    case 1:
+                    case 2:
+                        const struct Ven_WildPokemon dataArraypetalburghouseland02[12] =
+                        {
+                            #include "data/wildencounters/dungeons/petalburghauntedhouse/landencounters/petalburghauntedhouseland_02.h"
+                        };
+                        return dataArraypetalburghouseland02;
+                    case 3:
+                    case 4:
+                    case 5:
+                        const struct Ven_WildPokemon dataArraypetalburghouseland35[12] =
+                        {
+                            #include "data/wildencounters/dungeons/petalburghauntedhouse/landencounters/petalburghauntedhouseland_35.h"
+                        };
+                        return dataArraypetalburghouseland35;
+                    case 6:
+                    case 7:
+                    case 8:
+                        const struct Ven_WildPokemon dataArraypetalburghouseland68[12] =
+                        {
+                            #include "data/wildencounters/dungeons/petalburghauntedhouse/landencounters/petalburghauntedhouseland_68.h"
+                        };
+                        return dataArraypetalburghouseland68;
+                    case 9:
+                    case 10:
+                        const struct Ven_WildPokemon dataArraypetalburghouseland910[12] =
+                        {
+                            #include "data/wildencounters/dungeons/petalburghauntedhouse/landencounters/petalburghauntedhouseland_910.h"
+                        };
+                        return dataArraypetalburghouseland910;
+                    default:
+                        const struct Ven_WildPokemon dataArraypetalburghouselanddefault[12] =
+                        {
+                            #include "data/wildencounters/dungeons/petalburghauntedhouse/landencounters/petalburghauntedhouseland_910.h"
+                        };
+                        return dataArraypetalburghouselanddefault;
+                    }
+            case MAP_NUM(MAP_PETALBURG_WOODS):
+                switch(*GetVarPointer(VAR_WORLD_DIFFICULTY))
+                {
+                    case 0:
+                    case 1:
+                    case 2:
+                        const struct Ven_WildPokemon dataArraypetalburgwoodsland02[12] =
+                        {
+                            #include "data/wildencounters/dungeons/petalburgwoods/landencounters/petalburgwoodsland_02.h"
+                        };
+                        return dataArraypetalburgwoodsland02;
+                    case 3:
+                    case 4:
+                    case 5:
+                        const struct Ven_WildPokemon dataArraypetalburgwoodsland35[12] =
+                        {
+                            #include "data/wildencounters/dungeons/petalburgwoods/landencounters/petalburgwoodsland_35.h"
+                        };
+                        return dataArraypetalburgwoodsland35;
+                    case 6:
+                    case 7:
+                    case 8:
+                        const struct Ven_WildPokemon dataArraypetalburgwoodsland68[12] =
+                        {
+                            #include "data/wildencounters/dungeons/petalburgwoods/landencounters/petalburgwoodsland_68.h"
+                        };
+                        return dataArraypetalburgwoodsland68;
+                    case 9:
+                    case 10:
+                        const struct Ven_WildPokemon dataArraypetalburgwoodsland910[12] =
+                        {
+                            #include "data/wildencounters/dungeons/petalburgwoods/landencounters/petalburgwoodsland_910.h"
+                        };
+                        return dataArraypetalburgwoodsland910;
+                    default:
+                        const struct Ven_WildPokemon dataArraypetalburgwoodslanddefualt[12] =
+                        {
+                            #include "data/wildencounters/dungeons/petalburgwoods/landencounters/petalburgwoodsland_910.h"
+                        };
+                        return dataArraypetalburgwoodslanddefualt;
+                }
+            case MAP_NUM(MAP_RUSTURF_TUNNEL):
+                switch(*GetVarPointer(VAR_WORLD_DIFFICULTY))
+                {
+                    case 0:
+                    case 1:
+                    case 2:
+                        const struct Ven_WildPokemon dataArrayrusturfland02[12] =
+                        {
+                            #include "data/wildencounters/dungeons/rusturftunnel/landencounters/rusturftunnelland_02.h"
+                        };
+                        return dataArrayrusturfland02;
+                    case 3:
+                    case 4:
+                    case 5:
+                        const struct Ven_WildPokemon dataArrayrusturfland35[12] =
+                        {
+                            #include "data/wildencounters/dungeons/rusturftunnel/landencounters/rusturftunnelland_35.h"
+                        };
+                        return dataArrayrusturfland35;
+                    case 6:
+                    case 7:
+                    case 8:
+                        const struct Ven_WildPokemon dataArrayrusturfland68[12] =
+                        {
+                            #include "data/wildencounters/dungeons/rusturftunnel/landencounters/rusturftunnelland_68.h"
+                        };
+                        return dataArrayrusturfland68;
+                    case 9:
+                    case 10:
+                        const struct Ven_WildPokemon dataArrayrusturfland910[12] =
+                        {
+                            #include "data/wildencounters/dungeons/rusturftunnel/landencounters/rusturftunnelland_910.h"
+                        };
+                        return dataArrayrusturfland910;
+                    default:
+                        const struct Ven_WildPokemon dataArrayrusturflanddefault[12] =
+                        {
+                            #include "data/wildencounters/dungeons/rusturftunnel/landencounters/rusturftunnelland_910.h"
+                        };
+                        return dataArrayrusturflanddefault;
+                }
+            default:
+                DebugPrintf("This encounter table hasn't been set up yet!");
+                return fallbackMon;
+        }
     }
     else
     {
-        DebugPrintf("This encounter table hasn't been set up!");
+        DebugPrintf("Bro where the fuck are you.");
         return fallbackMon; 
     }
 }
@@ -927,7 +1417,129 @@ const struct Ven_WildPokemon *Ven_GetWaterEncounterArray(void)
                         };
                         return arrayData106waterdefault;
                 }
-            
+            case MAP_NUM(MAP_ROUTE107):
+                switch(*GetVarPointer(VAR_WORLD_DIFFICULTY))
+                {
+                    case 0:
+                    case 1:
+                    case 2:
+                        const struct Ven_WildPokemon arrayData107water02[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/route107/waterencounters/route107water_02.h"
+                        };
+                        return arrayData107water02;
+                    case 3:
+                    case 4:
+                    case 5:
+                        const struct Ven_WildPokemon arrayData107water35[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/route107/waterencounters/route107water_35.h"
+                        };
+                        return arrayData107water35;
+                    case 6:
+                    case 7:
+                    case 8:
+                        const struct Ven_WildPokemon arrayData107water68[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/route107/waterencounters/route107water_68.h"
+                        };
+                        return arrayData107water68;
+                    case 9:
+                    case 10:
+                        const struct Ven_WildPokemon arrayData107water910[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/route107/waterencounters/route107water_910.h"
+                        };
+                        return arrayData107water910;
+                    default:
+                        const struct Ven_WildPokemon arrayData107waterdefault[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/route107/waterencounters/route107water_910.h"
+                        };
+                        return arrayData107waterdefault;
+                }
+            case MAP_NUM(MAP_ROUTE108):
+                switch(*GetVarPointer(VAR_WORLD_DIFFICULTY))
+                {
+                    case 0:
+                    case 1:
+                    case 2:
+                        const struct Ven_WildPokemon arrayData108water02[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/route108/waterencounters/route108water_02.h"
+                        };
+                        return arrayData108water02;
+                    case 3:
+                    case 4:
+                    case 5:
+                        const struct Ven_WildPokemon arrayData108water35[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/route108/waterencounters/route108water_35.h"
+                        };
+                        return arrayData108water35;
+                    case 6:
+                    case 7:
+                    case 8:
+                        const struct Ven_WildPokemon arrayData108water68[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/route108/waterencounters/route108water_68.h"
+                        };
+                        return arrayData108water68;
+                    case 9:
+                    case 10:
+                        const struct Ven_WildPokemon arrayData108water910[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/route108/waterencounters/route108water_910.h"
+                        };
+                        return arrayData108water910;
+                    default:
+                        const struct Ven_WildPokemon arrayData108waterdefault[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/route108/waterencounters/route108water_910.h"
+                        };
+                        return arrayData108waterdefault;
+                }
+            case MAP_NUM(MAP_ROUTE109):
+                switch(*GetVarPointer(VAR_WORLD_DIFFICULTY))
+                {
+                    case 0:
+                    case 1:
+                    case 2:
+                        const struct Ven_WildPokemon arrayData109water02[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/route109/waterencounters/route109water_02.h"
+                        };
+                        return arrayData109water02;
+                    case 3:
+                    case 4:
+                    case 5:
+                        const struct Ven_WildPokemon arrayData109water35[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/route109/waterencounters/route109water_35.h"
+                        };
+                        return arrayData109water35;
+                    case 6:
+                    case 7:
+                    case 8:
+                        const struct Ven_WildPokemon arrayData109water68[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/route109/waterencounters/route109water_68.h"
+                        };
+                        return arrayData109water68;
+                    case 9:
+                    case 10:
+                        const struct Ven_WildPokemon arrayData109water910[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/route109/waterencounters/route109water_910.h"
+                        };
+                        return arrayData109water910;
+                    default:
+                        const struct Ven_WildPokemon arrayData109waterdefault[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/route109/waterencounters/route109water_910.h"
+                        };
+                        return arrayData109waterdefault;
+                }
             case MAP_NUM(MAP_ROUTE110):
                 switch(*GetVarPointer(VAR_WORLD_DIFFICULTY))
                 {
@@ -936,34 +1548,157 @@ const struct Ven_WildPokemon *Ven_GetWaterEncounterArray(void)
                     case 2:
                         const struct Ven_WildPokemon arrayData110water02[12] = 
                         {
-                            #include "data/wildencounters/townsandroutes/route110/landencounters/route110land_02.h"
+                            #include "data/wildencounters/townsandroutes/route110/waterencounters/route110water_02.h"
                         };
                         return arrayData110water02;
                     case 3:
                     case 4:
                     case 5:
                         const struct Ven_WildPokemon arrayData110water35[12] = {
-                            #include "data/wildencounters/townsandroutes/route110/landencounters/route110land_35.h"
+                            #include "data/wildencounters/townsandroutes/route110/waterencounters/route110water_35.h"
                         };
                         return arrayData110water35;
                     case 6:
                     case 7:
                     case 8:
                         const struct Ven_WildPokemon arrayData110water68[12] = {
-                            #include "data/wildencounters/townsandroutes/route110/landencounters/route110land_68.h"
+                            #include "data/wildencounters/townsandroutes/route110/waterencounters/route110water_68.h"
                         };
                         return arrayData110water68;
                     case 9:
                     case 10:
                         const struct Ven_WildPokemon arrayData110water910[12] = {
-                            #include "data/wildencounters/townsandroutes/route110/landencounters/route110land_910.h"
+                            #include "data/wildencounters/townsandroutes/route110/waterencounters/route110water_910.h"
                         };
                         return arrayData110water910;
                     default:
                         const struct Ven_WildPokemon arrayData110waterdefault[12] = {
-                            #include "data/wildencounters/townsandroutes/route110/landencounters/route110land_910.h"
+                            #include "data/wildencounters/townsandroutes/route110/waterencounters/route110water_910.h"
                         };
                         return arrayData110waterdefault;
+                }
+            case MAP_NUM(MAP_ROUTE115):
+                switch(*GetVarPointer(VAR_WORLD_DIFFICULTY))
+                {
+                    case 0:
+                    case 1:
+                    case 2:
+                        const struct Ven_WildPokemon arrayData115water02[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/route115/waterencounters/route115water_02.h"
+                        };
+                        return arrayData115water02;
+                    case 3:
+                    case 4:
+                    case 5:
+                        const struct Ven_WildPokemon arrayData115water35[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/route115/waterencounters/route115water_35.h"
+                        };
+                        return arrayData115water35;
+                    case 6:
+                    case 7:
+                    case 8:
+                        const struct Ven_WildPokemon arrayData115water68[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/route115/waterencounters/route115water_68.h"
+                        };
+                        return arrayData115water68;
+                    case 9:
+                    case 10:
+                        const struct Ven_WildPokemon arrayData115water910[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/route115/waterencounters/route115water_910.h"
+                        };
+                        return arrayData115water910;
+                    default:
+                        const struct Ven_WildPokemon arrayData115waterdefault[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/route115/waterencounters/route115water_910.h"
+                        };
+                        return arrayData115waterdefault;
+                }
+            case MAP_NUM(MAP_ROUTE117):
+                switch(*GetVarPointer(VAR_WORLD_DIFFICULTY))
+                {
+                    case 0:
+                    case 1:
+                    case 2:
+                        const struct Ven_WildPokemon arrayData117water02[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/route117/waterencounters/route117water_02.h"
+                        };
+                        return arrayData117water02;
+                    case 3:
+                    case 4:
+                    case 5:
+                        const struct Ven_WildPokemon arrayData117water35[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/route117/waterencounters/route117water_35.h"
+                        };
+                        return arrayData117water35;
+                    case 6:
+                    case 7:
+                    case 8:
+                        const struct Ven_WildPokemon arrayData117water68[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/route117/waterencounters/route117water_68.h"
+                        };
+                        return arrayData117water68;
+                    case 9:
+                    case 10:
+                        const struct Ven_WildPokemon arrayData117water910[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/route117/waterencounters/route117water_910.h"
+                        };
+                        return arrayData117water910;
+                    default:
+                        const struct Ven_WildPokemon arrayData117waterdefault[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/route117/waterencounters/route117water_910.h"
+                        };
+                        return arrayData117waterdefault;
+                }
+            case MAP_NUM(MAP_SLATEPORT_CITY):
+                switch(*GetVarPointer(VAR_WORLD_DIFFICULTY))
+                {
+                    case 0:
+                    case 1:
+                    case 2:
+                        const struct Ven_WildPokemon arrayDataSlateportwater02[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/slateportcity/waterencounters/slateportcitywater_02.h"
+                        };
+                        return arrayDataSlateportwater02;
+                    case 3:
+                    case 4:
+                    case 5:
+                        const struct Ven_WildPokemon arrayDataSlateportwater35[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/slateportcity/waterencounters/slateportcitywater_35.h"
+                        };
+                        return arrayDataSlateportwater35;
+                    case 6:
+                    case 7:
+                    case 8:
+                        const struct Ven_WildPokemon arrayDataSlateportwater68[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/slateportcity/waterencounters/slateportcitywater_68.h"
+                        };
+                        return arrayDataSlateportwater68;
+                    case 9:
+                    case 10:
+                        const struct Ven_WildPokemon arrayDataSlateportwater910[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/slateportcity/waterencounters/slateportcitywater_910.h"
+                        };
+                        return arrayDataSlateportwater910;
+                    default:
+                        const struct Ven_WildPokemon arrayDataSlateportwaterdefault[12] =
+                        {
+                            #include "data/wildencounters/townsandroutes/slateportcity/waterencounters/slateportcitywater_910.h"
+                        };
+                        return arrayDataSlateportwaterdefault;
                 }
             default:
                 DebugPrintf("This encounter table hasn't been set up!");
@@ -972,11 +1707,136 @@ const struct Ven_WildPokemon *Ven_GetWaterEncounterArray(void)
     }
     else if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_RUSTURF_TUNNEL)) //gMapGroup_Dungeons
     {
-        
+        switch (currentMapNum){
+            case MAP_NUM(MAP_GRANITE_CAVE_1F):
+                switch(*GetVarPointer(VAR_WORLD_DIFFICULTY))
+                {
+                    case 0:
+                    case 1:
+                    case 2:
+                        const struct Ven_WildPokemon dataArrayGranite1fwater02[12] =
+                        {
+                            #include "data/wildencounters/dungeons/granitecave_1f/waterencounters/granite1fwater_02.h"
+                        };
+                        return dataArrayGranite1fwater02;
+                    case 3:
+                    case 4:
+                    case 5:
+                        const struct Ven_WildPokemon dataArrayGranite1fwater35[12] =
+                        {
+                            #include "data/wildencounters/dungeons/granitecave_1f/waterencounters/granite1fwater_35.h"
+                        };
+                        return dataArrayGranite1fwater35;
+                    case 6:
+                    case 7:
+                    case 8:
+                        const struct Ven_WildPokemon dataArrayGranite1fwater68[12] =
+                        {
+                            #include "data/wildencounters/dungeons/granitecave_1f/waterencounters/granite1fwater_68.h"
+                        };
+                        return dataArrayGranite1fwater68;
+                    case 9:
+                    case 10:
+                        const struct Ven_WildPokemon dataArrayGranite1fwater910[12] =
+                        {
+                            #include "data/wildencounters/dungeons/granitecave_1f/waterencounters/granite1fwater_910.h"
+                        };
+                        return dataArrayGranite1fwater910;
+                    default:
+                        const struct Ven_WildPokemon dataArrayGranite1fwaterdefault[12] =
+                        {
+                            #include "data/wildencounters/dungeons/granitecave_1f/waterencounters/granite1fwater_910.h"
+                        };
+                        return dataArrayGranite1fwaterdefault;
+                }
+            case MAP_NUM(MAP_GRANITE_CAVE_B1F):
+                switch(*GetVarPointer(VAR_WORLD_DIFFICULTY))
+                {
+                    case 0:
+                    case 1:
+                    case 2:
+                        const struct Ven_WildPokemon dataArraygraniteb1fwater02[12] =
+                        {
+                            #include "data/wildencounters/dungeons/granitecave_b1f/waterencounters/graniteb1fwater_02.h"
+                        };
+                        return dataArraygraniteb1fwater02;
+                    case 3:
+                    case 4:
+                    case 5:
+                        const struct Ven_WildPokemon dataArraygranitewaterb1f35[12] =
+                        {
+                            #include "data/wildencounters/dungeons/granitecave_b1f/waterencounters/graniteb1fwater_35.h"
+                        };
+                        return dataArraygranitewaterb1f35;
+                    case 6:
+                    case 7:
+                    case 8:
+                        const struct Ven_WildPokemon dataArraygraniteb1fwater68[12] =
+                        {
+                            #include "data/wildencounters/dungeons/granitecave_b1f/waterencounters/graniteb1fwater_68.h"
+                        };
+                        return dataArraygraniteb1fwater68;
+                    case 9:
+                    case 10:
+                        const struct Ven_WildPokemon dataArraygraniteb1fwater910[12] =
+                        {
+                            #include "data/wildencounters/dungeons/granitecave_b1f/waterencounters/graniteb1fwater_910.h"
+                        };
+                        return dataArraygraniteb1fwater910;
+                    default:
+                        const struct Ven_WildPokemon dataArraygraniteb1fdefault[12] =
+                        {
+                            #include "data/wildencounters/dungeons/granitecave_b1f/waterencounters/graniteb1fwater_910.h"
+                        };
+                        return dataArraygraniteb1fdefault;
+                }
+            case MAP_NUM(MAP_GRANITE_CAVE_B2F):
+                switch(*GetVarPointer(VAR_WORLD_DIFFICULTY))
+                {
+                    case 0:
+                    case 1:
+                    case 2:
+                        const struct Ven_WildPokemon dataArraygraniteb2fwater02[12] =
+                        {
+                            #include "data/wildencounters/dungeons/granitecave_b2f/waterencounters/graniteb2fwater_02.h"
+                        };
+                        return dataArraygraniteb2fwater02;
+                    case 3:
+                    case 4:
+                    case 5:
+                        const struct Ven_WildPokemon dataArraygraniteb2fwater35[12] =
+                        {
+                            #include "data/wildencounters/dungeons/granitecave_b2f/waterencounters/graniteb2fwater_35.h"
+                        };
+                        return dataArraygraniteb2fwater35;
+                    case 6:
+                    case 7:
+                    case 8:
+                        const struct Ven_WildPokemon dataArraygraniteb2fwater68[12] =
+                        {
+                            #include "data/wildencounters/dungeons/granitecave_b2f/waterencounters/graniteb2fwater_68.h"
+                        };
+                        return dataArraygraniteb2fwater68;
+                    case 9:
+                    case 10:
+                        const struct Ven_WildPokemon dataArraygraniteb2fwater910[12] =
+                        {
+                            #include "data/wildencounters/dungeons/granitecave_b2f/waterencounters/graniteb2fwater_910.h"
+                        };
+                        return dataArraygraniteb2fwater910;
+                    default:
+                        const struct Ven_WildPokemon dataArraygraniteb2fwaterdefault[12] =
+                        {
+                            #include "data/wildencounters/dungeons/granitecave_b2f/waterencounters/graniteb2fwater_910.h"
+                        };
+                        return dataArraygraniteb2fwaterdefault;
+                }
+            
+        }
     }
     else
     {
-        DebugPrintf("This encounter table hasn't been set up!");
+        DebugPrintf("Bro where the fuck are you.");
         return fallbackMon; 
     }
 }
