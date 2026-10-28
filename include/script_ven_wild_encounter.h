@@ -13,5 +13,7 @@ struct Ven_WildPokemon
 
 struct Ven_WildPokemon *Ven_GetLandEncounterArray(void);
 const struct Ven_WildPokemon Ven_GetLandEncounterMon(void);
+struct Ven_WildPokemon *Ven_GetWaterEncounterArray(void);
+const struct Ven_WildPokemon Ven_GetWaterEncounterMon(void);
 
 #endif //GUARD_SCRIPT_EVEN_WILD_ENCOUNTER_H

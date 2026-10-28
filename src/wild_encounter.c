@@ -301,6 +301,36 @@ bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, enum WildPok
                 level = max + 1 + worldLevelScaling;
             }
             break;
+        case WILD_AREA_WATER:
+            selectedMon = Ven_GetWaterEncounterMon();
+            if (LURE_STEP_COUNT == 0) //no lure active
+            {
+                min = selectedMon.minLevel;
+                max = selectedMon.maxLevel;
+                range = max - min + 1;
+                rand = Random() % range;
+
+                //check first mon for Hustle/Vital Spirit/Pressure which applies a flat 50% that the mon will be max level
+                if (!GetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_SANITY_IS_EGG))
+                {
+                    enum Ability ability = GetMonAbility(&gParties[B_TRAINER_PLAYER][0]);
+                    if (ability == ABILITY_HUSTLE || ability == ABILITY_VITAL_SPIRIT || ability == ABILITY_PRESSURE)
+                    {
+                        if (Random() % 2 == 0)
+                        level = max + worldLevelScaling;
+
+                    if (rand != 0)
+                        rand--;
+                    }
+                }
+                level = min + rand + worldLevelScaling;
+            } 
+            else //have a lure active
+            { 
+                max = selectedMon.maxLevel;
+                level = max + 1 + worldLevelScaling;
+            }
+            break;
         default:
             DebugPrintf("The wild mon generation failed...");
             return FALSE;
@@ -314,51 +344,6 @@ bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, enum WildPok
     //DebugPrintf("Just before the CreateWildMon call.");
     CreateWildMon(selectedMon.species, level);
     return TRUE;
-
-    // BELOW HERE TO REMOVE
-
-    switch (area)
-    {
-    case WILD_AREA_LAND:
-        // if (TRY_GET_ABILITY_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, TYPE_STEEL, ABILITY_MAGNET_PULL, &wildMonIndex, NUM_LAND_MONS_ENCOUNTER_SLOTS))
-        //     break;
-        // if (TRY_GET_ABILITY_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, TYPE_ELECTRIC, ABILITY_STATIC, &wildMonIndex, NUM_LAND_MONS_ENCOUNTER_SLOTS))
-        //     break;
-        // if (OW_LIGHTNING_ROD >= GEN_8 && TRY_GET_ABILITY_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, TYPE_ELECTRIC, ABILITY_LIGHTNING_ROD, &wildMonIndex, NUM_LAND_MONS_ENCOUNTER_SLOTS))
-        //     break;
-        // if (OW_FLASH_FIRE >= GEN_8 && TRY_GET_ABILITY_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, TYPE_FIRE, ABILITY_FLASH_FIRE, &wildMonIndex, NUM_LAND_MONS_ENCOUNTER_SLOTS))
-        //     break;
-        // if (OW_HARVEST >= GEN_8 && TRY_GET_ABILITY_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, TYPE_GRASS, ABILITY_HARVEST, &wildMonIndex, NUM_LAND_MONS_ENCOUNTER_SLOTS))
-        //     break;
-        // if (OW_STORM_DRAIN >= GEN_8 && TRY_GET_ABILITY_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, TYPE_WATER, ABILITY_STORM_DRAIN, &wildMonIndex, NUM_LAND_MONS_ENCOUNTER_SLOTS))
-        //     break;
-
-        //wildMonIndex = ChooseWildMonIndex_Land();
-        break;
-    case WILD_AREA_WATER:
-        // if (TRY_GET_ABILITY_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, TYPE_STEEL, ABILITY_MAGNET_PULL, &wildMonIndex, NUM_WATER_MONS_ENCOUNTER_SLOTS))
-        //     break;
-        // if (TRY_GET_ABILITY_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, TYPE_ELECTRIC, ABILITY_STATIC, &wildMonIndex, NUM_WATER_MONS_ENCOUNTER_SLOTS))
-        //     break;
-        // if (OW_LIGHTNING_ROD >= GEN_8 && TRY_GET_ABILITY_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, TYPE_ELECTRIC, ABILITY_LIGHTNING_ROD, &wildMonIndex, NUM_WATER_MONS_ENCOUNTER_SLOTS))
-        //     break;
-        // if (OW_FLASH_FIRE >= GEN_8 && TRY_GET_ABILITY_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, TYPE_FIRE, ABILITY_FLASH_FIRE, &wildMonIndex, NUM_WATER_MONS_ENCOUNTER_SLOTS))
-        //     break;
-        // if (OW_HARVEST >= GEN_8 && TRY_GET_ABILITY_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, TYPE_GRASS, ABILITY_HARVEST, &wildMonIndex, NUM_WATER_MONS_ENCOUNTER_SLOTS))
-        //     break;
-        // if (OW_STORM_DRAIN >= GEN_8 && TRY_GET_ABILITY_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, TYPE_WATER, ABILITY_STORM_DRAIN, &wildMonIndex, NUM_WATER_MONS_ENCOUNTER_SLOTS))
-        //     break;
-
-        wildMonIndex = ChooseWildMonIndex_Water();
-        break;
-    case WILD_AREA_ROCKS:
-        wildMonIndex = ChooseWildMonIndex_Rocks();
-        break;
-    default:
-    case WILD_AREA_FISHING:
-    case WILD_AREA_HIDDEN:
-        break;
-    }
 }
 
 static u16 GenerateFishingWildMon(const struct WildPokemonInfo *wildMonInfo, u8 rod) // unsure

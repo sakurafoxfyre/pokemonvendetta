@@ -46,7 +46,7 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 0:
                     case 1:
                     case 2:
-                        const struct Ven_WildPokemon arrayDataHauntwoodland02[12] =
+                        static const struct Ven_WildPokemon arrayDataHauntwoodland02[12] =
                         {
                             #include "data/wildencounters/townsandroutes/hauntwood/landencounters/hauntwoodland_02.h"
                         };
@@ -54,7 +54,7 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 3:
                     case 4:
                     case 5:
-                        const struct Ven_WildPokemon arrayDataHauntwoodland35[12] =
+                        static const struct Ven_WildPokemon arrayDataHauntwoodland35[12] =
                         {
                             #include "data/wildencounters/townsandroutes/hauntwood/landencounters/hauntwoodland_35.h"
                         };
@@ -62,20 +62,20 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 6:
                     case 7:
                     case 8:
-                        const struct Ven_WildPokemon arrayDataHauntwoodland68[12] =
+                        static const struct Ven_WildPokemon arrayDataHauntwoodland68[12] =
                         {
                             #include "data/wildencounters/townsandroutes/hauntwood/landencounters/hauntwoodland_68.h"
                         };
                         return arrayDataHauntwoodland68;
                     case 9:
                     case 10:
-                        const struct Ven_WildPokemon arrayDataHauntwoodland910[12] =
+                        static const struct Ven_WildPokemon arrayDataHauntwoodland910[12] =
                         {
                             #include "data/wildencounters/townsandroutes/hauntwood/landencounters/hauntwoodland_910.h"
                         };
                         return arrayDataHauntwoodland910;
                     default:
-                        const struct Ven_WildPokemon arrayDataHauntwoodlanddefault[12] =
+                        static const struct Ven_WildPokemon arrayDataHauntwoodlanddefault[12] =
                         {
                             #include "data/wildencounters/townsandroutes/hauntwood/landencounters/hauntwoodland_910.h"
                         };
@@ -87,7 +87,7 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 0:
                     case 1:
                     case 2:
-                        const struct Ven_WildPokemon arrayData101land02[12] =
+                        static const struct Ven_WildPokemon arrayData101land02[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route101/landencounters/route101land_02.h"
                         };
@@ -95,7 +95,7 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 3:
                     case 4:
                     case 5:
-                        const struct Ven_WildPokemon arrayData101land35[12] =
+                        static const struct Ven_WildPokemon arrayData101land35[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route101/landencounters/route101land_35.h"
                         };
@@ -103,20 +103,20 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 6:
                     case 7:
                     case 8:
-                        const struct Ven_WildPokemon arrayData101land68[12] =
+                        static const struct Ven_WildPokemon arrayData101land68[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route101/landencounters/route101land_68.h"
                         };
                         return arrayData101land68;
                     case 9:
                     case 10:
-                        const struct Ven_WildPokemon arrayData101land910[12] =
+                        static const struct Ven_WildPokemon arrayData101land910[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route101/landencounters/route101land_910.h"
                         };
                         return arrayData101land910;
                     default:
-                        const struct Ven_WildPokemon arrayData101landdefault[12] =
+                        static const struct Ven_WildPokemon arrayData101landdefault[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route101/landencounters/route101land_910.h"
                         };
@@ -128,7 +128,7 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 0:
                     case 1:
                     case 2:
-                        const struct Ven_WildPokemon arrayData102land02[12] =
+                        static const struct Ven_WildPokemon arrayData102land02[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route102/landencounters/route102land_02.h"
                         };
@@ -136,7 +136,7 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 3:
                     case 4:
                     case 5:
-                        const struct Ven_WildPokemon arrayData102land35[12] =
+                        static const struct Ven_WildPokemon arrayData102land35[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route102/landencounters/route102land_35.h"
                         };
@@ -144,20 +144,20 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 6:
                     case 7:
                     case 8:
-                        const struct Ven_WildPokemon arrayData102land68[12] =
+                        static const struct Ven_WildPokemon arrayData102land68[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route102/landencounters/route102land_68.h"
                         };
                         return arrayData102land68;
                     case 9:
                     case 10:
-                        const struct Ven_WildPokemon arrayData102land910[12] =
+                        static const struct Ven_WildPokemon arrayData102land910[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route102/landencounters/route102land_910.h"
                         };
                         return arrayData102land910;
                     default:
-                        const struct Ven_WildPokemon arrayData102landdefault[12] =
+                        static const struct Ven_WildPokemon arrayData102landdefault[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route102/landencounters/route102land_910.h"
                         };
@@ -169,7 +169,7 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 0:
                     case 1:
                     case 2:
-                        const struct Ven_WildPokemon arrayData103land02[12] =
+                        static const struct Ven_WildPokemon arrayData103land02[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route103/landencounters/route103land_02.h"
                         };
@@ -177,7 +177,7 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 3:
                     case 4:
                     case 5:
-                        const struct Ven_WildPokemon arrayData103land35[12] =
+                        static const struct Ven_WildPokemon arrayData103land35[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route103/landencounters/route103land_35.h"
                         };
@@ -185,20 +185,20 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 6:
                     case 7:
                     case 8:
-                        const struct Ven_WildPokemon arrayData103land68[12] =
+                        static const struct Ven_WildPokemon arrayData103land68[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route103/landencounters/route103land_68.h"
                         };
                         return arrayData103land68;
                     case 9:
                     case 10:
-                        const struct Ven_WildPokemon arrayData103land910[12] =
+                        static const struct Ven_WildPokemon arrayData103land910[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route103/landencounters/route103land_910.h"
                         };
                         return arrayData103land910;
                     default:
-                        const struct Ven_WildPokemon arrayData103landdefault[12] =
+                        static const struct Ven_WildPokemon arrayData103landdefault[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route103/landencounters/route103land_910.h"
                         };
@@ -210,7 +210,7 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 0:
                     case 1:
                     case 2:
-                        const struct Ven_WildPokemon arrayData104land02[12] =
+                        static const struct Ven_WildPokemon arrayData104land02[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route104/landencounters/route104land_02.h"
                         };
@@ -218,7 +218,7 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 3:
                     case 4:
                     case 5:
-                        const struct Ven_WildPokemon arrayData104land35[12] =
+                        static const struct Ven_WildPokemon arrayData104land35[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route104/landencounters/route104land_35.h"
                         };
@@ -226,20 +226,20 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 6:
                     case 7:
                     case 8:
-                        const struct Ven_WildPokemon arrayData104land68[12] =
+                        static const struct Ven_WildPokemon arrayData104land68[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route104/landencounters/route104land_68.h"
                         };
                         return arrayData104land68;
                     case 9:
                     case 10:
-                        const struct Ven_WildPokemon arrayData104land910[12] =
+                        static const struct Ven_WildPokemon arrayData104land910[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route104/landencounters/route104land_910.h"
                         };
                         return arrayData104land910;
                     default:
-                        const struct Ven_WildPokemon arrayData104landdefault[12] =
+                        static const struct Ven_WildPokemon arrayData104landdefault[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route104/landencounters/route104land_910.h"
                         };
@@ -251,7 +251,7 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 0:
                     case 1:
                     case 2:
-                        const struct Ven_WildPokemon arrayData106land02[12] =
+                        static const struct Ven_WildPokemon arrayData106land02[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route106/landencounters/route106land_02.h"
                         };
@@ -259,7 +259,7 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 3:
                     case 4:
                     case 5:
-                        const struct Ven_WildPokemon arrayData106land35[12] =
+                        static const struct Ven_WildPokemon arrayData106land35[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route106/landencounters/route106land_35.h"
                         };
@@ -267,20 +267,20 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 6:
                     case 7:
                     case 8:
-                        const struct Ven_WildPokemon arrayData106land68[12] =
+                        static const struct Ven_WildPokemon arrayData106land68[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route106/landencounters/route106land_68.h"
                         };
                         return arrayData106land68;
                     case 9:
                     case 10:
-                        const struct Ven_WildPokemon arrayData106land910[12] =
+                        static const struct Ven_WildPokemon arrayData106land910[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route106/landencounters/route106land_910.h"
                         };
                         return arrayData106land910;
                     default:
-                        const struct Ven_WildPokemon arrayData106landdefault[12] =
+                        static const struct Ven_WildPokemon arrayData106landdefault[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route106/landencounters/route106land_910.h"
                         };
@@ -292,7 +292,7 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 0:
                     case 1:
                     case 2:
-                        const struct Ven_WildPokemon arrayData109land02[12] =
+                        static const struct Ven_WildPokemon arrayData109land02[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route109/landencounters/route109land_02.h"
                         };
@@ -300,7 +300,7 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 3:
                     case 4:
                     case 5:
-                        const struct Ven_WildPokemon arrayData109land35[12] =
+                        static const struct Ven_WildPokemon arrayData109land35[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route109/landencounters/route109land_35.h"
                         };
@@ -308,20 +308,20 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 6:
                     case 7:
                     case 8:
-                        const struct Ven_WildPokemon arrayData109land68[12] =
+                        static const struct Ven_WildPokemon arrayData109land68[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route109/landencounters/route109land_68.h"
                         };
                         return arrayData109land68;
                     case 9:
                     case 10:
-                        const struct Ven_WildPokemon arrayData109land910[12] =
+                        static const struct Ven_WildPokemon arrayData109land910[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route109/landencounters/route109land_910.h"
                         };
                         return arrayData109land910;
                     default:
-                        const struct Ven_WildPokemon arrayData109landdefault[12] =
+                        static const struct Ven_WildPokemon arrayData109landdefault[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route109/landencounters/route109land_910.h"
                         };
@@ -333,7 +333,7 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 0:
                     case 1:
                     case 2:
-                        const struct Ven_WildPokemon arrayData110land02[12] = 
+                        static const struct Ven_WildPokemon arrayData110land02[12] = 
                         {
                             #include "data/wildencounters/townsandroutes/route110/landencounters/route110land_02.h"
                         };
@@ -341,25 +341,25 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 3:
                     case 4:
                     case 5:
-                        const struct Ven_WildPokemon arrayData110land35[12] = {
+                        static const struct Ven_WildPokemon arrayData110land35[12] = {
                             #include "data/wildencounters/townsandroutes/route110/landencounters/route110land_35.h"
                         };
                         return arrayData110land35;
                     case 6:
                     case 7:
                     case 8:
-                        const struct Ven_WildPokemon arrayData110land68[12] = {
+                        static const struct Ven_WildPokemon arrayData110land68[12] = {
                             #include "data/wildencounters/townsandroutes/route110/landencounters/route110land_68.h"
                         };
                         return arrayData110land68;
                     case 9:
                     case 10:
-                        const struct Ven_WildPokemon arrayData110land910[12] = {
+                        static const struct Ven_WildPokemon arrayData110land910[12] = {
                             #include "data/wildencounters/townsandroutes/route110/landencounters/route110land_910.h"
                         };
                         return arrayData110land910;
                     default:
-                        const struct Ven_WildPokemon arrayDatadefault[12] = {
+                        static const struct Ven_WildPokemon arrayDatadefault[12] = {
                             #include "data/wildencounters/townsandroutes/route110/landencounters/route110land_910.h"
                         };
                         return arrayDatadefault;
@@ -370,7 +370,7 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 0:
                     case 1:
                     case 2:
-                        const struct Ven_WildPokemon arrayData115land02[12] =
+                        static const struct Ven_WildPokemon arrayData115land02[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route115/landencounters/route115land_02.h"
                         };
@@ -378,7 +378,7 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 3:
                     case 4:
                     case 5:
-                        const struct Ven_WildPokemon arrayData115land35[12] =
+                        static const struct Ven_WildPokemon arrayData115land35[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route115/landencounters/route115land_35.h"
                         };
@@ -386,20 +386,20 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 6:
                     case 7:
                     case 8:
-                        const struct Ven_WildPokemon arrayData115land68[12] =
+                        static const struct Ven_WildPokemon arrayData115land68[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route115/landencounters/route115land_68.h"
                         };
                         return arrayData115land68;
                     case 9:
                     case 10:
-                        const struct Ven_WildPokemon arrayData115land910[12] =
+                        static const struct Ven_WildPokemon arrayData115land910[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route115/landencounters/route115land_910.h"
                         };
                         return arrayData115land910;
                     default:
-                        const struct Ven_WildPokemon arrayData115landdefault[12] =
+                        static const struct Ven_WildPokemon arrayData115landdefault[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route115/landencounters/route115land_910.h"
                         };
@@ -411,7 +411,7 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 0:
                     case 1:
                     case 2:
-                        const struct Ven_WildPokemon arrayData116land02[12] =
+                        static const struct Ven_WildPokemon arrayData116land02[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route116/landencounters/route116land_02.h"
                         };
@@ -419,7 +419,7 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 3:
                     case 4:
                     case 5:
-                        const struct Ven_WildPokemon arrayData116land35[12] =
+                        static const struct Ven_WildPokemon arrayData116land35[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route116/landencounters/route116land_35.h"
                         };
@@ -427,20 +427,20 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 6:
                     case 7:
                     case 8:
-                        const struct Ven_WildPokemon arrayData116land68[12] =
+                        static const struct Ven_WildPokemon arrayData116land68[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route116/landencounters/route116land_68.h"
                         };
                         return arrayData116land68;
                     case 9:
                     case 10:
-                        const struct Ven_WildPokemon arrayData116land910[12] =
+                        static const struct Ven_WildPokemon arrayData116land910[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route116/landencounters/route116land_910.h"
                         };
                         return arrayData116land910;
                     default:
-                        const struct Ven_WildPokemon arrayData116landdefault[12] =
+                        static const struct Ven_WildPokemon arrayData116landdefault[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route116/landencounters/route116land_910.h"
                         };
@@ -452,7 +452,7 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 0:
                     case 1:
                     case 2:
-                        const struct Ven_WildPokemon arrayData117land02[12] =
+                        static const struct Ven_WildPokemon arrayData117land02[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route117/landencounters/route117land_02.h"
                         };
@@ -460,7 +460,7 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 3:
                     case 4:
                     case 5:
-                        const struct Ven_WildPokemon arrayData117land35[12] =
+                        static const struct Ven_WildPokemon arrayData117land35[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route117/landencounters/route117land_35.h"
                         };
@@ -468,20 +468,20 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 6:
                     case 7:
                     case 8:
-                        const struct Ven_WildPokemon arrayData117land68[12] =
+                        static const struct Ven_WildPokemon arrayData117land68[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route117/landencounters/route117land_68.h"
                         };
                         return arrayData117land68;
                     case 9:
                     case 10:
-                        const struct Ven_WildPokemon arrayData117land910[12] =
+                        static const struct Ven_WildPokemon arrayData117land910[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route117/landencounters/route117land_910.h"
                         };
                         return arrayData117land910;
                     default:
-                        const struct Ven_WildPokemon arrayData117landdefault[12] =
+                        static const struct Ven_WildPokemon arrayData117landdefault[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route117/landencounters/route117land_910.h"
                         };
@@ -493,7 +493,7 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 0:
                     case 1:
                     case 2:
-                        const struct Ven_WildPokemon arrayDatarustboropierland02[12] =
+                        static const struct Ven_WildPokemon arrayDatarustboropierland02[12] =
                         {
                             #include "data/wildencounters/townsandroutes/rustboropier/landencounters/rustboropierland_02.h"
                         };
@@ -501,7 +501,7 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 3:
                     case 4:
                     case 5:
-                        const struct Ven_WildPokemon arrayDatarustboropierland35[12] =
+                        static const struct Ven_WildPokemon arrayDatarustboropierland35[12] =
                         {
                             #include "data/wildencounters/townsandroutes/rustboropier/landencounters/rustboropierland_35.h"
                         };
@@ -509,20 +509,20 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 6:
                     case 7:
                     case 8:
-                        const struct Ven_WildPokemon arrayDatarustboropierland68[12] =
+                        static const struct Ven_WildPokemon arrayDatarustboropierland68[12] =
                         {
                             #include "data/wildencounters/townsandroutes/rustboropier/landencounters/rustboropierland_68.h"
                         };
                         return arrayDatarustboropierland68;
                     case 9:
                     case 10:
-                        const struct Ven_WildPokemon arrayDatarustboropierland910[12] =
+                        static const struct Ven_WildPokemon arrayDatarustboropierland910[12] =
                         {
                             #include "data/wildencounters/townsandroutes/rustboropier/landencounters/rustboropierland_910.h"
                         };
                         return arrayDatarustboropierland910;
                     default:
-                        const struct Ven_WildPokemon arrayDatarustboropierlanddefault[12] =
+                        static const struct Ven_WildPokemon arrayDatarustboropierlanddefault[12] =
                         {
                             #include "data/wildencounters/townsandroutes/rustboropier/landencounters/rustboropierland_910.h"
                         };
@@ -542,32 +542,32 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 0:
                     case 1:
                     case 2:
-                        const struct Ven_WildPokemon arrayDataGranite1fland02[12] = {
+                        static const struct Ven_WildPokemon arrayDataGranite1fland02[12] = {
                             #include "data/wildencounters/dungeons/granitecave_1f/landencounters/granite1fland_02.h"
                         };
                         return arrayDataGranite1fland02;
                     case 3:
                     case 4:
                     case 5:
-                        const struct Ven_WildPokemon arrayDataGranite1fland35[12] = {
+                        static const struct Ven_WildPokemon arrayDataGranite1fland35[12] = {
                             #include "data/wildencounters/dungeons/granitecave_1f/landencounters/granite1fland_35.h"
                         };
                         return arrayDataGranite1fland35;
                     case 6:
                     case 7:
                     case 8:
-                        const struct Ven_WildPokemon arrayDataGranite1fland68[12] = {
+                        static const struct Ven_WildPokemon arrayDataGranite1fland68[12] = {
                             #include "data/wildencounters/dungeons/granitecave_1f/landencounters/granite1fland_68.h"
                         };
                         return arrayDataGranite1fland68;
                     case 9:
                     case 10:
-                        const struct Ven_WildPokemon arrayDataGranite1fland910[12] = {
+                        static const struct Ven_WildPokemon arrayDataGranite1fland910[12] = {
                             #include "data/wildencounters/dungeons/granitecave_1f/landencounters/granite1fland_910.h"
                         };
                         return arrayDataGranite1fland910;
                     default:
-                        const struct Ven_WildPokemon arrayDataGranite1flanddefualt[12] = {
+                        static const struct Ven_WildPokemon arrayDataGranite1flanddefualt[12] = {
                             #include "data/wildencounters/dungeons/granitecave_1f/landencounters/granite1fland_910.h"
                         };
                         return arrayDataGranite1flanddefualt;
@@ -578,7 +578,7 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 0:
                     case 1:
                     case 2:
-                        const struct Ven_WildPokemon arrayDatagraniteb1fland02[12] =
+                        static const struct Ven_WildPokemon arrayDatagraniteb1fland02[12] =
                         {
                             #include "data/wildencounters/dungeons/granitecave_b1f/landencounters/graniteb1fland_02.h"
                         };
@@ -586,7 +586,7 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 3:
                     case 4:
                     case 5:
-                        const struct Ven_WildPokemon arrayDatagraniteb1fland35[12] =
+                        static const struct Ven_WildPokemon arrayDatagraniteb1fland35[12] =
                         {
                             #include "data/wildencounters/dungeons/granitecave_b1f/landencounters/graniteb1fland_35.h"
                         };
@@ -594,20 +594,20 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 6:
                     case 7:
                     case 8:
-                        const struct Ven_WildPokemon arrayDatagraniteb1fland68[12] =
+                        static const struct Ven_WildPokemon arrayDatagraniteb1fland68[12] =
                         {
                             #include "data/wildencounters/dungeons/granitecave_b1f/landencounters/graniteb1fland_68.h"
                         };
                         return arrayDatagraniteb1fland68;
                     case 9:
                     case 10:
-                        const struct Ven_WildPokemon arrayDatagraniteb1fland910[12] =
+                        static const struct Ven_WildPokemon arrayDatagraniteb1fland910[12] =
                         {
                             #include "data/wildencounters/dungeons/granitecave_b1f/landencounters/graniteb1fland_910.h"
                         };
                         return arrayDatagraniteb1fland910;
                     default:
-                        const struct Ven_WildPokemon arrayDatagraniteb1flanddefault[12] =
+                        static const struct Ven_WildPokemon arrayDatagraniteb1flanddefault[12] =
                         {
                             #include "data/wildencounters/dungeons/granitecave_b1f/landencounters/graniteb1fland_910.h"
                         };
@@ -619,7 +619,7 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 0:
                     case 1:
                     case 2:
-                        const struct Ven_WildPokemon dataArraygraniteb2fland02[12] =
+                        static const struct Ven_WildPokemon dataArraygraniteb2fland02[12] =
                         {
                             #include "data/wildencounters/dungeons/granitecave_b2f/landencounters/graniteb2fland_02.h"
                         };
@@ -627,7 +627,7 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 3:
                     case 4:
                     case 5:
-                        const struct Ven_WildPokemon dataArraygraniteb2fland35[12] =
+                        static const struct Ven_WildPokemon dataArraygraniteb2fland35[12] =
                         {
                             #include "data/wildencounters/dungeons/granitecave_b2f/landencounters/graniteb2fland_35.h"
                         };
@@ -635,20 +635,20 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 6:
                     case 7:
                     case 8:
-                        const struct Ven_WildPokemon dataArraygraniteb2fland68[12] =
+                        static const struct Ven_WildPokemon dataArraygraniteb2fland68[12] =
                         {
                             #include "data/wildencounters/dungeons/granitecave_b2f/landencounters/graniteb2fland_68.h"
                         };
                         return dataArraygraniteb2fland68;
                     case 9:
                     case 10:
-                        const struct Ven_WildPokemon dataArraygraniteb2fland910[12] =
+                        static const struct Ven_WildPokemon dataArraygraniteb2fland910[12] =
                         {
                             #include "data/wildencounters/dungeons/granitecave_b2f/landencounters/graniteb2fland_910.h"
                         };
                         return dataArraygraniteb2fland910;
                     default:
-                        const struct Ven_WildPokemon dataArraygraniteb2flanddefault[12] =
+                        static const struct Ven_WildPokemon dataArraygraniteb2flanddefault[12] =
                         {
                             #include "data/wildencounters/dungeons/granitecave_b2f/landencounters/graniteb2fland_910.h"
                         };
@@ -660,7 +660,7 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 0:
                     case 1:
                     case 2:
-                        const struct Ven_WildPokemon newmauvileland02[12] =
+                        static const struct Ven_WildPokemon newmauvileland02[12] =
                         {
                             #include "data/wildencounters/dungeons/newmauvile/landencounters/newmauvileland_02.h"
                         };
@@ -668,7 +668,7 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 3:
                     case 4:
                     case 5:
-                        const struct Ven_WildPokemon newmauvileland35[12] =
+                        static const struct Ven_WildPokemon newmauvileland35[12] =
                         {
                             #include "data/wildencounters/dungeons/newmauvile/landencounters/newmauvileland_35.h"
                         };
@@ -676,20 +676,20 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 6:
                     case 7:
                     case 8:
-                        const struct Ven_WildPokemon newmauvileland68[12] =
+                        static const struct Ven_WildPokemon newmauvileland68[12] =
                         {
                             #include "data/wildencounters/dungeons/newmauvile/landencounters/newmauvileland_68.h"
                         };
                         return newmauvileland68;
                     case 9:
                     case 10:
-                        const struct Ven_WildPokemon newmauvileland910[12] =
+                        static const struct Ven_WildPokemon newmauvileland910[12] =
                         {
                             #include "data/wildencounters/dungeons/newmauvile/landencounters/newmauvileland_910.h"
                         };
                         return newmauvileland910;
                     default:
-                        const struct Ven_WildPokemon newmauvilelanddefault[12] =
+                        static const struct Ven_WildPokemon newmauvilelanddefault[12] =
                         {
                             #include "data/wildencounters/dungeons/newmauvile/landencounters/newmauvileland_910.h"
                         };
@@ -701,7 +701,7 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 0:
                     case 1:
                     case 2:
-                        const struct Ven_WildPokemon dataArraypetalburghouseland02[12] =
+                        static const struct Ven_WildPokemon dataArraypetalburghouseland02[12] =
                         {
                             #include "data/wildencounters/dungeons/petalburghauntedhouse/landencounters/petalburghauntedhouseland_02.h"
                         };
@@ -709,7 +709,7 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 3:
                     case 4:
                     case 5:
-                        const struct Ven_WildPokemon dataArraypetalburghouseland35[12] =
+                        static const struct Ven_WildPokemon dataArraypetalburghouseland35[12] =
                         {
                             #include "data/wildencounters/dungeons/petalburghauntedhouse/landencounters/petalburghauntedhouseland_35.h"
                         };
@@ -717,20 +717,20 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 6:
                     case 7:
                     case 8:
-                        const struct Ven_WildPokemon dataArraypetalburghouseland68[12] =
+                        static const struct Ven_WildPokemon dataArraypetalburghouseland68[12] =
                         {
                             #include "data/wildencounters/dungeons/petalburghauntedhouse/landencounters/petalburghauntedhouseland_68.h"
                         };
                         return dataArraypetalburghouseland68;
                     case 9:
                     case 10:
-                        const struct Ven_WildPokemon dataArraypetalburghouseland910[12] =
+                        static const struct Ven_WildPokemon dataArraypetalburghouseland910[12] =
                         {
                             #include "data/wildencounters/dungeons/petalburghauntedhouse/landencounters/petalburghauntedhouseland_910.h"
                         };
                         return dataArraypetalburghouseland910;
                     default:
-                        const struct Ven_WildPokemon dataArraypetalburghouselanddefault[12] =
+                        static const struct Ven_WildPokemon dataArraypetalburghouselanddefault[12] =
                         {
                             #include "data/wildencounters/dungeons/petalburghauntedhouse/landencounters/petalburghauntedhouseland_910.h"
                         };
@@ -742,7 +742,7 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 0:
                     case 1:
                     case 2:
-                        const struct Ven_WildPokemon dataArraypetalburgwoodsland02[12] =
+                        static const struct Ven_WildPokemon dataArraypetalburgwoodsland02[12] =
                         {
                             #include "data/wildencounters/dungeons/petalburgwoods/landencounters/petalburgwoodsland_02.h"
                         };
@@ -750,7 +750,7 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 3:
                     case 4:
                     case 5:
-                        const struct Ven_WildPokemon dataArraypetalburgwoodsland35[12] =
+                        static const struct Ven_WildPokemon dataArraypetalburgwoodsland35[12] =
                         {
                             #include "data/wildencounters/dungeons/petalburgwoods/landencounters/petalburgwoodsland_35.h"
                         };
@@ -758,20 +758,20 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 6:
                     case 7:
                     case 8:
-                        const struct Ven_WildPokemon dataArraypetalburgwoodsland68[12] =
+                        static const struct Ven_WildPokemon dataArraypetalburgwoodsland68[12] =
                         {
                             #include "data/wildencounters/dungeons/petalburgwoods/landencounters/petalburgwoodsland_68.h"
                         };
                         return dataArraypetalburgwoodsland68;
                     case 9:
                     case 10:
-                        const struct Ven_WildPokemon dataArraypetalburgwoodsland910[12] =
+                        static const struct Ven_WildPokemon dataArraypetalburgwoodsland910[12] =
                         {
                             #include "data/wildencounters/dungeons/petalburgwoods/landencounters/petalburgwoodsland_910.h"
                         };
                         return dataArraypetalburgwoodsland910;
                     default:
-                        const struct Ven_WildPokemon dataArraypetalburgwoodslanddefualt[12] =
+                        static const struct Ven_WildPokemon dataArraypetalburgwoodslanddefualt[12] =
                         {
                             #include "data/wildencounters/dungeons/petalburgwoods/landencounters/petalburgwoodsland_910.h"
                         };
@@ -783,7 +783,7 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 0:
                     case 1:
                     case 2:
-                        const struct Ven_WildPokemon dataArrayrusturfland02[12] =
+                        static const struct Ven_WildPokemon dataArrayrusturfland02[12] =
                         {
                             #include "data/wildencounters/dungeons/rusturftunnel/landencounters/rusturftunnelland_02.h"
                         };
@@ -791,7 +791,7 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 3:
                     case 4:
                     case 5:
-                        const struct Ven_WildPokemon dataArrayrusturfland35[12] =
+                        static const struct Ven_WildPokemon dataArrayrusturfland35[12] =
                         {
                             #include "data/wildencounters/dungeons/rusturftunnel/landencounters/rusturftunnelland_35.h"
                         };
@@ -799,20 +799,20 @@ const struct Ven_WildPokemon *Ven_GetLandEncounterArray(void)
                     case 6:
                     case 7:
                     case 8:
-                        const struct Ven_WildPokemon dataArrayrusturfland68[12] =
+                        static const struct Ven_WildPokemon dataArrayrusturfland68[12] =
                         {
                             #include "data/wildencounters/dungeons/rusturftunnel/landencounters/rusturftunnelland_68.h"
                         };
                         return dataArrayrusturfland68;
                     case 9:
                     case 10:
-                        const struct Ven_WildPokemon dataArrayrusturfland910[12] =
+                        static const struct Ven_WildPokemon dataArrayrusturfland910[12] =
                         {
                             #include "data/wildencounters/dungeons/rusturftunnel/landencounters/rusturftunnelland_910.h"
                         };
                         return dataArrayrusturfland910;
                     default:
-                        const struct Ven_WildPokemon dataArrayrusturflanddefault[12] =
+                        static const struct Ven_WildPokemon dataArrayrusturflanddefault[12] =
                         {
                             #include "data/wildencounters/dungeons/rusturftunnel/landencounters/rusturftunnelland_910.h"
                         };
@@ -1143,7 +1143,6 @@ struct Ven_WildPokemon Ven_GetLandEncounterMon(void)
 const struct Ven_WildPokemon *Ven_GetWaterEncounterArray(void)
 {
     //DebugPrintf("Helloooooo...?");
-    struct Ven_WildPokemon* currentArray = Alloc(sizeof(struct Ven_WildPokemon) * 12);
     u16 currentMapNum = gSaveBlock1Ptr->location.mapNum;
 
     static struct Ven_WildPokemon fallbackMon[2] = 
@@ -1172,45 +1171,40 @@ const struct Ven_WildPokemon *Ven_GetWaterEncounterArray(void)
                     case 0:
                     case 1:
                     case 2:
-                        const struct Ven_WildPokemon arrayDataPetalburgwater02[12] =
+                        static const struct Ven_WildPokemon arrayDataPetalburgwater02[12] =
                         {
                             #include "data/wildencounters/townsandroutes/petalburgcity/waterencounters/petalburgcitywater_02.h"
                         };
-                        memcpy(currentArray, arrayDataPetalburgwater02, sizeof(arrayDataPetalburgwater02));
-                        return currentArray;
+                        return arrayDataPetalburgwater02;
                     case 3:
                     case 4:
                     case 5:
-                        const struct Ven_WildPokemon arrayDataPetalburgwater35[12] =
+                        static const struct Ven_WildPokemon arrayDataPetalburgwater35[12] =
                         {
                             #include "data/wildencounters/townsandroutes/petalburgcity/waterencounters/petalburgcitywater_35.h"
                         };
-                        memcpy(currentArray, arrayDataPetalburgwater35, sizeof(arrayDataPetalburgwater35));
-                        return currentArray;
+                        return arrayDataPetalburgwater35;
                     case 6:
                     case 7:
                     case 8:
-                        const struct Ven_WildPokemon arrayDataPetalburgwater68[12] =
+                        static const struct Ven_WildPokemon arrayDataPetalburgwater68[12] =
                         {
                             #include "data/wildencounters/townsandroutes/petalburgcity/waterencounters/petalburgcitywater_68.h"
                         };
-                        memcpy(currentArray, arrayDataPetalburgwater68, sizeof(arrayDataPetalburgwater68));
-                        return currentArray;
+                        return arrayDataPetalburgwater68;
                     case 9:
                     case 10:
-                        const struct Ven_WildPokemon arrayDataPetalburgwater910[12] =
+                        static const struct Ven_WildPokemon arrayDataPetalburgwater910[12] =
                         {
                             #include "data/wildencounters/townsandroutes/petalburgcity/waterencounters/petalburgcitywater_910.h"
                         };
-                        memcpy(currentArray, arrayDataPetalburgwater910, sizeof(arrayDataPetalburgwater910));
-                        return currentArray;
+                        return arrayDataPetalburgwater910;
                     default:
-                        const struct Ven_WildPokemon arrayDataPetalburgwaterdefault[12] =
+                        static const struct Ven_WildPokemon arrayDataPetalburgwaterdefault[12] =
                         {
                             #include "data/wildencounters/townsandroutes/petalburgcity/waterencounters/petalburgcitywater_910.h"
                         };
-                        memcpy(currentArray, arrayDataPetalburgwaterdefault, sizeof(arrayDataPetalburgwaterdefault));
-                        return currentArray;
+                        return arrayDataPetalburgwaterdefault;
                 }
             case MAP_NUM(MAP_ROUTE102):
                 switch(*GetVarPointer(VAR_WORLD_DIFFICULTY))
@@ -1218,7 +1212,7 @@ const struct Ven_WildPokemon *Ven_GetWaterEncounterArray(void)
                     case 0:
                     case 1:
                     case 2:
-                        const struct Ven_WildPokemon arrayData102water02[12] =
+                        static const struct Ven_WildPokemon arrayData102water02[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route102/waterencounters/route102water_02.h"
                         };
@@ -1226,7 +1220,7 @@ const struct Ven_WildPokemon *Ven_GetWaterEncounterArray(void)
                     case 3:
                     case 4:
                     case 5:
-                        const struct Ven_WildPokemon arrayData102water35[12] =
+                        static const struct Ven_WildPokemon arrayData102water35[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route102/waterencounters/route102water_35.h"
                         };
@@ -1234,20 +1228,20 @@ const struct Ven_WildPokemon *Ven_GetWaterEncounterArray(void)
                     case 6:
                     case 7:
                     case 8:
-                        const struct Ven_WildPokemon arrayData102water68[12] =
+                        static const struct Ven_WildPokemon arrayData102water68[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route102/waterencounters/route102water_68.h"
                         };
                         return arrayData102water68;
                     case 9:
                     case 10:
-                        const struct Ven_WildPokemon arrayData102water910[12] =
+                        static const struct Ven_WildPokemon arrayData102water910[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route102/waterencounters/route102water_910.h"
                         };
                         return arrayData102water910;
-                    case default:
-                        const struct Ven_WildPokemon arrayData102waterdefault[12] =
+                    default:
+                        static const struct Ven_WildPokemon arrayData102waterdefault[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route102/waterencounters/route102water_910.h"
                         };
@@ -1259,7 +1253,7 @@ const struct Ven_WildPokemon *Ven_GetWaterEncounterArray(void)
                     case 0:
                     case 1:
                     case 2:
-                        const struct Ven_WildPokemon arrayData103water02[12] =
+                        static const struct Ven_WildPokemon arrayData103water02[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route103/waterencounters/route103water_02.h"
                         };
@@ -1267,7 +1261,7 @@ const struct Ven_WildPokemon *Ven_GetWaterEncounterArray(void)
                     case 3:
                     case 4:
                     case 5:
-                        const struct Ven_WildPokemon arrayData103water35[12] =
+                        static const struct Ven_WildPokemon arrayData103water35[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route103/waterencounters/route103water_35.h"
                         };
@@ -1275,20 +1269,20 @@ const struct Ven_WildPokemon *Ven_GetWaterEncounterArray(void)
                     case 6:
                     case 7:
                     case 8:
-                        const struct Ven_WildPokemon arrayData103water68[12] =
+                        static const struct Ven_WildPokemon arrayData103water68[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route103/waterencounters/route103water_68.h"
                         };
                         return arrayData103water68;
                     case 9:
                     case 10:
-                        const struct Ven_WildPokemon arrayData103water910[12] =
+                        static const struct Ven_WildPokemon arrayData103water910[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route103/waterencounters/route103water_910.h"
                         };
                         return arrayData103water910;
                     default:
-                        const struct Ven_WildPokemon arrayData103waterdefault[12] =
+                        static const struct Ven_WildPokemon arrayData103waterdefault[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route103/waterencounters/route103water_910.h"
                         };
@@ -1300,7 +1294,7 @@ const struct Ven_WildPokemon *Ven_GetWaterEncounterArray(void)
                     case 0:
                     case 1:
                     case 2:
-                        const struct Ven_WildPokemon arrayData104water02[12] =
+                        static const struct Ven_WildPokemon arrayData104water02[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route104/waterencounters/route104water_02.h"
                         };
@@ -1308,7 +1302,7 @@ const struct Ven_WildPokemon *Ven_GetWaterEncounterArray(void)
                     case 3:
                     case 4:
                     case 5:
-                        const struct Ven_WildPokemon arrayData104water35[12] =
+                        static const struct Ven_WildPokemon arrayData104water35[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route104/waterencounters/route104water_35.h"
                         };
@@ -1316,20 +1310,20 @@ const struct Ven_WildPokemon *Ven_GetWaterEncounterArray(void)
                     case 6:
                     case 7:
                     case 8:
-                        const struct Ven_WildPokemon arrayData104water68[12] =
+                        static const struct Ven_WildPokemon arrayData104water68[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route104/waterencounters/route104water_68.h"
                         };
                         return arrayData104water68;
                     case 9:
                     case 10:
-                        const struct Ven_WildPokemon arrayData104water910[12] =
+                        static const struct Ven_WildPokemon arrayData104water910[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route104/waterencounters/route104water_910.h"
                         };
                         return arrayData104water910;
                     default:
-                        const struct Ven_WildPokemon arrayData104waterdefault[12] =
+                        static const struct Ven_WildPokemon arrayData104waterdefault[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route104/waterencounters/route104water_910.h"
                         };
@@ -1341,7 +1335,7 @@ const struct Ven_WildPokemon *Ven_GetWaterEncounterArray(void)
                     case 0:
                     case 1:
                     case 2:
-                        const struct Ven_WildPokemon arrayData105water02[12] =
+                        static const struct Ven_WildPokemon arrayData105water02[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route105/waterencounters/route105water02.h"
                         };
@@ -1349,7 +1343,7 @@ const struct Ven_WildPokemon *Ven_GetWaterEncounterArray(void)
                     case 3:
                     case 4:
                     case 5:
-                        const struct Ven_WildPokemon arrayData105water35[12] =
+                        static const struct Ven_WildPokemon arrayData105water35[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route105/waterencounters/route105water35.h"
                         };
@@ -1357,20 +1351,20 @@ const struct Ven_WildPokemon *Ven_GetWaterEncounterArray(void)
                     case 6:
                     case 7:
                     case 8:
-                        const struct Ven_WildPokemon arrayData105water68[12] =
+                        static const struct Ven_WildPokemon arrayData105water68[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route105/waterencounters/route105water68.h"
                         };
                         return arrayData105water68;
                     case 9:
                     case 10:
-                        const struct Ven_WildPokemon arrayData105water910[12] =
+                        static const struct Ven_WildPokemon arrayData105water910[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route105/waterencounters/route105water910.h"
                         };
                         return arrayData105water910;
                     default:
-                        const struct Ven_WildPokemon arrayData105waterdefault[12] =
+                        static const struct Ven_WildPokemon arrayData105waterdefault[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route105/waterencounters/route105water910.h"
                         };
@@ -1382,7 +1376,7 @@ const struct Ven_WildPokemon *Ven_GetWaterEncounterArray(void)
                     case 0:
                     case 1:
                     case 2:
-                        const struct Ven_WildPokemon arrayData106water02[12] =
+                        static const struct Ven_WildPokemon arrayData106water02[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route106/waterencounters/route106water_02.h"
                         };
@@ -1390,7 +1384,7 @@ const struct Ven_WildPokemon *Ven_GetWaterEncounterArray(void)
                     case 3:
                     case 4:
                     case 5:
-                        const struct Ven_WildPokemon arrayData106water35[12] =
+                        static const struct Ven_WildPokemon arrayData106water35[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route106/waterencounters/route106water_35.h"
                         };
@@ -1398,20 +1392,20 @@ const struct Ven_WildPokemon *Ven_GetWaterEncounterArray(void)
                     case 6:
                     case 7:
                     case 8:
-                        const struct Ven_WildPokemon arrayData106water68[12] =
+                        static const struct Ven_WildPokemon arrayData106water68[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route106/waterencounters/route106water_68.h"
                         };
                         return arrayData106water68;
                     case 9:
                     case 10:
-                        const struct Ven_WildPokemon arrayData106water910[12] =
+                        static const struct Ven_WildPokemon arrayData106water910[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route106/waterencounters/route106water_910.h"
                         };
                         return arrayData106water910;
                     default:
-                        const struct Ven_WildPokemon arrayData106waterdefault[12] =
+                        static const struct Ven_WildPokemon arrayData106waterdefault[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route106/waterencounters/route106water_910.h"
                         };
@@ -1423,7 +1417,7 @@ const struct Ven_WildPokemon *Ven_GetWaterEncounterArray(void)
                     case 0:
                     case 1:
                     case 2:
-                        const struct Ven_WildPokemon arrayData107water02[12] =
+                        static const struct Ven_WildPokemon arrayData107water02[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route107/waterencounters/route107water_02.h"
                         };
@@ -1431,7 +1425,7 @@ const struct Ven_WildPokemon *Ven_GetWaterEncounterArray(void)
                     case 3:
                     case 4:
                     case 5:
-                        const struct Ven_WildPokemon arrayData107water35[12] =
+                        static const struct Ven_WildPokemon arrayData107water35[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route107/waterencounters/route107water_35.h"
                         };
@@ -1439,20 +1433,20 @@ const struct Ven_WildPokemon *Ven_GetWaterEncounterArray(void)
                     case 6:
                     case 7:
                     case 8:
-                        const struct Ven_WildPokemon arrayData107water68[12] =
+                        static const struct Ven_WildPokemon arrayData107water68[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route107/waterencounters/route107water_68.h"
                         };
                         return arrayData107water68;
                     case 9:
                     case 10:
-                        const struct Ven_WildPokemon arrayData107water910[12] =
+                        static const struct Ven_WildPokemon arrayData107water910[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route107/waterencounters/route107water_910.h"
                         };
                         return arrayData107water910;
                     default:
-                        const struct Ven_WildPokemon arrayData107waterdefault[12] =
+                        static const struct Ven_WildPokemon arrayData107waterdefault[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route107/waterencounters/route107water_910.h"
                         };
@@ -1464,7 +1458,7 @@ const struct Ven_WildPokemon *Ven_GetWaterEncounterArray(void)
                     case 0:
                     case 1:
                     case 2:
-                        const struct Ven_WildPokemon arrayData108water02[12] =
+                        static const struct Ven_WildPokemon arrayData108water02[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route108/waterencounters/route108water_02.h"
                         };
@@ -1472,7 +1466,7 @@ const struct Ven_WildPokemon *Ven_GetWaterEncounterArray(void)
                     case 3:
                     case 4:
                     case 5:
-                        const struct Ven_WildPokemon arrayData108water35[12] =
+                        static const struct Ven_WildPokemon arrayData108water35[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route108/waterencounters/route108water_35.h"
                         };
@@ -1480,20 +1474,20 @@ const struct Ven_WildPokemon *Ven_GetWaterEncounterArray(void)
                     case 6:
                     case 7:
                     case 8:
-                        const struct Ven_WildPokemon arrayData108water68[12] =
+                        static const struct Ven_WildPokemon arrayData108water68[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route108/waterencounters/route108water_68.h"
                         };
                         return arrayData108water68;
                     case 9:
                     case 10:
-                        const struct Ven_WildPokemon arrayData108water910[12] =
+                        static const struct Ven_WildPokemon arrayData108water910[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route108/waterencounters/route108water_910.h"
                         };
                         return arrayData108water910;
                     default:
-                        const struct Ven_WildPokemon arrayData108waterdefault[12] =
+                        static const struct Ven_WildPokemon arrayData108waterdefault[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route108/waterencounters/route108water_910.h"
                         };
@@ -1505,7 +1499,7 @@ const struct Ven_WildPokemon *Ven_GetWaterEncounterArray(void)
                     case 0:
                     case 1:
                     case 2:
-                        const struct Ven_WildPokemon arrayData109water02[12] =
+                        static const struct Ven_WildPokemon arrayData109water02[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route109/waterencounters/route109water_02.h"
                         };
@@ -1513,7 +1507,7 @@ const struct Ven_WildPokemon *Ven_GetWaterEncounterArray(void)
                     case 3:
                     case 4:
                     case 5:
-                        const struct Ven_WildPokemon arrayData109water35[12] =
+                        static const struct Ven_WildPokemon arrayData109water35[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route109/waterencounters/route109water_35.h"
                         };
@@ -1521,20 +1515,20 @@ const struct Ven_WildPokemon *Ven_GetWaterEncounterArray(void)
                     case 6:
                     case 7:
                     case 8:
-                        const struct Ven_WildPokemon arrayData109water68[12] =
+                        static const struct Ven_WildPokemon arrayData109water68[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route109/waterencounters/route109water_68.h"
                         };
                         return arrayData109water68;
                     case 9:
                     case 10:
-                        const struct Ven_WildPokemon arrayData109water910[12] =
+                        static const struct Ven_WildPokemon arrayData109water910[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route109/waterencounters/route109water_910.h"
                         };
                         return arrayData109water910;
                     default:
-                        const struct Ven_WildPokemon arrayData109waterdefault[12] =
+                        static const struct Ven_WildPokemon arrayData109waterdefault[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route109/waterencounters/route109water_910.h"
                         };
@@ -1546,7 +1540,7 @@ const struct Ven_WildPokemon *Ven_GetWaterEncounterArray(void)
                     case 0:
                     case 1:
                     case 2:
-                        const struct Ven_WildPokemon arrayData110water02[12] = 
+                        static const struct Ven_WildPokemon arrayData110water02[12] = 
                         {
                             #include "data/wildencounters/townsandroutes/route110/waterencounters/route110water_02.h"
                         };
@@ -1554,25 +1548,25 @@ const struct Ven_WildPokemon *Ven_GetWaterEncounterArray(void)
                     case 3:
                     case 4:
                     case 5:
-                        const struct Ven_WildPokemon arrayData110water35[12] = {
+                        static const struct Ven_WildPokemon arrayData110water35[12] = {
                             #include "data/wildencounters/townsandroutes/route110/waterencounters/route110water_35.h"
                         };
                         return arrayData110water35;
                     case 6:
                     case 7:
                     case 8:
-                        const struct Ven_WildPokemon arrayData110water68[12] = {
+                        static const struct Ven_WildPokemon arrayData110water68[12] = {
                             #include "data/wildencounters/townsandroutes/route110/waterencounters/route110water_68.h"
                         };
                         return arrayData110water68;
                     case 9:
                     case 10:
-                        const struct Ven_WildPokemon arrayData110water910[12] = {
+                        static const struct Ven_WildPokemon arrayData110water910[12] = {
                             #include "data/wildencounters/townsandroutes/route110/waterencounters/route110water_910.h"
                         };
                         return arrayData110water910;
                     default:
-                        const struct Ven_WildPokemon arrayData110waterdefault[12] = {
+                        static const struct Ven_WildPokemon arrayData110waterdefault[12] = {
                             #include "data/wildencounters/townsandroutes/route110/waterencounters/route110water_910.h"
                         };
                         return arrayData110waterdefault;
@@ -1583,7 +1577,7 @@ const struct Ven_WildPokemon *Ven_GetWaterEncounterArray(void)
                     case 0:
                     case 1:
                     case 2:
-                        const struct Ven_WildPokemon arrayData115water02[12] =
+                        static const struct Ven_WildPokemon arrayData115water02[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route115/waterencounters/route115water_02.h"
                         };
@@ -1591,7 +1585,7 @@ const struct Ven_WildPokemon *Ven_GetWaterEncounterArray(void)
                     case 3:
                     case 4:
                     case 5:
-                        const struct Ven_WildPokemon arrayData115water35[12] =
+                        static const struct Ven_WildPokemon arrayData115water35[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route115/waterencounters/route115water_35.h"
                         };
@@ -1599,20 +1593,20 @@ const struct Ven_WildPokemon *Ven_GetWaterEncounterArray(void)
                     case 6:
                     case 7:
                     case 8:
-                        const struct Ven_WildPokemon arrayData115water68[12] =
+                        static const struct Ven_WildPokemon arrayData115water68[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route115/waterencounters/route115water_68.h"
                         };
                         return arrayData115water68;
                     case 9:
                     case 10:
-                        const struct Ven_WildPokemon arrayData115water910[12] =
+                        static const struct Ven_WildPokemon arrayData115water910[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route115/waterencounters/route115water_910.h"
                         };
                         return arrayData115water910;
                     default:
-                        const struct Ven_WildPokemon arrayData115waterdefault[12] =
+                        static const struct Ven_WildPokemon arrayData115waterdefault[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route115/waterencounters/route115water_910.h"
                         };
@@ -1624,7 +1618,7 @@ const struct Ven_WildPokemon *Ven_GetWaterEncounterArray(void)
                     case 0:
                     case 1:
                     case 2:
-                        const struct Ven_WildPokemon arrayData117water02[12] =
+                        static const struct Ven_WildPokemon arrayData117water02[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route117/waterencounters/route117water_02.h"
                         };
@@ -1632,7 +1626,7 @@ const struct Ven_WildPokemon *Ven_GetWaterEncounterArray(void)
                     case 3:
                     case 4:
                     case 5:
-                        const struct Ven_WildPokemon arrayData117water35[12] =
+                        static const struct Ven_WildPokemon arrayData117water35[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route117/waterencounters/route117water_35.h"
                         };
@@ -1640,20 +1634,20 @@ const struct Ven_WildPokemon *Ven_GetWaterEncounterArray(void)
                     case 6:
                     case 7:
                     case 8:
-                        const struct Ven_WildPokemon arrayData117water68[12] =
+                        static const struct Ven_WildPokemon arrayData117water68[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route117/waterencounters/route117water_68.h"
                         };
                         return arrayData117water68;
                     case 9:
                     case 10:
-                        const struct Ven_WildPokemon arrayData117water910[12] =
+                        static const struct Ven_WildPokemon arrayData117water910[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route117/waterencounters/route117water_910.h"
                         };
                         return arrayData117water910;
                     default:
-                        const struct Ven_WildPokemon arrayData117waterdefault[12] =
+                        static const struct Ven_WildPokemon arrayData117waterdefault[12] =
                         {
                             #include "data/wildencounters/townsandroutes/route117/waterencounters/route117water_910.h"
                         };
@@ -1665,7 +1659,7 @@ const struct Ven_WildPokemon *Ven_GetWaterEncounterArray(void)
                     case 0:
                     case 1:
                     case 2:
-                        const struct Ven_WildPokemon arrayDataSlateportwater02[12] =
+                        static const struct Ven_WildPokemon arrayDataSlateportwater02[12] =
                         {
                             #include "data/wildencounters/townsandroutes/slateportcity/waterencounters/slateportcitywater_02.h"
                         };
@@ -1673,7 +1667,7 @@ const struct Ven_WildPokemon *Ven_GetWaterEncounterArray(void)
                     case 3:
                     case 4:
                     case 5:
-                        const struct Ven_WildPokemon arrayDataSlateportwater35[12] =
+                        static const struct Ven_WildPokemon arrayDataSlateportwater35[12] =
                         {
                             #include "data/wildencounters/townsandroutes/slateportcity/waterencounters/slateportcitywater_35.h"
                         };
@@ -1681,20 +1675,20 @@ const struct Ven_WildPokemon *Ven_GetWaterEncounterArray(void)
                     case 6:
                     case 7:
                     case 8:
-                        const struct Ven_WildPokemon arrayDataSlateportwater68[12] =
+                        static const struct Ven_WildPokemon arrayDataSlateportwater68[12] =
                         {
                             #include "data/wildencounters/townsandroutes/slateportcity/waterencounters/slateportcitywater_68.h"
                         };
                         return arrayDataSlateportwater68;
                     case 9:
                     case 10:
-                        const struct Ven_WildPokemon arrayDataSlateportwater910[12] =
+                        static const struct Ven_WildPokemon arrayDataSlateportwater910[12] =
                         {
                             #include "data/wildencounters/townsandroutes/slateportcity/waterencounters/slateportcitywater_910.h"
                         };
                         return arrayDataSlateportwater910;
                     default:
-                        const struct Ven_WildPokemon arrayDataSlateportwaterdefault[12] =
+                        static const struct Ven_WildPokemon arrayDataSlateportwaterdefault[12] =
                         {
                             #include "data/wildencounters/townsandroutes/slateportcity/waterencounters/slateportcitywater_910.h"
                         };
@@ -1714,7 +1708,7 @@ const struct Ven_WildPokemon *Ven_GetWaterEncounterArray(void)
                     case 0:
                     case 1:
                     case 2:
-                        const struct Ven_WildPokemon dataArrayGranite1fwater02[12] =
+                        static const struct Ven_WildPokemon dataArrayGranite1fwater02[12] =
                         {
                             #include "data/wildencounters/dungeons/granitecave_1f/waterencounters/granite1fwater_02.h"
                         };
@@ -1722,7 +1716,7 @@ const struct Ven_WildPokemon *Ven_GetWaterEncounterArray(void)
                     case 3:
                     case 4:
                     case 5:
-                        const struct Ven_WildPokemon dataArrayGranite1fwater35[12] =
+                        static const struct Ven_WildPokemon dataArrayGranite1fwater35[12] =
                         {
                             #include "data/wildencounters/dungeons/granitecave_1f/waterencounters/granite1fwater_35.h"
                         };
@@ -1730,20 +1724,20 @@ const struct Ven_WildPokemon *Ven_GetWaterEncounterArray(void)
                     case 6:
                     case 7:
                     case 8:
-                        const struct Ven_WildPokemon dataArrayGranite1fwater68[12] =
+                        static const struct Ven_WildPokemon dataArrayGranite1fwater68[12] =
                         {
                             #include "data/wildencounters/dungeons/granitecave_1f/waterencounters/granite1fwater_68.h"
                         };
                         return dataArrayGranite1fwater68;
                     case 9:
                     case 10:
-                        const struct Ven_WildPokemon dataArrayGranite1fwater910[12] =
+                        static const struct Ven_WildPokemon dataArrayGranite1fwater910[12] =
                         {
                             #include "data/wildencounters/dungeons/granitecave_1f/waterencounters/granite1fwater_910.h"
                         };
                         return dataArrayGranite1fwater910;
                     default:
-                        const struct Ven_WildPokemon dataArrayGranite1fwaterdefault[12] =
+                        static const struct Ven_WildPokemon dataArrayGranite1fwaterdefault[12] =
                         {
                             #include "data/wildencounters/dungeons/granitecave_1f/waterencounters/granite1fwater_910.h"
                         };
@@ -1755,7 +1749,7 @@ const struct Ven_WildPokemon *Ven_GetWaterEncounterArray(void)
                     case 0:
                     case 1:
                     case 2:
-                        const struct Ven_WildPokemon dataArraygraniteb1fwater02[12] =
+                        static const struct Ven_WildPokemon dataArraygraniteb1fwater02[12] =
                         {
                             #include "data/wildencounters/dungeons/granitecave_b1f/waterencounters/graniteb1fwater_02.h"
                         };
@@ -1763,7 +1757,7 @@ const struct Ven_WildPokemon *Ven_GetWaterEncounterArray(void)
                     case 3:
                     case 4:
                     case 5:
-                        const struct Ven_WildPokemon dataArraygranitewaterb1f35[12] =
+                        static const struct Ven_WildPokemon dataArraygranitewaterb1f35[12] =
                         {
                             #include "data/wildencounters/dungeons/granitecave_b1f/waterencounters/graniteb1fwater_35.h"
                         };
@@ -1771,20 +1765,20 @@ const struct Ven_WildPokemon *Ven_GetWaterEncounterArray(void)
                     case 6:
                     case 7:
                     case 8:
-                        const struct Ven_WildPokemon dataArraygraniteb1fwater68[12] =
+                        static const struct Ven_WildPokemon dataArraygraniteb1fwater68[12] =
                         {
                             #include "data/wildencounters/dungeons/granitecave_b1f/waterencounters/graniteb1fwater_68.h"
                         };
                         return dataArraygraniteb1fwater68;
                     case 9:
                     case 10:
-                        const struct Ven_WildPokemon dataArraygraniteb1fwater910[12] =
+                        static const struct Ven_WildPokemon dataArraygraniteb1fwater910[12] =
                         {
                             #include "data/wildencounters/dungeons/granitecave_b1f/waterencounters/graniteb1fwater_910.h"
                         };
                         return dataArraygraniteb1fwater910;
                     default:
-                        const struct Ven_WildPokemon dataArraygraniteb1fdefault[12] =
+                        static const struct Ven_WildPokemon dataArraygraniteb1fdefault[12] =
                         {
                             #include "data/wildencounters/dungeons/granitecave_b1f/waterencounters/graniteb1fwater_910.h"
                         };
@@ -1796,7 +1790,7 @@ const struct Ven_WildPokemon *Ven_GetWaterEncounterArray(void)
                     case 0:
                     case 1:
                     case 2:
-                        const struct Ven_WildPokemon dataArraygraniteb2fwater02[12] =
+                        static const struct Ven_WildPokemon dataArraygraniteb2fwater02[12] =
                         {
                             #include "data/wildencounters/dungeons/granitecave_b2f/waterencounters/graniteb2fwater_02.h"
                         };
@@ -1804,7 +1798,7 @@ const struct Ven_WildPokemon *Ven_GetWaterEncounterArray(void)
                     case 3:
                     case 4:
                     case 5:
-                        const struct Ven_WildPokemon dataArraygraniteb2fwater35[12] =
+                        static const struct Ven_WildPokemon dataArraygraniteb2fwater35[12] =
                         {
                             #include "data/wildencounters/dungeons/granitecave_b2f/waterencounters/graniteb2fwater_35.h"
                         };
@@ -1812,26 +1806,28 @@ const struct Ven_WildPokemon *Ven_GetWaterEncounterArray(void)
                     case 6:
                     case 7:
                     case 8:
-                        const struct Ven_WildPokemon dataArraygraniteb2fwater68[12] =
+                        static const struct Ven_WildPokemon dataArraygraniteb2fwater68[12] =
                         {
                             #include "data/wildencounters/dungeons/granitecave_b2f/waterencounters/graniteb2fwater_68.h"
                         };
                         return dataArraygraniteb2fwater68;
                     case 9:
                     case 10:
-                        const struct Ven_WildPokemon dataArraygraniteb2fwater910[12] =
+                        static const struct Ven_WildPokemon dataArraygraniteb2fwater910[12] =
                         {
                             #include "data/wildencounters/dungeons/granitecave_b2f/waterencounters/graniteb2fwater_910.h"
                         };
                         return dataArraygraniteb2fwater910;
                     default:
-                        const struct Ven_WildPokemon dataArraygraniteb2fwaterdefault[12] =
+                        static const struct Ven_WildPokemon dataArraygraniteb2fwaterdefault[12] =
                         {
                             #include "data/wildencounters/dungeons/granitecave_b2f/waterencounters/graniteb2fwater_910.h"
                         };
                         return dataArraygraniteb2fwaterdefault;
                 }
-            
+            default:
+                DebugPrintf("This encounter table hasn't been set up!");
+                return fallbackMon;
         }
     }
     else
