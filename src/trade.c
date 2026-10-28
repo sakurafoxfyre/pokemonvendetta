@@ -49,6 +49,7 @@
 #include "constants/rgb.h"
 #include "constants/songs.h"
 #include "constants/union_room.h"
+#include "script_ven_util.h"
 
 // IDs for RunTradeMenuCallback
 enum {
@@ -3117,6 +3118,7 @@ static void TradeMons(u8 playerPartyIdx, u8 partnerPartyIdx)
         }
     }
     UpdatePokedexForReceivedMon(playerPartyIdx);
+    SetCatchFlag();
     if (playerPartyIdx == PC_MON_CHOSEN)
         CopyMonToPC(playerMon);
     if (gReceivedRemoteLinkPlayers)

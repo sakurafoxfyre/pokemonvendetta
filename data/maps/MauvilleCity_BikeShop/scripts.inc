@@ -354,4 +354,3 @@ MauvilleCrystals_Pokemart_ItemCollector:
 MauvilleCrystals_Text_ItemCollectorSellWhatYouNeed:
 	.string "Welcome to the Mauville TM Emporium,\n"
 	.string "where even Champions shop!$"
-	

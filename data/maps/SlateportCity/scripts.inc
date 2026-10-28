@@ -663,10 +663,6 @@ SlateportCity_Text_ComeBackToTradeBerryPowder:
 	.string "I'm always running a bazaar here.\p"
 	.string "Did you know?$"
 
-SlateportCity_Text_DoorLocked:
-	.string "Better not draw too much attention\n"
-	.string "by wandering into random buildings.$"
-
 SlateportCity_Text_TestBoss_Intro:
 	.string "I am the boss for Slateport!\n"
 	.string "Do you want to battle me?$"

@@ -75,6 +75,7 @@
 #include "follower_npc.h"
 #include "load_save.h"
 #include "trainer_classes.h"
+#include "script_ven_util.h"
 
 // Helper for accessing command arguments and advancing gBattlescriptCurrInstr.
 //
@@ -10254,6 +10255,7 @@ static void Cmd_givecaughtmon(void)
         break;
     }
     }
+    SetCatchFlag();
     // Save the player's party again to not interferes with RestorePartyAfterFollowerNPCBattle() called after battle.
     if (IsNPCFollowerWildBattle())
         SavePlayerParty();
